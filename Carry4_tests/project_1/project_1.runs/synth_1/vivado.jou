@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sat Apr  6 13:47:34 2024
-# Process ID: 11084
-# Current directory: C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.runs/synth_1
+# Start of session at: Sat Apr  6 17:47:22 2024
+# Process ID: 28584
+# Current directory: C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
-# Log file: C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.runs/synth_1/top.vds
-# Journal file: C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.runs/synth_1\vivado.jou
+# Log file: C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.runs/synth_1/top.vds
+# Journal file: C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.runs/synth_1\vivado.jou
 # Running On: MikeHP, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 2, Host memory: 8215 MB
 #-----------------------------------------------------------
 source top.tcl -notrace

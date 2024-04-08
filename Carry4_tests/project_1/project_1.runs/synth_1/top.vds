@@ -3,18 +3,18 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sat Apr  6 13:47:34 2024
-# Process ID: 11084
-# Current directory: C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.runs/synth_1
+# Start of session at: Sat Apr  6 17:47:22 2024
+# Process ID: 28584
+# Current directory: C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
-# Log file: C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.runs/synth_1/top.vds
-# Journal file: C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.runs/synth_1\vivado.jou
+# Log file: C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.runs/synth_1/top.vds
+# Journal file: C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.runs/synth_1\vivado.jou
 # Running On: MikeHP, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 2, Host memory: 8215 MB
 #-----------------------------------------------------------
 source top.tcl -notrace
-create_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 461.375 ; gain = 183.113
-Command: read_checkpoint -auto_incremental -incremental {C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.srcs/utils_1/imports/synth_1/carry4_t.dcp}
-INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.srcs/utils_1/imports/synth_1/carry4_t.dcp for incremental synthesis
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:09 . Memory (MB): peak = 462.906 ; gain = 185.203
+Command: read_checkpoint -auto_incremental -incremental C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.srcs/utils_1/imports/synth_1/carry4_t.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.srcs/utils_1/imports/synth_1/carry4_t.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top top -part xc7a200tfbg676-2
 Starting synth_design
@@ -24,40 +24,39 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 7700
+INFO: [Synth 8-7075] Helper process launched with PID 17824
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 911.406 ; gain = 440.508
+Starting Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 914.121 ; gain = 438.090
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-11241] undeclared symbol 'iHIT', assumed default net type 'wire' [C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/DelayChain.v:31]
-INFO: [Synth 8-6157] synthesizing module 'top' [C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/top.v:3]
-INFO: [Synth 8-6157] synthesizing module 'DelayChain' [C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/DelayChain.v:9]
+INFO: [Synth 8-6157] synthesizing module 'top' [C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top.v:3]
+INFO: [Synth 8-6157] synthesizing module 'DelayChain' [C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/DelayChain.v:7]
 	Parameter NUM bound to: 12 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'CARRY4' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2366]
 INFO: [Synth 8-6155] done synthesizing module 'CARRY4' (0#1) [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2366]
-INFO: [Synth 8-6155] done synthesizing module 'DelayChain' (0#1) [C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/DelayChain.v:9]
-WARNING: [Synth 8-7071] port 'rst' of module 'DelayChain' is unconnected for instance 'my_chain_inst' [C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/top.v:11]
-WARNING: [Synth 8-7023] instance 'my_chain_inst' of module 'DelayChain' has 4 connections declared, but only 3 given [C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/top.v:11]
-INFO: [Synth 8-6155] done synthesizing module 'top' (0#1) [C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/top.v:3]
-WARNING: [Synth 8-3848] Net iHIT in module/entity DelayChain does not have driver. [C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/DelayChain.v:31]
-WARNING: [Synth 8-7129] Port clk in module DelayChain is either unconnected or has no load
+INFO: [Synth 8-6157] synthesizing module 'FDCE' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:40789]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDCE' (0#1) [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:40789]
+INFO: [Synth 8-6155] done synthesizing module 'DelayChain' (0#1) [C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/DelayChain.v:7]
+WARNING: [Synth 8-7071] port 'rst' of module 'DelayChain' is unconnected for instance 'my_chain_inst' [C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top.v:12]
+WARNING: [Synth 8-7023] instance 'my_chain_inst' of module 'DelayChain' has 5 connections declared, but only 4 given [C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'top' (0#1) [C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top.v:3]
 WARNING: [Synth 8-7129] Port rst in module DelayChain is either unconnected or has no load
-WARNING: [Synth 8-7129] Port hit in module DelayChain is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 1018.316 ; gain = 547.418
+Finished Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:10 . Memory (MB): peak = 1020.887 ; gain = 544.855
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:04 ; elapsed = 00:00:10 . Memory (MB): peak = 1018.316 ; gain = 547.418
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:11 . Memory (MB): peak = 1020.887 ; gain = 544.855
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tfbg676-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:04 ; elapsed = 00:00:10 . Memory (MB): peak = 1018.316 ; gain = 547.418
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:11 . Memory (MB): peak = 1020.887 ; gain = 544.855
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a200tfbg676-2
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:10 . Memory (MB): peak = 1018.316 ; gain = 547.418
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:11 . Memory (MB): peak = 1020.887 ; gain = 544.855
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
@@ -81,24 +80,22 @@ No constraint files found.
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-7129] Port clk in module DelayChain is either unconnected or has no load
 WARNING: [Synth 8-7129] Port rst in module DelayChain is either unconnected or has no load
-WARNING: [Synth 8-7129] Port hit in module DelayChain is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 1243.391 ; gain = 772.492
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:19 . Memory (MB): peak = 1248.426 ; gain = 772.395
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:18 . Memory (MB): peak = 1243.391 ; gain = 772.492
+Finished Timing Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:19 . Memory (MB): peak = 1248.426 ; gain = 772.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:06 ; elapsed = 00:00:18 . Memory (MB): peak = 1243.391 ; gain = 772.492
+Finished Technology Mapping : Time (s): cpu = 00:00:08 ; elapsed = 00:00:19 . Memory (MB): peak = 1248.426 ; gain = 772.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -116,37 +113,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:08 ; elapsed = 00:00:22 . Memory (MB): peak = 1243.391 ; gain = 772.492
+Finished IO Insertion : Time (s): cpu = 00:00:10 ; elapsed = 00:00:25 . Memory (MB): peak = 1248.426 ; gain = 772.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:08 ; elapsed = 00:00:22 . Memory (MB): peak = 1243.391 ; gain = 772.492
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:10 ; elapsed = 00:00:25 . Memory (MB): peak = 1248.426 ; gain = 772.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:08 ; elapsed = 00:00:22 . Memory (MB): peak = 1243.391 ; gain = 772.492
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:10 ; elapsed = 00:00:25 . Memory (MB): peak = 1248.426 ; gain = 772.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:08 ; elapsed = 00:00:22 . Memory (MB): peak = 1243.391 ; gain = 772.492
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:10 ; elapsed = 00:00:25 . Memory (MB): peak = 1248.426 ; gain = 772.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:22 . Memory (MB): peak = 1243.391 ; gain = 772.492
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:25 . Memory (MB): peak = 1248.426 ; gain = 772.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:08 ; elapsed = 00:00:22 . Memory (MB): peak = 1243.391 ; gain = 772.492
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:10 ; elapsed = 00:00:25 . Memory (MB): peak = 1248.426 ; gain = 772.395
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -162,39 +159,42 @@ Report Cell Usage:
 +------+-------+------+
 |      |Cell   |Count |
 +------+-------+------+
-|1     |CARRY4 |     3|
-|2     |OBUF   |    12|
+|1     |BUFG   |     1|
+|2     |CARRY4 |     3|
+|3     |FDCE   |    24|
+|4     |IBUF   |     2|
+|5     |OBUF   |    24|
 +------+-------+------+
 
 Report Instance Areas: 
 +------+----------------+-----------+------+
 |      |Instance        |Module     |Cells |
 +------+----------------+-----------+------+
-|1     |top             |           |    15|
-|2     |  my_chain_inst |DelayChain |     3|
+|1     |top             |           |    54|
+|2     |  my_chain_inst |DelayChain |    27|
 +------+----------------+-----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:08 ; elapsed = 00:00:22 . Memory (MB): peak = 1243.391 ; gain = 772.492
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:10 ; elapsed = 00:00:26 . Memory (MB): peak = 1248.426 ; gain = 772.395
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 10 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:08 ; elapsed = 00:00:22 . Memory (MB): peak = 1243.391 ; gain = 772.492
-Synthesis Optimization Complete : Time (s): cpu = 00:00:08 ; elapsed = 00:00:22 . Memory (MB): peak = 1243.391 ; gain = 772.492
+Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:26 . Memory (MB): peak = 1248.426 ; gain = 772.395
+Synthesis Optimization Complete : Time (s): cpu = 00:00:10 ; elapsed = 00:00:26 . Memory (MB): peak = 1248.426 ; gain = 772.395
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1247.242 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1252.297 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1347.992 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1357.484 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 2afc3335
+Synth Design complete | Checksum: 4101073f
 INFO: [Common 17-83] Releasing license: Synthesis
-23 Infos, 10 Warnings, 0 Critical Warnings and 0 Errors encountered.
+24 Infos, 5 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:25 . Memory (MB): peak = 1347.992 ; gain = 883.586
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1347.992 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.runs/synth_1/top.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:29 . Memory (MB): peak = 1357.484 ; gain = 890.621
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1357.484 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.runs/synth_1/top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Apr  6 13:48:09 2024...
+INFO: [Common 17-206] Exiting Vivado at Sat Apr  6 17:48:04 2024...

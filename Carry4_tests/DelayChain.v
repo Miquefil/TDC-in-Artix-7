@@ -3,23 +3,22 @@
 // attempts to keep the same general hierarchies specified in the RTL,
 // but to improve quality of results (QoR), it can flatten or modify them.
 
-`include "defines.v"
-
-
+//`include "defines.v"
 (* keep_hierarchy = "TRUE" *) 
 module DelayChain #(parameter NUM = 12)                    ///parameter should be multiple of 4
     (
         input   wire            clk,
         input   wire            rst,
         input   wire            hit,
-        output  wire[NUM-1:0]   outTaps
+        output  wire[NUM-1:0]   outTaps,
+        output  wire[NUM-1:0]   outFF
     );
 
 
     wire[NUM-1: 0]  wCarryOutputs;          //salida de carry outputs
     wire[NUM-1: 0]  wOutput;                //salida de outputs
     wire[NUM-1: 0]  wTapsOut;               //salidas luego de flipflops
-    
+    wire[NUM-1: 0]  wOutFirstFF;            //salida de la primer columna de FF
 
 
     /////////INITIALIZATION OF CARRY4s //////////////////////////////////////////////
@@ -46,6 +45,32 @@ module DelayChain #(parameter NUM = 12)                    ///parameter should b
             );
         end
     endgenerate
+
+    /////////INITIALIZATION OF FLIP-FLOPS //////////////////////////////////////////////
+    generate
+        for (i = 0; i < NUM ; i=i+1) begin
+            (* DONT_TOUCH = "yes" *) FDCE #(.INIT(1'b0)) Firstff(
+                .Q(wOutFirstFF[i]),     // 1-bit output: Data
+                .C(clk),     // 1-bit input: Clock
+                .CE(1'b1),   // 1-bit input: Clock enable
+                .CLR(1'b0), // 1-bit input: Asynchronous clear
+                .D(wCarryOutputs[i])    // 1-bit input: Data
+            );
+        end
+    endgenerate
+
+    generate
+        for (i = 0; i < NUM ; i=i+1) begin
+            (* DONT_TOUCH = "yes" *) FDCE #(.INIT(1'b0)) Firstff(
+                .Q(outFF[i]),     // 1-bit output: Data
+                .C(clk),     // 1-bit input: Clock
+                .CE(1'b1),   // 1-bit input: Clock enable
+                .CLR(1'b0), // 1-bit input: Asynchronous clear
+                .D(wOutFirstFF[i])      // 1-bit input: Data
+            );
+        end
+    endgenerate
+
 
 
     assign outTaps = wCarryOutputs;

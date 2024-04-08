@@ -1,28 +1,38 @@
 `timescale  1ps/100fs
-`include "defines.v"
+//`include "defines.v"
 
-module top_tb();
-    reg             clk;
-    reg             hit;
-    wire[11:0]      outs;
+`define cant 12
 
-    top #(12) my_top(
+module top_tb(
+        output wire          clk
+    );
+    reg                  clk2;   //para generar el clock
+    reg                  hit;
+    wire[`cant-1:0]      outs;
+    wire[`cant-1:0]      outFF;
+
+    top #(`cant) my_top(
         .clk(clk),
         .hit(hit),
-        .taps(outs)
+        .taps(outs),
+        .ff(outFF)
         );
 
-    initial begin
-        clk = 1'b1;
+    assign clk = clk2;
+
+    always #2 clk2 = ~clk2;
+    initial begin        
+        clk2 = 1'b1;    //inicializa el reloj
+        hit = 1'b0;
+        #2500;
+
+        hit = 1'b1;
+        #3000;
+
         hit = 1'b0;
         #10;
 
-        hit = 1'b1;
-        #30;
-
         hit = 1'b0;
-        #30;
-
         $finish;
     end
 

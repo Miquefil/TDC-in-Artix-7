@@ -5,14 +5,16 @@ Running: C:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3755] too many parameters for module instance 'my_top' [C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/top_tb.v:9]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 100fs
-Compiling module unisims_ver.CARRY4
-Compiling module xil_defaultlib.DelayChain
+Compiling module unisims_ver.BUFG
+Compiling module unisims_ver.IBUF
 Compiling module unisims_ver.OBUF
+Compiling module unisims_ver.CARRY4
+Compiling module unisims_ver.FDCE_default
+Compiling module xil_defaultlib.DelayChain
 Compiling module xil_defaultlib.top
 Compiling module xil_defaultlib.top_tb
 Compiling module xil_defaultlib.glbl

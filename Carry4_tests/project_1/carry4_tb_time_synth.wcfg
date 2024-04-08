@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.0 ps"></ZoomStartTime>
-      <ZoomEndTime time="430.6 ps"></ZoomEndTime>
-      <Cursor1Time time="70.0 ps"></Cursor1Time>
+      <ZoomEndTime time="50.0 ps"></ZoomEndTime>
+      <Cursor1Time time="11.5 ps"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="92"></NameColumnWidth>
-      <ValueColumnWidth column_width="78"></ValueColumnWidth>
+      <NameColumnWidth column_width="105"></NameColumnWidth>
+      <ValueColumnWidth column_width="80"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="3" />
+   <WVObjectSize size="5" />
    <wvobject fp_name="/top_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -28,9 +28,18 @@
       <obj_property name="ElementShortName">hit</obj_property>
       <obj_property name="ObjectShortName">hit</obj_property>
    </wvobject>
+   <wvobject fp_name="/top_tb/clk2" type="logic">
+      <obj_property name="ElementShortName">clk2</obj_property>
+      <obj_property name="ObjectShortName">clk2</obj_property>
+   </wvobject>
    <wvobject fp_name="/top_tb/outs" type="array">
       <obj_property name="ElementShortName">outs[11:0]</obj_property>
       <obj_property name="ObjectShortName">outs[11:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/outFF" type="array">
+      <obj_property name="ElementShortName">outFF[11:0]</obj_property>
+      <obj_property name="ObjectShortName">outFF[11:0]</obj_property>
       <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>

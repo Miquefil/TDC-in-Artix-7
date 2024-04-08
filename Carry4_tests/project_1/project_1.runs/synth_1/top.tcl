@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.runs/synth_1/top.tcl"
+  variable script "C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.runs/synth_1/top.tcl"
   variable category "vivado_synth"
 }
 
@@ -76,20 +76,18 @@ create_project -in_memory -part xc7a200tfbg676-2
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir {C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.cache/wt} [current_project]
-set_property parent.project_path {C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.xpr} [current_project]
+set_property webtalk.parent_dir C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.cache/wt [current_project]
+set_property parent.project_path C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part xilinx.com:ac701:part0:1.4 [current_project]
-set_property ip_output_repo {c:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.cache/ip} [current_project]
+set_property ip_output_repo c:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog {{C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/defines.v}}
-set_property file_type "Verilog Header" [get_files {{C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/defines.v}}]
 read_verilog -library xil_defaultlib {
-  {C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/DelayChain.v}
-  {C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/top.v}
+  C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/DelayChain.v
+  C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -102,7 +100,7 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 }
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental {C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.srcs/utils_1/imports/synth_1/carry4_t.dcp}
+read_checkpoint -auto_incremental -incremental C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.srcs/utils_1/imports/synth_1/carry4_t.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

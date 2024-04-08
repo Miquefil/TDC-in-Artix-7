@@ -1,0 +1,23 @@
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-5021] port 'rst' is not connected on this instance [C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top.v:12]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top.v" Line 3. Module top doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/DelayChain.v" Line 9. Module DelayChain_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top.v" Line 3. Module top doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/DelayChain.v" Line 9. Module DelayChain_default doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 100fs
+Compiling module unisims_ver.CARRY4
+Compiling module unisims_ver.FDCE_default
+Compiling module xil_defaultlib.DelayChain_default
+Compiling module xil_defaultlib.top
+Compiling module xil_defaultlib.top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_behav

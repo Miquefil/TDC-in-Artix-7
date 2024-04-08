@@ -2,7 +2,6 @@
 2020.2
 Oct 13 2023
 20:47:58
-C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/carry4_tb.v,1712245271,verilog,,,,carry4_tb,,,,,,,,
-C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/defines.v,1712421474,verilog,,,,,,,,,,,,
-C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/project_1/project_1.sim/sim_1/synth/func/xsim/top_tb_func_synth.v,1712428736,verilog,,C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/top_tb.v,,DelayChain;glbl;top,,,../../../../../../,,,,,
-C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/top_tb.v,1712422042,verilog,,,C:/Users/mique/OneDrive/Pruebas y tests/Carry4_tests/defines.v,top_tb,,,../../../../../../,,,,,
+C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/defines.v,1712421474,verilog,,,,,,,,,,,,
+C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.sim/sim_1/synth/func/xsim/top_tb_func_synth.v,1712437913,verilog,,C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top_tb.v,,DelayChain;glbl;top,,,../../../../../../,,,,,
+C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top_tb.v,1712422787,verilog,,,C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/defines.v,top_tb,,,../../../../../../,,,,,
