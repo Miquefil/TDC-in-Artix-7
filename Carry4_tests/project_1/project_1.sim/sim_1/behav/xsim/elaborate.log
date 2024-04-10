@@ -9,9 +9,9 @@ WARNING: [VRFC 10-5021] port 'rst' is not connected on this instance [C:/Users/m
 Completed static elaboration
 Starting simulation data flow analysis
 WARNING: [XSIM 43-4099] "C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top.v" Line 3. Module top doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/DelayChain.v" Line 9. Module DelayChain_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/DelayChain.v" Line 7. Module DelayChain_default doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top.v" Line 3. Module top doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/DelayChain.v" Line 9. Module DelayChain_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/DelayChain.v" Line 7. Module DelayChain_default doesn't have a timescale but at least one module in design has a timescale.
 Completed simulation data flow analysis
 Time Resolution for simulation is 100fs
 Compiling module unisims_ver.CARRY4

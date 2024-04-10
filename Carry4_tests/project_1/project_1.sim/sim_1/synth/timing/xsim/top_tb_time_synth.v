@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Sun Apr  7 13:29:06 2024
+// Date        : Mon Apr  8 12:14:33 2024
 // Host        : MikeHP running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.sim/sim_1/synth/timing/xsim/top_tb_time_synth.v
