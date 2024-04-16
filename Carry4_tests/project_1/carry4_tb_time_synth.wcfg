@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.0000 ns"></ZoomStartTime>
-      <ZoomEndTime time="5.5101 ns"></ZoomEndTime>
-      <Cursor1Time time="0.0115 ns"></Cursor1Time>
+      <ZoomStartTime time="15.800 ns"></ZoomStartTime>
+      <ZoomEndTime time="24.381 ns"></ZoomEndTime>
+      <Cursor1Time time="17.520 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="105"></NameColumnWidth>
-      <ValueColumnWidth column_width="76"></ValueColumnWidth>
+      <ValueColumnWidth column_width="68"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="5" />
+   <WVObjectSize size="7" />
    <wvobject fp_name="/top_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -32,14 +32,20 @@
       <obj_property name="ElementShortName">clk2</obj_property>
       <obj_property name="ObjectShortName">clk2</obj_property>
    </wvobject>
-   <wvobject fp_name="/top_tb/outs" type="array">
-      <obj_property name="ElementShortName">outs[11:0]</obj_property>
-      <obj_property name="ObjectShortName">outs[11:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+   <wvobject fp_name="/top_tb/FFStart" type="array">
+      <obj_property name="ElementShortName">FFStart[119:0]</obj_property>
+      <obj_property name="ObjectShortName">FFStart[119:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/top_tb/outFF" type="array">
-      <obj_property name="ElementShortName">outFF[11:0]</obj_property>
-      <obj_property name="ObjectShortName">outFF[11:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+   <wvobject fp_name="/top_tb/FFStop" type="array">
+      <obj_property name="ElementShortName">FFStop[119:0]</obj_property>
+      <obj_property name="ObjectShortName">FFStop[119:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/taps" type="array">
+      <obj_property name="ElementShortName">taps[119:0]</obj_property>
+      <obj_property name="ObjectShortName">taps[119:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/res" type="array">
+      <obj_property name="ElementShortName">res[23:0]</obj_property>
+      <obj_property name="ObjectShortName">res[23:0]</obj_property>
    </wvobject>
 </wave_config>

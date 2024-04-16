@@ -3,5 +3,5 @@
 Oct 13 2023
 20:47:58
 C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/defines.v,1712421474,verilog,,,,,,,,,,,,
-C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.sim/sim_1/synth/func/xsim/top_tb_func_synth.v,1712589221,verilog,,C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top_tb.v,,DelayChain;glbl;top,,,../../../../../../,,,,,
-C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/top_tb.v,1712422787,verilog,,,C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/defines.v,top_tb,,,../../../../../../,,,,,
+C:/Users/mique/Desktop/TDC-in-Artix-7/Carry4_tests/project_1/project_1.sim/sim_1/synth/func/xsim/top_tb_func_synth.v,1713292974,verilog,,C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top_tb.v,,Coarse;Edge;Fine;glbl;top,,,../../../../../../,,,,,
+,,,,,,top_tb,,,,,,,,

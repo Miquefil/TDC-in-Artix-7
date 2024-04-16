@@ -11,13 +11,15 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-module DecodeStop (# parameter  NUM_FF= 1, #parameter BITS_DECO = 8) (
+module DecodeStop #(parameter  NUM_FF= 1, parameter BITS_DECO = 8) (
     input    wire[NUM_FF-1:0]         wDecoStoptIn,
     output   wire[BITS_DECO-1:0]      wDecoStopOut
 );
 
     reg [BITS_DECO:0] bin;
-
+    integer i;
+    
+    
     always @(*) begin
         bin = 0;
         for (i = 0; i < NUM_FF-20; i=i+1'b1) begin

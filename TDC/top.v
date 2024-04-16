@@ -1,24 +1,29 @@
-`define NUM_TAPS    = 120
-`define NUM_DECODE  = 7
-`define COUNTER_DIG = 10
-`define DIG_OUT     = 7+7+10
-
-
-
+`define NUM_TAPS     120
+`define NUM_DECODE   7
+`define COUNTER_DIG  10
+`define DIG_OUT      24
 
 module top (
     input              iClk,
     input              iRst,
     input              iHit,
     //output[NUM_TAPS-1:0]    taps,
-    output[DIG_OUT-1:0]     oTDC
+    output[`DIG_OUT-1:0]     oTDC,
+
+
+
+    //Debugging Signals
+    output[`NUM_TAPS-1:0]         FFStart, FFStop,
+    output[`NUM_TAPS-1:0]         taps
     );
 
-    wire                        rst;                //manages internal and external rst
-    wire                        Rise, Fall;
-    wire[NUM_TAPS-1:0]          Stop, Start;
-    wire[NUM_DECODE-1:0]        DecodedStop, DecodedStart;
-    wire[COUNTER_DIG-1:0]       CoarseStamp;
+    wire                         rst;                //manages internal and external rst
+    wire                         Rise, Fall;
+    wire[`NUM_TAPS-1:0]          Stop, Start;
+    wire[`NUM_DECODE-1:0]        DecodedStop, DecodedStart;
+    
+    assign FFStart = Start;
+    assign FFStop  = Stop;
 
 
     Edge u_EdgeDetector(
@@ -37,7 +42,7 @@ module top (
         .iStartEnable   (Rise),
         .oFFStart      (Start),       //FF outputs of Start column
         .oFFStop        (Stop),       //FF outputs of Stop column
-        .outTaps           ( ),        //output from the Carrys output
+        .outTaps        (taps),        //output from the Carrys output
         .outFF             ( ) 
     );
 
@@ -47,16 +52,17 @@ module top (
     );
 
     DecodeStop  #(`NUM_TAPS, `NUM_DECODE) u_DecStop(
-        .wDecoStartIn          (Stop),
-        .wDecoStartOut   (DecodedStop)
+        .wDecoStoptIn          (Stop),
+        .wDecoStopOut   (DecodedStop)
     );
 
+    wire[`COUNTER_DIG-1:0]       CoarseStamp;
     Coarse #(`COUNTER_DIG) u_Coarse (
     .clk            (iClk),
     .iRst           (rst),       //reset count
     .iCE            (iHit),        //enable
     .iStore         (Fall),
-    oCoarse         (CoarseStamp)   
+    .oCoarse         (CoarseStamp)   
 );
 
     //Delay post resultado y Merging//////////////////
@@ -67,7 +73,7 @@ module top (
 
     wire                StartDelay, StopDelay, ConvertionFinish;
     reg                 DelayCounter;
-    reg[DIG_OUT-1:0]    ValorTDC;
+    reg[`DIG_OUT-1:0]    ValorTDC;
 
     assign StopDelay = DelayCounter;
 
@@ -83,7 +89,7 @@ module top (
         if (StopDelay) begin
             DelayCounter <= 0;        
         end
-        elseif(StartDelay) begin
+        else if (StartDelay) begin
             DelayCounter <= DelayCounter + 1'b1;
         end
     end
@@ -92,7 +98,7 @@ module top (
         if(rst) begin
             ValorTDC <= 0;
         end
-        elseif(StopDelay) begin
+        else if(StopDelay) begin
             ValorTDC <= {CoarseStamp, DecodedStart, DecodedStop};
         end
     end

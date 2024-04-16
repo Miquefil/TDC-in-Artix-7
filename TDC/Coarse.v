@@ -13,11 +13,11 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-module #(parameter C_DIG = 10) Coarse (
+module Coarse #(parameter C_DIG = 10) (
     input wire      clk,
     input wire      iRst,       //reset count
     input wire      iCE,        //enable
-    input wire      iStore      //hold count
+    input wire      iStore,      //hold count
 
     output  wire    oCoarse
 );

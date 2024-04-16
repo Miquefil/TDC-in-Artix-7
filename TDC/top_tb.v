@@ -1,21 +1,27 @@
 `timescale  1ps/1ps
 
-`define NUM_TAPS    = 120
-`define NUM_DECODE  = 7
-`define COUNTER_DIG = 10
-`define DIG_OUT     = 7+7+10
+`define NUM_TAPS    120
+`define NUM_DECODE  7
+`define COUNTER_DIG 10
+`define DIG_OUT     24
 
 module top_tb(
     );
     reg                                clk2;
     reg                                hit;
-    reg['DIG_OUT-1:0]                  res;
+    wire[`DIG_OUT-1:0]                  res;
 
+
+    wire[`NUM_TAPS-1:0]         FFStart, FFStop;
+    wire[`NUM_TAPS-1:0]         taps;
     top u_top(
         .iClk(clk2),
         .iRst(),
         .iHit(hit),
-        .oTDC(res)
+        .oTDC(res),
+        .FFStart(FFStart),
+        .FFStop(FFStop),
+        .taps(taps)
     );
 
     assign clk = clk2;
@@ -29,7 +35,7 @@ module top_tb(
         #2500;
 
         hit = 1'b1;
-        #3000;
+        #15000;
 
         hit = 1'b0;
         #10;

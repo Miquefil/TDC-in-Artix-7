@@ -1,8 +1,12 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  --include "../../../../../" \
-"../../../../../DelayChain.v" \
-"../../../../../top.v" \
-"../../../../../top_tb.v" \
+"../../../../../../TDC/Coarse.v" \
+"../../../../../../TDC/DecodeStart.v" \
+"../../../../../../TDC/DecodeStop.v" \
+"../../../../../../TDC/Edge.v" \
+"../../../../../../TDC/Fine.v" \
+"../../../../../../TDC/top.v" \
+"../../../../../../TDC/top_tb.v" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"
