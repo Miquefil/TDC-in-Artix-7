@@ -23,19 +23,24 @@ module #(parameter C_DIG = 10) Coarse (
 );
 
     (* DONT_TOUCH = "yes" *) reg[C_DIG:0]    count;
+    (* DONT_TOUCH = "yes" *) reg[C_DIG:0]    stored;
 
     always @(posedge clk) begin
-        if(!iStore) begin
-            if(iRst) begin
-                count <= {C_DIG{1'd0}};
-            end 
-            else begin
-                if(iCE) begin
-                    count <= count + 1'b1;
-                end
+        if(iRst) begin
+            count <= {C_DIG{1'd0}};
+        end 
+        else begin
+            if(iCE) begin
+                count <= count + 1'b1;
             end
         end
     end
 
-    assign oCoarse = count;
+    always @(posedge clk ) begin
+        if (iStore) begin
+            stored <= count;
+        end
+    end
+
+    assign oCoarse = stored;
 endmodule //

@@ -19,6 +19,7 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
         input   wire            iStopEnable,
         input   wire            iStartEnable,
 
+        //Real Outputs
         output  wire[NUM-1:0]   oFFStart,       //FF outputs of Start column
         output  wire[NUM-1:0]   oFFStop ,       //FF outputs of Stop column
 
