@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////
 // Module Name: Input
-// Description: Settle Wave Union A (WU-A) principles to source the Fine delay chain.
+// Description: Reset for delay chain
 //
 // Author: Miqueas Filsinger
 // Date: Date 
@@ -12,10 +12,31 @@
 //
 //////////////////////////////////////////////////////////////////////
 
+(* keep_hierarchy = "TRUE" *) 
 module  Input(
-    // Ports here
-);
+    input   wire    clk,
+    input   wire    iRst,
+    input   wire    iHit,
+    input   wire    iTap,
 
-    // Module implementation here
+    output  wire    oHit
+);
+    wire a;
+
+    (* DONT_TOUCH = "yes" *) FDCE FFa (
+        .Q(oHit)        ,   // 1-bit output: Data
+        .C(iHit)         ,   // 1-bit input: Clock
+        .CE()           ,   // 1-bit input: Clock enable
+        .CLR(a)         ,
+        .D(1'b1)        ,   // 1-bit input: Data
+    );
+
+    (* DONT_TOUCH = "yes" *) FDCE FFb (
+        .Q(a)        ,   // 1-bit output: Data
+        .C(clk)        ,   // 1-bit input: Clock
+        .CE()           , // 1-bit input: Clock enable
+        .CLR()         ,
+        .D(iHit)        ,   // 1-bit input: Data
+    );
 
 endmodule //

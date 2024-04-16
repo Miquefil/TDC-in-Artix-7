@@ -14,10 +14,9 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-module Decoder (
-    // Ports here
+module Decoder #(parameter NUM = 12)(
+    input  wire[NUM-1:0]    iFF
 );
 
-    // Module implementation here
-
+    
 endmodule //
