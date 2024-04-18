@@ -1,7 +1,0 @@
-Running: xsim.dir/carry4_tb_func_synth/xsimk.exe -simmode gui -wdb carry4_tb_func_synth.wdb -simrunnum 0 -socket 60462
-Design successfully loaded
-Design Loading Memory Usage: 8564 KB (Peak: 8564 KB)
-Design Loading CPU Usage: 30 ms
-Simulation completed
-Simulation Memory Usage: 9164 KB (Peak: 9164 KB)
-Simulation CPU Usage: 30 ms

@@ -1,0 +1,11 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/TDC_StartStop/TDC_StartStop.sim/sim_1/synth/timing/xsim/top_tb_time_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Coarse
+INFO: [VRFC 10-311] analyzing module DecodeStart
+INFO: [VRFC 10-311] analyzing module DecodeStop
+INFO: [VRFC 10-311] analyzing module Edge
+INFO: [VRFC 10-311] analyzing module Fine
+INFO: [VRFC 10-311] analyzing module merging
+INFO: [VRFC 10-311] analyzing module top
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb

@@ -1,13 +1,13 @@
 `include "defines.v"
 
 module top (
-    input                           iClk,
-    input                           iRst,
-    input                           iHit,
-    output[`DIG_OUT-1:0]            oTDC,
-    output reg                      done,
-
+    input  wire                     iClk,
+    input  wire                     iRst,
+    input  wire                     iHit,
+    output wire [`DIG_OUT-1:0]      oTDC,
+    output wire                     done,
     //Debugging Signals
+    
     output                          StopConv,
     output[`NUM_TAPS-1:0]           FFStart, FFStop,
     output[`NUM_TAPS-1:0]           taps
@@ -23,9 +23,9 @@ module top (
 
 
     wire                ready;
-    reg                 rst_int;    
-    wire                rst;                //manages internal and external rst
-    assign              rst = (~ready)&(iRst|rst_int);     //reset if ready AND external/interal reset
+    wire                rst_int;    
+    wire                rst;                            //manages internal and external rst
+    assign              rst = (~ready|iRst|rst_int);     //reset if NOTready/external/interal
 
     //////////////////////Wait for some clocks and then go ready --------------
     wire                FFDelayStart;
@@ -86,63 +86,17 @@ module top (
     .oCoarse         (CoarseStamp)   
 );
 
-    //Delay post resultado y Merging//////////////////
-    //COMMENTS: Originalmente parece que Machado sólo usa un clock como delay así que DelayCounter tiene 1 bit
-
     
-    // wire                    StartConvertion;        //starting convertion
-    // wire                    FinishConvertion;       //finishing convertion
-    // wire                    done;                   //convertion done
-    // wire                    conv_ready;             //convertion ready --> rst & ready --> done
-    // reg[1:0]                DelayCounter;
-    // reg[`DIG_OUT-1:0]       ValorTDC;               
-
-    // assign FinishConvertion = &(DelayCounter);  //true if DelayCounter == 11
-
-    // (* dont_touch = "TRUE" *)FDCE #(.INIT(1'b0)) enable_delay_dff(
-    // .Q          (StartConvertion),
-    // .C          (Fall),
-    // .CE         (1'b1),
-    // .CLR        (FinishConvertion),
-    // .D          (1'b1)
-    // );
-
-    // (* dont_touch = "TRUE" *)FDRE #(.INIT(1'b0)) value_ready_dff(
-    //     .Q(Done),
-    //     .C(iCLK0),
-    //     .CE(1'b1),
-    //     .R(~FinishConvertion),
-    //     .D(1'b1)
-    // );
-
-    // //Cuento 4 clocks --> finish
-    // always @(posedge iClk) begin
-    //     if (StopDelay) begin
-    //         DelayCounter <= 0;        
-    //     end
-    //     else if (StartDelay) begin
-    //         DelayCounter <= DelayCounter + 1'b1;
-    //     end
-    // end //cuenta 0-1-2-3-0-1-2-3-0----
-    
-    // always @(posedge iClk) begin
-    //     if(rst) begin
-    //         ValorTDC <= 0;
-    //     end
-    //     else if(StopDelay) begin
-    //         ValorTDC <= {CoarseStamp, DecodedStart, DecodedStop};
-    //     end
-    // end
-
-    merging u_merge (
+    merging #(2) u_merge (
         .clk(iClk),
         .irst(rst),
         .fall(Fall),
         .FallEdge(DecodedStop),
         .StartEdge(DecodedStart),
         .Coarse(CoarseStamp),
+        .done(done),
         .out(oTDC)
     );
-    
+    assign rst_int = done;        //Resetea el sistema      
 
 endmodule

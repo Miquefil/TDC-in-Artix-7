@@ -12,12 +12,13 @@ module top_tb(
 
     wire[`NUM_TAPS-1:0]         FFStart, FFStop;
     wire[`NUM_TAPS-1:0]         taps;
+    wire                        merge_done; 
     top u_top(
         .iClk(clk),
         .iRst(rst),
         .iHit(hit),
         .oTDC(res),
-        .done(),
+        .done(merge_done),
         .StopConv(),
         .FFStart(FFStart),
         .FFStop(FFStop),
