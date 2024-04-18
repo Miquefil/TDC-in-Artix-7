@@ -9,7 +9,7 @@
 //////////////////////////////////////////////////////////////////////
 
 `timescale 1ns/1ns
-
+(* keep_hierarchy = "TRUE" *)
 module Edge_tb (
     );
     reg         clk, rst, hit;

@@ -1,16 +1,16 @@
 `include "defines.v"
-
+(* keep_hierarchy = "TRUE" *)
 module top (
     input  wire                     iClk,
     input  wire                     iRst,
     input  wire                     iHit,
     output wire [`DIG_OUT-1:0]      oTDC,
-    output wire                     done,
-    //Debugging Signals
+    output wire                     done
     
-    output                          StopConv,
-    output[`NUM_TAPS-1:0]           FFStart, FFStop,
-    output[`NUM_TAPS-1:0]           taps
+    //Debugging Signals
+    // output                          StopConv,
+    // output[`NUM_TAPS-1:0]           FFStart, FFStop,
+    // output[`NUM_TAPS-1:0]           taps
     );  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -18,8 +18,8 @@ module top (
     wire[`NUM_TAPS-1:0]          Stop, Start;
     wire[`NUM_DECODE-1:0]        DecodedStop, DecodedStart;
     
-    assign FFStart = Start;
-    assign FFStop  = Stop;
+    // assign FFStart = Start;      //TODO: debugging signal
+    // assign FFStop  = Stop;       //TODO: debugging signal
 
 
     wire                ready;

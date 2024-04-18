@@ -1,0 +1,2361 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Thu Apr 18 16:35:15 2024
+| Host         : MikeHP running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -max_paths 10 -report_unconstrained -file top_timing_summary_routed.rpt -pb top_timing_summary_routed.pb -rpx top_timing_summary_routed.rpx -warn_on_violation
+| Design       : top
+| Device       : 7a200t-fbg676
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+  Inter-SLR Compensation                     :  Conservative
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+Rule       Severity          Description                   Violations  
+---------  ----------------  ----------------------------  ----------  
+TIMING-17  Critical Warning  Non-clocked sequential cell   784         
+LUTAR-1    Warning           LUT drives async reset alert  2           
+
+Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (785)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (2062)
+5. checking no_input_delay (2)
+6. checking no_output_delay (25)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (785)
+--------------------------
+ There are 783 register/latch pins with no clock driven by root clock pin: iClk (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: u_EdgeDetector/edge_detector_ffd0/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: u_EdgeDetector/edge_detector_ffd1/Q (HIGH)
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (2062)
+---------------------------------------------------
+ There are 2062 pins that are not constrained for maximum delay. (HIGH)
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (2)
+------------------------------
+ There are 2 input ports with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (25)
+--------------------------------
+ There are 25 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+        inf        0.000                      0                 2087          inf        0.000                      0                 2087           NA           NA                      NA                    NA  
+
+
+There are no user specified timing constraints.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                                    
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay          2087 Endpoints
+Min Delay          2087 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 iHit
+                            (input port)
+  Destination:            u_FineDelay/genblk2[236].Firstff/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.701ns  (logic 7.261ns (83.449%)  route 1.440ns (16.551%))
+  Logic Levels:           61  (CARRY4=60 IBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    T8                                                0.000     0.000 r  iHit (IN)
+                         net (fo=0)                   0.000     0.000    iHit
+    T8                   IBUF (Prop_ibuf_I_O)         0.881     0.881 r  iHit_IBUF_inst/O
+                         net (fo=18, routed)          1.431     2.313    u_FineDelay/iHit
+    SLICE_X160Y78        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     2.793 r  u_FineDelay/carry_40/CO[3]
+                         net (fo=2, routed)           0.000     2.793    u_FineDelay/outTaps[3]
+    SLICE_X160Y79        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.891 r  u_FineDelay/genblk1[1].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.891    u_FineDelay/outTaps[7]
+    SLICE_X160Y80        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.989 r  u_FineDelay/genblk1[2].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.989    u_FineDelay/outTaps[11]
+    SLICE_X160Y81        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.087 r  u_FineDelay/genblk1[3].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.087    u_FineDelay/outTaps[15]
+    SLICE_X160Y82        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.185 r  u_FineDelay/genblk1[4].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.185    u_FineDelay/outTaps[19]
+    SLICE_X160Y83        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.283 r  u_FineDelay/genblk1[5].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.283    u_FineDelay/outTaps[23]
+    SLICE_X160Y84        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.381 r  u_FineDelay/genblk1[6].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.381    u_FineDelay/outTaps[27]
+    SLICE_X160Y85        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.479 r  u_FineDelay/genblk1[7].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.479    u_FineDelay/outTaps[31]
+    SLICE_X160Y86        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.577 r  u_FineDelay/genblk1[8].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.577    u_FineDelay/outTaps[35]
+    SLICE_X160Y87        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.675 r  u_FineDelay/genblk1[9].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.675    u_FineDelay/outTaps[39]
+    SLICE_X160Y88        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.773 r  u_FineDelay/genblk1[10].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.773    u_FineDelay/outTaps[43]
+    SLICE_X160Y89        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.871 r  u_FineDelay/genblk1[11].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.871    u_FineDelay/outTaps[47]
+    SLICE_X160Y90        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.969 r  u_FineDelay/genblk1[12].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.969    u_FineDelay/outTaps[51]
+    SLICE_X160Y91        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.067 r  u_FineDelay/genblk1[13].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.067    u_FineDelay/outTaps[55]
+    SLICE_X160Y92        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.165 r  u_FineDelay/genblk1[14].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.165    u_FineDelay/outTaps[59]
+    SLICE_X160Y93        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.263 r  u_FineDelay/genblk1[15].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.263    u_FineDelay/outTaps[63]
+    SLICE_X160Y94        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.361 r  u_FineDelay/genblk1[16].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.361    u_FineDelay/outTaps[67]
+    SLICE_X160Y95        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.459 r  u_FineDelay/genblk1[17].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.459    u_FineDelay/outTaps[71]
+    SLICE_X160Y96        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.557 r  u_FineDelay/genblk1[18].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.557    u_FineDelay/outTaps[75]
+    SLICE_X160Y97        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.655 r  u_FineDelay/genblk1[19].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.655    u_FineDelay/outTaps[79]
+    SLICE_X160Y98        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.753 r  u_FineDelay/genblk1[20].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.753    u_FineDelay/outTaps[83]
+    SLICE_X160Y99        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.851 r  u_FineDelay/genblk1[21].carry_4/CO[3]
+                         net (fo=2, routed)           0.001     4.851    u_FineDelay/outTaps[87]
+    SLICE_X160Y100       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.949 r  u_FineDelay/genblk1[22].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.949    u_FineDelay/outTaps[91]
+    SLICE_X160Y101       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.047 r  u_FineDelay/genblk1[23].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.047    u_FineDelay/outTaps[95]
+    SLICE_X160Y102       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.145 r  u_FineDelay/genblk1[24].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.145    u_FineDelay/outTaps[99]
+    SLICE_X160Y103       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.243 r  u_FineDelay/genblk1[25].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.243    u_FineDelay/outTaps[103]
+    SLICE_X160Y104       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.341 r  u_FineDelay/genblk1[26].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.341    u_FineDelay/outTaps[107]
+    SLICE_X160Y105       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.439 r  u_FineDelay/genblk1[27].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.439    u_FineDelay/outTaps[111]
+    SLICE_X160Y106       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.537 r  u_FineDelay/genblk1[28].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.537    u_FineDelay/outTaps[115]
+    SLICE_X160Y107       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.635 r  u_FineDelay/genblk1[29].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.635    u_FineDelay/outTaps[119]
+    SLICE_X160Y108       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.733 r  u_FineDelay/genblk1[30].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.733    u_FineDelay/outTaps[123]
+    SLICE_X160Y109       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.831 r  u_FineDelay/genblk1[31].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.831    u_FineDelay/outTaps[127]
+    SLICE_X160Y110       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.929 r  u_FineDelay/genblk1[32].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.929    u_FineDelay/outTaps[131]
+    SLICE_X160Y111       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.027 r  u_FineDelay/genblk1[33].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.027    u_FineDelay/outTaps[135]
+    SLICE_X160Y112       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.125 r  u_FineDelay/genblk1[34].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.125    u_FineDelay/outTaps[139]
+    SLICE_X160Y113       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.223 r  u_FineDelay/genblk1[35].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.223    u_FineDelay/outTaps[143]
+    SLICE_X160Y114       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.321 r  u_FineDelay/genblk1[36].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.321    u_FineDelay/outTaps[147]
+    SLICE_X160Y115       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.419 r  u_FineDelay/genblk1[37].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.419    u_FineDelay/outTaps[151]
+    SLICE_X160Y116       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.517 r  u_FineDelay/genblk1[38].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.517    u_FineDelay/outTaps[155]
+    SLICE_X160Y117       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.615 r  u_FineDelay/genblk1[39].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.615    u_FineDelay/outTaps[159]
+    SLICE_X160Y118       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.713 r  u_FineDelay/genblk1[40].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.713    u_FineDelay/outTaps[163]
+    SLICE_X160Y119       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.811 r  u_FineDelay/genblk1[41].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.811    u_FineDelay/outTaps[167]
+    SLICE_X160Y120       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.909 r  u_FineDelay/genblk1[42].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.909    u_FineDelay/outTaps[171]
+    SLICE_X160Y121       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.007 r  u_FineDelay/genblk1[43].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.007    u_FineDelay/outTaps[175]
+    SLICE_X160Y122       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.105 r  u_FineDelay/genblk1[44].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.105    u_FineDelay/outTaps[179]
+    SLICE_X160Y123       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.203 r  u_FineDelay/genblk1[45].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.203    u_FineDelay/outTaps[183]
+    SLICE_X160Y124       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.301 r  u_FineDelay/genblk1[46].carry_4/CO[3]
+                         net (fo=2, routed)           0.008     7.309    u_FineDelay/outTaps[187]
+    SLICE_X160Y125       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.407 r  u_FineDelay/genblk1[47].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.407    u_FineDelay/outTaps[191]
+    SLICE_X160Y126       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.505 r  u_FineDelay/genblk1[48].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.505    u_FineDelay/outTaps[195]
+    SLICE_X160Y127       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.603 r  u_FineDelay/genblk1[49].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.603    u_FineDelay/outTaps[199]
+    SLICE_X160Y128       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.701 r  u_FineDelay/genblk1[50].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.701    u_FineDelay/outTaps[203]
+    SLICE_X160Y129       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.799 r  u_FineDelay/genblk1[51].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.799    u_FineDelay/outTaps[207]
+    SLICE_X160Y130       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.897 r  u_FineDelay/genblk1[52].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.897    u_FineDelay/outTaps[211]
+    SLICE_X160Y131       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.995 r  u_FineDelay/genblk1[53].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.995    u_FineDelay/outTaps[215]
+    SLICE_X160Y132       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.093 r  u_FineDelay/genblk1[54].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.093    u_FineDelay/outTaps[219]
+    SLICE_X160Y133       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.191 r  u_FineDelay/genblk1[55].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.191    u_FineDelay/outTaps[223]
+    SLICE_X160Y134       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.289 r  u_FineDelay/genblk1[56].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.289    u_FineDelay/outTaps[227]
+    SLICE_X160Y135       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.387 r  u_FineDelay/genblk1[57].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.387    u_FineDelay/outTaps[231]
+    SLICE_X160Y136       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.485 r  u_FineDelay/genblk1[58].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.485    u_FineDelay/outTaps[235]
+    SLICE_X160Y137       CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.216     8.701 r  u_FineDelay/genblk1[59].carry_4/CO[0]
+                         net (fo=1, routed)           0.000     8.701    u_FineDelay/outTaps[236]
+    SLICE_X160Y137       FDCE                                         r  u_FineDelay/genblk2[236].Firstff/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 iHit
+                            (input port)
+  Destination:            u_FineDelay/genblk2[238].Firstff/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.675ns  (logic 7.235ns (83.399%)  route 1.440ns (16.601%))
+  Logic Levels:           61  (CARRY4=60 IBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    T8                                                0.000     0.000 r  iHit (IN)
+                         net (fo=0)                   0.000     0.000    iHit
+    T8                   IBUF (Prop_ibuf_I_O)         0.881     0.881 r  iHit_IBUF_inst/O
+                         net (fo=18, routed)          1.431     2.313    u_FineDelay/iHit
+    SLICE_X160Y78        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     2.793 r  u_FineDelay/carry_40/CO[3]
+                         net (fo=2, routed)           0.000     2.793    u_FineDelay/outTaps[3]
+    SLICE_X160Y79        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.891 r  u_FineDelay/genblk1[1].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.891    u_FineDelay/outTaps[7]
+    SLICE_X160Y80        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.989 r  u_FineDelay/genblk1[2].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.989    u_FineDelay/outTaps[11]
+    SLICE_X160Y81        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.087 r  u_FineDelay/genblk1[3].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.087    u_FineDelay/outTaps[15]
+    SLICE_X160Y82        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.185 r  u_FineDelay/genblk1[4].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.185    u_FineDelay/outTaps[19]
+    SLICE_X160Y83        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.283 r  u_FineDelay/genblk1[5].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.283    u_FineDelay/outTaps[23]
+    SLICE_X160Y84        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.381 r  u_FineDelay/genblk1[6].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.381    u_FineDelay/outTaps[27]
+    SLICE_X160Y85        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.479 r  u_FineDelay/genblk1[7].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.479    u_FineDelay/outTaps[31]
+    SLICE_X160Y86        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.577 r  u_FineDelay/genblk1[8].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.577    u_FineDelay/outTaps[35]
+    SLICE_X160Y87        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.675 r  u_FineDelay/genblk1[9].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.675    u_FineDelay/outTaps[39]
+    SLICE_X160Y88        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.773 r  u_FineDelay/genblk1[10].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.773    u_FineDelay/outTaps[43]
+    SLICE_X160Y89        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.871 r  u_FineDelay/genblk1[11].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.871    u_FineDelay/outTaps[47]
+    SLICE_X160Y90        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.969 r  u_FineDelay/genblk1[12].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.969    u_FineDelay/outTaps[51]
+    SLICE_X160Y91        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.067 r  u_FineDelay/genblk1[13].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.067    u_FineDelay/outTaps[55]
+    SLICE_X160Y92        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.165 r  u_FineDelay/genblk1[14].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.165    u_FineDelay/outTaps[59]
+    SLICE_X160Y93        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.263 r  u_FineDelay/genblk1[15].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.263    u_FineDelay/outTaps[63]
+    SLICE_X160Y94        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.361 r  u_FineDelay/genblk1[16].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.361    u_FineDelay/outTaps[67]
+    SLICE_X160Y95        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.459 r  u_FineDelay/genblk1[17].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.459    u_FineDelay/outTaps[71]
+    SLICE_X160Y96        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.557 r  u_FineDelay/genblk1[18].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.557    u_FineDelay/outTaps[75]
+    SLICE_X160Y97        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.655 r  u_FineDelay/genblk1[19].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.655    u_FineDelay/outTaps[79]
+    SLICE_X160Y98        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.753 r  u_FineDelay/genblk1[20].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.753    u_FineDelay/outTaps[83]
+    SLICE_X160Y99        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.851 r  u_FineDelay/genblk1[21].carry_4/CO[3]
+                         net (fo=2, routed)           0.001     4.851    u_FineDelay/outTaps[87]
+    SLICE_X160Y100       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.949 r  u_FineDelay/genblk1[22].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.949    u_FineDelay/outTaps[91]
+    SLICE_X160Y101       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.047 r  u_FineDelay/genblk1[23].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.047    u_FineDelay/outTaps[95]
+    SLICE_X160Y102       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.145 r  u_FineDelay/genblk1[24].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.145    u_FineDelay/outTaps[99]
+    SLICE_X160Y103       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.243 r  u_FineDelay/genblk1[25].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.243    u_FineDelay/outTaps[103]
+    SLICE_X160Y104       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.341 r  u_FineDelay/genblk1[26].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.341    u_FineDelay/outTaps[107]
+    SLICE_X160Y105       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.439 r  u_FineDelay/genblk1[27].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.439    u_FineDelay/outTaps[111]
+    SLICE_X160Y106       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.537 r  u_FineDelay/genblk1[28].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.537    u_FineDelay/outTaps[115]
+    SLICE_X160Y107       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.635 r  u_FineDelay/genblk1[29].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.635    u_FineDelay/outTaps[119]
+    SLICE_X160Y108       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.733 r  u_FineDelay/genblk1[30].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.733    u_FineDelay/outTaps[123]
+    SLICE_X160Y109       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.831 r  u_FineDelay/genblk1[31].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.831    u_FineDelay/outTaps[127]
+    SLICE_X160Y110       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.929 r  u_FineDelay/genblk1[32].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.929    u_FineDelay/outTaps[131]
+    SLICE_X160Y111       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.027 r  u_FineDelay/genblk1[33].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.027    u_FineDelay/outTaps[135]
+    SLICE_X160Y112       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.125 r  u_FineDelay/genblk1[34].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.125    u_FineDelay/outTaps[139]
+    SLICE_X160Y113       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.223 r  u_FineDelay/genblk1[35].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.223    u_FineDelay/outTaps[143]
+    SLICE_X160Y114       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.321 r  u_FineDelay/genblk1[36].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.321    u_FineDelay/outTaps[147]
+    SLICE_X160Y115       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.419 r  u_FineDelay/genblk1[37].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.419    u_FineDelay/outTaps[151]
+    SLICE_X160Y116       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.517 r  u_FineDelay/genblk1[38].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.517    u_FineDelay/outTaps[155]
+    SLICE_X160Y117       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.615 r  u_FineDelay/genblk1[39].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.615    u_FineDelay/outTaps[159]
+    SLICE_X160Y118       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.713 r  u_FineDelay/genblk1[40].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.713    u_FineDelay/outTaps[163]
+    SLICE_X160Y119       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.811 r  u_FineDelay/genblk1[41].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.811    u_FineDelay/outTaps[167]
+    SLICE_X160Y120       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.909 r  u_FineDelay/genblk1[42].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.909    u_FineDelay/outTaps[171]
+    SLICE_X160Y121       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.007 r  u_FineDelay/genblk1[43].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.007    u_FineDelay/outTaps[175]
+    SLICE_X160Y122       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.105 r  u_FineDelay/genblk1[44].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.105    u_FineDelay/outTaps[179]
+    SLICE_X160Y123       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.203 r  u_FineDelay/genblk1[45].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.203    u_FineDelay/outTaps[183]
+    SLICE_X160Y124       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.301 r  u_FineDelay/genblk1[46].carry_4/CO[3]
+                         net (fo=2, routed)           0.008     7.309    u_FineDelay/outTaps[187]
+    SLICE_X160Y125       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.407 r  u_FineDelay/genblk1[47].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.407    u_FineDelay/outTaps[191]
+    SLICE_X160Y126       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.505 r  u_FineDelay/genblk1[48].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.505    u_FineDelay/outTaps[195]
+    SLICE_X160Y127       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.603 r  u_FineDelay/genblk1[49].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.603    u_FineDelay/outTaps[199]
+    SLICE_X160Y128       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.701 r  u_FineDelay/genblk1[50].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.701    u_FineDelay/outTaps[203]
+    SLICE_X160Y129       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.799 r  u_FineDelay/genblk1[51].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.799    u_FineDelay/outTaps[207]
+    SLICE_X160Y130       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.897 r  u_FineDelay/genblk1[52].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.897    u_FineDelay/outTaps[211]
+    SLICE_X160Y131       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.995 r  u_FineDelay/genblk1[53].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.995    u_FineDelay/outTaps[215]
+    SLICE_X160Y132       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.093 r  u_FineDelay/genblk1[54].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.093    u_FineDelay/outTaps[219]
+    SLICE_X160Y133       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.191 r  u_FineDelay/genblk1[55].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.191    u_FineDelay/outTaps[223]
+    SLICE_X160Y134       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.289 r  u_FineDelay/genblk1[56].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.289    u_FineDelay/outTaps[227]
+    SLICE_X160Y135       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.387 r  u_FineDelay/genblk1[57].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.387    u_FineDelay/outTaps[231]
+    SLICE_X160Y136       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.485 r  u_FineDelay/genblk1[58].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.485    u_FineDelay/outTaps[235]
+    SLICE_X160Y137       CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.190     8.675 r  u_FineDelay/genblk1[59].carry_4/CO[2]
+                         net (fo=1, routed)           0.000     8.675    u_FineDelay/outTaps[238]
+    SLICE_X160Y137       FDCE                                         r  u_FineDelay/genblk2[238].Firstff/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 iHit
+                            (input port)
+  Destination:            u_FineDelay/genblk2[237].Firstff/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.617ns  (logic 7.177ns (83.287%)  route 1.440ns (16.713%))
+  Logic Levels:           61  (CARRY4=60 IBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    T8                                                0.000     0.000 r  iHit (IN)
+                         net (fo=0)                   0.000     0.000    iHit
+    T8                   IBUF (Prop_ibuf_I_O)         0.881     0.881 r  iHit_IBUF_inst/O
+                         net (fo=18, routed)          1.431     2.313    u_FineDelay/iHit
+    SLICE_X160Y78        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     2.793 r  u_FineDelay/carry_40/CO[3]
+                         net (fo=2, routed)           0.000     2.793    u_FineDelay/outTaps[3]
+    SLICE_X160Y79        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.891 r  u_FineDelay/genblk1[1].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.891    u_FineDelay/outTaps[7]
+    SLICE_X160Y80        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.989 r  u_FineDelay/genblk1[2].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.989    u_FineDelay/outTaps[11]
+    SLICE_X160Y81        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.087 r  u_FineDelay/genblk1[3].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.087    u_FineDelay/outTaps[15]
+    SLICE_X160Y82        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.185 r  u_FineDelay/genblk1[4].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.185    u_FineDelay/outTaps[19]
+    SLICE_X160Y83        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.283 r  u_FineDelay/genblk1[5].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.283    u_FineDelay/outTaps[23]
+    SLICE_X160Y84        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.381 r  u_FineDelay/genblk1[6].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.381    u_FineDelay/outTaps[27]
+    SLICE_X160Y85        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.479 r  u_FineDelay/genblk1[7].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.479    u_FineDelay/outTaps[31]
+    SLICE_X160Y86        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.577 r  u_FineDelay/genblk1[8].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.577    u_FineDelay/outTaps[35]
+    SLICE_X160Y87        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.675 r  u_FineDelay/genblk1[9].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.675    u_FineDelay/outTaps[39]
+    SLICE_X160Y88        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.773 r  u_FineDelay/genblk1[10].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.773    u_FineDelay/outTaps[43]
+    SLICE_X160Y89        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.871 r  u_FineDelay/genblk1[11].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.871    u_FineDelay/outTaps[47]
+    SLICE_X160Y90        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.969 r  u_FineDelay/genblk1[12].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.969    u_FineDelay/outTaps[51]
+    SLICE_X160Y91        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.067 r  u_FineDelay/genblk1[13].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.067    u_FineDelay/outTaps[55]
+    SLICE_X160Y92        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.165 r  u_FineDelay/genblk1[14].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.165    u_FineDelay/outTaps[59]
+    SLICE_X160Y93        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.263 r  u_FineDelay/genblk1[15].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.263    u_FineDelay/outTaps[63]
+    SLICE_X160Y94        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.361 r  u_FineDelay/genblk1[16].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.361    u_FineDelay/outTaps[67]
+    SLICE_X160Y95        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.459 r  u_FineDelay/genblk1[17].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.459    u_FineDelay/outTaps[71]
+    SLICE_X160Y96        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.557 r  u_FineDelay/genblk1[18].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.557    u_FineDelay/outTaps[75]
+    SLICE_X160Y97        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.655 r  u_FineDelay/genblk1[19].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.655    u_FineDelay/outTaps[79]
+    SLICE_X160Y98        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.753 r  u_FineDelay/genblk1[20].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.753    u_FineDelay/outTaps[83]
+    SLICE_X160Y99        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.851 r  u_FineDelay/genblk1[21].carry_4/CO[3]
+                         net (fo=2, routed)           0.001     4.851    u_FineDelay/outTaps[87]
+    SLICE_X160Y100       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.949 r  u_FineDelay/genblk1[22].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.949    u_FineDelay/outTaps[91]
+    SLICE_X160Y101       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.047 r  u_FineDelay/genblk1[23].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.047    u_FineDelay/outTaps[95]
+    SLICE_X160Y102       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.145 r  u_FineDelay/genblk1[24].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.145    u_FineDelay/outTaps[99]
+    SLICE_X160Y103       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.243 r  u_FineDelay/genblk1[25].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.243    u_FineDelay/outTaps[103]
+    SLICE_X160Y104       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.341 r  u_FineDelay/genblk1[26].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.341    u_FineDelay/outTaps[107]
+    SLICE_X160Y105       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.439 r  u_FineDelay/genblk1[27].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.439    u_FineDelay/outTaps[111]
+    SLICE_X160Y106       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.537 r  u_FineDelay/genblk1[28].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.537    u_FineDelay/outTaps[115]
+    SLICE_X160Y107       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.635 r  u_FineDelay/genblk1[29].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.635    u_FineDelay/outTaps[119]
+    SLICE_X160Y108       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.733 r  u_FineDelay/genblk1[30].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.733    u_FineDelay/outTaps[123]
+    SLICE_X160Y109       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.831 r  u_FineDelay/genblk1[31].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.831    u_FineDelay/outTaps[127]
+    SLICE_X160Y110       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.929 r  u_FineDelay/genblk1[32].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.929    u_FineDelay/outTaps[131]
+    SLICE_X160Y111       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.027 r  u_FineDelay/genblk1[33].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.027    u_FineDelay/outTaps[135]
+    SLICE_X160Y112       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.125 r  u_FineDelay/genblk1[34].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.125    u_FineDelay/outTaps[139]
+    SLICE_X160Y113       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.223 r  u_FineDelay/genblk1[35].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.223    u_FineDelay/outTaps[143]
+    SLICE_X160Y114       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.321 r  u_FineDelay/genblk1[36].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.321    u_FineDelay/outTaps[147]
+    SLICE_X160Y115       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.419 r  u_FineDelay/genblk1[37].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.419    u_FineDelay/outTaps[151]
+    SLICE_X160Y116       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.517 r  u_FineDelay/genblk1[38].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.517    u_FineDelay/outTaps[155]
+    SLICE_X160Y117       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.615 r  u_FineDelay/genblk1[39].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.615    u_FineDelay/outTaps[159]
+    SLICE_X160Y118       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.713 r  u_FineDelay/genblk1[40].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.713    u_FineDelay/outTaps[163]
+    SLICE_X160Y119       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.811 r  u_FineDelay/genblk1[41].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.811    u_FineDelay/outTaps[167]
+    SLICE_X160Y120       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.909 r  u_FineDelay/genblk1[42].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.909    u_FineDelay/outTaps[171]
+    SLICE_X160Y121       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.007 r  u_FineDelay/genblk1[43].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.007    u_FineDelay/outTaps[175]
+    SLICE_X160Y122       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.105 r  u_FineDelay/genblk1[44].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.105    u_FineDelay/outTaps[179]
+    SLICE_X160Y123       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.203 r  u_FineDelay/genblk1[45].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.203    u_FineDelay/outTaps[183]
+    SLICE_X160Y124       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.301 r  u_FineDelay/genblk1[46].carry_4/CO[3]
+                         net (fo=2, routed)           0.008     7.309    u_FineDelay/outTaps[187]
+    SLICE_X160Y125       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.407 r  u_FineDelay/genblk1[47].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.407    u_FineDelay/outTaps[191]
+    SLICE_X160Y126       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.505 r  u_FineDelay/genblk1[48].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.505    u_FineDelay/outTaps[195]
+    SLICE_X160Y127       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.603 r  u_FineDelay/genblk1[49].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.603    u_FineDelay/outTaps[199]
+    SLICE_X160Y128       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.701 r  u_FineDelay/genblk1[50].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.701    u_FineDelay/outTaps[203]
+    SLICE_X160Y129       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.799 r  u_FineDelay/genblk1[51].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.799    u_FineDelay/outTaps[207]
+    SLICE_X160Y130       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.897 r  u_FineDelay/genblk1[52].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.897    u_FineDelay/outTaps[211]
+    SLICE_X160Y131       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.995 r  u_FineDelay/genblk1[53].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.995    u_FineDelay/outTaps[215]
+    SLICE_X160Y132       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.093 r  u_FineDelay/genblk1[54].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.093    u_FineDelay/outTaps[219]
+    SLICE_X160Y133       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.191 r  u_FineDelay/genblk1[55].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.191    u_FineDelay/outTaps[223]
+    SLICE_X160Y134       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.289 r  u_FineDelay/genblk1[56].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.289    u_FineDelay/outTaps[227]
+    SLICE_X160Y135       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.387 r  u_FineDelay/genblk1[57].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.387    u_FineDelay/outTaps[231]
+    SLICE_X160Y136       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.485 r  u_FineDelay/genblk1[58].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.485    u_FineDelay/outTaps[235]
+    SLICE_X160Y137       CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.132     8.617 r  u_FineDelay/genblk1[59].carry_4/CO[1]
+                         net (fo=1, routed)           0.000     8.617    u_FineDelay/outTaps[237]
+    SLICE_X160Y137       FDCE                                         r  u_FineDelay/genblk2[237].Firstff/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 iHit
+                            (input port)
+  Destination:            u_FineDelay/genblk2[232].Firstff/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.603ns  (logic 7.163ns (83.260%)  route 1.440ns (16.740%))
+  Logic Levels:           60  (CARRY4=59 IBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    T8                                                0.000     0.000 r  iHit (IN)
+                         net (fo=0)                   0.000     0.000    iHit
+    T8                   IBUF (Prop_ibuf_I_O)         0.881     0.881 r  iHit_IBUF_inst/O
+                         net (fo=18, routed)          1.431     2.313    u_FineDelay/iHit
+    SLICE_X160Y78        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     2.793 r  u_FineDelay/carry_40/CO[3]
+                         net (fo=2, routed)           0.000     2.793    u_FineDelay/outTaps[3]
+    SLICE_X160Y79        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.891 r  u_FineDelay/genblk1[1].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.891    u_FineDelay/outTaps[7]
+    SLICE_X160Y80        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.989 r  u_FineDelay/genblk1[2].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.989    u_FineDelay/outTaps[11]
+    SLICE_X160Y81        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.087 r  u_FineDelay/genblk1[3].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.087    u_FineDelay/outTaps[15]
+    SLICE_X160Y82        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.185 r  u_FineDelay/genblk1[4].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.185    u_FineDelay/outTaps[19]
+    SLICE_X160Y83        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.283 r  u_FineDelay/genblk1[5].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.283    u_FineDelay/outTaps[23]
+    SLICE_X160Y84        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.381 r  u_FineDelay/genblk1[6].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.381    u_FineDelay/outTaps[27]
+    SLICE_X160Y85        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.479 r  u_FineDelay/genblk1[7].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.479    u_FineDelay/outTaps[31]
+    SLICE_X160Y86        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.577 r  u_FineDelay/genblk1[8].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.577    u_FineDelay/outTaps[35]
+    SLICE_X160Y87        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.675 r  u_FineDelay/genblk1[9].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.675    u_FineDelay/outTaps[39]
+    SLICE_X160Y88        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.773 r  u_FineDelay/genblk1[10].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.773    u_FineDelay/outTaps[43]
+    SLICE_X160Y89        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.871 r  u_FineDelay/genblk1[11].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.871    u_FineDelay/outTaps[47]
+    SLICE_X160Y90        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.969 r  u_FineDelay/genblk1[12].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.969    u_FineDelay/outTaps[51]
+    SLICE_X160Y91        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.067 r  u_FineDelay/genblk1[13].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.067    u_FineDelay/outTaps[55]
+    SLICE_X160Y92        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.165 r  u_FineDelay/genblk1[14].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.165    u_FineDelay/outTaps[59]
+    SLICE_X160Y93        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.263 r  u_FineDelay/genblk1[15].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.263    u_FineDelay/outTaps[63]
+    SLICE_X160Y94        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.361 r  u_FineDelay/genblk1[16].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.361    u_FineDelay/outTaps[67]
+    SLICE_X160Y95        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.459 r  u_FineDelay/genblk1[17].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.459    u_FineDelay/outTaps[71]
+    SLICE_X160Y96        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.557 r  u_FineDelay/genblk1[18].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.557    u_FineDelay/outTaps[75]
+    SLICE_X160Y97        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.655 r  u_FineDelay/genblk1[19].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.655    u_FineDelay/outTaps[79]
+    SLICE_X160Y98        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.753 r  u_FineDelay/genblk1[20].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.753    u_FineDelay/outTaps[83]
+    SLICE_X160Y99        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.851 r  u_FineDelay/genblk1[21].carry_4/CO[3]
+                         net (fo=2, routed)           0.001     4.851    u_FineDelay/outTaps[87]
+    SLICE_X160Y100       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.949 r  u_FineDelay/genblk1[22].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.949    u_FineDelay/outTaps[91]
+    SLICE_X160Y101       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.047 r  u_FineDelay/genblk1[23].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.047    u_FineDelay/outTaps[95]
+    SLICE_X160Y102       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.145 r  u_FineDelay/genblk1[24].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.145    u_FineDelay/outTaps[99]
+    SLICE_X160Y103       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.243 r  u_FineDelay/genblk1[25].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.243    u_FineDelay/outTaps[103]
+    SLICE_X160Y104       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.341 r  u_FineDelay/genblk1[26].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.341    u_FineDelay/outTaps[107]
+    SLICE_X160Y105       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.439 r  u_FineDelay/genblk1[27].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.439    u_FineDelay/outTaps[111]
+    SLICE_X160Y106       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.537 r  u_FineDelay/genblk1[28].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.537    u_FineDelay/outTaps[115]
+    SLICE_X160Y107       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.635 r  u_FineDelay/genblk1[29].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.635    u_FineDelay/outTaps[119]
+    SLICE_X160Y108       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.733 r  u_FineDelay/genblk1[30].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.733    u_FineDelay/outTaps[123]
+    SLICE_X160Y109       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.831 r  u_FineDelay/genblk1[31].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.831    u_FineDelay/outTaps[127]
+    SLICE_X160Y110       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.929 r  u_FineDelay/genblk1[32].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.929    u_FineDelay/outTaps[131]
+    SLICE_X160Y111       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.027 r  u_FineDelay/genblk1[33].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.027    u_FineDelay/outTaps[135]
+    SLICE_X160Y112       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.125 r  u_FineDelay/genblk1[34].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.125    u_FineDelay/outTaps[139]
+    SLICE_X160Y113       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.223 r  u_FineDelay/genblk1[35].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.223    u_FineDelay/outTaps[143]
+    SLICE_X160Y114       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.321 r  u_FineDelay/genblk1[36].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.321    u_FineDelay/outTaps[147]
+    SLICE_X160Y115       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.419 r  u_FineDelay/genblk1[37].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.419    u_FineDelay/outTaps[151]
+    SLICE_X160Y116       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.517 r  u_FineDelay/genblk1[38].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.517    u_FineDelay/outTaps[155]
+    SLICE_X160Y117       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.615 r  u_FineDelay/genblk1[39].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.615    u_FineDelay/outTaps[159]
+    SLICE_X160Y118       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.713 r  u_FineDelay/genblk1[40].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.713    u_FineDelay/outTaps[163]
+    SLICE_X160Y119       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.811 r  u_FineDelay/genblk1[41].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.811    u_FineDelay/outTaps[167]
+    SLICE_X160Y120       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.909 r  u_FineDelay/genblk1[42].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.909    u_FineDelay/outTaps[171]
+    SLICE_X160Y121       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.007 r  u_FineDelay/genblk1[43].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.007    u_FineDelay/outTaps[175]
+    SLICE_X160Y122       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.105 r  u_FineDelay/genblk1[44].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.105    u_FineDelay/outTaps[179]
+    SLICE_X160Y123       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.203 r  u_FineDelay/genblk1[45].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.203    u_FineDelay/outTaps[183]
+    SLICE_X160Y124       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.301 r  u_FineDelay/genblk1[46].carry_4/CO[3]
+                         net (fo=2, routed)           0.008     7.309    u_FineDelay/outTaps[187]
+    SLICE_X160Y125       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.407 r  u_FineDelay/genblk1[47].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.407    u_FineDelay/outTaps[191]
+    SLICE_X160Y126       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.505 r  u_FineDelay/genblk1[48].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.505    u_FineDelay/outTaps[195]
+    SLICE_X160Y127       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.603 r  u_FineDelay/genblk1[49].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.603    u_FineDelay/outTaps[199]
+    SLICE_X160Y128       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.701 r  u_FineDelay/genblk1[50].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.701    u_FineDelay/outTaps[203]
+    SLICE_X160Y129       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.799 r  u_FineDelay/genblk1[51].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.799    u_FineDelay/outTaps[207]
+    SLICE_X160Y130       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.897 r  u_FineDelay/genblk1[52].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.897    u_FineDelay/outTaps[211]
+    SLICE_X160Y131       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.995 r  u_FineDelay/genblk1[53].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.995    u_FineDelay/outTaps[215]
+    SLICE_X160Y132       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.093 r  u_FineDelay/genblk1[54].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.093    u_FineDelay/outTaps[219]
+    SLICE_X160Y133       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.191 r  u_FineDelay/genblk1[55].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.191    u_FineDelay/outTaps[223]
+    SLICE_X160Y134       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.289 r  u_FineDelay/genblk1[56].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.289    u_FineDelay/outTaps[227]
+    SLICE_X160Y135       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.387 r  u_FineDelay/genblk1[57].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.387    u_FineDelay/outTaps[231]
+    SLICE_X160Y136       CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.216     8.603 r  u_FineDelay/genblk1[58].carry_4/CO[0]
+                         net (fo=1, routed)           0.000     8.603    u_FineDelay/outTaps[232]
+    SLICE_X160Y136       FDCE                                         r  u_FineDelay/genblk2[232].Firstff/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 iHit
+                            (input port)
+  Destination:            u_FineDelay/genblk2[239].Firstff/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.583ns  (logic 7.143ns (83.221%)  route 1.440ns (16.779%))
+  Logic Levels:           61  (CARRY4=60 IBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    T8                                                0.000     0.000 r  iHit (IN)
+                         net (fo=0)                   0.000     0.000    iHit
+    T8                   IBUF (Prop_ibuf_I_O)         0.881     0.881 r  iHit_IBUF_inst/O
+                         net (fo=18, routed)          1.431     2.313    u_FineDelay/iHit
+    SLICE_X160Y78        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     2.793 r  u_FineDelay/carry_40/CO[3]
+                         net (fo=2, routed)           0.000     2.793    u_FineDelay/outTaps[3]
+    SLICE_X160Y79        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.891 r  u_FineDelay/genblk1[1].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.891    u_FineDelay/outTaps[7]
+    SLICE_X160Y80        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.989 r  u_FineDelay/genblk1[2].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.989    u_FineDelay/outTaps[11]
+    SLICE_X160Y81        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.087 r  u_FineDelay/genblk1[3].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.087    u_FineDelay/outTaps[15]
+    SLICE_X160Y82        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.185 r  u_FineDelay/genblk1[4].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.185    u_FineDelay/outTaps[19]
+    SLICE_X160Y83        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.283 r  u_FineDelay/genblk1[5].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.283    u_FineDelay/outTaps[23]
+    SLICE_X160Y84        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.381 r  u_FineDelay/genblk1[6].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.381    u_FineDelay/outTaps[27]
+    SLICE_X160Y85        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.479 r  u_FineDelay/genblk1[7].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.479    u_FineDelay/outTaps[31]
+    SLICE_X160Y86        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.577 r  u_FineDelay/genblk1[8].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.577    u_FineDelay/outTaps[35]
+    SLICE_X160Y87        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.675 r  u_FineDelay/genblk1[9].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.675    u_FineDelay/outTaps[39]
+    SLICE_X160Y88        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.773 r  u_FineDelay/genblk1[10].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.773    u_FineDelay/outTaps[43]
+    SLICE_X160Y89        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.871 r  u_FineDelay/genblk1[11].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.871    u_FineDelay/outTaps[47]
+    SLICE_X160Y90        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.969 r  u_FineDelay/genblk1[12].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.969    u_FineDelay/outTaps[51]
+    SLICE_X160Y91        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.067 r  u_FineDelay/genblk1[13].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.067    u_FineDelay/outTaps[55]
+    SLICE_X160Y92        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.165 r  u_FineDelay/genblk1[14].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.165    u_FineDelay/outTaps[59]
+    SLICE_X160Y93        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.263 r  u_FineDelay/genblk1[15].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.263    u_FineDelay/outTaps[63]
+    SLICE_X160Y94        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.361 r  u_FineDelay/genblk1[16].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.361    u_FineDelay/outTaps[67]
+    SLICE_X160Y95        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.459 r  u_FineDelay/genblk1[17].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.459    u_FineDelay/outTaps[71]
+    SLICE_X160Y96        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.557 r  u_FineDelay/genblk1[18].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.557    u_FineDelay/outTaps[75]
+    SLICE_X160Y97        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.655 r  u_FineDelay/genblk1[19].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.655    u_FineDelay/outTaps[79]
+    SLICE_X160Y98        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.753 r  u_FineDelay/genblk1[20].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.753    u_FineDelay/outTaps[83]
+    SLICE_X160Y99        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.851 r  u_FineDelay/genblk1[21].carry_4/CO[3]
+                         net (fo=2, routed)           0.001     4.851    u_FineDelay/outTaps[87]
+    SLICE_X160Y100       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.949 r  u_FineDelay/genblk1[22].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.949    u_FineDelay/outTaps[91]
+    SLICE_X160Y101       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.047 r  u_FineDelay/genblk1[23].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.047    u_FineDelay/outTaps[95]
+    SLICE_X160Y102       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.145 r  u_FineDelay/genblk1[24].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.145    u_FineDelay/outTaps[99]
+    SLICE_X160Y103       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.243 r  u_FineDelay/genblk1[25].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.243    u_FineDelay/outTaps[103]
+    SLICE_X160Y104       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.341 r  u_FineDelay/genblk1[26].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.341    u_FineDelay/outTaps[107]
+    SLICE_X160Y105       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.439 r  u_FineDelay/genblk1[27].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.439    u_FineDelay/outTaps[111]
+    SLICE_X160Y106       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.537 r  u_FineDelay/genblk1[28].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.537    u_FineDelay/outTaps[115]
+    SLICE_X160Y107       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.635 r  u_FineDelay/genblk1[29].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.635    u_FineDelay/outTaps[119]
+    SLICE_X160Y108       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.733 r  u_FineDelay/genblk1[30].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.733    u_FineDelay/outTaps[123]
+    SLICE_X160Y109       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.831 r  u_FineDelay/genblk1[31].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.831    u_FineDelay/outTaps[127]
+    SLICE_X160Y110       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.929 r  u_FineDelay/genblk1[32].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.929    u_FineDelay/outTaps[131]
+    SLICE_X160Y111       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.027 r  u_FineDelay/genblk1[33].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.027    u_FineDelay/outTaps[135]
+    SLICE_X160Y112       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.125 r  u_FineDelay/genblk1[34].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.125    u_FineDelay/outTaps[139]
+    SLICE_X160Y113       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.223 r  u_FineDelay/genblk1[35].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.223    u_FineDelay/outTaps[143]
+    SLICE_X160Y114       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.321 r  u_FineDelay/genblk1[36].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.321    u_FineDelay/outTaps[147]
+    SLICE_X160Y115       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.419 r  u_FineDelay/genblk1[37].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.419    u_FineDelay/outTaps[151]
+    SLICE_X160Y116       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.517 r  u_FineDelay/genblk1[38].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.517    u_FineDelay/outTaps[155]
+    SLICE_X160Y117       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.615 r  u_FineDelay/genblk1[39].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.615    u_FineDelay/outTaps[159]
+    SLICE_X160Y118       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.713 r  u_FineDelay/genblk1[40].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.713    u_FineDelay/outTaps[163]
+    SLICE_X160Y119       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.811 r  u_FineDelay/genblk1[41].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.811    u_FineDelay/outTaps[167]
+    SLICE_X160Y120       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.909 r  u_FineDelay/genblk1[42].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.909    u_FineDelay/outTaps[171]
+    SLICE_X160Y121       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.007 r  u_FineDelay/genblk1[43].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.007    u_FineDelay/outTaps[175]
+    SLICE_X160Y122       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.105 r  u_FineDelay/genblk1[44].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.105    u_FineDelay/outTaps[179]
+    SLICE_X160Y123       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.203 r  u_FineDelay/genblk1[45].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.203    u_FineDelay/outTaps[183]
+    SLICE_X160Y124       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.301 r  u_FineDelay/genblk1[46].carry_4/CO[3]
+                         net (fo=2, routed)           0.008     7.309    u_FineDelay/outTaps[187]
+    SLICE_X160Y125       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.407 r  u_FineDelay/genblk1[47].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.407    u_FineDelay/outTaps[191]
+    SLICE_X160Y126       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.505 r  u_FineDelay/genblk1[48].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.505    u_FineDelay/outTaps[195]
+    SLICE_X160Y127       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.603 r  u_FineDelay/genblk1[49].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.603    u_FineDelay/outTaps[199]
+    SLICE_X160Y128       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.701 r  u_FineDelay/genblk1[50].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.701    u_FineDelay/outTaps[203]
+    SLICE_X160Y129       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.799 r  u_FineDelay/genblk1[51].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.799    u_FineDelay/outTaps[207]
+    SLICE_X160Y130       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.897 r  u_FineDelay/genblk1[52].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.897    u_FineDelay/outTaps[211]
+    SLICE_X160Y131       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.995 r  u_FineDelay/genblk1[53].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.995    u_FineDelay/outTaps[215]
+    SLICE_X160Y132       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.093 r  u_FineDelay/genblk1[54].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.093    u_FineDelay/outTaps[219]
+    SLICE_X160Y133       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.191 r  u_FineDelay/genblk1[55].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.191    u_FineDelay/outTaps[223]
+    SLICE_X160Y134       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.289 r  u_FineDelay/genblk1[56].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.289    u_FineDelay/outTaps[227]
+    SLICE_X160Y135       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.387 r  u_FineDelay/genblk1[57].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.387    u_FineDelay/outTaps[231]
+    SLICE_X160Y136       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.485 r  u_FineDelay/genblk1[58].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.485    u_FineDelay/outTaps[235]
+    SLICE_X160Y137       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.583 r  u_FineDelay/genblk1[59].carry_4/CO[3]
+                         net (fo=1, routed)           0.000     8.583    u_FineDelay/outTaps[239]
+    SLICE_X160Y137       FDCE                                         r  u_FineDelay/genblk2[239].Firstff/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 iHit
+                            (input port)
+  Destination:            u_FineDelay/genblk2[234].Firstff/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.577ns  (logic 7.137ns (83.209%)  route 1.440ns (16.791%))
+  Logic Levels:           60  (CARRY4=59 IBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    T8                                                0.000     0.000 r  iHit (IN)
+                         net (fo=0)                   0.000     0.000    iHit
+    T8                   IBUF (Prop_ibuf_I_O)         0.881     0.881 r  iHit_IBUF_inst/O
+                         net (fo=18, routed)          1.431     2.313    u_FineDelay/iHit
+    SLICE_X160Y78        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     2.793 r  u_FineDelay/carry_40/CO[3]
+                         net (fo=2, routed)           0.000     2.793    u_FineDelay/outTaps[3]
+    SLICE_X160Y79        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.891 r  u_FineDelay/genblk1[1].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.891    u_FineDelay/outTaps[7]
+    SLICE_X160Y80        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.989 r  u_FineDelay/genblk1[2].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.989    u_FineDelay/outTaps[11]
+    SLICE_X160Y81        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.087 r  u_FineDelay/genblk1[3].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.087    u_FineDelay/outTaps[15]
+    SLICE_X160Y82        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.185 r  u_FineDelay/genblk1[4].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.185    u_FineDelay/outTaps[19]
+    SLICE_X160Y83        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.283 r  u_FineDelay/genblk1[5].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.283    u_FineDelay/outTaps[23]
+    SLICE_X160Y84        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.381 r  u_FineDelay/genblk1[6].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.381    u_FineDelay/outTaps[27]
+    SLICE_X160Y85        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.479 r  u_FineDelay/genblk1[7].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.479    u_FineDelay/outTaps[31]
+    SLICE_X160Y86        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.577 r  u_FineDelay/genblk1[8].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.577    u_FineDelay/outTaps[35]
+    SLICE_X160Y87        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.675 r  u_FineDelay/genblk1[9].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.675    u_FineDelay/outTaps[39]
+    SLICE_X160Y88        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.773 r  u_FineDelay/genblk1[10].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.773    u_FineDelay/outTaps[43]
+    SLICE_X160Y89        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.871 r  u_FineDelay/genblk1[11].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.871    u_FineDelay/outTaps[47]
+    SLICE_X160Y90        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.969 r  u_FineDelay/genblk1[12].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.969    u_FineDelay/outTaps[51]
+    SLICE_X160Y91        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.067 r  u_FineDelay/genblk1[13].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.067    u_FineDelay/outTaps[55]
+    SLICE_X160Y92        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.165 r  u_FineDelay/genblk1[14].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.165    u_FineDelay/outTaps[59]
+    SLICE_X160Y93        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.263 r  u_FineDelay/genblk1[15].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.263    u_FineDelay/outTaps[63]
+    SLICE_X160Y94        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.361 r  u_FineDelay/genblk1[16].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.361    u_FineDelay/outTaps[67]
+    SLICE_X160Y95        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.459 r  u_FineDelay/genblk1[17].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.459    u_FineDelay/outTaps[71]
+    SLICE_X160Y96        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.557 r  u_FineDelay/genblk1[18].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.557    u_FineDelay/outTaps[75]
+    SLICE_X160Y97        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.655 r  u_FineDelay/genblk1[19].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.655    u_FineDelay/outTaps[79]
+    SLICE_X160Y98        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.753 r  u_FineDelay/genblk1[20].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.753    u_FineDelay/outTaps[83]
+    SLICE_X160Y99        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.851 r  u_FineDelay/genblk1[21].carry_4/CO[3]
+                         net (fo=2, routed)           0.001     4.851    u_FineDelay/outTaps[87]
+    SLICE_X160Y100       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.949 r  u_FineDelay/genblk1[22].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.949    u_FineDelay/outTaps[91]
+    SLICE_X160Y101       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.047 r  u_FineDelay/genblk1[23].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.047    u_FineDelay/outTaps[95]
+    SLICE_X160Y102       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.145 r  u_FineDelay/genblk1[24].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.145    u_FineDelay/outTaps[99]
+    SLICE_X160Y103       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.243 r  u_FineDelay/genblk1[25].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.243    u_FineDelay/outTaps[103]
+    SLICE_X160Y104       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.341 r  u_FineDelay/genblk1[26].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.341    u_FineDelay/outTaps[107]
+    SLICE_X160Y105       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.439 r  u_FineDelay/genblk1[27].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.439    u_FineDelay/outTaps[111]
+    SLICE_X160Y106       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.537 r  u_FineDelay/genblk1[28].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.537    u_FineDelay/outTaps[115]
+    SLICE_X160Y107       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.635 r  u_FineDelay/genblk1[29].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.635    u_FineDelay/outTaps[119]
+    SLICE_X160Y108       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.733 r  u_FineDelay/genblk1[30].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.733    u_FineDelay/outTaps[123]
+    SLICE_X160Y109       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.831 r  u_FineDelay/genblk1[31].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.831    u_FineDelay/outTaps[127]
+    SLICE_X160Y110       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.929 r  u_FineDelay/genblk1[32].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.929    u_FineDelay/outTaps[131]
+    SLICE_X160Y111       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.027 r  u_FineDelay/genblk1[33].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.027    u_FineDelay/outTaps[135]
+    SLICE_X160Y112       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.125 r  u_FineDelay/genblk1[34].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.125    u_FineDelay/outTaps[139]
+    SLICE_X160Y113       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.223 r  u_FineDelay/genblk1[35].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.223    u_FineDelay/outTaps[143]
+    SLICE_X160Y114       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.321 r  u_FineDelay/genblk1[36].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.321    u_FineDelay/outTaps[147]
+    SLICE_X160Y115       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.419 r  u_FineDelay/genblk1[37].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.419    u_FineDelay/outTaps[151]
+    SLICE_X160Y116       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.517 r  u_FineDelay/genblk1[38].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.517    u_FineDelay/outTaps[155]
+    SLICE_X160Y117       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.615 r  u_FineDelay/genblk1[39].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.615    u_FineDelay/outTaps[159]
+    SLICE_X160Y118       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.713 r  u_FineDelay/genblk1[40].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.713    u_FineDelay/outTaps[163]
+    SLICE_X160Y119       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.811 r  u_FineDelay/genblk1[41].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.811    u_FineDelay/outTaps[167]
+    SLICE_X160Y120       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.909 r  u_FineDelay/genblk1[42].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.909    u_FineDelay/outTaps[171]
+    SLICE_X160Y121       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.007 r  u_FineDelay/genblk1[43].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.007    u_FineDelay/outTaps[175]
+    SLICE_X160Y122       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.105 r  u_FineDelay/genblk1[44].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.105    u_FineDelay/outTaps[179]
+    SLICE_X160Y123       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.203 r  u_FineDelay/genblk1[45].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.203    u_FineDelay/outTaps[183]
+    SLICE_X160Y124       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.301 r  u_FineDelay/genblk1[46].carry_4/CO[3]
+                         net (fo=2, routed)           0.008     7.309    u_FineDelay/outTaps[187]
+    SLICE_X160Y125       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.407 r  u_FineDelay/genblk1[47].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.407    u_FineDelay/outTaps[191]
+    SLICE_X160Y126       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.505 r  u_FineDelay/genblk1[48].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.505    u_FineDelay/outTaps[195]
+    SLICE_X160Y127       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.603 r  u_FineDelay/genblk1[49].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.603    u_FineDelay/outTaps[199]
+    SLICE_X160Y128       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.701 r  u_FineDelay/genblk1[50].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.701    u_FineDelay/outTaps[203]
+    SLICE_X160Y129       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.799 r  u_FineDelay/genblk1[51].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.799    u_FineDelay/outTaps[207]
+    SLICE_X160Y130       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.897 r  u_FineDelay/genblk1[52].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.897    u_FineDelay/outTaps[211]
+    SLICE_X160Y131       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.995 r  u_FineDelay/genblk1[53].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.995    u_FineDelay/outTaps[215]
+    SLICE_X160Y132       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.093 r  u_FineDelay/genblk1[54].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.093    u_FineDelay/outTaps[219]
+    SLICE_X160Y133       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.191 r  u_FineDelay/genblk1[55].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.191    u_FineDelay/outTaps[223]
+    SLICE_X160Y134       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.289 r  u_FineDelay/genblk1[56].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.289    u_FineDelay/outTaps[227]
+    SLICE_X160Y135       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.387 r  u_FineDelay/genblk1[57].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.387    u_FineDelay/outTaps[231]
+    SLICE_X160Y136       CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.190     8.577 r  u_FineDelay/genblk1[58].carry_4/CO[2]
+                         net (fo=1, routed)           0.000     8.577    u_FineDelay/outTaps[234]
+    SLICE_X160Y136       FDCE                                         r  u_FineDelay/genblk2[234].Firstff/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 iHit
+                            (input port)
+  Destination:            u_FineDelay/genblk2[233].Firstff/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.519ns  (logic 7.079ns (83.095%)  route 1.440ns (16.905%))
+  Logic Levels:           60  (CARRY4=59 IBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    T8                                                0.000     0.000 r  iHit (IN)
+                         net (fo=0)                   0.000     0.000    iHit
+    T8                   IBUF (Prop_ibuf_I_O)         0.881     0.881 r  iHit_IBUF_inst/O
+                         net (fo=18, routed)          1.431     2.313    u_FineDelay/iHit
+    SLICE_X160Y78        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     2.793 r  u_FineDelay/carry_40/CO[3]
+                         net (fo=2, routed)           0.000     2.793    u_FineDelay/outTaps[3]
+    SLICE_X160Y79        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.891 r  u_FineDelay/genblk1[1].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.891    u_FineDelay/outTaps[7]
+    SLICE_X160Y80        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.989 r  u_FineDelay/genblk1[2].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.989    u_FineDelay/outTaps[11]
+    SLICE_X160Y81        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.087 r  u_FineDelay/genblk1[3].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.087    u_FineDelay/outTaps[15]
+    SLICE_X160Y82        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.185 r  u_FineDelay/genblk1[4].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.185    u_FineDelay/outTaps[19]
+    SLICE_X160Y83        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.283 r  u_FineDelay/genblk1[5].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.283    u_FineDelay/outTaps[23]
+    SLICE_X160Y84        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.381 r  u_FineDelay/genblk1[6].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.381    u_FineDelay/outTaps[27]
+    SLICE_X160Y85        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.479 r  u_FineDelay/genblk1[7].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.479    u_FineDelay/outTaps[31]
+    SLICE_X160Y86        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.577 r  u_FineDelay/genblk1[8].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.577    u_FineDelay/outTaps[35]
+    SLICE_X160Y87        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.675 r  u_FineDelay/genblk1[9].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.675    u_FineDelay/outTaps[39]
+    SLICE_X160Y88        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.773 r  u_FineDelay/genblk1[10].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.773    u_FineDelay/outTaps[43]
+    SLICE_X160Y89        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.871 r  u_FineDelay/genblk1[11].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.871    u_FineDelay/outTaps[47]
+    SLICE_X160Y90        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.969 r  u_FineDelay/genblk1[12].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.969    u_FineDelay/outTaps[51]
+    SLICE_X160Y91        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.067 r  u_FineDelay/genblk1[13].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.067    u_FineDelay/outTaps[55]
+    SLICE_X160Y92        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.165 r  u_FineDelay/genblk1[14].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.165    u_FineDelay/outTaps[59]
+    SLICE_X160Y93        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.263 r  u_FineDelay/genblk1[15].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.263    u_FineDelay/outTaps[63]
+    SLICE_X160Y94        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.361 r  u_FineDelay/genblk1[16].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.361    u_FineDelay/outTaps[67]
+    SLICE_X160Y95        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.459 r  u_FineDelay/genblk1[17].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.459    u_FineDelay/outTaps[71]
+    SLICE_X160Y96        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.557 r  u_FineDelay/genblk1[18].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.557    u_FineDelay/outTaps[75]
+    SLICE_X160Y97        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.655 r  u_FineDelay/genblk1[19].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.655    u_FineDelay/outTaps[79]
+    SLICE_X160Y98        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.753 r  u_FineDelay/genblk1[20].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.753    u_FineDelay/outTaps[83]
+    SLICE_X160Y99        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.851 r  u_FineDelay/genblk1[21].carry_4/CO[3]
+                         net (fo=2, routed)           0.001     4.851    u_FineDelay/outTaps[87]
+    SLICE_X160Y100       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.949 r  u_FineDelay/genblk1[22].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.949    u_FineDelay/outTaps[91]
+    SLICE_X160Y101       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.047 r  u_FineDelay/genblk1[23].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.047    u_FineDelay/outTaps[95]
+    SLICE_X160Y102       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.145 r  u_FineDelay/genblk1[24].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.145    u_FineDelay/outTaps[99]
+    SLICE_X160Y103       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.243 r  u_FineDelay/genblk1[25].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.243    u_FineDelay/outTaps[103]
+    SLICE_X160Y104       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.341 r  u_FineDelay/genblk1[26].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.341    u_FineDelay/outTaps[107]
+    SLICE_X160Y105       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.439 r  u_FineDelay/genblk1[27].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.439    u_FineDelay/outTaps[111]
+    SLICE_X160Y106       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.537 r  u_FineDelay/genblk1[28].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.537    u_FineDelay/outTaps[115]
+    SLICE_X160Y107       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.635 r  u_FineDelay/genblk1[29].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.635    u_FineDelay/outTaps[119]
+    SLICE_X160Y108       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.733 r  u_FineDelay/genblk1[30].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.733    u_FineDelay/outTaps[123]
+    SLICE_X160Y109       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.831 r  u_FineDelay/genblk1[31].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.831    u_FineDelay/outTaps[127]
+    SLICE_X160Y110       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.929 r  u_FineDelay/genblk1[32].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.929    u_FineDelay/outTaps[131]
+    SLICE_X160Y111       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.027 r  u_FineDelay/genblk1[33].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.027    u_FineDelay/outTaps[135]
+    SLICE_X160Y112       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.125 r  u_FineDelay/genblk1[34].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.125    u_FineDelay/outTaps[139]
+    SLICE_X160Y113       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.223 r  u_FineDelay/genblk1[35].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.223    u_FineDelay/outTaps[143]
+    SLICE_X160Y114       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.321 r  u_FineDelay/genblk1[36].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.321    u_FineDelay/outTaps[147]
+    SLICE_X160Y115       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.419 r  u_FineDelay/genblk1[37].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.419    u_FineDelay/outTaps[151]
+    SLICE_X160Y116       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.517 r  u_FineDelay/genblk1[38].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.517    u_FineDelay/outTaps[155]
+    SLICE_X160Y117       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.615 r  u_FineDelay/genblk1[39].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.615    u_FineDelay/outTaps[159]
+    SLICE_X160Y118       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.713 r  u_FineDelay/genblk1[40].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.713    u_FineDelay/outTaps[163]
+    SLICE_X160Y119       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.811 r  u_FineDelay/genblk1[41].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.811    u_FineDelay/outTaps[167]
+    SLICE_X160Y120       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.909 r  u_FineDelay/genblk1[42].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.909    u_FineDelay/outTaps[171]
+    SLICE_X160Y121       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.007 r  u_FineDelay/genblk1[43].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.007    u_FineDelay/outTaps[175]
+    SLICE_X160Y122       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.105 r  u_FineDelay/genblk1[44].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.105    u_FineDelay/outTaps[179]
+    SLICE_X160Y123       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.203 r  u_FineDelay/genblk1[45].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.203    u_FineDelay/outTaps[183]
+    SLICE_X160Y124       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.301 r  u_FineDelay/genblk1[46].carry_4/CO[3]
+                         net (fo=2, routed)           0.008     7.309    u_FineDelay/outTaps[187]
+    SLICE_X160Y125       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.407 r  u_FineDelay/genblk1[47].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.407    u_FineDelay/outTaps[191]
+    SLICE_X160Y126       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.505 r  u_FineDelay/genblk1[48].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.505    u_FineDelay/outTaps[195]
+    SLICE_X160Y127       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.603 r  u_FineDelay/genblk1[49].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.603    u_FineDelay/outTaps[199]
+    SLICE_X160Y128       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.701 r  u_FineDelay/genblk1[50].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.701    u_FineDelay/outTaps[203]
+    SLICE_X160Y129       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.799 r  u_FineDelay/genblk1[51].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.799    u_FineDelay/outTaps[207]
+    SLICE_X160Y130       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.897 r  u_FineDelay/genblk1[52].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.897    u_FineDelay/outTaps[211]
+    SLICE_X160Y131       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.995 r  u_FineDelay/genblk1[53].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.995    u_FineDelay/outTaps[215]
+    SLICE_X160Y132       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.093 r  u_FineDelay/genblk1[54].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.093    u_FineDelay/outTaps[219]
+    SLICE_X160Y133       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.191 r  u_FineDelay/genblk1[55].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.191    u_FineDelay/outTaps[223]
+    SLICE_X160Y134       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.289 r  u_FineDelay/genblk1[56].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.289    u_FineDelay/outTaps[227]
+    SLICE_X160Y135       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.387 r  u_FineDelay/genblk1[57].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.387    u_FineDelay/outTaps[231]
+    SLICE_X160Y136       CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.132     8.519 r  u_FineDelay/genblk1[58].carry_4/CO[1]
+                         net (fo=1, routed)           0.000     8.519    u_FineDelay/outTaps[233]
+    SLICE_X160Y136       FDCE                                         r  u_FineDelay/genblk2[233].Firstff/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 iHit
+                            (input port)
+  Destination:            u_FineDelay/genblk2[228].Firstff/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.505ns  (logic 7.065ns (83.067%)  route 1.440ns (16.933%))
+  Logic Levels:           59  (CARRY4=58 IBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    T8                                                0.000     0.000 r  iHit (IN)
+                         net (fo=0)                   0.000     0.000    iHit
+    T8                   IBUF (Prop_ibuf_I_O)         0.881     0.881 r  iHit_IBUF_inst/O
+                         net (fo=18, routed)          1.431     2.313    u_FineDelay/iHit
+    SLICE_X160Y78        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     2.793 r  u_FineDelay/carry_40/CO[3]
+                         net (fo=2, routed)           0.000     2.793    u_FineDelay/outTaps[3]
+    SLICE_X160Y79        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.891 r  u_FineDelay/genblk1[1].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.891    u_FineDelay/outTaps[7]
+    SLICE_X160Y80        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.989 r  u_FineDelay/genblk1[2].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.989    u_FineDelay/outTaps[11]
+    SLICE_X160Y81        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.087 r  u_FineDelay/genblk1[3].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.087    u_FineDelay/outTaps[15]
+    SLICE_X160Y82        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.185 r  u_FineDelay/genblk1[4].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.185    u_FineDelay/outTaps[19]
+    SLICE_X160Y83        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.283 r  u_FineDelay/genblk1[5].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.283    u_FineDelay/outTaps[23]
+    SLICE_X160Y84        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.381 r  u_FineDelay/genblk1[6].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.381    u_FineDelay/outTaps[27]
+    SLICE_X160Y85        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.479 r  u_FineDelay/genblk1[7].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.479    u_FineDelay/outTaps[31]
+    SLICE_X160Y86        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.577 r  u_FineDelay/genblk1[8].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.577    u_FineDelay/outTaps[35]
+    SLICE_X160Y87        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.675 r  u_FineDelay/genblk1[9].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.675    u_FineDelay/outTaps[39]
+    SLICE_X160Y88        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.773 r  u_FineDelay/genblk1[10].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.773    u_FineDelay/outTaps[43]
+    SLICE_X160Y89        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.871 r  u_FineDelay/genblk1[11].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.871    u_FineDelay/outTaps[47]
+    SLICE_X160Y90        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.969 r  u_FineDelay/genblk1[12].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.969    u_FineDelay/outTaps[51]
+    SLICE_X160Y91        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.067 r  u_FineDelay/genblk1[13].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.067    u_FineDelay/outTaps[55]
+    SLICE_X160Y92        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.165 r  u_FineDelay/genblk1[14].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.165    u_FineDelay/outTaps[59]
+    SLICE_X160Y93        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.263 r  u_FineDelay/genblk1[15].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.263    u_FineDelay/outTaps[63]
+    SLICE_X160Y94        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.361 r  u_FineDelay/genblk1[16].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.361    u_FineDelay/outTaps[67]
+    SLICE_X160Y95        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.459 r  u_FineDelay/genblk1[17].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.459    u_FineDelay/outTaps[71]
+    SLICE_X160Y96        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.557 r  u_FineDelay/genblk1[18].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.557    u_FineDelay/outTaps[75]
+    SLICE_X160Y97        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.655 r  u_FineDelay/genblk1[19].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.655    u_FineDelay/outTaps[79]
+    SLICE_X160Y98        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.753 r  u_FineDelay/genblk1[20].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.753    u_FineDelay/outTaps[83]
+    SLICE_X160Y99        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.851 r  u_FineDelay/genblk1[21].carry_4/CO[3]
+                         net (fo=2, routed)           0.001     4.851    u_FineDelay/outTaps[87]
+    SLICE_X160Y100       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.949 r  u_FineDelay/genblk1[22].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.949    u_FineDelay/outTaps[91]
+    SLICE_X160Y101       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.047 r  u_FineDelay/genblk1[23].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.047    u_FineDelay/outTaps[95]
+    SLICE_X160Y102       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.145 r  u_FineDelay/genblk1[24].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.145    u_FineDelay/outTaps[99]
+    SLICE_X160Y103       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.243 r  u_FineDelay/genblk1[25].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.243    u_FineDelay/outTaps[103]
+    SLICE_X160Y104       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.341 r  u_FineDelay/genblk1[26].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.341    u_FineDelay/outTaps[107]
+    SLICE_X160Y105       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.439 r  u_FineDelay/genblk1[27].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.439    u_FineDelay/outTaps[111]
+    SLICE_X160Y106       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.537 r  u_FineDelay/genblk1[28].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.537    u_FineDelay/outTaps[115]
+    SLICE_X160Y107       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.635 r  u_FineDelay/genblk1[29].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.635    u_FineDelay/outTaps[119]
+    SLICE_X160Y108       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.733 r  u_FineDelay/genblk1[30].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.733    u_FineDelay/outTaps[123]
+    SLICE_X160Y109       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.831 r  u_FineDelay/genblk1[31].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.831    u_FineDelay/outTaps[127]
+    SLICE_X160Y110       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.929 r  u_FineDelay/genblk1[32].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.929    u_FineDelay/outTaps[131]
+    SLICE_X160Y111       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.027 r  u_FineDelay/genblk1[33].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.027    u_FineDelay/outTaps[135]
+    SLICE_X160Y112       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.125 r  u_FineDelay/genblk1[34].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.125    u_FineDelay/outTaps[139]
+    SLICE_X160Y113       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.223 r  u_FineDelay/genblk1[35].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.223    u_FineDelay/outTaps[143]
+    SLICE_X160Y114       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.321 r  u_FineDelay/genblk1[36].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.321    u_FineDelay/outTaps[147]
+    SLICE_X160Y115       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.419 r  u_FineDelay/genblk1[37].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.419    u_FineDelay/outTaps[151]
+    SLICE_X160Y116       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.517 r  u_FineDelay/genblk1[38].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.517    u_FineDelay/outTaps[155]
+    SLICE_X160Y117       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.615 r  u_FineDelay/genblk1[39].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.615    u_FineDelay/outTaps[159]
+    SLICE_X160Y118       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.713 r  u_FineDelay/genblk1[40].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.713    u_FineDelay/outTaps[163]
+    SLICE_X160Y119       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.811 r  u_FineDelay/genblk1[41].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.811    u_FineDelay/outTaps[167]
+    SLICE_X160Y120       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.909 r  u_FineDelay/genblk1[42].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.909    u_FineDelay/outTaps[171]
+    SLICE_X160Y121       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.007 r  u_FineDelay/genblk1[43].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.007    u_FineDelay/outTaps[175]
+    SLICE_X160Y122       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.105 r  u_FineDelay/genblk1[44].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.105    u_FineDelay/outTaps[179]
+    SLICE_X160Y123       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.203 r  u_FineDelay/genblk1[45].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.203    u_FineDelay/outTaps[183]
+    SLICE_X160Y124       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.301 r  u_FineDelay/genblk1[46].carry_4/CO[3]
+                         net (fo=2, routed)           0.008     7.309    u_FineDelay/outTaps[187]
+    SLICE_X160Y125       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.407 r  u_FineDelay/genblk1[47].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.407    u_FineDelay/outTaps[191]
+    SLICE_X160Y126       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.505 r  u_FineDelay/genblk1[48].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.505    u_FineDelay/outTaps[195]
+    SLICE_X160Y127       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.603 r  u_FineDelay/genblk1[49].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.603    u_FineDelay/outTaps[199]
+    SLICE_X160Y128       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.701 r  u_FineDelay/genblk1[50].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.701    u_FineDelay/outTaps[203]
+    SLICE_X160Y129       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.799 r  u_FineDelay/genblk1[51].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.799    u_FineDelay/outTaps[207]
+    SLICE_X160Y130       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.897 r  u_FineDelay/genblk1[52].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.897    u_FineDelay/outTaps[211]
+    SLICE_X160Y131       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.995 r  u_FineDelay/genblk1[53].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.995    u_FineDelay/outTaps[215]
+    SLICE_X160Y132       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.093 r  u_FineDelay/genblk1[54].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.093    u_FineDelay/outTaps[219]
+    SLICE_X160Y133       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.191 r  u_FineDelay/genblk1[55].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.191    u_FineDelay/outTaps[223]
+    SLICE_X160Y134       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.289 r  u_FineDelay/genblk1[56].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.289    u_FineDelay/outTaps[227]
+    SLICE_X160Y135       CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.216     8.505 r  u_FineDelay/genblk1[57].carry_4/CO[0]
+                         net (fo=1, routed)           0.000     8.505    u_FineDelay/outTaps[228]
+    SLICE_X160Y135       FDCE                                         r  u_FineDelay/genblk2[228].Firstff/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 iHit
+                            (input port)
+  Destination:            u_FineDelay/genblk2[235].Firstff/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.485ns  (logic 7.045ns (83.027%)  route 1.440ns (16.973%))
+  Logic Levels:           60  (CARRY4=59 IBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    T8                                                0.000     0.000 r  iHit (IN)
+                         net (fo=0)                   0.000     0.000    iHit
+    T8                   IBUF (Prop_ibuf_I_O)         0.881     0.881 r  iHit_IBUF_inst/O
+                         net (fo=18, routed)          1.431     2.313    u_FineDelay/iHit
+    SLICE_X160Y78        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     2.793 r  u_FineDelay/carry_40/CO[3]
+                         net (fo=2, routed)           0.000     2.793    u_FineDelay/outTaps[3]
+    SLICE_X160Y79        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.891 r  u_FineDelay/genblk1[1].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.891    u_FineDelay/outTaps[7]
+    SLICE_X160Y80        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.989 r  u_FineDelay/genblk1[2].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.989    u_FineDelay/outTaps[11]
+    SLICE_X160Y81        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.087 r  u_FineDelay/genblk1[3].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.087    u_FineDelay/outTaps[15]
+    SLICE_X160Y82        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.185 r  u_FineDelay/genblk1[4].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.185    u_FineDelay/outTaps[19]
+    SLICE_X160Y83        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.283 r  u_FineDelay/genblk1[5].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.283    u_FineDelay/outTaps[23]
+    SLICE_X160Y84        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.381 r  u_FineDelay/genblk1[6].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.381    u_FineDelay/outTaps[27]
+    SLICE_X160Y85        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.479 r  u_FineDelay/genblk1[7].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.479    u_FineDelay/outTaps[31]
+    SLICE_X160Y86        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.577 r  u_FineDelay/genblk1[8].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.577    u_FineDelay/outTaps[35]
+    SLICE_X160Y87        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.675 r  u_FineDelay/genblk1[9].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.675    u_FineDelay/outTaps[39]
+    SLICE_X160Y88        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.773 r  u_FineDelay/genblk1[10].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.773    u_FineDelay/outTaps[43]
+    SLICE_X160Y89        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.871 r  u_FineDelay/genblk1[11].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.871    u_FineDelay/outTaps[47]
+    SLICE_X160Y90        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.969 r  u_FineDelay/genblk1[12].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.969    u_FineDelay/outTaps[51]
+    SLICE_X160Y91        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.067 r  u_FineDelay/genblk1[13].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.067    u_FineDelay/outTaps[55]
+    SLICE_X160Y92        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.165 r  u_FineDelay/genblk1[14].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.165    u_FineDelay/outTaps[59]
+    SLICE_X160Y93        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.263 r  u_FineDelay/genblk1[15].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.263    u_FineDelay/outTaps[63]
+    SLICE_X160Y94        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.361 r  u_FineDelay/genblk1[16].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.361    u_FineDelay/outTaps[67]
+    SLICE_X160Y95        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.459 r  u_FineDelay/genblk1[17].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.459    u_FineDelay/outTaps[71]
+    SLICE_X160Y96        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.557 r  u_FineDelay/genblk1[18].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.557    u_FineDelay/outTaps[75]
+    SLICE_X160Y97        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.655 r  u_FineDelay/genblk1[19].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.655    u_FineDelay/outTaps[79]
+    SLICE_X160Y98        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.753 r  u_FineDelay/genblk1[20].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.753    u_FineDelay/outTaps[83]
+    SLICE_X160Y99        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.851 r  u_FineDelay/genblk1[21].carry_4/CO[3]
+                         net (fo=2, routed)           0.001     4.851    u_FineDelay/outTaps[87]
+    SLICE_X160Y100       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.949 r  u_FineDelay/genblk1[22].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.949    u_FineDelay/outTaps[91]
+    SLICE_X160Y101       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.047 r  u_FineDelay/genblk1[23].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.047    u_FineDelay/outTaps[95]
+    SLICE_X160Y102       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.145 r  u_FineDelay/genblk1[24].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.145    u_FineDelay/outTaps[99]
+    SLICE_X160Y103       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.243 r  u_FineDelay/genblk1[25].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.243    u_FineDelay/outTaps[103]
+    SLICE_X160Y104       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.341 r  u_FineDelay/genblk1[26].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.341    u_FineDelay/outTaps[107]
+    SLICE_X160Y105       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.439 r  u_FineDelay/genblk1[27].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.439    u_FineDelay/outTaps[111]
+    SLICE_X160Y106       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.537 r  u_FineDelay/genblk1[28].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.537    u_FineDelay/outTaps[115]
+    SLICE_X160Y107       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.635 r  u_FineDelay/genblk1[29].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.635    u_FineDelay/outTaps[119]
+    SLICE_X160Y108       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.733 r  u_FineDelay/genblk1[30].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.733    u_FineDelay/outTaps[123]
+    SLICE_X160Y109       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.831 r  u_FineDelay/genblk1[31].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.831    u_FineDelay/outTaps[127]
+    SLICE_X160Y110       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.929 r  u_FineDelay/genblk1[32].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.929    u_FineDelay/outTaps[131]
+    SLICE_X160Y111       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.027 r  u_FineDelay/genblk1[33].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.027    u_FineDelay/outTaps[135]
+    SLICE_X160Y112       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.125 r  u_FineDelay/genblk1[34].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.125    u_FineDelay/outTaps[139]
+    SLICE_X160Y113       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.223 r  u_FineDelay/genblk1[35].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.223    u_FineDelay/outTaps[143]
+    SLICE_X160Y114       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.321 r  u_FineDelay/genblk1[36].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.321    u_FineDelay/outTaps[147]
+    SLICE_X160Y115       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.419 r  u_FineDelay/genblk1[37].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.419    u_FineDelay/outTaps[151]
+    SLICE_X160Y116       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.517 r  u_FineDelay/genblk1[38].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.517    u_FineDelay/outTaps[155]
+    SLICE_X160Y117       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.615 r  u_FineDelay/genblk1[39].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.615    u_FineDelay/outTaps[159]
+    SLICE_X160Y118       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.713 r  u_FineDelay/genblk1[40].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.713    u_FineDelay/outTaps[163]
+    SLICE_X160Y119       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.811 r  u_FineDelay/genblk1[41].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.811    u_FineDelay/outTaps[167]
+    SLICE_X160Y120       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.909 r  u_FineDelay/genblk1[42].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.909    u_FineDelay/outTaps[171]
+    SLICE_X160Y121       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.007 r  u_FineDelay/genblk1[43].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.007    u_FineDelay/outTaps[175]
+    SLICE_X160Y122       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.105 r  u_FineDelay/genblk1[44].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.105    u_FineDelay/outTaps[179]
+    SLICE_X160Y123       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.203 r  u_FineDelay/genblk1[45].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.203    u_FineDelay/outTaps[183]
+    SLICE_X160Y124       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.301 r  u_FineDelay/genblk1[46].carry_4/CO[3]
+                         net (fo=2, routed)           0.008     7.309    u_FineDelay/outTaps[187]
+    SLICE_X160Y125       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.407 r  u_FineDelay/genblk1[47].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.407    u_FineDelay/outTaps[191]
+    SLICE_X160Y126       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.505 r  u_FineDelay/genblk1[48].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.505    u_FineDelay/outTaps[195]
+    SLICE_X160Y127       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.603 r  u_FineDelay/genblk1[49].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.603    u_FineDelay/outTaps[199]
+    SLICE_X160Y128       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.701 r  u_FineDelay/genblk1[50].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.701    u_FineDelay/outTaps[203]
+    SLICE_X160Y129       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.799 r  u_FineDelay/genblk1[51].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.799    u_FineDelay/outTaps[207]
+    SLICE_X160Y130       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.897 r  u_FineDelay/genblk1[52].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.897    u_FineDelay/outTaps[211]
+    SLICE_X160Y131       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.995 r  u_FineDelay/genblk1[53].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.995    u_FineDelay/outTaps[215]
+    SLICE_X160Y132       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.093 r  u_FineDelay/genblk1[54].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.093    u_FineDelay/outTaps[219]
+    SLICE_X160Y133       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.191 r  u_FineDelay/genblk1[55].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.191    u_FineDelay/outTaps[223]
+    SLICE_X160Y134       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.289 r  u_FineDelay/genblk1[56].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.289    u_FineDelay/outTaps[227]
+    SLICE_X160Y135       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.387 r  u_FineDelay/genblk1[57].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.387    u_FineDelay/outTaps[231]
+    SLICE_X160Y136       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.485 r  u_FineDelay/genblk1[58].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.485    u_FineDelay/outTaps[235]
+    SLICE_X160Y136       FDCE                                         r  u_FineDelay/genblk2[235].Firstff/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 iHit
+                            (input port)
+  Destination:            u_FineDelay/genblk2[230].Firstff/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.479ns  (logic 7.039ns (83.015%)  route 1.440ns (16.985%))
+  Logic Levels:           59  (CARRY4=58 IBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    T8                                                0.000     0.000 r  iHit (IN)
+                         net (fo=0)                   0.000     0.000    iHit
+    T8                   IBUF (Prop_ibuf_I_O)         0.881     0.881 r  iHit_IBUF_inst/O
+                         net (fo=18, routed)          1.431     2.313    u_FineDelay/iHit
+    SLICE_X160Y78        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     2.793 r  u_FineDelay/carry_40/CO[3]
+                         net (fo=2, routed)           0.000     2.793    u_FineDelay/outTaps[3]
+    SLICE_X160Y79        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.891 r  u_FineDelay/genblk1[1].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.891    u_FineDelay/outTaps[7]
+    SLICE_X160Y80        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     2.989 r  u_FineDelay/genblk1[2].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     2.989    u_FineDelay/outTaps[11]
+    SLICE_X160Y81        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.087 r  u_FineDelay/genblk1[3].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.087    u_FineDelay/outTaps[15]
+    SLICE_X160Y82        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.185 r  u_FineDelay/genblk1[4].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.185    u_FineDelay/outTaps[19]
+    SLICE_X160Y83        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.283 r  u_FineDelay/genblk1[5].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.283    u_FineDelay/outTaps[23]
+    SLICE_X160Y84        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.381 r  u_FineDelay/genblk1[6].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.381    u_FineDelay/outTaps[27]
+    SLICE_X160Y85        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.479 r  u_FineDelay/genblk1[7].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.479    u_FineDelay/outTaps[31]
+    SLICE_X160Y86        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.577 r  u_FineDelay/genblk1[8].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.577    u_FineDelay/outTaps[35]
+    SLICE_X160Y87        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.675 r  u_FineDelay/genblk1[9].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.675    u_FineDelay/outTaps[39]
+    SLICE_X160Y88        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.773 r  u_FineDelay/genblk1[10].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.773    u_FineDelay/outTaps[43]
+    SLICE_X160Y89        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.871 r  u_FineDelay/genblk1[11].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.871    u_FineDelay/outTaps[47]
+    SLICE_X160Y90        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.969 r  u_FineDelay/genblk1[12].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     3.969    u_FineDelay/outTaps[51]
+    SLICE_X160Y91        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.067 r  u_FineDelay/genblk1[13].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.067    u_FineDelay/outTaps[55]
+    SLICE_X160Y92        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.165 r  u_FineDelay/genblk1[14].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.165    u_FineDelay/outTaps[59]
+    SLICE_X160Y93        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.263 r  u_FineDelay/genblk1[15].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.263    u_FineDelay/outTaps[63]
+    SLICE_X160Y94        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.361 r  u_FineDelay/genblk1[16].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.361    u_FineDelay/outTaps[67]
+    SLICE_X160Y95        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.459 r  u_FineDelay/genblk1[17].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.459    u_FineDelay/outTaps[71]
+    SLICE_X160Y96        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.557 r  u_FineDelay/genblk1[18].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.557    u_FineDelay/outTaps[75]
+    SLICE_X160Y97        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.655 r  u_FineDelay/genblk1[19].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.655    u_FineDelay/outTaps[79]
+    SLICE_X160Y98        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.753 r  u_FineDelay/genblk1[20].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.753    u_FineDelay/outTaps[83]
+    SLICE_X160Y99        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.851 r  u_FineDelay/genblk1[21].carry_4/CO[3]
+                         net (fo=2, routed)           0.001     4.851    u_FineDelay/outTaps[87]
+    SLICE_X160Y100       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     4.949 r  u_FineDelay/genblk1[22].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     4.949    u_FineDelay/outTaps[91]
+    SLICE_X160Y101       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.047 r  u_FineDelay/genblk1[23].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.047    u_FineDelay/outTaps[95]
+    SLICE_X160Y102       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.145 r  u_FineDelay/genblk1[24].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.145    u_FineDelay/outTaps[99]
+    SLICE_X160Y103       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.243 r  u_FineDelay/genblk1[25].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.243    u_FineDelay/outTaps[103]
+    SLICE_X160Y104       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.341 r  u_FineDelay/genblk1[26].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.341    u_FineDelay/outTaps[107]
+    SLICE_X160Y105       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.439 r  u_FineDelay/genblk1[27].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.439    u_FineDelay/outTaps[111]
+    SLICE_X160Y106       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.537 r  u_FineDelay/genblk1[28].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.537    u_FineDelay/outTaps[115]
+    SLICE_X160Y107       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.635 r  u_FineDelay/genblk1[29].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.635    u_FineDelay/outTaps[119]
+    SLICE_X160Y108       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.733 r  u_FineDelay/genblk1[30].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.733    u_FineDelay/outTaps[123]
+    SLICE_X160Y109       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.831 r  u_FineDelay/genblk1[31].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.831    u_FineDelay/outTaps[127]
+    SLICE_X160Y110       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     5.929 r  u_FineDelay/genblk1[32].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     5.929    u_FineDelay/outTaps[131]
+    SLICE_X160Y111       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.027 r  u_FineDelay/genblk1[33].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.027    u_FineDelay/outTaps[135]
+    SLICE_X160Y112       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.125 r  u_FineDelay/genblk1[34].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.125    u_FineDelay/outTaps[139]
+    SLICE_X160Y113       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.223 r  u_FineDelay/genblk1[35].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.223    u_FineDelay/outTaps[143]
+    SLICE_X160Y114       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.321 r  u_FineDelay/genblk1[36].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.321    u_FineDelay/outTaps[147]
+    SLICE_X160Y115       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.419 r  u_FineDelay/genblk1[37].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.419    u_FineDelay/outTaps[151]
+    SLICE_X160Y116       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.517 r  u_FineDelay/genblk1[38].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.517    u_FineDelay/outTaps[155]
+    SLICE_X160Y117       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.615 r  u_FineDelay/genblk1[39].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.615    u_FineDelay/outTaps[159]
+    SLICE_X160Y118       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.713 r  u_FineDelay/genblk1[40].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.713    u_FineDelay/outTaps[163]
+    SLICE_X160Y119       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.811 r  u_FineDelay/genblk1[41].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.811    u_FineDelay/outTaps[167]
+    SLICE_X160Y120       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.909 r  u_FineDelay/genblk1[42].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     6.909    u_FineDelay/outTaps[171]
+    SLICE_X160Y121       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.007 r  u_FineDelay/genblk1[43].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.007    u_FineDelay/outTaps[175]
+    SLICE_X160Y122       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.105 r  u_FineDelay/genblk1[44].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.105    u_FineDelay/outTaps[179]
+    SLICE_X160Y123       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.203 r  u_FineDelay/genblk1[45].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.203    u_FineDelay/outTaps[183]
+    SLICE_X160Y124       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.301 r  u_FineDelay/genblk1[46].carry_4/CO[3]
+                         net (fo=2, routed)           0.008     7.309    u_FineDelay/outTaps[187]
+    SLICE_X160Y125       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.407 r  u_FineDelay/genblk1[47].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.407    u_FineDelay/outTaps[191]
+    SLICE_X160Y126       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.505 r  u_FineDelay/genblk1[48].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.505    u_FineDelay/outTaps[195]
+    SLICE_X160Y127       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.603 r  u_FineDelay/genblk1[49].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.603    u_FineDelay/outTaps[199]
+    SLICE_X160Y128       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.701 r  u_FineDelay/genblk1[50].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.701    u_FineDelay/outTaps[203]
+    SLICE_X160Y129       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.799 r  u_FineDelay/genblk1[51].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.799    u_FineDelay/outTaps[207]
+    SLICE_X160Y130       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.897 r  u_FineDelay/genblk1[52].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.897    u_FineDelay/outTaps[211]
+    SLICE_X160Y131       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     7.995 r  u_FineDelay/genblk1[53].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     7.995    u_FineDelay/outTaps[215]
+    SLICE_X160Y132       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.093 r  u_FineDelay/genblk1[54].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.093    u_FineDelay/outTaps[219]
+    SLICE_X160Y133       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.191 r  u_FineDelay/genblk1[55].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.191    u_FineDelay/outTaps[223]
+    SLICE_X160Y134       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     8.289 r  u_FineDelay/genblk1[56].carry_4/CO[3]
+                         net (fo=2, routed)           0.000     8.289    u_FineDelay/outTaps[227]
+    SLICE_X160Y135       CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.190     8.479 r  u_FineDelay/genblk1[57].carry_4/CO[2]
+                         net (fo=1, routed)           0.000     8.479    u_FineDelay/outTaps[230]
+    SLICE_X160Y135       FDCE                                         r  u_FineDelay/genblk2[230].Firstff/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 u_FineDelay/genblk2[72].Firstff/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            u_FineDelay/genblk4[72].StopFF/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.237ns  (logic 0.141ns (59.375%)  route 0.096ns (40.625%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X160Y96        FDCE                         0.000     0.000 r  u_FineDelay/genblk2[72].Firstff/C
+    SLICE_X160Y96        FDCE (Prop_fdce_C_Q)         0.141     0.141 r  u_FineDelay/genblk2[72].Firstff/Q
+                         net (fo=2, routed)           0.096     0.237    u_FineDelay/wFirstFF[72]
+    SLICE_X161Y96        FDCE                                         r  u_FineDelay/genblk4[72].StopFF/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_Coarse/stored_reg[6]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_merge/out_reg[22]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.245ns  (logic 0.128ns (52.259%)  route 0.117ns (47.741%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X163Y119       FDRE                         0.000     0.000 r  u_Coarse/stored_reg[6]/C
+    SLICE_X163Y119       FDRE (Prop_fdre_C_Q)         0.128     0.128 r  u_Coarse/stored_reg[6]/Q
+                         net (fo=1, routed)           0.117     0.245    u_merge/Coarse[6]
+    SLICE_X163Y121       FDRE                                         r  u_merge/out_reg[22]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 FFDelayStart_1/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            FFDelayStart_2/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.249ns  (logic 0.141ns (56.528%)  route 0.108ns (43.472%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X163Y136       FDCE                         0.000     0.000 r  FFDelayStart_1/C
+    SLICE_X163Y136       FDCE (Prop_fdce_C_Q)         0.141     0.141 r  FFDelayStart_1/Q
+                         net (fo=1, routed)           0.108     0.249    FFDelayStart
+    SLICE_X163Y135       FDCE                                         r  FFDelayStart_2/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_Coarse/stored_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_merge/out_reg[17]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.249ns  (logic 0.141ns (56.528%)  route 0.108ns (43.472%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X163Y117       FDRE                         0.000     0.000 r  u_Coarse/stored_reg[1]/C
+    SLICE_X163Y117       FDRE (Prop_fdre_C_Q)         0.141     0.141 r  u_Coarse/stored_reg[1]/Q
+                         net (fo=1, routed)           0.108     0.249    u_merge/Coarse[1]
+    SLICE_X163Y116       FDRE                                         r  u_merge/out_reg[17]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_FineDelay/genblk2[101].Firstff/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            u_FineDelay/genblk4[101].StopFF/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.250ns  (logic 0.141ns (56.480%)  route 0.109ns (43.520%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X160Y103       FDCE                         0.000     0.000 r  u_FineDelay/genblk2[101].Firstff/C
+    SLICE_X160Y103       FDCE (Prop_fdce_C_Q)         0.141     0.141 r  u_FineDelay/genblk2[101].Firstff/Q
+                         net (fo=2, routed)           0.109     0.250    u_FineDelay/wFirstFF[101]
+    SLICE_X162Y104       FDCE                                         r  u_FineDelay/genblk4[101].StopFF/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_Coarse/stored_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_merge/out_reg[20]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.251ns  (logic 0.141ns (56.078%)  route 0.110ns (43.922%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X163Y120       FDRE                         0.000     0.000 r  u_Coarse/stored_reg[4]/C
+    SLICE_X163Y120       FDRE (Prop_fdre_C_Q)         0.141     0.141 r  u_Coarse/stored_reg[4]/Q
+                         net (fo=1, routed)           0.110     0.251    u_merge/Coarse[4]
+    SLICE_X163Y121       FDRE                                         r  u_merge/out_reg[20]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_FineDelay/genblk2[196].Firstff/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            u_FineDelay/genblk3[196].Startff/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.254ns  (logic 0.141ns (55.565%)  route 0.113ns (44.435%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X160Y127       FDCE                         0.000     0.000 r  u_FineDelay/genblk2[196].Firstff/C
+    SLICE_X160Y127       FDCE (Prop_fdce_C_Q)         0.141     0.141 r  u_FineDelay/genblk2[196].Firstff/Q
+                         net (fo=2, routed)           0.113     0.254    u_FineDelay/wFirstFF[196]
+    SLICE_X162Y126       FDCE                                         r  u_FineDelay/genblk3[196].Startff/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_FineDelay/genblk2[169].Firstff/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            u_FineDelay/genblk3[169].Startff/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.258ns  (logic 0.141ns (54.628%)  route 0.117ns (45.372%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X160Y120       FDCE                         0.000     0.000 r  u_FineDelay/genblk2[169].Firstff/C
+    SLICE_X160Y120       FDCE (Prop_fdce_C_Q)         0.141     0.141 r  u_FineDelay/genblk2[169].Firstff/Q
+                         net (fo=2, routed)           0.117     0.258    u_FineDelay/wFirstFF[169]
+    SLICE_X158Y120       FDCE                                         r  u_FineDelay/genblk3[169].Startff/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_FineDelay/genblk2[145].Firstff/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            u_FineDelay/genblk4[145].StopFF/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.258ns  (logic 0.141ns (54.566%)  route 0.117ns (45.434%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X160Y114       FDCE                         0.000     0.000 r  u_FineDelay/genblk2[145].Firstff/C
+    SLICE_X160Y114       FDCE (Prop_fdce_C_Q)         0.141     0.141 r  u_FineDelay/genblk2[145].Firstff/Q
+                         net (fo=2, routed)           0.117     0.258    u_FineDelay/wFirstFF[145]
+    SLICE_X159Y113       FDCE                                         r  u_FineDelay/genblk4[145].StopFF/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_FineDelay/genblk2[163].Firstff/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            u_FineDelay/genblk4[163].StopFF/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.260ns  (logic 0.141ns (54.152%)  route 0.119ns (45.848%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X160Y118       FDCE                         0.000     0.000 r  u_FineDelay/genblk2[163].Firstff/C
+    SLICE_X160Y118       FDCE (Prop_fdce_C_Q)         0.141     0.141 r  u_FineDelay/genblk2[163].Firstff/Q
+                         net (fo=2, routed)           0.119     0.260    u_FineDelay/wFirstFF[163]
+    SLICE_X159Y119       FDCE                                         r  u_FineDelay/genblk4[163].StopFF/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+

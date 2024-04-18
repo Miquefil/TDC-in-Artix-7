@@ -19,9 +19,9 @@ module top_tb(
         .iHit(hit),
         .oTDC(res),
         .done(merge_done),
-        .StopConv(),
-        .FFStart(FFStart),
-        .FFStop(FFStop),
+        // .StopConv(),         //debugging
+        // .FFStart(FFStart),   //debugging
+        // .FFStop(FFStop),     //debugging
         .taps(taps)
     );
 

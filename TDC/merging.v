@@ -14,7 +14,7 @@
 //  to solve it.
 //////////////////////////////////////////////////////////////////////
 `include "defines.v"
-
+(* keep_hierarchy = "TRUE" *)
 module merging #(parameter N = 2) (
     input  wire                         clk,
     input  wire                         fall,
