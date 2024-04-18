@@ -1,7 +1,0 @@
-0.7
-2020.2
-Oct 13 2023
-20:47:58
-C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/TDC_StartStop/TDC_StartStop.sim/sim_1/synth/timing/xsim/top_tb_time_synth.v,1713464390,verilog,,C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top_tb.v,,Coarse;DecodeStart;DecodeStop;Edge;Fine;glbl;merging;top,,,../../../../../../,,,,,
-C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/defines.v,1713464089,verilog,,,,,,,,,,,,
-C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top_tb.v,1713460500,verilog,,,C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/defines.v,top_tb,,,../../../../../../,,,,,
