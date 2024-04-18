@@ -37,7 +37,7 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
 
 
     /////////INITIALIZATION OF CARRY4s //////////////////////////////////////////////
-    //fiiRst Carry4
+    //first Carry4
     (* DONT_TOUCH = "yes" *) CARRY4 carry_40
             (   .CO(wCarryOutputs[3: 0]),       // 4-bit carry out
                 .O(wOutput[3: 0]),             // 4-bit carry chain XOR data out
@@ -62,11 +62,11 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
     endgenerate
 
     /////////CONSTRUCTION OF FLIP-FLOPS //////////////////////////////////////////////
-    //FiiRst column
+    //First column
     generate
         for (i = 0; i < NUM ; i=i+1) begin
             (* DONT_TOUCH = "yes" *) FDCE #(.INIT(1'b0)) Firstff(
-                .Q(wFirstFF[i])      ,
+                .Q(wFirstFF[i])         ,
                 .C(clk)                 ,
                 .CE(1'b1)               ,   //siempre enableado
                 .CLR(iRst)              ,
@@ -80,8 +80,8 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
         for (i = 0; i < NUM ; i=i+1) begin
             (* DONT_TOUCH = "yes" *) FDCE #(.INIT(1'b0)) Startff(
                 .Q(oFFStart[i])      ,   
-                .C(clk)             ,  
-                .CE(iStartEnable)   ,
+                .C(clk)              ,  
+                .CE(iStartEnable)    ,
                 .CLR(iRst)           ,
                 .D(wFirstFF[i])
             );

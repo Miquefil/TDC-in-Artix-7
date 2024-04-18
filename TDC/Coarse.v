@@ -12,27 +12,25 @@
 //   respond to a rst signal.
 //
 //////////////////////////////////////////////////////////////////////
-
+(* keep_hierarchy = "TRUE" *) 
 module Coarse #(parameter C_DIG = 10) (
-    input wire      clk,
-    input wire      iRst,       //reset count
-    input wire      iCE,        //enable
-    input wire      iStore,      //hold count
+    input   wire      clk,
+    input   wire      iRst,       //reset count
+    input   wire      iCE,        //enable
+    input   wire      iStore,     //hold count
 
-    output  wire    oCoarse
+    output  wire[C_DIG-1:0]    oCoarse
 );
 
-    (* DONT_TOUCH = "yes" *) reg[C_DIG:0]    count;
-    (* DONT_TOUCH = "yes" *) reg[C_DIG:0]    stored;
+    (* DONT_TOUCH = "yes" *) reg[C_DIG-1:0]    count;
+    (* DONT_TOUCH = "yes" *) reg[C_DIG-1:0]    stored;
 
     always @(posedge clk) begin
         if(iRst) begin
             count <= {C_DIG{1'd0}};
         end 
-        else begin
-            if(iCE) begin
-                count <= count + 1'b1;
-            end
+        else if(iCE) begin
+            count <= count + 1'b1;
         end
     end
 

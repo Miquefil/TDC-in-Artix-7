@@ -1,0 +1,18 @@
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot Edge_tb_behav xil_defaultlib.Edge_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/mique/Desktop/TDC-in-Artix-7/flipflop_tests/Edge.v" Line 10. Module Edge doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/mique/Desktop/TDC-in-Artix-7/flipflop_tests/Edge.v" Line 10. Module Edge doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module unisims_ver.FDCE_default
+Compiling module xil_defaultlib.Edge
+Compiling module xil_defaultlib.Edge_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot Edge_tb_behav

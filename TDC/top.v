@@ -1,23 +1,19 @@
-`define NUM_TAPS     120
-`define NUM_DECODE   7
-`define COUNTER_DIG  10
-`define DIG_OUT      24
+`include "defines.v"
 
 module top (
-    input              iClk,
-    input              iRst,
-    input              iHit,
-    //output[NUM_TAPS-1:0]    taps,
-    output[`DIG_OUT-1:0]     oTDC,
-
-
+    input                           iClk,
+    input                           iRst,
+    input                           iHit,
+    output[`DIG_OUT-1:0]            oTDC,
+    output reg                      done,
 
     //Debugging Signals
-    output[`NUM_TAPS-1:0]         FFStart, FFStop,
-    output[`NUM_TAPS-1:0]         taps
-    );
+    output                          StopConv,
+    output[`NUM_TAPS-1:0]           FFStart, FFStop,
+    output[`NUM_TAPS-1:0]           taps
+    );  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    wire                         rst;                //manages internal and external rst
+
     wire                         Rise, Fall;
     wire[`NUM_TAPS-1:0]          Stop, Start;
     wire[`NUM_DECODE-1:0]        DecodedStop, DecodedStart;
@@ -26,12 +22,37 @@ module top (
     assign FFStop  = Stop;
 
 
+    wire                ready;
+    reg                 rst_int;    
+    wire                rst;                //manages internal and external rst
+    assign              rst = (~ready)&(iRst|rst_int);     //reset if ready AND external/interal reset
+
+    //////////////////////Wait for some clocks and then go ready --------------
+    wire                FFDelayStart;
+    (* dont_touch = "TRUE" *)FDCE #(.INIT(1'b0)) FFDelayStart_1(
+        .Q          (FFDelayStart),
+        .C          (iClk),
+        .CE         (1'b1),
+        .CLR        (),
+        .D          (1'b1)
+    );
+    (* dont_touch = "TRUE" *)FDCE #(.INIT(1'b0)) FFDelayStart_2(
+        .Q          (ready),
+        .C          (iClk),
+        .CE         (1'b1),
+        .CLR        (done),
+        .D          (FFDelayStart)
+    );
+    /////////-----Start Main TDC --------/////////////////////////////////
+    wire        q1, q2;
     Edge u_EdgeDetector(
         .iClk       (iClk),
         .iRst        (rst),
         .iHit       (iHit),
         .oRise      (Rise),
-        .oFall      (Fall)
+        .oFall      (Fall),
+        .q1         (q1),     //debugging
+        .q2         (q2)
     );
     
     Fine #(`NUM_TAPS) u_FineDelay(
@@ -68,41 +89,60 @@ module top (
     //Delay post resultado y Merging//////////////////
     //COMMENTS: Originalmente parece que Machado sólo usa un clock como delay así que DelayCounter tiene 1 bit
 
-
-
-
-    wire                StartDelay, StopDelay, ConvertionFinish;
-    reg                 DelayCounter;
-    reg[`DIG_OUT-1:0]    ValorTDC;
-
-    assign StopDelay = DelayCounter;
-
-    (* dont_touch = "TRUE" *)FDCE #(.INIT(1'b0)) enable_delay_dff(
-    .Q          (StartDelay),
-    .C          (Fall),
-    .CE         (1'b1),
-    .CLR        (StopDelay),
-    .D          (1'b1)
-);
-
-    always @(posedge iClk) begin
-        if (StopDelay) begin
-            DelayCounter <= 0;        
-        end
-        else if (StartDelay) begin
-            DelayCounter <= DelayCounter + 1'b1;
-        end
-    end
     
-    always @(posedge iClk) begin
-        if(rst) begin
-            ValorTDC <= 0;
-        end
-        else if(StopDelay) begin
-            ValorTDC <= {CoarseStamp, DecodedStart, DecodedStop};
-        end
-    end
+    // wire                    StartConvertion;        //starting convertion
+    // wire                    FinishConvertion;       //finishing convertion
+    // wire                    done;                   //convertion done
+    // wire                    conv_ready;             //convertion ready --> rst & ready --> done
+    // reg[1:0]                DelayCounter;
+    // reg[`DIG_OUT-1:0]       ValorTDC;               
 
-    assign oTDC = ValorTDC;
+    // assign FinishConvertion = &(DelayCounter);  //true if DelayCounter == 11
+
+    // (* dont_touch = "TRUE" *)FDCE #(.INIT(1'b0)) enable_delay_dff(
+    // .Q          (StartConvertion),
+    // .C          (Fall),
+    // .CE         (1'b1),
+    // .CLR        (FinishConvertion),
+    // .D          (1'b1)
+    // );
+
+    // (* dont_touch = "TRUE" *)FDRE #(.INIT(1'b0)) value_ready_dff(
+    //     .Q(Done),
+    //     .C(iCLK0),
+    //     .CE(1'b1),
+    //     .R(~FinishConvertion),
+    //     .D(1'b1)
+    // );
+
+    // //Cuento 4 clocks --> finish
+    // always @(posedge iClk) begin
+    //     if (StopDelay) begin
+    //         DelayCounter <= 0;        
+    //     end
+    //     else if (StartDelay) begin
+    //         DelayCounter <= DelayCounter + 1'b1;
+    //     end
+    // end //cuenta 0-1-2-3-0-1-2-3-0----
+    
+    // always @(posedge iClk) begin
+    //     if(rst) begin
+    //         ValorTDC <= 0;
+    //     end
+    //     else if(StopDelay) begin
+    //         ValorTDC <= {CoarseStamp, DecodedStart, DecodedStop};
+    //     end
+    // end
+
+    merging u_merge (
+        .clk(iClk),
+        .irst(rst),
+        .fall(Fall),
+        .FallEdge(DecodedStop),
+        .StartEdge(DecodedStart),
+        .Coarse(CoarseStamp),
+        .out(oTDC)
+    );
+    
 
 endmodule

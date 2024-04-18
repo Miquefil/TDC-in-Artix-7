@@ -10,7 +10,7 @@
 // Notes:
 //
 //////////////////////////////////////////////////////////////////////
-
+(* keep_hierarchy = "TRUE" *) 
 module DecodeStop #(parameter  NUM_FF= 1, parameter BITS_DECO = 8) (
     input    wire[NUM_FF-1:0]         wDecoStoptIn,
     output   wire[BITS_DECO-1:0]      wDecoStopOut

@@ -1,46 +1,47 @@
-`timescale  1ps/1ps
+`timescale  1ns/1ns
 
-`define NUM_TAPS    120
-`define NUM_DECODE  7
-`define COUNTER_DIG 10
-`define DIG_OUT     24
+`include "defines.v"
 
 module top_tb(
     );
-    reg                                clk2;
+    reg                                clk;
     reg                                hit;
-    wire[`DIG_OUT-1:0]                  res;
+    reg                                rst;
+    wire[`DIG_OUT-1:0]                 res;
 
 
     wire[`NUM_TAPS-1:0]         FFStart, FFStop;
     wire[`NUM_TAPS-1:0]         taps;
     top u_top(
-        .iClk(clk2),
-        .iRst(),
+        .iClk(clk),
+        .iRst(rst),
         .iHit(hit),
         .oTDC(res),
+        .done(),
+        .StopConv(),
         .FFStart(FFStart),
         .FFStop(FFStop),
         .taps(taps)
     );
 
-    assign clk = clk2;
-    always #5 clk2 = ~clk2; //
-
-
+    localparam TCLK = 8;
+    initial begin
+        clk = 1'b0;
+        forever #(TCLK/2) clk = ~clk;
+    end
 
     initial begin        
-        clk2 = 1'b1;    //inicializa el reloj
-        hit = 1'b0;
-        #2500;
+        hit     = 1'b0;
+        rst     = 1'b1; 
+        #5
+        rst     = 1'b0;
+        #150;   //este delay es importante en 150nS, starting time
 
         hit = 1'b1;
-        #15000;
+        #(2*TCLK);
 
         hit = 1'b0;
-        #10;
-
-        hit = 1'b0;
+        #(5*TCLK)
         $finish;
     end
 

@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/flipflop_tests/Edge.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Edge
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/flipflop_tests/Edge_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Edge_tb
