@@ -1,7 +1,0 @@
-# compile verilog/system verilog design source files
-verilog xil_defaultlib  --include "../../../../../../" \
-"top_tb_time_synth.v" \
-"../../../../../../top_tb.v" \
-
-# Do not sort compile order
-nosort
