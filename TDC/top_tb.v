@@ -17,12 +17,12 @@ module top_tb(
         .iClk(clk),
         .iRst(rst),
         .iHit(hit),
-        .oTDC(res),
-        .done(merge_done),
+        //.oTDC(res),
+        //.done(merge_done),
         // .StopConv(),         //debugging
         // .FFStart(FFStart),   //debugging
         // .FFStop(FFStop),     //debugging
-        .taps(taps)
+        //.taps(taps)
     );
 
     localparam TCLK = 8;

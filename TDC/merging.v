@@ -24,19 +24,22 @@ module merging #(parameter N = 2) (
     input  wire[`NUM_DECODE-1:0]        Coarse,
 
     output reg[`DIG_OUT-1:0]            out,
-    output wire                         done            //Used to reset the system
+    output wire                         done            //Used to reset the system JUST ONE CLK 
     //debugging
     //output wire                         debugRst    
     );
 
 
+    ///////////CONTROL -----------------------------------------------------
+    
     // reg                                         rst_int;
     wire                                        rst;   
     wire                                        rst_int;
     (* DONT_TOUCH = "yes" *) reg                enable_counter;
     (* DONT_TOUCH = "yes" *) reg                Reg_rstint;
     (* DONT_TOUCH = "yes" *) reg[N-1:0]         counter;
-    
+
+
     assign rst = (rst_int|irst);        //rst_int: RESET INTERNO para overflow
                                         //irst   : RESET EXTERNO 
 

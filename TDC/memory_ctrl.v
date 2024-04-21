@@ -1,24 +1,31 @@
 //////////////////////////////////////////////////////////////////////
 // Module Name: memory_ctrl
-// Description: Brief description of the module's functionality
+//              Memory instantiation and control for merging stage
 //
 // Author: Miqueas Filsinger
 // Date: 18-04-2024
 //
 // Revision History:
-// - Date: Description of changes made
-// - Date: Description of changes made
 //
 // Notes:
-// - Any additional notes or considerations
-//
 //////////////////////////////////////////////////////////////////////
 
-module memory_ctrl (
-    input wire [31:0]                       data_input;
-    input wire [31:0]                       data_output;
 
-);
+module memory_ctrl (
+    input   wire                              Rclk,
+    input   wire                              Wclk,
+    input   wire                              ReadEN,
+    input   wire                              WriteEN,
+    input   wire [31:0]                       data_input,
+    output  wire [31:0]                       data_output,
+    output  wire                              almost_full,
+    output  wire                              almost_empty,
+    output  wire                              empty,
+    output  wire                              full,         //1: memory full
+    output  wire                              readERR,
+    output  wire                              writeERR  
+    );  //--------------------------------------------------------------------------
+
     wire            m_ALMOSTEMPTY;
     wire            m_ALMOSTFULL;
     wire            m_EMPTY;
@@ -32,6 +39,12 @@ module memory_ctrl (
     wire            m_WREN;         //Active high
     wire            m_WRERR;        //Error if its full. Synchronous with WRCLK
 
+    assign almost_full          = m_ALMOSTFULL;
+    assign almost_empty         = m_ALMOSTEMPTY;
+    assign empty                = m_EMPTY;
+    assign full                 = m_FULL;
+    assign readERR              = m_READERROR;
+    assign writeERR             = m_WRERR;
 
 
     FIFO36E1 #(
@@ -49,34 +62,34 @@ module memory_ctrl (
         .SRVAL(72'h000000000000000000)                          // Set/Reset value for output port
     )
     u_FIFO36E1 (
-        // ECC Signals: 1-bit (each) output: Error Correction Circuitry ports
+        // ECC Signals: 1-bit (each) output: Error Correction Circuitry ports--------------------------------------
         .DBITERR(),                                             // 1-bit output: Double bit error status
         .ECCPARITY(),                                           // 8-bit output: Generated error correction parity
         .SBITERR(),                                             // 1-bit output: Single bit error status
-        // Read Data: 64-bit (each) output: Read output data
+        // Read Data: 64-bit (each) output: Read output data-------------------------------------------------------
         .DO(data_output),                                       // 64-bit output: Data output
         .DOP(),                                                 // 8-bit output: Parity data output
-        // Status: 1-bit (each) output: Flags and other FIFO status outputs
+        // Status: 1-bit (each) output: Flags and other FIFO status outputs----------------------------------------
         .ALMOSTEMPTY(m_ALMOSTEMPTY),                            // 1-bit output: Almost empty flag
         .ALMOSTFULL(m_ALMOSTFULL),                              // 1-bit output: Almost full flag
         .EMPTY(m_EMPTY),                                        // 1-bit output: Empty flag
         .FULL(m_FULL),                                          // 1-bit output: Full flag
         .RDCOUNT(),                                             // 13-bit output: Read count
-        .RDERR(m_READERROR),                                               // 1-bit output: Read error
-        .WRCOUNT(m_WRCOUNT),                                             // 13-bit output: Write count
-        .WRERR(m_WRERR),                                               // 1-bit output: Write error
+        .RDERR(m_READERROR),                                    // 1-bit output: Read error
+        .WRCOUNT(m_WRCOUNT),                                    // 13-bit output: Write count
+        .WRERR(m_WRERR),                                        // 1-bit output: Write error
         // ECC Signals: 1-bit (each) input: Error Correction Circuitry ports
         .INJECTDBITERR(),                                       // 1-bit input: Inject a double bit error input
         .INJECTSBITERR(),
-        // Read Control Signals: 1-bit (each) input: Read clock, enable and reset input signals
-        .RDCLK(m_READCLK),                                               // 1-bit input: Read clock
-        .RDEN(m_READEN),                                                // 1-bit input: Read enable
+        // Read Control Signals: 1-bit (each) input: Read clock, enable and reset input signals--------------------
+        .RDCLK(m_READCLK),                                      // 1-bit input: Read clock
+        .RDEN(m_READEN),                                        // 1-bit input: Read enable
         .REGCE(),                                               // 1-bit input: Clock enable
-        .RST(m_RST),                                                 // 1-bit input: Reset
+        .RST(m_RST),                                            // 1-bit input: Reset
         .RSTREG(),                                              // 1-bit input: Output register set/reset
         // Write Control Signals: 1-bit (each) input: Write clock and enable input signals
-        .WRCLK(m_WRTCLK),                                               // 1-bit input: Rising edge write clock.
-        .WREN(m_WREN),                                                // 1-bit input: Write enable
+        .WRCLK(m_WRTCLK),                                       // 1-bit input: Rising edge write clock.
+        .WREN(m_WREN),                                          // 1-bit input: Write enable
         // Write Data: 64-bit (each) input: Write input data
         .DI(data_input),                                        // 64-bit input: Data input
         .DIP()                                                  // 8-bit input: Parity input
