@@ -4,6 +4,7 @@ module TDC (
     input  wire                     iClk,
     input  wire                     iRst,
     input  wire                     iHit,
+    input  wire                     enable,
     output wire [`DIG_OUT-1:0]      oTDC,
     output wire                     done
     
@@ -32,7 +33,7 @@ module TDC (
     (* dont_touch = "TRUE" *)FDCE #(.INIT(1'b0)) FFDelayStart_1(
         .Q          (FFDelayStart),
         .C          (iClk),
-        .CE         (1'b1),
+        .CE         (enable),               //hasta que no viene enable HIGH no prendemos
         .CLR        (),
         .D          (1'b1)
     );

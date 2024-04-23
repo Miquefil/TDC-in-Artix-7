@@ -7,6 +7,9 @@ module top_tb(
     reg                                clk;
     reg                                hit;
     reg                                rst;
+    reg                                startWr;
+    reg                                startRead;
+    wire                               led_ReadERR, ledWriteERR;
     wire[`DIG_OUT-1:0]                 res;
 
 
@@ -17,12 +20,10 @@ module top_tb(
         .iClk(clk),
         .iRst(rst),
         .iHit(hit),
-        //.oTDC(res),
-        //.done(merge_done),
-        // .StopConv(),         //debugging
-        // .FFStart(FFStart),   //debugging
-        // .FFStop(FFStop),     //debugging
-        //.taps(taps)
+        .startWriting(startWr),
+        .startReading(startRead),
+        .led_ReadERR(led_ReadERR),
+        .led_WriteERR(led_WriteERR)
     );
 
     localparam TCLK = 8;
@@ -32,16 +33,30 @@ module top_tb(
     end
 
     initial begin        
-        hit     = 1'b0;
-        rst     = 1'b1; 
-        #5
-        rst     = 1'b0;
+        hit        = 1'b0;
+        startRead  = 1'b0;
+        #5 rst     = 1'b0;
+        #5 rst     = 1'b1; 
+        #5 rst     = 1'b0;
         #150;   //este delay es importante en 150nS, starting time
 
-        hit = 1'b1;
-        #(2*TCLK);
+        hit     = 1'b1;
+        startWr = 1'b1;
+        startRead = 1'b0;
+        #(3*TCLK);
+        hit     = 1'b0;
 
-        hit = 1'b0;
+
+        hit     = 1'b1;
+        startWr = 1'b1;
+        startRead = 1'b0;
+        #(2*TCLK);
+        hit     = 1'b0;
+
+        #10
+        startWr = 1'b0;
+        startRead = 1'b1;
+        
         #(5*TCLK)
         $finish;
     end

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x8E52AE7988946E6D",
+      "boundary_crc": "0xEE1C0F96EDCFBC87",
       "device": "xc7a200tfbg676-2",
       "gen_directory": "../../../../Final TDC_StartStop.gen/sources_1/bd/blockdesign",
       "name": "blockdesign",
@@ -14,73 +14,6 @@
       "axi_quad_spi_0": ""
     },
     "interface_ports": {
-      "SPI_0_0": {
-        "mode": "Master",
-        "vlnv_bus_definition": "xilinx.com:interface:spi:1.0",
-        "vlnv": "xilinx.com:interface:spi_rtl:1.0",
-        "port_maps": {
-          "IO0_I": {
-            "physical_name": "SPI_0_0_io0_i",
-            "direction": "I"
-          },
-          "IO0_O": {
-            "physical_name": "SPI_0_0_io0_o",
-            "direction": "O"
-          },
-          "IO0_T": {
-            "physical_name": "SPI_0_0_io0_t",
-            "direction": "O"
-          },
-          "IO1_I": {
-            "physical_name": "SPI_0_0_io1_i",
-            "direction": "I"
-          },
-          "IO1_O": {
-            "physical_name": "SPI_0_0_io1_o",
-            "direction": "O"
-          },
-          "IO1_T": {
-            "physical_name": "SPI_0_0_io1_t",
-            "direction": "O"
-          },
-          "IO2_I": {
-            "physical_name": "SPI_0_0_io2_i",
-            "direction": "I"
-          },
-          "IO2_O": {
-            "physical_name": "SPI_0_0_io2_o",
-            "direction": "O"
-          },
-          "IO2_T": {
-            "physical_name": "SPI_0_0_io2_t",
-            "direction": "O"
-          },
-          "IO3_I": {
-            "physical_name": "SPI_0_0_io3_i",
-            "direction": "I"
-          },
-          "IO3_O": {
-            "physical_name": "SPI_0_0_io3_o",
-            "direction": "O"
-          },
-          "IO3_T": {
-            "physical_name": "SPI_0_0_io3_t",
-            "direction": "O"
-          },
-          "SS_I": {
-            "physical_name": "SPI_0_0_ss_i",
-            "direction": "I"
-          },
-          "SS_O": {
-            "physical_name": "SPI_0_0_ss_o",
-            "direction": "O"
-          },
-          "SS_T": {
-            "physical_name": "SPI_0_0_ss_t",
-            "direction": "O"
-          }
-        }
-      },
       "STARTUP_IO_0": {
         "mode": "Master",
         "vlnv_bus_definition": "xilinx.com:display_startup_io:startup_io:1.0",
@@ -297,6 +230,53 @@
             "direction": "I"
           }
         }
+      },
+      "SPI_0_0": {
+        "mode": "Master",
+        "vlnv_bus_definition": "xilinx.com:interface:spi:1.0",
+        "vlnv": "xilinx.com:interface:spi_rtl:1.0",
+        "port_maps": {
+          "IO0_I": {
+            "physical_name": "SPI_0_0_io0_i",
+            "direction": "I"
+          },
+          "IO0_O": {
+            "physical_name": "SPI_0_0_io0_o",
+            "direction": "O"
+          },
+          "IO0_T": {
+            "physical_name": "SPI_0_0_io0_t",
+            "direction": "O"
+          },
+          "IO1_I": {
+            "physical_name": "SPI_0_0_io1_i",
+            "direction": "I"
+          },
+          "IO1_O": {
+            "physical_name": "SPI_0_0_io1_o",
+            "direction": "O"
+          },
+          "IO1_T": {
+            "physical_name": "SPI_0_0_io1_t",
+            "direction": "O"
+          },
+          "SS_I": {
+            "physical_name": "SPI_0_0_ss_i",
+            "direction": "I",
+            "left": "0",
+            "right": "0"
+          },
+          "SS_O": {
+            "physical_name": "SPI_0_0_ss_o",
+            "direction": "O",
+            "left": "0",
+            "right": "0"
+          },
+          "SS_T": {
+            "physical_name": "SPI_0_0_ss_t",
+            "direction": "O"
+          }
+        }
       }
     },
     "ports": {
@@ -397,8 +377,17 @@
         "xci_path": "ip\\blockdesign_axi_quad_spi_0_0\\blockdesign_axi_quad_spi_0_0.xci",
         "inst_hier_path": "axi_quad_spi_0",
         "parameters": {
+          "C_NUM_TRANSFER_BITS": {
+            "value": "32"
+          },
+          "C_SCK_RATIO": {
+            "value": "2"
+          },
+          "C_SPI_MODE": {
+            "value": "0"
+          },
           "QSPI_BOARD_INTERFACE": {
-            "value": "spi_flash"
+            "value": "Custom"
           },
           "USE_BOARD_FLOW": {
             "value": "true"

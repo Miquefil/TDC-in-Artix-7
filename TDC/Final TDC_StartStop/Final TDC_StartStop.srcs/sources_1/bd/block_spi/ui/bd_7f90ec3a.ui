@@ -1,0 +1,25 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-407,-396",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
+#  -string -flagsOSRD
+preplace port SPI_0_0 -pg 1 -lvl 2 -x 280 -y -150 -defaultsOSRD
+preplace port STARTUP_IO_0 -pg 1 -lvl 2 -x 280 -y -130 -defaultsOSRD
+preplace port port-id_ip2intc_irpt_0 -pg 1 -lvl 2 -x 280 -y -110 -defaultsOSRD
+preplace port port-id_ext_spi_clk_0 -pg 1 -lvl 0 -x -20 -y -140 -defaultsOSRD
+preplace port port-id_s_axi_aclk_0 -pg 1 -lvl 0 -x -20 -y -120 -defaultsOSRD
+preplace port port-id_s_axi_aresetn_0 -pg 1 -lvl 0 -x -20 -y -100 -defaultsOSRD
+preplace inst axi_quad_spi_0 -pg 1 -lvl 1 -x 130 -y -130 -defaultsOSRD
+preplace netloc axi_quad_spi_0_ip2intc_irpt 1 1 1 N -110
+preplace netloc ext_spi_clk_0_1 1 0 1 N -140
+preplace netloc s_axi_aclk_0_1 1 0 1 N -120
+preplace netloc s_axi_aresetn_0_1 1 0 1 N -100
+preplace netloc axi_quad_spi_0_SPI_0 1 1 1 N -150
+preplace netloc axi_quad_spi_0_STARTUP_IO 1 1 1 N -130
+levelinfo -pg 1 -20 130 280
+pagesize -pg 1 -db -bbox -sgen -180 -220 440 180
+"
+}
+0

@@ -1,0 +1,22 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../Final TDC_StartStop.gen/sources_1/bd/block_clock/ipshared/c2c6" --include "../../../../../" \
+"../../../../Final TDC_StartStop.ip_user_files/bd/block_clock/ip/block_clock_clk_wiz_0_0/block_clock_clk_wiz_0_0_clk_wiz.v" \
+"../../../../Final TDC_StartStop.ip_user_files/bd/block_clock/ip/block_clock_clk_wiz_0_0/block_clock_clk_wiz_0_0.v" \
+"../../../../Final TDC_StartStop.ip_user_files/bd/block_clock/sim/block_clock.v" \
+"../../../../../Coarse.v" \
+"../../../../../DecodeStart.v" \
+"../../../../../DecodeStop.v" \
+"../../../../../Edge.v" \
+"../../../../../Fine.v" \
+"../../../../../TDC.v" \
+"../../../../Final TDC_StartStop.gen/sources_1/bd/block_clock/hdl/block_clock_wrapper.v" \
+"../../../../../memory_ctrl.v" \
+"../../../../../merging.v" \
+"../../../../../uart_tx.v" \
+"../../../../../top.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

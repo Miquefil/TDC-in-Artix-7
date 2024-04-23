@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-//Date        : Sun Apr 21 19:02:13 2024
+//Date        : Sun Apr 21 19:52:31 2024
 //Host        : MikeHP running 64-bit major release  (build 9200)
 //Command     : generate_target blockdesign.bd
 //Design      : blockdesign
@@ -35,12 +35,6 @@ module blockdesign
     SPI_0_0_io1_i,
     SPI_0_0_io1_o,
     SPI_0_0_io1_t,
-    SPI_0_0_io2_i,
-    SPI_0_0_io2_o,
-    SPI_0_0_io2_t,
-    SPI_0_0_io3_i,
-    SPI_0_0_io3_o,
-    SPI_0_0_io3_t,
     SPI_0_0_ss_i,
     SPI_0_0_ss_o,
     SPI_0_0_ss_t,
@@ -75,14 +69,8 @@ module blockdesign
   (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 IO1_I" *) input SPI_0_0_io1_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 IO1_O" *) output SPI_0_0_io1_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 IO1_T" *) output SPI_0_0_io1_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 IO2_I" *) input SPI_0_0_io2_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 IO2_O" *) output SPI_0_0_io2_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 IO2_T" *) output SPI_0_0_io2_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 IO3_I" *) input SPI_0_0_io3_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 IO3_O" *) output SPI_0_0_io3_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 IO3_T" *) output SPI_0_0_io3_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 SS_I" *) input SPI_0_0_ss_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 SS_O" *) output SPI_0_0_ss_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 SS_I" *) input [0:0]SPI_0_0_ss_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 SS_O" *) output [0:0]SPI_0_0_ss_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 SPI_0_0 SS_T" *) output SPI_0_0_ss_t;
   (* X_INTERFACE_INFO = "xilinx.com:display_startup_io:startup_io:1.0 STARTUP_IO_0 cfgclk" *) output STARTUP_IO_0_cfgclk;
   (* X_INTERFACE_INFO = "xilinx.com:display_startup_io:startup_io:1.0 STARTUP_IO_0 cfgmclk" *) output STARTUP_IO_0_cfgmclk;
@@ -116,13 +104,7 @@ module blockdesign
   wire axi_quad_spi_0_SPI_0_IO1_I;
   wire axi_quad_spi_0_SPI_0_IO1_O;
   wire axi_quad_spi_0_SPI_0_IO1_T;
-  wire axi_quad_spi_0_SPI_0_IO2_I;
-  wire axi_quad_spi_0_SPI_0_IO2_O;
-  wire axi_quad_spi_0_SPI_0_IO2_T;
-  wire axi_quad_spi_0_SPI_0_IO3_I;
-  wire axi_quad_spi_0_SPI_0_IO3_O;
-  wire axi_quad_spi_0_SPI_0_IO3_T;
-  wire axi_quad_spi_0_SPI_0_SS_I;
+  wire [0:0]axi_quad_spi_0_SPI_0_SS_I;
   wire [0:0]axi_quad_spi_0_SPI_0_SS_O;
   wire axi_quad_spi_0_SPI_0_SS_T;
   wire axi_quad_spi_0_STARTUP_IO_cfgclk;
@@ -155,11 +137,7 @@ module blockdesign
   assign SPI_0_0_io0_t = axi_quad_spi_0_SPI_0_IO0_T;
   assign SPI_0_0_io1_o = axi_quad_spi_0_SPI_0_IO1_O;
   assign SPI_0_0_io1_t = axi_quad_spi_0_SPI_0_IO1_T;
-  assign SPI_0_0_io2_o = axi_quad_spi_0_SPI_0_IO2_O;
-  assign SPI_0_0_io2_t = axi_quad_spi_0_SPI_0_IO2_T;
-  assign SPI_0_0_io3_o = axi_quad_spi_0_SPI_0_IO3_O;
-  assign SPI_0_0_io3_t = axi_quad_spi_0_SPI_0_IO3_T;
-  assign SPI_0_0_ss_o = axi_quad_spi_0_SPI_0_SS_O;
+  assign SPI_0_0_ss_o[0] = axi_quad_spi_0_SPI_0_SS_O;
   assign SPI_0_0_ss_t = axi_quad_spi_0_SPI_0_SS_T;
   assign STARTUP_IO_0_cfgclk = axi_quad_spi_0_STARTUP_IO_cfgclk;
   assign STARTUP_IO_0_cfgmclk = axi_quad_spi_0_STARTUP_IO_cfgmclk;
@@ -167,9 +145,7 @@ module blockdesign
   assign STARTUP_IO_0_preq = axi_quad_spi_0_STARTUP_IO_preq;
   assign axi_quad_spi_0_SPI_0_IO0_I = SPI_0_0_io0_i;
   assign axi_quad_spi_0_SPI_0_IO1_I = SPI_0_0_io1_i;
-  assign axi_quad_spi_0_SPI_0_IO2_I = SPI_0_0_io2_i;
-  assign axi_quad_spi_0_SPI_0_IO3_I = SPI_0_0_io3_i;
-  assign axi_quad_spi_0_SPI_0_SS_I = SPI_0_0_ss_i;
+  assign axi_quad_spi_0_SPI_0_SS_I = SPI_0_0_ss_i[0];
   assign ext_spi_clk_0_1 = ext_spi_clk_0;
   assign ip2intc_irpt_0 = axi_quad_spi_0_ip2intc_irpt;
   assign s_axi_aclk_0_1 = s_axi_aclk_0;
@@ -185,12 +161,6 @@ module blockdesign
         .io1_i(axi_quad_spi_0_SPI_0_IO1_I),
         .io1_o(axi_quad_spi_0_SPI_0_IO1_O),
         .io1_t(axi_quad_spi_0_SPI_0_IO1_T),
-        .io2_i(axi_quad_spi_0_SPI_0_IO2_I),
-        .io2_o(axi_quad_spi_0_SPI_0_IO2_O),
-        .io2_t(axi_quad_spi_0_SPI_0_IO2_T),
-        .io3_i(axi_quad_spi_0_SPI_0_IO3_I),
-        .io3_o(axi_quad_spi_0_SPI_0_IO3_O),
-        .io3_t(axi_quad_spi_0_SPI_0_IO3_T),
         .ip2intc_irpt(axi_quad_spi_0_ip2intc_irpt),
         .preq(axi_quad_spi_0_STARTUP_IO_preq),
         .s_axi_aclk(s_axi_aclk_0_1),

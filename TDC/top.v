@@ -9,10 +9,11 @@
 `include "defines.v"
 (* keep_hierarchy = "TRUE" *)
 module top (
-    input  wire                     ReadClk,
-    input  wire                     WriteClk,
+    input  wire                     clk,
     input  wire                     rst,
     input  wire                     hit,
+    input  wire                     startWriting,
+    input  wire                     startReading,
 
     output reg                      led_ReadERR,
     output reg                      led_WriteERR
@@ -21,10 +22,12 @@ module top (
 
     wire [`DIG_OUT-1:0]             data;
     wire                            measure_done;
+    reg                             startTDC;
     TDC u_tdc(
         .iClk(WriteClk),
         .iRst(rst),
         .iHit(hit),
+        .enable(startTDC),
         .oTDC(data),
         .done(measure_done)
     );
@@ -60,68 +63,115 @@ module top (
     );
 
     assign      mem_input[`DIG_OUT-1:0]     = data;
-    assign      wCLK                        = WriteClk;
-    assign      rCLK                        = ReadClk;
+    assign      wCLK                        = clk;
 
     //assign      writeEN                     = measure_done;     //TODO: checkear los timings acá
+    
+    ////////----------------------READ---------------------------------------------------
+    always @(posedge wCLK) begin
+        //Starting the whole TDC
+        if (startWriting) begin
+            startTDC <= 1'b1;
+        end
+        else if(startReading) begin
+            startTDC <= 1'b0;
+        end
 
-
-    ////////------ SPI ------------------------------------------------------------
-    blockdesign_wrapper u_spi(
-        .AXI_LITE_0_araddr ( ),                //input       [6:0]
-        .AXI_LITE_0_arready ( ),                    //output      
-        .AXI_LITE_0_arvalid ( ),                    //input       
-        .AXI_LITE_0_awaddr ( ),                //input       [6:0]
-        .AXI_LITE_0_awready ( ),                    //output      
-        .AXI_LITE_0_awvalid ( ),                    //input       
-        .AXI_LITE_0_bready ( ),                     //input       
-        .AXI_LITE_0_bresp ( ),                 //output      [1:0]
-        .AXI_LITE_0_bvalid ( ),                     //output      
-        .AXI_LITE_0_rdata ( ),                //output      [31:0]
-        .AXI_LITE_0_rready ( ),                     //input       
-        .AXI_LITE_0_rresp ( ),                 //output      [1:0]
-        .AXI_LITE_0_rvalid ( ),                     //output      
-        .AXI_LITE_0_wdata ( ),                //input       [31:0]
-        .AXI_LITE_0_wready ( ),                     //output      
-        .AXI_LITE_0_wstrb ( ),                 //input       [3:0]
-        .AXI_LITE_0_wvalid ( ),                     //input       
-        .SPI_0_0_io0_io ( ),                        //inout       
-        .SPI_0_0_io1_io ( ),                        //inout       
-        .SPI_0_0_io2_io ( ),                        //inout       
-        .SPI_0_0_io3_io ( ),                        //inout       
-        .SPI_0_0_ss_io ( ),                         //inout       
-        .STARTUP_IO_0_cfgclk ( ),                   //output      
-        .STARTUP_IO_0_cfgmclk ( ),                  //output      
-        .STARTUP_IO_0_eos ( ),                      //output      
-        .STARTUP_IO_0_preq ( ),                     //output      
-        .ext_spi_clk_0 ( ),                         //input       
-        .ip2intc_irpt_0 ( ),                        //output      
-        .s_axi_aclk_0 ( ),                          //input       
-        .s_axi_aresetn_0 ( )                        //input       
-    );
-
-    always ( ) @(posedge wCLK) begin
-    //Enabling Write
-        if(measure_done & !almost_full) begin
+        //Enabling Write
+        if(startWriting & measure_done & !almost_full) begin
             writeEN <= 1;
         end 
         else begin
             writeEN <= 0;
         end
+        
 
-    //Write Error:
+        //Write Error:
         if(mem_writeerr) begin
             led_WriteERR     <= 1;
         end
+    end
+    ///////////////////////------------------------------------------------------------
 
-    //Read Error:
-        if(mem_readerr) begin
-            led_ReadERR     <= 1;
+    ///////////------ UART ------------------------------------------------------------
+    wire                            uart_clk;
+    wire                            uart_interr;
+    wire [63:0]                     uart_dataIn;                            
+    wire                            uart_active;
+    wire                            uart_dataOut;          //salida serie
+    wire                            uart_done; 
+    block_clock_wrapper u_clk (
+        .CLK_IN1_D_0_clk_n(clk),                           // input
+        .CLK_IN1_D_0_clk_p(),                           // input
+        .clk_out_0(uart_clk),                                   // output
+        .locked_0(),                                    // output
+        .reset_0()                                      // input
+        );
+
+    uart_tx u_uart (
+            .i_Clock(uart_clk),               //input       
+            .i_Tx_DV(uart_interr),            //input       
+            .i_Tx_Byte(uart_dataIn),          //input [7:0] 
+            .o_Tx_Active(uart_active),        //output      
+            .o_Tx_Serial(uart_dataOut),       //output  reg 
+            .o_Tx_Done(uart_done)             //output  wire
+    );
+    reg                     uart_Now;
+    reg [31:0]              uart_buffer; 
+    reg [4:0]   	        counter;
+    reg                     readCounter;
+    //reg [63:0]              uart_dataInput;
+    
+    assign                  rCLK = readCounter;
+    assign                  uart_interr = uart_Now;
+    assign                  uart_dataIn = {uart_buffer[31:0], {16{2'b01}}};
+
+    //Empezamos a leer      --- CODIGO HECHO PARA CLOCKS MEMORIA<-->UART iguales
+    always @(posedge rCLK) begin
+        if((startReading) & (counter<5'b11111)) begin //Counter
+            counter <= counter + 1'b1;    
+        end 
+        else begin
+            counter            <= 0;
         end
 
+        if(startReading)//clock for FIFO
+        begin
+            if (counter==5'b11111) begin
+                readCounter <= ~readCounter;
+            end 
+        end
+        else begin
+            readCounter <= 1'b0;
+        end
 
+        if(startReading&(~mem_empty)) begin  //Read Enable
+            readEN  <= 1'b1;
+        end 
+        else begin
+            readEN  <= 1'b0;
+        end
 
+        
+        if(startReading) begin  //Transmitting
+            if ((counter == 0)&(~mem_empty)) begin  //transmito en el 0
+                uart_Now <= 1'b1;    
+            end 
+            else begin
+                uart_Now <= 1'b0;
+            end
+        end
 
+        if(startReading) begin      //refreshing buffer
+            uart_buffer <= mem_output;
+        end
+        else begin
+            uart_buffer <= 0;
+        end
+
+        if(mem_readerr) begin //Read Error:
+            led_ReadERR     <= 1;
+        end
     end
     ///////////------------------------------------------------------------------------------
 endmodule //

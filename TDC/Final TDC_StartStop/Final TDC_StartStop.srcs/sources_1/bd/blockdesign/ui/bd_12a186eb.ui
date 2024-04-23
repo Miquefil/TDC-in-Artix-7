@@ -1,28 +1,28 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.700821",
-   "Default View_TopLeft":"-257,-420",
+   "Default View_ScaleFactor":"0.572128",
+   "Default View_TopLeft":"-412,-260",
    "ExpandedHierarchyInLayout":"",
    "PinnedBlocks":"/axi_quad_spi_0|",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
 #  -string -flagsOSRD
-preplace port SPI_0_0 -pg 1 -lvl 2 -x 500 -y -160 -defaultsOSRD
-preplace port STARTUP_IO_0 -pg 1 -lvl 2 -x 500 -y -130 -defaultsOSRD
+preplace port STARTUP_IO_0 -pg 1 -lvl 2 -x 570 -y 220 -defaultsOSRD
 preplace port AXI_LITE_0 -pg 1 -lvl 0 -x -110 -y -170 -defaultsOSRD
-preplace port port-id_ip2intc_irpt_0 -pg 1 -lvl 2 -x 500 -y -110 -defaultsOSRD
+preplace port SPI_0_0 -pg 1 -lvl 2 -x 570 -y -160 -defaultsOSRD
+preplace port port-id_ip2intc_irpt_0 -pg 1 -lvl 2 -x 570 -y 280 -defaultsOSRD
 preplace port port-id_ext_spi_clk_0 -pg 1 -lvl 0 -x -110 -y -140 -defaultsOSRD
 preplace port port-id_s_axi_aclk_0 -pg 1 -lvl 0 -x -110 -y -120 -defaultsOSRD
 preplace port port-id_s_axi_aresetn_0 -pg 1 -lvl 0 -x -110 -y -100 -defaultsOSRD
-preplace inst axi_quad_spi_0 -pg 1 -lvl 1 -x 350 -y -130 -defaultsOSRD
-preplace netloc axi_quad_spi_0_ip2intc_irpt 1 1 1 N -110
-preplace netloc ext_spi_clk_0_1 1 0 1 N -140
-preplace netloc s_axi_aclk_0_1 1 0 1 N -120
-preplace netloc s_axi_aresetn_0_1 1 0 1 N -100
-preplace netloc axi_quad_spi_0_SPI_0 1 1 1 480 -160n
-preplace netloc axi_quad_spi_0_STARTUP_IO 1 1 1 N -130
-preplace netloc AXI_LITE_0_1 1 0 1 -90 -170n
-levelinfo -pg 1 -110 350 500
-pagesize -pg 1 -db -bbox -sgen -270 -250 670 320
+preplace inst axi_quad_spi_0 -pg 1 -lvl 1 -x 350 -y 50 -defaultsOSRD -resize 324 436
+preplace netloc axi_quad_spi_0_ip2intc_irpt 1 1 1 540 220n
+preplace netloc ext_spi_clk_0_1 1 0 1 -70 -140n
+preplace netloc s_axi_aclk_0_1 1 0 1 -80 -120n
+preplace netloc s_axi_aresetn_0_1 1 0 1 -90 -100n
+preplace netloc AXI_LITE_0_1 1 0 1 -60 -170n
+preplace netloc axi_quad_spi_0_SPI_0 1 1 1 550 -160n
+preplace netloc axi_quad_spi_0_STARTUP_IO 1 1 1 550 50n
+levelinfo -pg 1 -110 350 570
+pagesize -pg 1 -db -bbox -sgen -270 -250 730 320
 "
 }
 {
