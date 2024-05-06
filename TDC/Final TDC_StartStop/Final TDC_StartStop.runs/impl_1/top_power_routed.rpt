@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Thu Apr 18 16:35:15 2024
+| Date             : Sun May  5 20:09:02 2024
 | Host             : MikeHP running 64-bit major release  (build 9200)
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 9.187        |
+| Total On-Chip Power (W)  | 0.295        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 9.020        |
-| Device Static (W)        | 0.167        |
+| Dynamic (W)              | 0.148        |
+| Device Static (W)        | 0.148        |
 | Effective TJA (C/W)      | 1.9          |
-| Max Ambient (C)          | 67.8         |
-| Junction Temperature (C) | 42.2         |
+| Max Ambient (C)          | 84.4         |
+| Junction Temperature (C) | 25.6         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,16 +52,19 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     3.693 |     1901 |       --- |             --- |
-|   LUT as Logic |     3.450 |      938 |    133800 |            0.70 |
-|   Register     |     0.216 |      784 |    269200 |            0.29 |
-|   CARRY4       |     0.021 |       64 |     33450 |            0.19 |
-|   BUFG         |     0.006 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |        8 |       --- |             --- |
-| Signals        |     4.479 |     1867 |       --- |             --- |
-| I/O            |     0.847 |       36 |       400 |            9.00 |
-| Static Power   |     0.167 |          |           |                 |
-| Total          |     9.187 |          |           |                 |
+| Clocks         |     0.009 |        6 |       --- |             --- |
+| Slice Logic    |     0.009 |     2062 |       --- |             --- |
+|   LUT as Logic |     0.008 |     1021 |    133800 |            0.76 |
+|   Register     |    <0.001 |      900 |    269200 |            0.33 |
+|   CARRY4       |    <0.001 |       64 |     33450 |            0.19 |
+|   BUFG         |    <0.001 |        1 |        32 |            3.13 |
+|   Others       |     0.000 |       19 |       --- |             --- |
+| Signals        |     0.014 |     2004 |       --- |             --- |
+| Block RAM      |    <0.001 |        1 |       365 |            0.27 |
+| MMCM           |     0.110 |        1 |        10 |           10.00 |
+| I/O            |     0.005 |       10 |       400 |            2.50 |
+| Static Power   |     0.148 |          |           |                 |
+| Total          |     0.295 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,11 +74,11 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     8.240 |       8.181 |      0.060 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.103 |       0.069 |      0.034 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.064 |       0.034 |      0.030 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.092 |       0.062 |      0.031 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.005 |       0.000 |      0.005 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vcco18    |       1.800 |     0.402 |       0.397 |      0.005 |       NA    | Unspecified | NA         |
+| Vcco18    |       1.800 |     0.006 |       0.001 |      0.005 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -94,7 +97,7 @@ Table of Contents
 | User Input Data             | Confidence | Details                                                | Action                                                                                                             |
 +-----------------------------+------------+--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 | Design implementation state | High       | Design is routed                                       |                                                                                                                    |
-| Clock nodes activity        | Low        | User specified less than 75% of clocks                 | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
+| Clock nodes activity        | Medium     | More than 5% of clocks are missing user specification  | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
 | I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view           |
 | Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views         |
 | Device models               | High       | Device models are Production                           |                                                                                                                    |
@@ -124,9 +127,14 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+-------+--------+-----------------+
-| Clock | Domain | Constraint (ns) |
-+-------+--------+-----------------+
++----------------------------------+---------------------------------------------------------------------+-----------------+
+| Clock                            | Domain                                                              | Constraint (ns) |
++----------------------------------+---------------------------------------------------------------------+-----------------+
+| clk_out2_block_clock_clk_wiz_0_0 | u_clk/block_clock_i/clk_wiz_0/inst/clk_out2_block_clock_clk_wiz_0_0 |             5.0 |
+| clk_out_block_clock_clk_wiz_0_0  | u_clk/block_clock_i/clk_wiz_0/inst/clk_out_block_clock_clk_wiz_0_0  |           135.6 |
+| clk_p                            | clk_p                                                               |             5.0 |
+| clkfbout_block_clock_clk_wiz_0_0 | u_clk/block_clock_i/clk_wiz_0/inst/clkfbout_block_clock_clk_wiz_0_0 |             5.0 |
++----------------------------------+---------------------------------------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -135,16 +143,17 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+------------------+-----------+
-| Name             | Power (W) |
-+------------------+-----------+
-| top              |     9.020 |
-|   u_Coarse       |     0.101 |
-|   u_DecStart     |     2.567 |
-|   u_DecStop      |     2.645 |
-|   u_EdgeDetector |     0.155 |
-|   u_FineDelay    |     2.434 |
-|   u_merge        |     0.050 |
-+------------------+-----------+
++-------------------+-----------+
+| Name              | Power (W) |
++-------------------+-----------+
+| top               |     0.148 |
+|   u_clk           |     0.113 |
+|     block_clock_i |     0.113 |
+|       clk_wiz_0   |     0.113 |
+|   u_tdc           |     0.031 |
+|     u_DecStart    |     0.006 |
+|     u_DecStop     |     0.006 |
+|     u_FineDelay   |     0.017 |
++-------------------+-----------+
 
 

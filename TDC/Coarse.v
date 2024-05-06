@@ -14,12 +14,12 @@
 //////////////////////////////////////////////////////////////////////
 (* keep_hierarchy = "TRUE" *) 
 module Coarse #(parameter C_DIG = 10) (
-    input   wire      clk,
-    input   wire      iRst,       //reset count
-    input   wire      iCE,        //enable
-    input   wire      iStore,     //hold count
+    input   wire                clk,
+    input   wire                iRst,       //reset count
+    input   wire                iCE,        //enable
+    input   wire                iStore,     //hold count
 
-    output  wire[C_DIG-1:0]    oCoarse
+    output  wire [C_DIG-1:0]    oCoarse
 );
 
     (* DONT_TOUCH = "yes" *) reg[C_DIG-1:0]    count;

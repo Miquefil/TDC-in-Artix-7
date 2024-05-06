@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="345.696 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,146.995 ns"></ZoomEndTime>
+      <Cursor1Time time="1,040.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="167"></NameColumnWidth>
+      <ValueColumnWidth column_width="79"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="33" />
+   <wvobject fp_name="/top/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/hit" type="logic">
+      <obj_property name="ElementShortName">hit</obj_property>
+      <obj_property name="ObjectShortName">hit</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/startWriting" type="logic">
+      <obj_property name="ElementShortName">startWriting</obj_property>
+      <obj_property name="ObjectShortName">startWriting</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/startReading" type="logic">
+      <obj_property name="ElementShortName">startReading</obj_property>
+      <obj_property name="ObjectShortName">startReading</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/led_ReadERR" type="logic">
+      <obj_property name="ElementShortName">led_ReadERR</obj_property>
+      <obj_property name="ObjectShortName">led_ReadERR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/led_WriteERR" type="logic">
+      <obj_property name="ElementShortName">led_WriteERR</obj_property>
+      <obj_property name="ObjectShortName">led_WriteERR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/data" type="array">
+      <obj_property name="ElementShortName">data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/measure_done" type="logic">
+      <obj_property name="ElementShortName">measure_done</obj_property>
+      <obj_property name="ObjectShortName">measure_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/startTDC" type="logic">
+      <obj_property name="ElementShortName">startTDC</obj_property>
+      <obj_property name="ObjectShortName">startTDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/rCLK" type="logic">
+      <obj_property name="ElementShortName">rCLK</obj_property>
+      <obj_property name="ObjectShortName">rCLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/wCLK" type="logic">
+      <obj_property name="ElementShortName">wCLK</obj_property>
+      <obj_property name="ObjectShortName">wCLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/readEN" type="logic">
+      <obj_property name="ElementShortName">readEN</obj_property>
+      <obj_property name="ObjectShortName">readEN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/writeEN" type="logic">
+      <obj_property name="ElementShortName">writeEN</obj_property>
+      <obj_property name="ObjectShortName">writeEN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/mem_input" type="array">
+      <obj_property name="ElementShortName">mem_input[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_input[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/mem_output" type="array">
+      <obj_property name="ElementShortName">mem_output[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_output[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/mem_busy" type="logic">
+      <obj_property name="ElementShortName">mem_busy</obj_property>
+      <obj_property name="ObjectShortName">mem_busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/mem_full" type="logic">
+      <obj_property name="ElementShortName">mem_full</obj_property>
+      <obj_property name="ObjectShortName">mem_full</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/almost_full" type="logic">
+      <obj_property name="ElementShortName">almost_full</obj_property>
+      <obj_property name="ObjectShortName">almost_full</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/mem_empty" type="logic">
+      <obj_property name="ElementShortName">mem_empty</obj_property>
+      <obj_property name="ObjectShortName">mem_empty</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/almost_empty" type="logic">
+      <obj_property name="ElementShortName">almost_empty</obj_property>
+      <obj_property name="ObjectShortName">almost_empty</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/mem_readerr" type="logic">
+      <obj_property name="ElementShortName">mem_readerr</obj_property>
+      <obj_property name="ObjectShortName">mem_readerr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/mem_writeerr" type="logic">
+      <obj_property name="ElementShortName">mem_writeerr</obj_property>
+      <obj_property name="ObjectShortName">mem_writeerr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/uart_clk" type="logic">
+      <obj_property name="ElementShortName">uart_clk</obj_property>
+      <obj_property name="ObjectShortName">uart_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/uart_interr" type="logic">
+      <obj_property name="ElementShortName">uart_interr</obj_property>
+      <obj_property name="ObjectShortName">uart_interr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/uart_dataIn" type="array">
+      <obj_property name="ElementShortName">uart_dataIn[63:0]</obj_property>
+      <obj_property name="ObjectShortName">uart_dataIn[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/uart_active" type="logic">
+      <obj_property name="ElementShortName">uart_active</obj_property>
+      <obj_property name="ObjectShortName">uart_active</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/uart_dataOut" type="logic">
+      <obj_property name="ElementShortName">uart_dataOut</obj_property>
+      <obj_property name="ObjectShortName">uart_dataOut</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/uart_done" type="logic">
+      <obj_property name="ElementShortName">uart_done</obj_property>
+      <obj_property name="ObjectShortName">uart_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/uart_Now" type="logic">
+      <obj_property name="ElementShortName">uart_Now</obj_property>
+      <obj_property name="ObjectShortName">uart_Now</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/uart_buffer" type="array">
+      <obj_property name="ElementShortName">uart_buffer[31:0]</obj_property>
+      <obj_property name="ObjectShortName">uart_buffer[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/counter" type="array">
+      <obj_property name="ElementShortName">counter[4:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/readCounter" type="logic">
+      <obj_property name="ElementShortName">readCounter</obj_property>
+      <obj_property name="ObjectShortName">readCounter</obj_property>
+   </wvobject>
+</wave_config>

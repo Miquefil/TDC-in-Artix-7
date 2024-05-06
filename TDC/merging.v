@@ -18,6 +18,7 @@
 module merging #(parameter N = 2) (
     input  wire                         clk,
     input  wire                         fall,
+    input  wire                         rise,
     input  wire                         irst,
     input  wire[`NUM_DECODE-1:0]        FallEdge,
     input  wire[`NUM_DECODE-1:0]        StartEdge,
@@ -28,27 +29,43 @@ module merging #(parameter N = 2) (
     //debugging
     //output wire                         debugRst    
     );
+    //NOTES:           --------------------------------------------
+    //  Stores decodedStart 1 clock later that StartEdge comes
+    //  Stores decodedStop 1 clock later that FallEdge comes
+    //  Once 'fall' comes: 4 clocks later output is merged
 
 
-    ///////////CONTROL -----------------------------------------------------
-    
-    // reg                                         rst_int;
-    wire                                        rst;   
-    wire                                        rst_int;
-    (* DONT_TOUCH = "yes" *) reg                enable_counter;
-    (* DONT_TOUCH = "yes" *) reg                Reg_rstint;
-    (* DONT_TOUCH = "yes" *) reg[N-1:0]         counter;
+    wire                                                rst;   
+    wire                                                rst_int;
+    (* DONT_TOUCH = "yes" *) reg                        enable_counter;
+    (* DONT_TOUCH = "yes" *) reg [`NUM_DECODE-1:0]      StartEdge_stored = {`NUM_DECODE{1'b0}};
+    (* DONT_TOUCH = "yes" *) reg                        storeStart       = 1'b0;
+    (* DONT_TOUCH = "yes" *) reg [`NUM_DECODE-1:0]      StopEdge_stored  = {`NUM_DECODE{1'b0}};
+    (* DONT_TOUCH = "yes" *) reg                        storeStop        = 1'b0;
+    (* DONT_TOUCH = "yes" *) reg                        Reg_rstint  = 1'b0;
+    (* DONT_TOUCH = "yes" *) reg[N-1:0]                 counter     = {N{1'b0}};
 
 
     assign rst = (rst_int|irst);        //rst_int: RESET INTERNO para overflow
                                         //irst   : RESET EXTERNO 
+    always @(posedge rise, posedge rst) begin
+        if(rst) begin
+            StartEdge_stored <= {`NUM_DECODE{1'b0}};
+        end        
+        else if(rise) begin
+            storeStart       <= 1'b1;
+        end
+    end
+
 
     always @(posedge fall, posedge rst) begin
         if(rst) begin
             enable_counter <= 1'b0;
+            StopEdge_stored <= {`NUM_DECODE{1'b0}};
         end
-        else begin
-            enable_counter <= 1'b1;     
+        else if(fall) begin
+            enable_counter  <= 1'b1;     
+            storeStop       <= 1'b1;
         end
     end
 
@@ -62,8 +79,17 @@ module merging #(parameter N = 2) (
                 counter <= counter + 1'b1;
             end
         end
+
+        if(storeStart) begin       
+            StartEdge_stored <= StartEdge;
+        end
+
+        if(storeStop) begin
+            StopEdge_stored <= FallEdge;
+        end
+
         if(counter == {N{1'b1}}) begin
-            out         <=  {Coarse, StartEdge, FallEdge};
+            out         <=  {Coarse, StartEdge_stored, StopEdge_stored};
         end
 
         //Rst FlipFlop
@@ -77,13 +103,5 @@ module merging #(parameter N = 2) (
 
     assign rst_int = Reg_rstint;
     assign done    = Reg_rstint;        //resets the whole systems at the same time
-
-
-    // always @(*) begin
-    //     rst_int = 1'b0;
-    //     if(counter == {N{1'b1}}) begin
-    //         rst_int =  1'b1;
-    //     end
-    // end
 
 endmodule //

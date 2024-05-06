@@ -1,0 +1,3 @@
+Time resolution is 1 ps
+$finish called at time : 1070143 ns : File "C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top_tb.v" Line 214
+INFO: xsimkernel Simulation Memory Usage: 20488 KB (Peak: 20488 KB), Simulation CPU Usage: 24093 ms

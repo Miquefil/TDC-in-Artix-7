@@ -33,13 +33,14 @@ module TDC (
     (* dont_touch = "TRUE" *)FDCE #(.INIT(1'b0)) FFDelayStart_1(
         .Q          (FFDelayStart),
         .C          (iClk),
-        .CE         (enable),               //hasta que no viene enable HIGH no prendemos
+        .CE         (1'b1),               //hasta que no viene enable HIGH no prendemos
         .CLR        (),
         .D          (1'b1)
     );
     (* dont_touch = "TRUE" *)FDCE #(.INIT(1'b0)) FFDelayStart_2(
         .Q          (ready),
         .C          (iClk),
+        // .CE         (enable),               //not going to start until starting delay puts a 1
         .CE         (1'b1),
         .CLR        (done),                 //finishing Merge resets the whole system
         .D          (FFDelayStart)
@@ -64,8 +65,8 @@ module TDC (
         .iStartEnable   (Rise),
         .oFFStart      (Start),       //FF outputs of Start column
         .oFFStop        (Stop),       //FF outputs of Stop column
-        .outTaps        (taps),        //output from the Carrys output
-        .outFF             ( ) 
+        .outTaps            (),        //output from the Carrys output
+        .outFF              () 
     );
 
     DecodeStart #(`NUM_TAPS, `NUM_DECODE) u_DecStart(
@@ -80,18 +81,19 @@ module TDC (
 
     wire[`COUNTER_DIG-1:0]       CoarseStamp;
     Coarse #(`COUNTER_DIG) u_Coarse (
-    .clk            (iClk),
-    .iRst           (rst),       //reset count
-    .iCE            (iHit),        //enable
-    .iStore         (Fall),
-    .oCoarse         (CoarseStamp)   
+        .clk            (iClk),
+        .iRst           (rst),       //reset count
+        .iCE            (iHit),        //enable
+        .iStore         (Fall),
+        .oCoarse        (CoarseStamp)   
     );
 
     //
-    merging #(2) u_merge (
+    merging #(.N(3)) u_merge (
         .clk(iClk),
         .irst(rst),
         .fall(Fall),
+        .rise(Rise),
         .FallEdge(DecodedStop),
         .StartEdge(DecodedStart),
         .Coarse(CoarseStamp),

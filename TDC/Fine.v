@@ -24,7 +24,7 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
         output  wire[NUM-1:0]   oFFStop ,       //FF outputs of Stop column
 
 
-        //optional control signals
+        //debugging signals
         output  wire[NUM-1:0]   outTaps,        //output from the Carrys output
         output  wire[NUM-1:0]   outFF           //output from the first column of FF
     );

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x668B8D6C54A16E2B",
+      "boundary_crc": "0x20D849596C2DBA4B",
       "device": "xc7a200tfbg676-2",
       "gen_directory": "../../../../Final TDC_StartStop.gen/sources_1/bd/block_clock",
       "name": "block_clock",
@@ -24,8 +24,7 @@
             "value_src": "default"
           },
           "FREQ_HZ": {
-            "value": "100000000",
-            "value_src": "default"
+            "value": "200000000"
           }
         },
         "port_maps": {
@@ -41,32 +40,42 @@
       }
     },
     "ports": {
-      "reset_0": {
-        "type": "rst",
-        "direction": "I",
-        "parameters": {
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "POLARITY": {
-            "value": "ACTIVE_HIGH"
-          }
-        }
-      },
-      "locked_0": {
-        "direction": "O"
-      },
       "clk_out_0": {
         "type": "clk",
         "direction": "O",
         "parameters": {
           "CLK_DOMAIN": {
-            "value": "block_clock_clk_wiz_0_0_clk_out",
-            "value_src": "default_prop"
+            "value": "/clk_wiz_0_clk_out1",
+            "value_src": "default"
           },
           "FREQ_HZ": {
-            "value": "7372777",
+            "value": "7373271",
+            "value_src": "ip_prop"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "ip_prop"
+          }
+        }
+      },
+      "clk_out2_0": {
+        "type": "clk",
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "/clk_wiz_0_clk_out1",
+            "value_src": "ip_prop"
+          },
+          "FREQ_HZ": {
+            "value": "200000000",
             "value_src": "ip_prop"
           },
           "FREQ_TOLERANCE_HZ": {
@@ -96,28 +105,49 @@
             "value": "50.0"
           },
           "CLKIN2_JITTER_PS": {
-            "value": "56.86"
+            "value": "71.57000000000001"
+          },
+          "CLKOUT1_DRIVES": {
+            "value": "BUFG"
           },
           "CLKOUT1_JITTER": {
-            "value": "505.913"
+            "value": "193.129"
           },
           "CLKOUT1_PHASE_ERROR": {
-            "value": "508.766"
+            "value": "97.786"
           },
           "CLKOUT1_REQUESTED_OUT_FREQ": {
-            "value": "7.37278"
+            "value": "7.37327"
+          },
+          "CLKOUT2_DRIVES": {
+            "value": "BUFG"
           },
           "CLKOUT2_JITTER": {
-            "value": "114.523"
+            "value": "100.010"
           },
           "CLKOUT2_PHASE_ERROR": {
             "value": "97.786"
           },
           "CLKOUT2_REQUESTED_OUT_FREQ": {
-            "value": "100.000"
+            "value": "200"
           },
           "CLKOUT2_USED": {
-            "value": "false"
+            "value": "true"
+          },
+          "CLKOUT3_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT4_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT5_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT6_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT7_DRIVES": {
+            "value": "BUFG"
           },
           "CLK_IN1_BOARD_INTERFACE": {
             "value": "sys_diff_clock"
@@ -125,8 +155,11 @@
           "CLK_OUT1_PORT": {
             "value": "clk_out"
           },
+          "ENABLE_CLOCK_MONITOR": {
+            "value": "false"
+          },
           "MMCM_CLKFBOUT_MULT_F": {
-            "value": "60.125"
+            "value": "4.000"
           },
           "MMCM_CLKIN1_PERIOD": {
             "value": "5.000"
@@ -135,16 +168,22 @@
             "value": "10.0"
           },
           "MMCM_CLKOUT0_DIVIDE_F": {
-            "value": "116.500"
+            "value": "108.500"
           },
           "MMCM_CLKOUT1_DIVIDE": {
-            "value": "1"
+            "value": "4"
           },
           "MMCM_DIVCLK_DIVIDE": {
-            "value": "14"
+            "value": "1"
           },
           "NUM_OUT_CLKS": {
-            "value": "1"
+            "value": "2"
+          },
+          "PRIMITIVE": {
+            "value": "MMCM"
+          },
+          "PRIM_IN_FREQ": {
+            "value": "200.000"
           },
           "PRIM_SOURCE": {
             "value": "Differential_clock_capable_pin"
@@ -153,6 +192,15 @@
             "value": "Single_ended_clock_capable_pin"
           },
           "USE_INCLK_SWITCHOVER": {
+            "value": "false"
+          },
+          "USE_LOCKED": {
+            "value": "false"
+          },
+          "USE_PHASE_ALIGNMENT": {
+            "value": "false"
+          },
+          "USE_RESET": {
             "value": "false"
           }
         }
@@ -173,16 +221,10 @@
           "clk_out_0"
         ]
       },
-      "clk_wiz_0_locked": {
+      "clk_wiz_0_clk_out2": {
         "ports": [
-          "clk_wiz_0/locked",
-          "locked_0"
-        ]
-      },
-      "reset_0_1": {
-        "ports": [
-          "reset_0",
-          "clk_wiz_0/reset"
+          "clk_wiz_0/clk_out2",
+          "clk_out2_0"
         ]
       }
     }

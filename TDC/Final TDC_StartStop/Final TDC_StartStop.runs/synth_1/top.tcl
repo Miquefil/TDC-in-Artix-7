@@ -70,19 +70,16 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_param synth.incrementalSynthesisCache C:/Users/mique/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-13372-MikeHP/incrSyn
-set_msg_config -id {Common 17-41} -limit 10000000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a200tfbg676-2
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
+set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir {C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Final TDC_StartStop/Final TDC_StartStop.cache/wt} [current_project]
 set_property parent.project_path {C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Final TDC_StartStop/Final TDC_StartStop.xpr} [current_project]
+set_property XPM_LIBRARIES XPM_CDC [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part xilinx.com:ac701:part0:1.4 [current_project]
@@ -98,9 +95,19 @@ read_verilog -library xil_defaultlib {
   C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/DecodeStop.v
   C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Edge.v
   C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Fine.v
+  C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/TDC.v
+  {C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Final TDC_StartStop/Final TDC_StartStop.gen/sources_1/bd/block_clock/hdl/block_clock_wrapper.v}
+  C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/memory_ctrl.v
   C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/merging.v
+  C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/uart_tx.v
   C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top.v
 }
+add_files {{C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Final TDC_StartStop/Final TDC_StartStop.srcs/sources_1/bd/block_clock/block_clock.bd}}
+set_property used_in_implementation false [get_files -all {{c:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Final TDC_StartStop/Final TDC_StartStop.gen/sources_1/bd/block_clock/ip/block_clock_clk_wiz_0_0/block_clock_clk_wiz_0_0_board.xdc}}]
+set_property used_in_implementation false [get_files -all {{c:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Final TDC_StartStop/Final TDC_StartStop.gen/sources_1/bd/block_clock/ip/block_clock_clk_wiz_0_0/block_clock_clk_wiz_0_0.xdc}}]
+set_property used_in_implementation false [get_files -all {{c:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Final TDC_StartStop/Final TDC_StartStop.gen/sources_1/bd/block_clock/ip/block_clock_clk_wiz_0_0/block_clock_clk_wiz_0_0_ooc.xdc}}]
+set_property used_in_implementation false [get_files -all {{c:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Final TDC_StartStop/Final TDC_StartStop.gen/sources_1/bd/block_clock/block_clock_ooc.xdc}}]
+
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -113,9 +120,9 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/TDC_pins.xdc
 set_property used_in_implementation false [get_files C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/TDC_pins.xdc]
 
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
-
-read_checkpoint -auto_incremental -incremental {C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Final TDC_StartStop/Final TDC_StartStop.srcs/utils_1/imports/synth_1/top.dcp}
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

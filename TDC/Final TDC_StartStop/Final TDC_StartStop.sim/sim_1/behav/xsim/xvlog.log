@@ -22,9 +22,12 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix
 INFO: [VRFC 10-311] analyzing module memory_ctrl
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/merging.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module merging
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/uart_tx.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module uart_tx
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module top
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Final TDC_StartStop/Final TDC_StartStop.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module glbl
+WARNING: [VRFC 10-3380] identifier 'uart_clk' is used before its declaration [C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top.v:50]
+WARNING: [VRFC 10-3380] identifier 'uart_send' is used before its declaration [C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top.v:79]
+WARNING: [VRFC 10-3380] identifier 'uart_send' is used before its declaration [C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top.v:82]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/uart_tx.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_tx
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb

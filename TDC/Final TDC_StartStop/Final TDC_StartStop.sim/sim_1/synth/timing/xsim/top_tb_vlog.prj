@@ -1,0 +1,7 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../Final TDC_StartStop.gen/sources_1/bd/block_clock/ipshared/c2c6" --include "../../../../../../" \
+"top_tb_time_synth.v" \
+"../../../../../../top_tb.v" \
+
+# Do not sort compile order
+nosort

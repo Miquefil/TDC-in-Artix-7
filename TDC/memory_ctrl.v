@@ -15,6 +15,7 @@ module memory_ctrl (
     input   wire                              Rclk,
     input   wire                              Wclk,
     input   wire                              ReadEN,
+    input   wire                              rst,
     input   wire                              WriteEN,
     input   wire [31:0]                       data_input,
     output  wire [31:0]                       data_output,
@@ -30,23 +31,18 @@ module memory_ctrl (
     wire            m_ALMOSTFULL;
     wire            m_EMPTY;
     wire            m_FULL;
-    wire            m_READCLK;
-    wire            m_READEN;
     wire            m_READERROR;
-    wire            m_RST;
-    wire            m_WRTCLK;
     wire            m_WRCOUNT;      //El puerto es de 13 bits (8000 combinaciones) por si usamos datas de 4bitss
-    wire            m_WREN;         //Active high
     wire            m_WRERR;        //Error if its full. Synchronous with WRCLK
+
 
     assign almost_full          = m_ALMOSTFULL;
     assign almost_empty         = m_ALMOSTEMPTY;
     assign empty                = m_EMPTY;
-    assign full                 = m_FULL;
     assign readERR              = m_READERROR;
     assign writeERR             = m_WRERR;
 
-
+    (* dont_touch = "TRUE" *)
     FIFO36E1 #(
         .ALMOST_EMPTY_OFFSET(13'h0080),                         // Sets the almost empty threshold
         .ALMOST_FULL_OFFSET(13'h0080),                          // Sets almost full threshold
@@ -73,7 +69,7 @@ module memory_ctrl (
         .ALMOSTEMPTY(m_ALMOSTEMPTY),                            // 1-bit output: Almost empty flag
         .ALMOSTFULL(m_ALMOSTFULL),                              // 1-bit output: Almost full flag
         .EMPTY(m_EMPTY),                                        // 1-bit output: Empty flag
-        .FULL(m_FULL),                                          // 1-bit output: Full flag
+        .FULL(full),                                          // 1-bit output: Full flag
         .RDCOUNT(),                                             // 13-bit output: Read count
         .RDERR(m_READERROR),                                    // 1-bit output: Read error
         .WRCOUNT(m_WRCOUNT),                                    // 13-bit output: Write count
@@ -82,14 +78,14 @@ module memory_ctrl (
         .INJECTDBITERR(),                                       // 1-bit input: Inject a double bit error input
         .INJECTSBITERR(),
         // Read Control Signals: 1-bit (each) input: Read clock, enable and reset input signals--------------------
-        .RDCLK(m_READCLK),                                      // 1-bit input: Read clock
-        .RDEN(m_READEN),                                        // 1-bit input: Read enable
-        .REGCE(),                                               // 1-bit input: Clock enable
-        .RST(m_RST),                                            // 1-bit input: Reset
+        .RDCLK(Rclk),                                      // 1-bit input: Read clock
+        .RDEN(ReadEN),                                        // 1-bit input: Read enable
+        .REGCE(1'b1),                                           // 1-bit input: Clock enable
+        .RST(rst),                                            // 1-bit input: Reset
         .RSTREG(),                                              // 1-bit input: Output register set/reset
         // Write Control Signals: 1-bit (each) input: Write clock and enable input signals
-        .WRCLK(m_WRTCLK),                                       // 1-bit input: Rising edge write clock.
-        .WREN(m_WREN),                                          // 1-bit input: Write enable
+        .WRCLK(Wclk),                                           // 1-bit input: Rising edge write clock.
+        .WREN(WriteEN),                                         // 1-bit input: Write enable
         // Write Data: 64-bit (each) input: Write input data
         .DI(data_input),                                        // 64-bit input: Data input
         .DIP()                                                  // 8-bit input: Parity input

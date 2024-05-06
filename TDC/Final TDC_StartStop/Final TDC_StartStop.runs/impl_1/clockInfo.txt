@@ -1,8 +1,8 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Thu Apr 18 16:33:49 2024
+| Date         : Sun May  5 20:07:12 2024
 | Host         : MikeHP
-| Design       : checkpoint_top
+| Design       : design_1
 | Device       : xc7a200t-fbg676-2--
 -------------------------------------
 

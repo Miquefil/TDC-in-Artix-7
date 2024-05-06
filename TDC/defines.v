@@ -8,6 +8,4 @@
     `define NUM_DECODE      8               //2^(NUM_DECODE) >= NUM_TAPS
     `define COUNTER_DIG     16
     `define DIG_OUT         16+8+8          //CoarseCounter + 2*Decoders
-    `define BAUD            256000
-    `define CLK_UART        100_000_000
 `endif 
