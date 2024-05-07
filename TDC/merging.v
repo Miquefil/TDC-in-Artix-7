@@ -37,57 +37,62 @@ module merging #(parameter N = 2) (
 
     wire                                                rst;   
     wire                                                rst_int;
-    (* DONT_TOUCH = "yes" *) reg                        enable_counter;
-    (* DONT_TOUCH = "yes" *) reg [`NUM_DECODE-1:0]      StartEdge_stored = {`NUM_DECODE{1'b0}};
-    (* DONT_TOUCH = "yes" *) reg                        storeStart       = 1'b0;
-    (* DONT_TOUCH = "yes" *) reg [`NUM_DECODE-1:0]      StopEdge_stored  = {`NUM_DECODE{1'b0}};
-    (* DONT_TOUCH = "yes" *) reg                        storeStop        = 1'b0;
-    (* DONT_TOUCH = "yes" *) reg                        Reg_rstint  = 1'b0;
-    (* DONT_TOUCH = "yes" *) reg[N-1:0]                 counter     = {N{1'b0}};
-
-
     assign rst = (rst_int|irst);        //rst_int: RESET INTERNO para overflow
                                         //irst   : RESET EXTERNO 
-    always @(posedge rise, posedge rst) begin
-        if(rst) begin
-            StartEdge_stored <= {`NUM_DECODE{1'b0}};
-        end        
-        else if(rise) begin
-            storeStart       <= 1'b1;
+
+
+    reg                                                 enable_counter = 1'b0;
+    reg [`NUM_DECODE-1:0]                               StartEdge_stored = {`NUM_DECODE{1'b0}};
+    reg                                                 storeStart       = 1'b0;
+    reg [`NUM_DECODE-1:0]                               StopEdge_stored  = {`NUM_DECODE{1'b0}};
+    reg                                                 storeStop        = 1'b0;
+    (* DONT_TOUCH = "yes" *) reg                        Reg_rstint       = 1'b0;
+    (* DONT_TOUCH = "yes" *) reg[N-1:0]                 counter          = {N{1'b0}};
+    //////////////
+    always @(posedge rise or posedge rst) begin
+        if (rst) begin
+            storeStart          <= 1'b0;
+        end
+        else begin
+            storeStart          <= 1'b1;
         end
     end
-
-
-    always @(posedge fall, posedge rst) begin
-        if(rst) begin
-            enable_counter <= 1'b0;
-            StopEdge_stored <= {`NUM_DECODE{1'b0}};
+    /////////////
+    always @(posedge fall or posedge rst) begin
+        if (rst) begin
+            enable_counter      <= 1'b0;
+            storeStop           <= 1'b0;
         end
-        else if(fall) begin
-            enable_counter  <= 1'b1;     
-            storeStop       <= 1'b1;
+        else begin
+            enable_counter      <= 1'b1;     
+            storeStop           <= 1'b1;
         end
     end
-
+    /////////////////////
     always @(posedge clk) begin
         //Counter
         if(rst) begin
-            counter     <= {N{1'b0}};
+            counter         <= {N{1'b0}};
         end 
-        else begin
-            if (enable_counter)  begin
-                counter <= counter + 1'b1;
-            end
+        else if (enable_counter)  begin
+            counter         <= counter + 1'b1;
         end
 
+        ///Reset all
+        if (rst) begin
+            StopEdge_stored     <= {`NUM_DECODE{1'b0}};
+            StartEdge_stored    <= {`NUM_DECODE{1'b0}};
+        end
+        //
+        //Store
         if(storeStart) begin       
             StartEdge_stored <= StartEdge;
         end
-
         if(storeStop) begin
             StopEdge_stored <= FallEdge;
         end
 
+        /// refresh output
         if(counter == {N{1'b1}}) begin
             out         <=  {Coarse, StartEdge_stored, StopEdge_stored};
         end

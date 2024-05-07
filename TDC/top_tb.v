@@ -5,7 +5,8 @@
 module top_tb(
     );
     reg                                clk_p, clk_n;
-    reg                                hit;
+    reg                                hit_p;
+    reg                                hit_n;
     reg                                but_rst_read = 1'b0;
     reg                                rst;
     reg                                startWr;
@@ -20,7 +21,8 @@ module top_tb(
         .clk_p(clk_p),
         .clk_n(clk_n),
         .irst(rst),
-        .hit(hit),
+        .hit_p(hit_p),
+        .hit_n(hit_n),
         .but_rst_read(but_rst_read),
         .startWriting(startWr),
         .startReading(startRead),
@@ -47,13 +49,15 @@ module top_tb(
     initial begin     
         //med1   
         #10
-        hit        = 1'b0;
+        hit_p        = 1'b0;
+        hit_n        = 1'b1;
         startRead  = 1'b0;
         startWr    = 1'b0;
         rst        = 1'b0;
         // #(4_500_000);   //este delay es importante en 150nS, starting time
         #(300_000);
-        hit        = 1'b0;
+        hit_p        = 1'b0;
+        hit_n        = 1'b1;
         startRead  = 1'b0;
         startWr    = 1'b1;
         #5 rst     = 1'b0;
@@ -61,147 +65,141 @@ module top_tb(
         #5 rst     = 1'b0;
         #100;   //este delay es importante en 150nS, starting time
 
-        hit     = 1'b1;
+        hit_p     = 1'b1;
+        hit_n     = 1'b0;
         #(3*TCLK);
-        hit     = 1'b0;
+        hit_p     = 1'b0;
+        hit_n     = 1'b1;
 
 
-        hit     = 1'b1;
+        hit_p     = 1'b1;
+        hit_n     = 1'b0;
         #(2*TCLK);
-        hit     = 1'b0;
+        hit_p     = 1'b0;
+        hit_n     = 1'b1;
 
         //med2
         #1000
-        hit        = 1'b0;
+        hit_p        = 1'b0;
+        hit_n        = 1'b1;
         startWr    = 1'b1;
         #21
-        hit     = 1'b1;
+        hit_p     = 1'b1;
+        hit_n        = 1'b0;
         #(3*TCLK);
-        hit     = 1'b0;
+        hit_p     = 1'b0;
+        hit_n        = 1'b1;
         #(100*TCLK)
 
         //med2
         #1000
-        hit        = 1'b0;
+        hit_p        = 1'b0;
+        hit_n        = 1'b1;
         startWr    = 1'b1;
         #21
-        hit     = 1'b1;
+        hit_p     = 1'b1;
+        hit_n        = 1'b0;
         #(3*TCLK);
-        hit     = 1'b0;
+        hit_p     = 1'b0;
+        hit_n        = 1'b1;
         #(100*TCLK)
-
-
         //med2
         #1000
-        hit        = 1'b0;
+        hit_p        = 1'b0;
+        hit_n        = 1'b1;
         startWr    = 1'b1;
         #21
-        hit     = 1'b1;
+        hit_p     = 1'b1;
+        hit_n        = 1'b0;
         #(3*TCLK);
-        hit     = 1'b0;
+        hit_p     = 1'b0;
+        hit_n        = 1'b1;
         #(100*TCLK)
-
-
         //med2
         #1000
-        hit        = 1'b0;
+        hit_p        = 1'b0;
+        hit_n        = 1'b1;
         startWr    = 1'b1;
         #21
-        hit     = 1'b1;
+        hit_p     = 1'b1;
+        hit_n        = 1'b0;
         #(3*TCLK);
-        hit     = 1'b0;
+        hit_p     = 1'b0;
+        hit_n        = 1'b1;
         #(100*TCLK)
-
         //med2
         #1000
-        hit        = 1'b0;
+        hit_p        = 1'b0;
+        hit_n        = 1'b1;
         startWr    = 1'b1;
         #21
-        hit     = 1'b1;
+        hit_p     = 1'b1;
+        hit_n        = 1'b0;
         #(3*TCLK);
-        hit     = 1'b0;
+        hit_p     = 1'b0;
+        hit_n        = 1'b1;
         #(100*TCLK)
-
         //med2
         #1000
-        hit        = 1'b0;
+        hit_p        = 1'b0;
+        hit_n        = 1'b1;
         startWr    = 1'b1;
         #21
-        hit     = 1'b1;
+        hit_p     = 1'b1;
+        hit_n        = 1'b0;
         #(3*TCLK);
-        hit     = 1'b0;
+        hit_p     = 1'b0;
+        hit_n        = 1'b1;
         #(100*TCLK)
-
         //med2
         #1000
-        hit        = 1'b0;
+        hit_p        = 1'b0;
+        hit_n        = 1'b1;
         startWr    = 1'b1;
         #21
-        hit     = 1'b1;
+        hit_p     = 1'b1;
+        hit_n        = 1'b0;
         #(3*TCLK);
-        hit     = 1'b0;
+        hit_p     = 1'b0;
+        hit_n        = 1'b1;
         #(100*TCLK)
-
         //med2
         #1000
-        hit        = 1'b0;
+        hit_p        = 1'b0;
+        hit_n        = 1'b1;
         startWr    = 1'b1;
         #21
-        hit     = 1'b1;
+        hit_p     = 1'b1;
+        hit_n        = 1'b0;
         #(3*TCLK);
-        hit     = 1'b0;
+        hit_p     = 1'b0;
+        hit_n        = 1'b1;
         #(100*TCLK)
-
         //med2
         #1000
-        hit        = 1'b0;
+        hit_p        = 1'b0;
+        hit_n        = 1'b1;
         startWr    = 1'b1;
         #21
-        hit     = 1'b1;
+        hit_p     = 1'b1;
+        hit_n        = 1'b0;
         #(3*TCLK);
-        hit     = 1'b0;
+        hit_p     = 1'b0;
+        hit_n        = 1'b1;
         #(100*TCLK)
-
         //med2
         #1000
-        hit        = 1'b0;
+        hit_p        = 1'b0;
+        hit_n        = 1'b1;
         startWr    = 1'b1;
         #21
-        hit     = 1'b1;
+        hit_p     = 1'b1;
+        hit_n        = 1'b0;
         #(3*TCLK);
-        hit     = 1'b0;
+        hit_p     = 1'b0;
+        hit_n        = 1'b1;
         #(100*TCLK)
-
-        //med2
-        #1000
-        hit        = 1'b0;
-        startWr    = 1'b1;
-        #21
-        hit     = 1'b1;
-        #(3*TCLK);
-        hit     = 1'b0;
-        #(100*TCLK)
-
-        //med2
-        #1000
-        hit        = 1'b0;
-        startWr    = 1'b1;
-        #21
-        hit     = 1'b1;
-        #(3*TCLK);
-        hit     = 1'b0;
-        #(100*TCLK)
-
-        //med2
-        #1000
-        hit        = 1'b0;
-        startWr    = 1'b1;
-        #21
-        hit     = 1'b1;
-        #(3*TCLK);
-        hit     = 1'b0;
-        #(100*TCLK)
-
+        
 
 
 

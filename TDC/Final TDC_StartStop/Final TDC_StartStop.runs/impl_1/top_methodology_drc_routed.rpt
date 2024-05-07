@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Sun May  5 20:09:01 2024
+| Date         : Tue May  7 11:57:36 2024
 | Host         : MikeHP running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 | Design       : top
@@ -23,16 +23,14 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 71
-+-----------+------------------+--------------------------------+------------+
-| Rule      | Severity         | Description                    | Violations |
-+-----------+------------------+--------------------------------+------------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell    | 57         |
-| LUTAR-1   | Warning          | LUT drives async reset alert   | 6          |
-| TIMING-18 | Warning          | Missing input or output delay  | 3          |
-| TIMING-20 | Warning          | Non-clocked latch              | 4          |
-| LATCH-1   | Advisory         | Existing latches in the design | 1          |
-+-----------+------------------+--------------------------------+------------+
+             Violations found: 40
++-----------+------------------+-------------------------------+------------+
+| Rule      | Severity         | Description                   | Violations |
++-----------+------------------+-------------------------------+------------+
+| TIMING-17 | Critical Warning | Non-clocked sequential cell   | 36         |
+| LUTAR-1   | Warning          | LUT drives async reset alert  | 2          |
+| TIMING-18 | Warning          | Missing input or output delay | 2          |
++-----------+------------------+-------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
@@ -88,283 +86,140 @@ Related violations: <none>
 
 TIMING-17#11 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StartEdge_stored_reg[0]__0/C is not reached by a timing clock
+The clock pin u_tdc/u_merge/enable_counter_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#12 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StartEdge_stored_reg[1]__0/C is not reached by a timing clock
+The clock pin u_tdc/u_merge/storeStart_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#13 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StartEdge_stored_reg[2]__0/C is not reached by a timing clock
+The clock pin u_uart/FSM_sequential_r_SM_Main_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#14 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StartEdge_stored_reg[3]__0/C is not reached by a timing clock
+The clock pin u_uart/FSM_sequential_r_SM_Main_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#15 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StartEdge_stored_reg[4]__0/C is not reached by a timing clock
+The clock pin u_uart/o_Tx_Reload_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#16 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StartEdge_stored_reg[5]__0/C is not reached by a timing clock
+The clock pin u_uart/o_Tx_Serial_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#17 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StartEdge_stored_reg[6]__0/C is not reached by a timing clock
+The clock pin u_uart/r_Bit_Index_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#18 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StartEdge_stored_reg[7]__0/C is not reached by a timing clock
+The clock pin u_uart/r_Bit_Index_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#19 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StopEdge_stored_reg[0]__0/C is not reached by a timing clock
+The clock pin u_uart/r_Bit_Index_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#20 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StopEdge_stored_reg[1]__0/C is not reached by a timing clock
+The clock pin u_uart/r_Tx_Data_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#21 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StopEdge_stored_reg[2]__0/C is not reached by a timing clock
+The clock pin u_uart/r_Tx_Data_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#22 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StopEdge_stored_reg[3]__0/C is not reached by a timing clock
+The clock pin u_uart/r_Tx_Data_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#23 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StopEdge_stored_reg[4]__0/C is not reached by a timing clock
+The clock pin u_uart/r_Tx_Data_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#24 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StopEdge_stored_reg[5]__0/C is not reached by a timing clock
+The clock pin u_uart/r_Tx_Data_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#25 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StopEdge_stored_reg[6]__0/C is not reached by a timing clock
+The clock pin u_uart/r_Tx_Data_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#26 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/StopEdge_stored_reg[7]__0/C is not reached by a timing clock
+The clock pin u_uart/r_Tx_Data_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#27 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/enable_counter_reg/C is not reached by a timing clock
+The clock pin u_uart/r_Tx_Data_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#28 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/storeStart_reg/F1/C is not reached by a timing clock
+The clock pin uart_buffer_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#29 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/storeStart_reg/F2/C is not reached by a timing clock
+The clock pin uart_buffer_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#30 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/storeStart_reg_C/C is not reached by a timing clock
+The clock pin uart_buffer_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#31 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/storeStop_reg/F1/C is not reached by a timing clock
+The clock pin uart_buffer_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#32 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/storeStop_reg/F2/C is not reached by a timing clock
+The clock pin uart_buffer_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#33 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_tdc/u_merge/storeStop_reg_C/C is not reached by a timing clock
+The clock pin uart_buffer_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#34 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_uart/FSM_sequential_r_SM_Main_reg[0]/C is not reached by a timing clock
+The clock pin uart_buffer_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#35 Critical Warning
 Non-clocked sequential cell  
-The clock pin u_uart/FSM_sequential_r_SM_Main_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#36 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/o_Tx_Reload_reg/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#37 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/o_Tx_Serial_reg/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#38 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/r_Bit_Index_reg[0]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#39 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/r_Bit_Index_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#40 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/r_Bit_Index_reg[2]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#41 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/r_Tx_Data_reg[0]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#42 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/r_Tx_Data_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#43 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/r_Tx_Data_reg[2]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#44 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/r_Tx_Data_reg[3]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#45 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/r_Tx_Data_reg[4]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#46 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/r_Tx_Data_reg[5]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#47 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/r_Tx_Data_reg[6]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#48 Critical Warning
-Non-clocked sequential cell  
-The clock pin u_uart/r_Tx_Data_reg[7]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#49 Critical Warning
-Non-clocked sequential cell  
-The clock pin uart_buffer_reg[0]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#50 Critical Warning
-Non-clocked sequential cell  
-The clock pin uart_buffer_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#51 Critical Warning
-Non-clocked sequential cell  
-The clock pin uart_buffer_reg[2]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#52 Critical Warning
-Non-clocked sequential cell  
-The clock pin uart_buffer_reg[3]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#53 Critical Warning
-Non-clocked sequential cell  
-The clock pin uart_buffer_reg[4]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#54 Critical Warning
-Non-clocked sequential cell  
-The clock pin uart_buffer_reg[5]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#55 Critical Warning
-Non-clocked sequential cell  
-The clock pin uart_buffer_reg[6]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#56 Critical Warning
-Non-clocked sequential cell  
 The clock pin uart_buffer_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-17#57 Critical Warning
+TIMING-17#36 Critical Warning
 Non-clocked sequential cell  
 The clock pin uart_send_reg/C is not reached by a timing clock
 Related violations: <none>
 
 LUTAR-1#1 Warning
 LUT drives async reset alert  
-LUT cell u_tdc/u_merge/StopEdge_stored[7]__0_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) u_tdc/u_merge/StartEdge_stored_reg[2]__0/CLR,
-u_tdc/u_merge/StartEdge_stored_reg[3]__0/CLR,
-u_tdc/u_merge/StartEdge_stored_reg[4]__0/CLR,
-u_tdc/u_merge/StartEdge_stored_reg[5]__0/CLR,
-u_tdc/u_merge/StartEdge_stored_reg[6]__0/CLR,
-u_tdc/u_merge/StartEdge_stored_reg[7]__0/CLR,
-u_tdc/u_merge/StopEdge_stored_reg[0]__0/CLR,
-u_tdc/u_merge/StopEdge_stored_reg[1]__0/CLR,
-u_tdc/u_merge/StopEdge_stored_reg[2]__0/CLR,
-u_tdc/u_merge/StopEdge_stored_reg[3]__0/CLR,
-u_tdc/u_merge/StopEdge_stored_reg[4]__0/CLR,
-u_tdc/u_merge/StopEdge_stored_reg[5]__0/CLR,
-u_tdc/u_merge/StopEdge_stored_reg[6]__0/CLR,
-u_tdc/u_merge/StopEdge_stored_reg[7]__0/CLR,
-u_tdc/u_merge/enable_counter_reg/CLR (the first 15 of 17 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+LUT cell u_tdc/u_merge/enable_counter_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) u_tdc/u_merge/enable_counter_reg/CLR, u_tdc/u_merge/storeStart_reg/CLR. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
 Related violations: <none>
 
 LUTAR-1#2 Warning
-LUT drives async reset alert  
-LUT cell u_tdc/u_merge/storeStart_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) u_tdc/u_merge/storeStart_reg/CLR, u_tdc/u_merge/storeStart_reg/F1/CLR,
-u_tdc/u_merge/storeStart_reg/L7/CLR, u_tdc/u_merge/storeStart_reg_C/CLR
-u_tdc/u_merge/storeStart_reg_LDC/CLR. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
-Related violations: <none>
-
-LUTAR-1#3 Warning
-LUT drives async reset alert  
-LUT cell u_tdc/u_merge/storeStart_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) u_tdc/u_merge/storeStart_reg/F2/PRE, u_tdc/u_merge/storeStart_reg/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
-Related violations: <none>
-
-LUTAR-1#4 Warning
-LUT drives async reset alert  
-LUT cell u_tdc/u_merge/storeStop_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) u_tdc/u_merge/storeStop_reg/CLR, u_tdc/u_merge/storeStop_reg/F1/CLR,
-u_tdc/u_merge/storeStop_reg/L7/CLR, u_tdc/u_merge/storeStop_reg_C/CLR
-u_tdc/u_merge/storeStop_reg_LDC/CLR. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
-Related violations: <none>
-
-LUTAR-1#5 Warning
-LUT drives async reset alert  
-LUT cell u_tdc/u_merge/storeStop_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) u_tdc/u_merge/storeStop_reg/F2/PRE, u_tdc/u_merge/storeStop_reg/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
-Related violations: <none>
-
-LUTAR-1#6 Warning
 LUT drives async reset alert  
 LUT cell u_tdc/u_merge_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) u_tdc/u_FineDelay/genblk4[87].StopFF/CLR,
 u_tdc/u_FineDelay/genblk4[88].StopFF/CLR,
@@ -385,42 +240,12 @@ Related violations: <none>
 
 TIMING-18#1 Warning
 Missing input or output delay  
-An input delay is missing on hit relative to the rising and/or falling clock edge(s) of clk_p.
+An input delay is missing on hit_p relative to the rising and/or falling clock edge(s) of clk_p.
 Related violations: <none>
 
 TIMING-18#2 Warning
 Missing input or output delay  
-An input delay is missing on irst relative to the rising and/or falling clock edge(s) of clk_p.
-Related violations: <none>
-
-TIMING-18#3 Warning
-Missing input or output delay  
 An output delay is missing on led_WriteERR relative to the rising and/or falling clock edge(s) of clk_p.
-Related violations: <none>
-
-TIMING-20#1 Warning
-Non-clocked latch  
-The latch u_tdc/u_merge/storeStart_reg/L7 (in u_tdc/u_merge/storeStart_reg macro) cannot be properly analyzed as its control pin u_tdc/u_merge/storeStart_reg/L7/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#2 Warning
-Non-clocked latch  
-The latch u_tdc/u_merge/storeStart_reg_LDC cannot be properly analyzed as its control pin u_tdc/u_merge/storeStart_reg_LDC/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#3 Warning
-Non-clocked latch  
-The latch u_tdc/u_merge/storeStop_reg/L7 (in u_tdc/u_merge/storeStop_reg macro) cannot be properly analyzed as its control pin u_tdc/u_merge/storeStop_reg/L7/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#4 Warning
-Non-clocked latch  
-The latch u_tdc/u_merge/storeStop_reg_LDC cannot be properly analyzed as its control pin u_tdc/u_merge/storeStop_reg_LDC/G is not reached by a timing clock
-Related violations: <none>
-
-LATCH-1#1 Advisory
-Existing latches in the design  
-There are 4 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
 Related violations: <none>
 
 

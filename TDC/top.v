@@ -11,9 +11,10 @@
 // |    M26         |     DS2.2       |       clk       |     clk     |
 // |    M26         |     DS2.2       |   led_WriteERR  |     led0    |
 // |    T24         |     DS3.2       |   led_ReadERR   |     led1    |
-// |    T8          |       J33       |      hit        | Conector SMA|
+// |    T8          |      J33.1      |      hit_p      | Conector SMA|
+// |    T7          |      J34.1      |      hit_n      | Conector SMA|
 // |    P6          |      SW3.3      |   startReading  | Boton Norte |
-// |    T5          |      SW5.3      |   startWriting  | Boton Sur   |
+// |    U5          |      SW5.3      |   startWriting  | Boton Este  |
 // |    R5          |      SW7.3      |   but_rst_read  | Boton Oeste |
 ///////////////////////////////////////////////////////////////////////
 `include "defines.v"
@@ -23,7 +24,9 @@ module top (
     input  wire                     clk_n,
     input  wire                     irst,
     input  wire                     but_rst_read,
-    input  wire                     hit,
+    // input  wire                     hit,     //!!DEBUGG
+    input  wire                     hit_p,
+    input  wire                     hit_n,
     input  wire                     startWriting,
     input  wire                     startReading,
 
@@ -37,16 +40,34 @@ module top (
     );//-------------------------------------------------------
     //NOTES: --------------------------------------------------
     //TODO: Cambié estándar LVDS25 a SSTL15 en la linea del GPIO SMA hit
+    //TODO: Agregar RST
+    //TODO: No se borra la FIFO. Averiguar por qué. Si hago una lectura sin escritura, leo lo anterior.
+    //TODO: Agregar LEDS de estado
+    //TODO: Ver PLL y distintos Coarse Counters.
+    //TODO: Hay un offset en la salida de datos en UART. Checkear
+    //TODO: Agregar varias fifo en serie.
     ////////////////////////////////////////////////////////////////////
     ///----  LEDS       -----------------------------------------
     reg                             ledWR, ledRE;
     assign                          led_ReadERR  = ledRE;
     assign                          led_WriteERR = ledWR;
     //------------------------------------------------------------
+    //---- DIFERRENTIAL HIT- -------------------------------------
+    wire                            hit;
+    IBUFDS #(
+        .DIFF_TERM("FALSE"),       // Differential Termination
+        .IBUF_LOW_PWR("FALSE"),     // Low power="TRUE", Highest performance="FALSE"
+        .IOSTANDARD("DEFAULT")     // Specify the input I/O standard
+    ) IBUFDS_inst (
+        .O(hit),  // Buffer output
+        .I(hit_p),  // Diff_p buffer input (connect directly to top-level port)
+        .IB(hit_n) // Diff_n buffer input (connect directly to top-level port)
+    );
 
     ///Starting Delay --------------------------------------------
     // reg                     rCLK =1'b0;                             //Read Clock for FIFO
     wire                    rCLK;
+    reg                     uart_clk = 1'b0;
     assign                  rCLK = uart_clk;
     reg [3:0]               starting_delay_counter  = 4'b0000;
     reg                     starting_flag  = 1'b1;                  //1:starting delay happening, defined later
@@ -54,41 +75,10 @@ module top (
                                                                     //Reset must be held high for at least 5 read clocks, and start 
                                                                     //Also WriteEN=0 4 cycles before reset so we wait 
 
-    always @(posedge rCLK) begin  
-        if(starting_flag) begin
-            if  (starting_delay_counter < 4'hf) begin
-                starting_delay_counter  <= starting_delay_counter + 1'b1;
-            end
-            else if(starting_delay_counter == 4'hf)begin
-                starting_delay_counter  <= 4'h0;
-                starting_flag           <= 1'b0;
-            end
-
-            if  ((starting_delay_counter < 4'h5)) begin
-                mem_rst <= 1'b0;
-            end
-            else if((starting_delay_counter == 4'h6))begin
-                mem_rst <= 1'b1;
-            end
-            else if (starting_delay_counter == 4'hb) begin
-                mem_rst <= 1'b0;
-            end
-        end
-
-        if(startReading && !starting_flag && !but_rst_read) begin  //Enables UART
-            uart_send <= 1'b1;
-        end
-        else begin
-            uart_send <= 1'b0;
-        end
-    end
-    //------------------------------------------------------------
-
-
     ///////////------TDC----------------------------------------------------------
     wire                            clk;
     wire                            rst;
-    assign                          rst = (irst);
+//    assign                          rst = (irst);
     wire                            wStartTDC;
     reg                             startTDC;
     assign                          wStartTDC = startTDC;
@@ -186,8 +176,7 @@ module top (
         .clk_out_0(clkWizard)           //7.37... Mhz
         );
     ///////////------ UART ------------------------------------------------------------
-    parameter                       NB_UART = 8;      
-    reg                             uart_clk = 1'b0;
+    parameter                       NB_UART = 8;
     reg                             uart_send;     
     wire [NB_UART-1:0]              uart_dataIn;                            
     wire                            uart_active;
@@ -278,4 +267,35 @@ module top (
         end
         //-----------------------------------------------------------------------
     end
+
+    ///General things----------------------------------
+    always @(posedge rCLK) begin  
+        if(starting_flag) begin
+            if  (starting_delay_counter < 4'hf) begin
+                starting_delay_counter  <= starting_delay_counter + 1'b1;
+            end
+            else if(starting_delay_counter == 4'hf)begin
+                starting_delay_counter  <= 4'h0;
+                starting_flag           <= 1'b0;
+            end
+
+            if  ((starting_delay_counter < 4'h5)) begin
+                mem_rst <= 1'b0;
+            end
+            else if((starting_delay_counter == 4'h6))begin
+                mem_rst <= 1'b1;
+            end
+            else if (starting_delay_counter == 4'hb) begin
+                mem_rst <= 1'b0;
+            end
+        end
+
+        if(startReading && !starting_flag && !but_rst_read) begin  //Enables UART
+            uart_send <= 1'b1;
+        end
+        else begin
+            uart_send <= 1'b0;
+        end
+    end
+    //------------------------------------------------------------
 endmodule //
