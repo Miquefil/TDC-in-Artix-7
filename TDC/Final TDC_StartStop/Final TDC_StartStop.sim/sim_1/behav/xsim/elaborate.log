@@ -5,7 +5,6 @@ Running: C:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3091] actual bit length 16 differs from formal bit length 8 for port 'Coarse' [C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/TDC.v:99]
 WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 64 for port 'DO' [C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/memory_ctrl.v:66]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 13 for port 'WRCOUNT' [C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/memory_ctrl.v:75]
 WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 64 for port 'DI' [C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/memory_ctrl.v:90]

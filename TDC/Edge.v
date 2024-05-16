@@ -9,8 +9,12 @@
 //////////////////////////////////////////////////////////////////////
 (* keep_hierarchy = "TRUE" *) 
 module Edge(
-    input           iClk, iRst, iHit,
-    output          oRise, oFall,      //[0]:
+    input           iClk, 
+    input           iRst, 
+    input           iHit,
+    input           enable,
+    output          oRise, 
+    output          oFall,      //[0]:
 
     //Debugging
     output          q1, q2
@@ -24,7 +28,7 @@ module Edge(
     (* dont_touch = "TRUE" *) FDCE #(.INIT(1'b0)) edge_detector_ffd0(
         .Q(wEDGE[0]),
         .C(iClk),
-        .CE(1'b1),
+        .CE(enable),
         .CLR(iRst),
         .D(iHit)
     );
@@ -32,7 +36,7 @@ module Edge(
     (* dont_touch = "TRUE" *) FDCE #(.INIT(1'b0)) edge_detector_ffd1(
         .Q(wEDGE[1]),
         .C(iClk),
-        .CE(1'b1),
+        .CE(enable),
         .CLR(iRst),
         .D(wEDGE[0])
     );

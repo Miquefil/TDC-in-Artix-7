@@ -9,7 +9,7 @@
 // Notes:
 // - 
 ////////////////////////////////////////////////////////////////////////////////////
-//`include "defines.v"
+
 (* keep_hierarchy = "TRUE" *) 
 module Fine #(parameter NUM = 12)                    ///parameter should be multiple of 4
     (

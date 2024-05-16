@@ -16,17 +16,15 @@ module TDC (
 
 
     wire                         Rise, Fall;
-    wire[`NUM_TAPS-1:0]          Stop, Start;
+    wire[`NUM_TAPS-1:0]          Stop_Edge, Start_Edge;
     wire[`NUM_DECODE-1:0]        DecodedStop, DecodedStart;
-    
-    // assign FFStart = Start;      //TODO: debugging signal
-    // assign FFStop  = Stop;       //TODO: debugging signal
 
 
     wire                ready;
     wire                rst_int;    
+    assign              rst_int = done;                 //If a measure is done, reset the TDC
     wire                rst;                            //manages internal and external rst
-    assign              rst = (~ready|iRst|rst_int);     //reset if NOTready/external/interal
+    assign              rst = (~ready|iRst|rst_int);    //reset if NOTready/external/interal
 
     //////////////////////Wait for some clocks and then go ready --------------
     wire                FFDelayStart;
@@ -34,13 +32,12 @@ module TDC (
         .Q          (FFDelayStart),
         .C          (iClk),
         .CE         (1'b1),               //hasta que no viene enable HIGH no prendemos
-        .CLR        (),
+        .CLR        (1'b0),
         .D          (1'b1)
     );
     (* dont_touch = "TRUE" *)FDCE #(.INIT(1'b0)) FFDelayStart_2(
         .Q          (ready),
         .C          (iClk),
-        // .CE         (enable),               //not going to start until starting delay puts a 1
         .CE         (1'b1),
         .CLR        (done),                 //finishing Merge resets the whole system
         .D          (FFDelayStart)
@@ -53,30 +50,31 @@ module TDC (
         .iHit       (iHit),
         .oRise      (Rise),
         .oFall      (Fall),
+        .enable     (enable),
         .q1         (q1),     //debugging
         .q2         (q2)
     );
     
     Fine #(`NUM_TAPS) u_FineDelay(
-        .clk            (iClk),
-        .iRst            (rst),
-        .iHit           (iHit),
-        .iStopEnable    (Fall),
-        .iStartEnable   (Rise),
-        .oFFStart      (Start),       //FF outputs of Start column
-        .oFFStop        (Stop),       //FF outputs of Stop column
-        .outTaps            (),        //output from the Carrys output
-        .outFF              () 
+        .clk               (iClk),
+        .iRst              (rst),
+        .iHit              (iHit),
+        .iStopEnable       (Fall),
+        .iStartEnable      (Rise),
+        .oFFStart          (Start_Edge),    //FF outputs of Start_Edge column
+        .oFFStop           (Stop_Edge),     //FF outputs of Stop_Edge column
+        .outTaps           (),              //output from the Carrys output
+        .outFF             () 
     );
 
     DecodeStart #(`NUM_TAPS, `NUM_DECODE) u_DecStart(
-        .wDecoStartIn          (Start),
-        .wDecoStartOut  (DecodedStart)
+        .wDecoStartIn       (Start_Edge),
+        .wDecoStartOut      (DecodedStart)
     );
 
     DecodeStop  #(`NUM_TAPS, `NUM_DECODE) u_DecStop(
-        .wDecoStoptIn          (Stop),
-        .wDecoStopOut   (DecodedStop)
+        .wDecoStoptIn       (Stop_Edge),
+        .wDecoStopOut       (DecodedStop)
     );
 
     wire[`COUNTER_DIG-1:0]       CoarseStamp;
@@ -100,6 +98,7 @@ module TDC (
         .done(done),
         .out(oTDC)
     );
-    assign rst_int = done;        //Resetea el sistema      
+
+         
 
 endmodule

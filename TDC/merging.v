@@ -22,7 +22,7 @@ module merging #(parameter N = 2) (
     input  wire                         irst,
     input  wire[`NUM_DECODE-1:0]        FallEdge,
     input  wire[`NUM_DECODE-1:0]        StartEdge,
-    input  wire[`NUM_DECODE-1:0]        Coarse,
+    input  wire[`COUNTER_DIG-1:0]       Coarse,
 
     output reg[`DIG_OUT-1:0]            out,
     output wire                         done            //Used to reset the system JUST ONE CLK 
@@ -35,10 +35,8 @@ module merging #(parameter N = 2) (
     //  Once 'fall' comes: 4 clocks later output is merged
 
 
-    wire                                                rst;   
-    wire                                                rst_int;
-    assign rst = (rst_int|irst);        //rst_int: RESET INTERNO para overflow
-                                        //irst   : RESET EXTERNO 
+    wire    rst;   
+    assign  rst = irst;       
 
 
     reg                                                 enable_counter = 1'b0;
@@ -46,8 +44,13 @@ module merging #(parameter N = 2) (
     reg                                                 storeStart       = 1'b0;
     reg [`NUM_DECODE-1:0]                               StopEdge_stored  = {`NUM_DECODE{1'b0}};
     reg                                                 storeStop        = 1'b0;
-    (* DONT_TOUCH = "yes" *) reg                        Reg_rstint       = 1'b0;
     (* DONT_TOUCH = "yes" *) reg[N-1:0]                 counter          = {N{1'b0}};
+
+    wire                                                TOP_COUNTER;
+    assign                                              TOP_COUNTER = (counter == {N{1'b1}});
+
+
+
     //////////////
     always @(posedge rise or posedge rst) begin
         if (rst) begin
@@ -72,10 +75,15 @@ module merging #(parameter N = 2) (
     always @(posedge clk) begin
         //Counter
         if(rst) begin
-            counter         <= {N{1'b0}};
+            counter             <= {N{1'b0}};
         end 
-        else if (enable_counter)  begin
-            counter         <= counter + 1'b1;
+        else if (enable_counter) begin
+            if (TOP_COUNTER) begin
+                counter         <= {N{1'b0}};
+            end
+            else begin
+                counter         <= counter + {{N-1{1'b0}}, 1'b1};
+            end
         end
 
         ///Reset all
@@ -89,24 +97,15 @@ module merging #(parameter N = 2) (
             StartEdge_stored <= StartEdge;
         end
         if(storeStop) begin
-            StopEdge_stored <= FallEdge;
+            StopEdge_stored  <= FallEdge;
         end
 
         /// refresh output
         if(counter == {N{1'b1}}) begin
             out         <=  {Coarse, StartEdge_stored, StopEdge_stored};
         end
-
-        //Rst FlipFlop
-        if (counter == {N{1'b1}}) begin
-            Reg_rstint <= 1'b1;
-        end 
-        else begin
-            Reg_rstint <= 1'b0;
-        end
     end
 
-    assign rst_int = Reg_rstint;
-    assign done    = Reg_rstint;        //resets the whole systems at the same time
+    assign done    = TOP_COUNTER;        //resets the whole systems at the same time
 
 endmodule //
