@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="top_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="377.768751 us"></ZoomEndTime>
+      <Cursor1Time time="304.226093 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="129"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="27" />
+   <wvobject fp_name="/top_tb/u_top/clk_p" type="logic">
+      <obj_property name="ElementShortName">clk_p</obj_property>
+      <obj_property name="ObjectShortName">clk_p</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/clk_n" type="logic">
+      <obj_property name="ElementShortName">clk_n</obj_property>
+      <obj_property name="ObjectShortName">clk_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/startWr" type="logic">
+      <obj_property name="ElementShortName">startWr</obj_property>
+      <obj_property name="ObjectShortName">startWr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/startRead" type="logic">
+      <obj_property name="ElementShortName">startRead</obj_property>
+      <obj_property name="ObjectShortName">startRead</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/led_ReadERR" type="logic">
+      <obj_property name="ElementShortName">led_ReadERR</obj_property>
+      <obj_property name="ObjectShortName">led_ReadERR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/led_WriteERR" type="logic">
+      <obj_property name="ElementShortName">led_WriteERR</obj_property>
+      <obj_property name="ObjectShortName">led_WriteERR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/counter" type="array">
+      <obj_property name="ElementShortName">counter[2:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_memory/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/starting_flag" type="logic">
+      <obj_property name="ElementShortName">starting_flag</obj_property>
+      <obj_property name="ObjectShortName">starting_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_tdc/u_EdgeDetector/iRst" type="logic">
+      <obj_property name="ElementShortName">iRst</obj_property>
+      <obj_property name="ObjectShortName">iRst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/fall" type="logic">
+      <obj_property name="ElementShortName">fall</obj_property>
+      <obj_property name="ObjectShortName">fall</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/enable_counter" type="logic">
+      <obj_property name="ElementShortName">enable_counter</obj_property>
+      <obj_property name="ObjectShortName">enable_counter</obj_property>
+   </wvobject>
+   <wvobject fp_name="group169" type="group">
+      <obj_property name="label">Memory</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/u_top/u_memory/ReadEN" type="logic">
+         <obj_property name="ElementShortName">ReadEN</obj_property>
+         <obj_property name="ObjectShortName">ReadEN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_memory/WriteEN" type="logic">
+         <obj_property name="ElementShortName">WriteEN</obj_property>
+         <obj_property name="ObjectShortName">WriteEN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_memory/readERR" type="logic">
+         <obj_property name="ElementShortName">readERR</obj_property>
+         <obj_property name="ObjectShortName">readERR</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_memory/writeERR" type="logic">
+         <obj_property name="ElementShortName">writeERR</obj_property>
+         <obj_property name="ObjectShortName">writeERR</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_memory/empty" type="logic">
+         <obj_property name="ElementShortName">empty</obj_property>
+         <obj_property name="ObjectShortName">empty</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_memory/full" type="logic">
+         <obj_property name="ElementShortName">full</obj_property>
+         <obj_property name="ObjectShortName">full</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/starting_delay_counter" type="array">
+      <obj_property name="ElementShortName">starting_delay_counter[3:0]</obj_property>
+      <obj_property name="ObjectShortName">starting_delay_counter[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="group507" type="group">
+      <obj_property name="label">TDC</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="group160" type="group">
+         <obj_property name="label">Edge</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/top_tb/u_top/u_tdc/ready" type="logic">
+            <obj_property name="ElementShortName">ready</obj_property>
+            <obj_property name="ObjectShortName">ready</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/u_top/u_tdc/u_EdgeDetector/enable" type="logic">
+            <obj_property name="ElementShortName">enable</obj_property>
+            <obj_property name="ObjectShortName">enable</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/u_top/u_tdc/Fall" type="logic">
+            <obj_property name="ElementShortName">Fall</obj_property>
+            <obj_property name="ObjectShortName">Fall</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/u_top/u_tdc/u_EdgeDetector/iRst" type="logic">
+            <obj_property name="ElementShortName">iRst</obj_property>
+            <obj_property name="ObjectShortName">iRst</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/u_top/u_tdc/Rise" type="logic">
+            <obj_property name="ElementShortName">Rise</obj_property>
+            <obj_property name="ObjectShortName">Rise</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/done" type="logic">
+         <obj_property name="ElementShortName">done</obj_property>
+         <obj_property name="ObjectShortName">done</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/iHit" type="logic">
+         <obj_property name="ElementShortName">iHit</obj_property>
+         <obj_property name="ObjectShortName">iHit</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/oTDC" type="array">
+         <obj_property name="ElementShortName">oTDC[31:0]</obj_property>
+         <obj_property name="ObjectShortName">oTDC[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_DecStart/wDecoStartOut" type="array">
+         <obj_property name="ElementShortName">wDecoStartOut[7:0]</obj_property>
+         <obj_property name="ObjectShortName">wDecoStartOut[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/StartEdge_stored" type="array">
+         <obj_property name="ElementShortName">StartEdge_stored[7:0]</obj_property>
+         <obj_property name="ObjectShortName">StartEdge_stored[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_DecStop/wDecoStopOut" type="array">
+         <obj_property name="ElementShortName">wDecoStopOut[7:0]</obj_property>
+         <obj_property name="ObjectShortName">wDecoStopOut[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/StopEdge_stored" type="array">
+         <obj_property name="ElementShortName">StopEdge_stored[7:0]</obj_property>
+         <obj_property name="ObjectShortName">StopEdge_stored[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_EdgeDetector/oRise" type="logic">
+         <obj_property name="ElementShortName">oRise</obj_property>
+         <obj_property name="ObjectShortName">oRise</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_EdgeDetector/oFall" type="logic">
+         <obj_property name="ElementShortName">oFall</obj_property>
+         <obj_property name="ObjectShortName">oFall</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/ready" type="logic">
+         <obj_property name="ElementShortName">ready</obj_property>
+         <obj_property name="ObjectShortName">ready</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_EdgeDetector/iHit" type="logic">
+         <obj_property name="ElementShortName">iHit</obj_property>
+         <obj_property name="ObjectShortName">iHit</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_EdgeDetector/iRst" type="logic">
+         <obj_property name="ElementShortName">iRst</obj_property>
+         <obj_property name="ObjectShortName">iRst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/done" type="logic">
+         <obj_property name="ElementShortName">done</obj_property>
+         <obj_property name="ObjectShortName">done</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/hit" type="logic">
+         <obj_property name="ElementShortName">hit</obj_property>
+         <obj_property name="ObjectShortName">hit</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_tdc/u_EdgeDetector/enable" type="logic">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="group512" type="group">
+      <obj_property name="label">UART</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/u_top/uart_clk" type="logic">
+         <obj_property name="ElementShortName">uart_clk</obj_property>
+         <obj_property name="ObjectShortName">uart_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_uart/r_Tx_Data" type="array">
+         <obj_property name="ElementShortName">r_Tx_Data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">r_Tx_Data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_uart/r_SM_Main" type="array">
+         <obj_property name="ElementShortName">r_SM_Main[2:0]</obj_property>
+         <obj_property name="ObjectShortName">r_SM_Main[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/TX" type="logic">
+         <obj_property name="ElementShortName">TX</obj_property>
+         <obj_property name="ObjectShortName">TX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_tdc/clk0" type="logic">
+      <obj_property name="ElementShortName">clk0</obj_property>
+      <obj_property name="ObjectShortName">clk0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_tdc/clk1" type="logic">
+      <obj_property name="ElementShortName">clk1</obj_property>
+      <obj_property name="ObjectShortName">clk1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_tdc/clk2" type="logic">
+      <obj_property name="ElementShortName">clk2</obj_property>
+      <obj_property name="ObjectShortName">clk2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_tdc/u_Coarse_0/oCoarse" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">oCoarse[15:0]</obj_property>
+      <obj_property name="ObjectShortName">oCoarse[15:0]</obj_property>
+      <obj_property name="label">Coarse0</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_tdc/u_Coarse_1/oCoarse" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">oCoarse[15:0]</obj_property>
+      <obj_property name="ObjectShortName">oCoarse[15:0]</obj_property>
+      <obj_property name="label">Coarse1</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_tdc/u_Coarse_2/oCoarse" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">oCoarse[15:0]</obj_property>
+      <obj_property name="ObjectShortName">oCoarse[15:0]</obj_property>
+      <obj_property name="label">Coarse2</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/Coarse" type="array">
+      <obj_property name="ElementShortName">Coarse[15:0]</obj_property>
+      <obj_property name="ObjectShortName">Coarse[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>

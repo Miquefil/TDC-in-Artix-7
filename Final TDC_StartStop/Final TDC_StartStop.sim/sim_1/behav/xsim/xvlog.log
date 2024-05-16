@@ -1,0 +1,30 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.ip_user_files/bd/block_clock/ip/block_clock_clk_wiz_0_0/block_clock_clk_wiz_0_0_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module block_clock_clk_wiz_0_0_clk_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.ip_user_files/bd/block_clock/ip/block_clock_clk_wiz_0_0/block_clock_clk_wiz_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module block_clock_clk_wiz_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.ip_user_files/bd/block_clock/sim/block_clock.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module block_clock
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/Coarse.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Coarse
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/DecodeStart.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DecodeStart
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/DecodeStop.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DecodeStop
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/Edge.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Edge
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/Fine.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Fine
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/TDC.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TDC
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.gen/sources_1/bd/block_clock/hdl/block_clock_wrapper.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module block_clock_wrapper
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/memory_ctrl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module memory_ctrl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/merging.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module merging
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/uart_tx.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_tx
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb

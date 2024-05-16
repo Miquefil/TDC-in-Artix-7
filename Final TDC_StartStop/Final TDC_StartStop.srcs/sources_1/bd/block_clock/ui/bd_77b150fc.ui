@@ -1,0 +1,27 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-539,-199",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
+#  -string -flagsOSRD
+preplace port CLK_IN1_D_0 -pg 1 -lvl 0 -x -50 -y 10 -defaultsOSRD
+preplace port port-id_clk_out_0 -pg 1 -lvl 2 -x 220 -y 0 -defaultsOSRD
+preplace port port-id_clk_out2_0 -pg 1 -lvl 2 -x 220 -y 30 -defaultsOSRD
+preplace port port-id_clk_out3_0 -pg 1 -lvl 2 -x 220 -y 50 -defaultsOSRD
+preplace port port-id_clk_out4_0 -pg 1 -lvl 2 -x 220 -y 70 -defaultsOSRD
+preplace port port-id_locked_0 -pg 1 -lvl 2 -x 220 -y 90 -defaultsOSRD
+preplace port port-id_reset_0 -pg 1 -lvl 0 -x -50 -y 60 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 80 -y 50 -defaultsOSRD
+preplace netloc clk_wiz_0_clk_out 1 1 1 190 0n
+preplace netloc clk_wiz_0_clk_out2 1 1 1 N 30
+preplace netloc clk_wiz_0_clk_out3 1 1 1 N 50
+preplace netloc clk_wiz_0_clk_out4 1 1 1 NJ 70
+preplace netloc clk_wiz_0_locked 1 1 1 NJ 90
+preplace netloc reset_0_1 1 0 1 N 60
+preplace netloc CLK_IN1_D_0_1 1 0 1 -30 10n
+levelinfo -pg 1 -50 80 220
+pagesize -pg 1 -db -bbox -sgen -200 -50 350 200
+"
+}
+0
