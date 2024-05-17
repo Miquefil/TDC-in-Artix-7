@@ -8,3 +8,33 @@
     <Process Command="vivado.bat" Owner="mique" Host="MIKEHP" Pid="21416" HostCore="4" HostMemory="08215298048">
     </Process>
 </ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="mique" Host="MIKEHP" Pid="10592" HostCore="4" HostMemory="08215298048">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="mique" Host="MIKEHP" Pid="30948" HostCore="4" HostMemory="08215298048">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="mique" Host="MIKEHP" Pid="2248" HostCore="4" HostMemory="08215298048">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="mique" Host="MIKEHP" Pid="33564" HostCore="4" HostMemory="08215298048">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="mique" Host="MIKEHP" Pid="22692" HostCore="4" HostMemory="08215298048">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="mique" Host="MIKEHP" Pid="13064" HostCore="4" HostMemory="08215298048">
+    </Process>
+</ProcessHandle>
