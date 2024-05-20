@@ -64,3 +64,4 @@ We've used a phase difference of 40°, approximately $\frac{1}{8} \; T_{clk}$ of
 ## Results & Processing
 > [!WARNING]  
 > When processing always remember that StopValue result is the falling edge where the hit signal has been captured.
+![LVDS](images/lvds.png)

@@ -6,7 +6,7 @@
 // Date: 21-04-2024
 //
 // Connections:
-
+/////////////////////////////////////////////////////////////////////
 `include "defines.v"
 (* keep_hierarchy = "TRUE" *)
 module top (
@@ -103,8 +103,8 @@ module top (
     reg                                          readEN  = 1'b0;
     wire                                         writeEN;
     wire                                         mem_full;
-    assign                                       writeEN = ((~starting_flag) & (~mem_full) & startWriting);   //!!DEBUG MODE -- Comment for normal mode
-    // assign                                       writeEN = (measure_done & (~mem_full)); //!!NORMAL MODE-- Uncomment
+    // assign                                       writeEN = ((~starting_flag) & (~mem_full) & startWriting);   //!!DEBUG MODE -- Comment for normal mode
+    assign                                       writeEN = (measure_done & (~mem_full)); //!!NORMAL MODE-- Uncomment
     wire [31:0]                                  mem_output;
     wire                                         mem_busy;
     wire                                         mem_empty;
@@ -148,7 +148,7 @@ module top (
      
     ////////----------------------WRITE---------------------------------------------------
     always @(posedge wCLK) begin
-        // // !!DEBUGGING: Just for preloaded FIFO ------------------------------------- COMMENT BETWEEN THIS LINES FOR NORMAL MODE 
+        // // !!DEBUGGING: Just for preloaded FIFO ------COMMENT BETWEEN THIS LINES FOR NORMAL MODE ------------------------------- 
         // if(writeEN && !(mem_debug_counter == 255)) begin
         //     mem_debug_counter <= mem_debug_counter + 1'b1;
         // end
@@ -158,34 +158,34 @@ module top (
         // //-----------------------------------------------------DEBUG
 
         //Reset-----------------------
-        if (but_rst) begin
-            starting_flag <= 1'b1;
-        end
-
+        //DESCOMENTAR ESTO!!! - NORMAL MODE
+        // if (but_rst) begin
+        //     starting_flag <= 1'b1;
+        // end
+        //TODO: CHECK THIS!!!
         //_---------------------------------------------------------------------------
         //Starting the whole TDC
         if(starting_flag) begin
             startTDC <= 1'b0;
         end
 
-        else begin
-            if (but_startWriting) begin
-                startReading    <= 1'b0;
-                startWriting    <= 1'b1;
-                startTDC        <= 1'b1;
+        if (but_startWriting) begin
+            startReading    <= 1'b0;
+            startWriting    <= 1'b1;
+            startTDC        <= 1'b1;
 
-                ledWrite        <= 1'b1;
-                ledRead         <= 1'b0;
-            end
-            else if(but_startReading) begin
-                startReading    <= 1'b1;
-                startWriting    <= 1'b0;
-                startTDC        <= 1'b0;
-
-                ledWrite        <= 1'b0;
-                ledRead         <= 1'b1;
-            end
+            ledWrite        <= 1'b1;
+            ledRead         <= 1'b0;
         end
+        else if(but_startReading) begin
+            startReading    <= 1'b1;
+            startWriting    <= 1'b0;
+            startTDC        <= 1'b0;
+
+            ledWrite        <= 1'b0;
+            ledRead         <= 1'b1;
+        end
+
 
 
         //Write Error:
@@ -209,16 +209,12 @@ module top (
     ///////////------ CLOCK ------------------------------------------------------------
     wire                            clkWizard;
     block_clock_wrapper u_clk ( 
-        // .CLK_IN1_D_0_clk_n     (clk_n),
-        // .CLK_IN1_D_0_clk_p     (clk_p),
-        // .clk_out2_0            (clk),       //200Mhz
-        // .clk_out_0             (clkWizard)  //7.37... Mhz
         .CLK_IN1_D_0_clk_n(clk_n),                   //diff
         .CLK_IN1_D_0_clk_p(clk_p),                   //diff
+        .clk_out_0(clkWizard),                       //7.33954 Mhz
         .clk_out2_0(clk),                            //200Mhz
         .clk_out3_0(clk1),                           //200Mhz + phase
         .clk_out4_0(clk2),                           //200Mhz + 2*phase
-        .clk_out_0(clkWizard),                       //7.33954 Mhz
         .locked_0(),                                 //
         .reset_0()                                   //
         );

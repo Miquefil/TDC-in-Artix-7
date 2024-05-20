@@ -26,6 +26,7 @@ def TDCSerial(port, speed, output_file):
     NUM_WAITS   = 10
     # Open the output file in append mode to save received data
     with open(output_file, 'a') as file: 
+        file.write("UART SPEED: " + str(speed) + '\n')
         try:
             while Wait:
                 data = ser.read(ser.in_waiting or 1)
@@ -94,6 +95,6 @@ def TDCSerial(port, speed, output_file):
     
 #     ser.close()
 
-TDCSerial("COM3", 115200, 'data.txt')
+TDCSerial("COM3", 114680, 'data.txt')
 
 
