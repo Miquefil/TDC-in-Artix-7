@@ -4,14 +4,18 @@ Final degree project for Electronic Engineering
 - Author: Miqueas Filsinger
 - Universidad Nacional del Sur
 
-## Technical Information & Modules:
+# Dudas, Consultas y Anotaciones
+1. En los datos estamos recibiendo muchas stamps con valor 0: se puede deber a que existen muchas bubbles, por lo que nunca encuentra un flanco de entrada o de salida.
 
+
+
+## Technical Information & Modules:
 ### Transmission & USART
 - Constant speed of 115200 baud
 - 8N1, (8 bits of data, 1 stop bit, not parity)
 - None type of control used
 - Double 0 byte at the start of transmission
-![alt text](images\example_uart.png)
+![alt text](/images/example_uart.png)
 
 ### Modules Instantiation Hierarchy 
 
@@ -39,8 +43,8 @@ Final degree project for Electronic Engineering
 |     P3         |     DS2.2       |       clk_n     |     clk     |
 |    M26         |     DS2.2       |   led_WriteERR  |     led0    |
 |    T24         |     DS3.2       |   led_ReadERR   |     led1    |
-|    T25         |     DS4.2       | led_WriteStage  |     led1    |
-|    R26         |     DS5.2       |  led_ReadStage  |     led1    |
+|    T25         |     DS4.2       | led_WriteStage  |     led2    |
+|    R26         |     DS5.2       |  led_ReadStage  |     led3    |
 |    T8          |      J33.1      |      hit_p      | Conector SMA|
 |    T7          |      J34.1      |      hit_n      | Conector SMA|
 |    P6          |      SW3.3      |   startReading  | Boton Norte |
@@ -54,7 +58,7 @@ Final degree project for Electronic Engineering
 
 #### PLL Config
 We've used a phase difference of 40°, approximately $\frac{1}{8} \; T_{clk}$ of delay.
-![PLL](images/PLL.png)
+![PLL](/images/PLL.png)
 
 
 
@@ -64,4 +68,11 @@ We've used a phase difference of 40°, approximately $\frac{1}{8} \; T_{clk}$ of
 ## Results & Processing
 > [!WARNING]  
 > When processing always remember that StopValue result is the falling edge where the hit signal has been captured.
-![LVDS](images/lvds.png)
+
+
+![LVDS](/images/lvds.png)
+
+# Notes
+### Fine stamp processing:
+For the fine stamp processing, first an edge detector was implemented. For Start or Stop fine stamp, some kind of filter was implemented, which searched for a certain sequence in the delay chain, it may be '1110' for start edge, or '0001' for stop edge. Bubble problems arise naturally in this type of architecture, thus interferring with the edge detector since if a bit is changed no sequence may be detected in the chain. To overcome this we implemented another type of processing architecture, a 'ones counter' architecture. Counting how many ones remain in the delay chain should be a direct way of a counting the edge in the delay chain. For this, a summing tree was implemented [Wang]
+![ones counter](/images/ones_counter.png)

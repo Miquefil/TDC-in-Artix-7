@@ -39,6 +39,7 @@ module merging #(parameter N = 2) (
     assign  rst = irst;       
 
 
+    reg                                                 r_done         = 1'b0;
     reg                                                 enable_counter = 1'b0;
     reg [`NUM_DECODE-1:0]                               StartEdge_stored = {`NUM_DECODE{1'b0}};
     reg                                                 storeStart       = 1'b0;
@@ -76,22 +77,25 @@ module merging #(parameter N = 2) (
         //Counter
         if(rst) begin
             counter             <= {N{1'b0}};
+            StopEdge_stored     <= {`NUM_DECODE{1'b0}};
+            StartEdge_stored    <= {`NUM_DECODE{1'b0}};
         end 
         else if (enable_counter) begin
             if (TOP_COUNTER) begin
                 counter         <= {N{1'b0}};
+                r_done          <= 1'b1;
+                //this implementation is important AND SHOULD NOT BE REPLACED BY TOP_COUNTER ASSIGN
+                //The systems need that done output asserts high one clock later of merging module finish
             end
             else begin
                 counter         <= counter + {{N-1{1'b0}}, 1'b1};
             end
         end
+        
+        if(r_done) begin
+            r_done <= 1'b0;
+        end 
 
-        ///Reset all
-        if (rst) begin
-            StopEdge_stored     <= {`NUM_DECODE{1'b0}};
-            StartEdge_stored    <= {`NUM_DECODE{1'b0}};
-        end
-        //
         //Store
         if(storeStart) begin       
             StartEdge_stored <= StartEdge;
@@ -106,6 +110,6 @@ module merging #(parameter N = 2) (
         end
     end
 
-    assign done    = TOP_COUNTER;        //resets the whole systems at the same time
+    assign done    = r_done;        //resets the whole systems at the same time
 
 endmodule //

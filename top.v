@@ -17,12 +17,14 @@ module top (
     input  wire                     hit_n,
     input  wire                     but_startWriting,
     input  wire                     but_startReading,
+    input  wire                     but_debugmode,
 
     output wire                     led_ReadERR,
+    // output wire                     led_debugmode,
     output wire                     led_WriteERR,
     output wire                     led_WriteStage,
     output wire                     led_ReadStage,
-
+    
     input  wire                     RX,
     output wire                     TX,
     input  wire                     CTS,
@@ -44,6 +46,7 @@ module top (
     reg         ledRE                       = 1'b0;
     reg         ledWrite                    = 1'b0;
     reg         ledRead                     = 1'b0;
+
     assign      led_ReadERR                 = ledRE;
     assign      led_WriteERR                = ledWR;
     assign      led_WriteStage              = ledWrite;
@@ -63,7 +66,8 @@ module top (
 
 
     ///Starting Delay & Starting Flags --------------------------------------------
-    
+    reg                     debugmode       = 1'b0;
+    assign                  led_debugmode   = debugmode;
     wire                    rCLK;
     reg                     uart_clk        = 1'b0;
     assign                  rCLK            = uart_clk;
@@ -87,14 +91,16 @@ module top (
     wire [`DIG_OUT-1:0]             data;
     wire                            measure_done;
     TDC u_tdc(
-        .clk0(clk),          
-        .clk1(clk1),               
-        .clk2(clk2),               
-        .iRst(rst_tdc),                        
-        .iHit(hit),                        
-        .enable(startTDC),                  
-        .oTDC(data),                        
-        .done(measure_done)
+        .clk0               (clk),          
+        .clk1               (clk1),               
+        .clk2               (clk2),  
+        .debug_mode         (debugmode),            
+        .debug_hit          (), 
+        .iRst               (rst_tdc),                        
+        .iHit               (hit),                        
+        .enable             (startTDC),                  
+        .oTDC               (data),                        
+        .done               (measure_done)
     );
 
     ///////////------ MEMORY -----------------------------------------------------
@@ -103,8 +109,8 @@ module top (
     reg                                          readEN  = 1'b0;
     wire                                         writeEN;
     wire                                         mem_full;
-    // assign                                       writeEN = ((~starting_flag) & (~mem_full) & startWriting);   //!!DEBUG MODE -- Comment for normal mode
-    assign                                       writeEN = (measure_done & (~mem_full)); //!!NORMAL MODE-- Uncomment
+    // assign                                       writeEN = ((~starting_flag) && (~mem_full) && startWriting);   //!!DEBUG MODE -- Comment for normal mode
+    assign                                       writeEN = (measure_done && (~mem_full)); //!!NORMAL MODE-- Uncomment
     wire [31:0]                                  mem_output;
     wire                                         mem_busy;
     wire                                         mem_empty;
@@ -116,7 +122,7 @@ module top (
     //----------> !!Debugging mem and uart (!!!COMMENT ALL THIS SECTION IN NORMAL MODE)
     //---------->  Preloading data to FIFO to check UART 
 
-    // parameter   MEM_INIT_FILE   = "C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/mem.hex";   
+    // parameter   MEM_INIT_FILE   = "C:/Users/mique/Desktop/TDC-in-Artix-7/mem.hex";   
     // reg         [31:0]          mem [255:0];
     // reg         [7:0]           mem_debug_counter = 8'h00;       
     // initial begin
@@ -126,7 +132,7 @@ module top (
     // end 
     // assign      mem_input[`DIG_OUT-1:0]       = mem[mem_debug_counter];     //!!DEBUG MODE UP TO HERE
     //----------> !!Debugging Mode
-    assign      mem_input[`DIG_OUT-1:0]     = data;                      //!!NOT DEBUG - UNCOMMENT IN NORMAL MODE
+    assign      mem_input[`DIG_OUT-1:0]     = data;  //!!NOT DEBUG - UNCOMMENT IN NORMAL MODE
     
     memory_ctrl u_memory (
         .Rclk(rCLK),                        //input
@@ -158,16 +164,18 @@ module top (
         // //-----------------------------------------------------DEBUG
 
         //Reset-----------------------
-        //DESCOMENTAR ESTO!!! - NORMAL MODE
-        // if (but_rst) begin
-        //     starting_flag <= 1'b1;
-        // end
-        //TODO: CHECK THIS!!!
-        //_---------------------------------------------------------------------------
-        //Starting the whole TDC
-        if(starting_flag) begin
-            startTDC <= 1'b0;
+        if (but_rst) begin
+            starting_flag       <= 1'b1;
+            startReading        <= 1'b0;
+            startWriting        <= 1'b0;
+            startTDC            <= 1'b0;
+            ledWrite            <= 1'b0;
+            ledRead             <= 1'b0;
+            ledWR               <= 1'b0;
+            ledRE               <= 1'b0;
         end
+        //TODO: CHECK THIS!!!
+        //------------------------------
 
         if (but_startWriting) begin
             startReading    <= 1'b0;
@@ -186,7 +194,9 @@ module top (
             ledRead         <= 1'b1;
         end
 
-
+        if(but_debugmode) begin
+            debugmode <= ~debugmode;
+        end
 
         //Write Error:
         if(mem_writeerr) begin
@@ -232,9 +242,10 @@ module top (
     assign                          CTS = 1'b0;
     // assign       RX = 1'b0;  //Recommendation to leave it open
 
-    (* dont_touch = "TRUE" *) reg [NB_UART-1:0]     uart_buffer = {NB_UART{1'b0}}; 
-    (* dont_touch = "TRUE" *) reg [31:0]            mem_buffer;
-    assign                  uart_dataIn             = uart_buffer;
+    (* dont_touch = "TRUE" *) reg [NB_UART-1:0]     uart_buffer = {NB_UART{1'b0}};      //uart input buffer 
+    assign                                          uart_dataIn = uart_buffer;
+    // (* dont_touch = "TRUE" *) reg [31:0]            mem_buffer  = {32{1'b0}};           //buffer of memory output
+    
     uart_tx #(NB_UART) u_uart (                
             .i_Clock            (uart_clk),               //input       
             .i_Tx_DV            (uart_send),              //input       
@@ -245,76 +256,64 @@ module top (
             .o_Tx_Reload        (uart_reload)             //toggle for reloading data
     );
     
-    parameter                               N_COUNTER_UART_CLK = 5;
-    reg [N_COUNTER_UART_CLK-1:0]   	        counter = {N_COUNTER_UART_CLK{1'b0}};
+    //32 bits counter for driving memory clock --- Every 32 counts it uart_clk toggles, thus 64 clkWizards enters in one uart_clk 
+    //in that way if clkWizard has 7.3728Mhz then uart_clk has 115200kHz
+    parameter                               N_COUNTER_UART_CLK  = 5;                    
+    reg [N_COUNTER_UART_CLK-1:0]   	        counter_uart             = {N_COUNTER_UART_CLK{1'b0}};
     wire                                    TOP_COUNTER;
-    assign                                  TOP_COUNTER = (counter=={N_COUNTER_UART_CLK{1'b1}});
+    assign                                  TOP_COUNTER         = (counter_uart=={N_COUNTER_UART_CLK{1'b1}});
 
     //UART CLK, MEM BUFFER, and READ ERROR ASSERTION -------------------------------------
     always @(posedge clkWizard) begin
         //Counter-------------------------
         //FIFO Clock and Counter are independent of startReading flag
         if (TOP_COUNTER) begin
-            counter     <= {N_COUNTER_UART_CLK{1'b0}};  
-            uart_clk    <= ~uart_clk;
+            counter_uart        <= {N_COUNTER_UART_CLK{1'b0}};  
+            uart_clk            <= ~uart_clk;
         end
         else begin
-            counter     <= counter + {{N_COUNTER_UART_CLK-1{1'b0}}, 1'b1};
-        end
-        ///////////------------------------
-        //refreshing buffer----------------
-        if(startReading) begin      
-            mem_buffer <= mem_output[31:0];
+            counter_uart        <= counter_uart + {{N_COUNTER_UART_CLK-1{1'b0}}, 1'b1};
         end
     end
 
     ////////////---- READING AND TRANSMISSION ----------------------------------------------------
+    
+    //buffer_counter is a max 4 counter which selects memory output byte by byte to send it via uart
     reg [1:0]                       buffer_counter      = 2'b00;
     wire                            TOP_BYTE;
     assign                          TOP_BYTE = (buffer_counter == 2'b11);
 
-    reg                             uart_FIRSTSENT      = 1'b0;
-    reg                             uart_synchronized   = 1'b0;
+    always @(*) begin
+        case (buffer_counter)
+            2'b00  : uart_buffer = mem_output[7:0];
+            2'b01  : uart_buffer = mem_output[15:8];
+            2'b10  : uart_buffer = mem_output[23:16];
+            2'b11  : uart_buffer = mem_output[31:24];
+            default: uart_buffer = 8'h00;
+        endcase
+    end
 
     always @(posedge uart_clk) begin
         ////----- Updating uart_buffer --- counting the 4 bytes in mem_buffer
         /// we change the uart_buffer in every reload toggle
         if(uart_reload) begin
-            if (TOP_BYTE || !uart_FIRSTSENT) begin
-                buffer_counter      <= 0;
+            if (TOP_BYTE || !startReading) begin//while startReading=false then held buffer_counter at first byte
+                buffer_counter      <= 2'b00;
             end
             else begin
-                buffer_counter      <= buffer_counter + 1;
+                buffer_counter      <= buffer_counter + {1'b0, 1'b1};
             end
-        end
-        case (buffer_counter)
-            2'b00  : uart_buffer <= mem_buffer[7:0];
-            2'b01  : uart_buffer <= mem_buffer[15:8];
-            2'b10  : uart_buffer <= mem_buffer[23:16];
-            2'b11  : uart_buffer <= mem_buffer[31:24];
-            default: uart_buffer <= 8'h00;
-        endcase
-
-        if (uart_reload) begin
-            uart_FIRSTSENT <= 1'b1;
         end
 
         //----------------------------------------------------------------------
         // READ ENABLE ---------------------------------------------------------
-        // -rEN asserted when uart_reload comes high, TDC is in reading mode, and 
-        // it is transmitting the last byte, so to synchronize the transmission
-        // -rEN just one clock high
-
+        // -readEN asserted high just for one clock
         if(readEN) begin        
             readEN  <= 1'b0;
         end 
         else begin
-            if(startReading && !mem_empty && uart_reload && TOP_BYTE && uart_synchronized)  begin
+            if(startReading && !mem_empty && uart_reload && TOP_BYTE)  begin
                 readEN  <= 1'b1;
-            end
-            if(uart_FIRSTSENT && !uart_synchronized)  begin
-                readEN                  <= 1'b1;
-                uart_synchronized       <= 1'b1;
             end
         end
         //-----------------------------------------------------------------------
@@ -323,7 +322,7 @@ module top (
     
     // Read Clock ---------------------------------------------------    
     always @(posedge rCLK) begin  
-        //----Starting Reset
+        //----Starting Reset--------
         if(starting_flag) begin
             if  (starting_delay_counter < 4'hf) begin
                 starting_delay_counter  <= starting_delay_counter + 1'b1;
@@ -343,9 +342,11 @@ module top (
                 mem_rst <= 1'b0;
             end
         end
+        /////////----------------
 
-        //----Start UART
-        if(startReading && !starting_flag && !but_rst && !mem_empty)    begin  //Enables UART
+        //----Start UART--------
+        //uart_send should be kept high when TDC is in the 'sending data stage'
+        if(startReading && !starting_flag && !but_rst && !mem_empty)    begin  
             uart_send <= 1'b1;
         end
         else begin

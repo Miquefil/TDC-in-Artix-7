@@ -4,7 +4,7 @@
 //              with 7 series primitives
 //
 // Author: Miqueas Filsinger
-// Date: Date Created or Last Modified
+// Date: 
 //
 // Notes:
 // Resource https://docs.amd.com/r/en-US/ug953-vivado-7series-libraries/LUT6
@@ -30,39 +30,36 @@ module 6LUT_counter (# parameter ONES_CANT = 1)(
 );
     wire s1, s2, s3;
     
-    genvar i;
-    for (i = 0 ; i <= ONES_CANT; i = i+1 ) begin
-        (* DONT_TOUCH = "yes" *) LUT6 #(.INIT(64'hFA28E880C8808000)  //most significant bit
-                ) LUT_1 (
-            .O5 (s3),            //sum
-            .I0(idata[0]), 
-            .I1(idata[1]), 
-            .I2(idata[2]), 
-            .I3(idata[3]), 
-            .I4(idata[4]), 
-            .I5(idata[5])  // selects double
-        );
-        (* DONT_TOUCH = "yes" *) LUT6 #(.INIT(64'h8317177E177E7CE8)  //middle bit
-                ) LUT_2 (
-            .O5 (s2),            //sum
-            .I0(idata[0]), 
-            .I1(idata[1]), 
-            .I2(idata[2]), 
-            .I3(idata[3]), 
-            .I4(idata[4]), 
-            .I5(idata[5])  // selects double
-        );
-        (* DONT_TOUCH = "yes" *) LUT6 #(.INIT(64'h6996966996696996)  //less significant bit
-                ) LUT_3 (
-            .O5 (s1),            //sum
-            .I0(idata[0]), 
-            .I1(idata[1]), 
-            .I2(idata[2]), 
-            .I3(idata[3]), 
-            .I4(idata[4]), 
-            .I5(idata[5])  // selects double output
-        );
-    end
+    (* DONT_TOUCH = "yes" *) LUT6 #(.INIT(64'hFA28E880C8808000)  //most significant bit
+            ) LUT_1 (
+        .O5 (s3),            //sum
+        .I0(idata[0]), 
+        .I1(idata[1]), 
+        .I2(idata[2]), 
+        .I3(idata[3]), 
+        .I4(idata[4]), 
+        .I5(idata[5])  // selects double
+    );
+    (* DONT_TOUCH = "yes" *) LUT6 #(.INIT(64'h8317177E177E7CE8)  //middle bit
+            ) LUT_2 (
+        .O5 (s2),            //sum
+        .I0(idata[0]), 
+        .I1(idata[1]), 
+        .I2(idata[2]), 
+        .I3(idata[3]), 
+        .I4(idata[4]), 
+        .I5(idata[5])  // selects double
+    );
+    (* DONT_TOUCH = "yes" *) LUT6 #(.INIT(64'h6996966996696996)  //less significant bit
+            ) LUT_3 (
+        .O5 (s1),            //sum
+        .I0(idata[0]), 
+        .I1(idata[1]), 
+        .I2(idata[2]), 
+        .I3(idata[3]), 
+        .I4(idata[4]), 
+        .I5(idata[5])  // selects double output
+    );
 
     assign oData[0] = s1;
     assign oData[1] = s2;

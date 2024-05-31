@@ -51,7 +51,7 @@ module top_tb(
     integer i = 0;
     initial begin     
         //med1   
-        #10
+        #50
         hit_p           = 1'b0;
         hit_n           = 1'b1;
         startRead       = 1'b0;

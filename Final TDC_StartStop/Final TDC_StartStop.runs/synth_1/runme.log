@@ -14,7 +14,7 @@ ECHO est  desactivado.
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source top.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:12 . Memory (MB): peak = 463.391 ; gain = 185.078
+create_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 461.969 ; gain = 184.410
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2023.2/data/ip'.
@@ -25,18 +25,20 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200
 INFO: [Device 21-403] Loading part xc7a200tfbg676-2
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 5788
+INFO: [Synth 8-7075] Helper process launched with PID 2524
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1358.457 ; gain = 439.160
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1359.809 ; gain = 440.043
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-11241] undeclared symbol 'q1', assumed default net type 'wire' [C:/Users/mique/Desktop/TDC-in-Artix-7/Edge.v:21]
 INFO: [Synth 8-11241] undeclared symbol 'q2', assumed default net type 'wire' [C:/Users/mique/Desktop/TDC-in-Artix-7/Edge.v:22]
+INFO: [Synth 8-11241] undeclared symbol 'outTaps', assumed default net type 'wire' [C:/Users/mique/Desktop/TDC-in-Artix-7/Fine.v:119]
 WARNING: [Synth 8-11065] parameter 'N_COMBINATIONS' becomes localparam in 'uart_tx' with formal parameter declaration list [C:/Users/mique/Desktop/TDC-in-Artix-7/uart_tx.v:30]
 WARNING: [Synth 8-11065] parameter 's_IDLE' becomes localparam in 'uart_tx' with formal parameter declaration list [C:/Users/mique/Desktop/TDC-in-Artix-7/uart_tx.v:31]
 WARNING: [Synth 8-11065] parameter 's_TX_START_BIT' becomes localparam in 'uart_tx' with formal parameter declaration list [C:/Users/mique/Desktop/TDC-in-Artix-7/uart_tx.v:32]
 WARNING: [Synth 8-11065] parameter 's_TX_DATA_BITS' becomes localparam in 'uart_tx' with formal parameter declaration list [C:/Users/mique/Desktop/TDC-in-Artix-7/uart_tx.v:33]
 WARNING: [Synth 8-11065] parameter 's_TX_STOP_BIT' becomes localparam in 'uart_tx' with formal parameter declaration list [C:/Users/mique/Desktop/TDC-in-Artix-7/uart_tx.v:34]
 WARNING: [Synth 8-11065] parameter 's_CLEANUP' becomes localparam in 'uart_tx' with formal parameter declaration list [C:/Users/mique/Desktop/TDC-in-Artix-7/uart_tx.v:35]
+INFO: [Synth 8-11241] undeclared symbol 'led_debugmode', assumed default net type 'wire' [C:/Users/mique/Desktop/TDC-in-Artix-7/top.v:70]
 INFO: [Synth 8-6157] synthesizing module 'top' [C:/Users/mique/Desktop/TDC-in-Artix-7/top.v:11]
 INFO: [Synth 8-6157] synthesizing module 'IBUFDS' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:73646]
 	Parameter DIFF_TERM bound to: FALSE - type: string 
@@ -89,133 +91,37 @@ WARNING: [Synth 8-689] width (1) of port connection 'WRCOUNT' does not match por
 INFO: [Synth 8-6155] done synthesizing module 'memory_ctrl' (0#1) [C:/Users/mique/Desktop/TDC-in-Artix-7/memory_ctrl.v:14]
 INFO: [Synth 8-6157] synthesizing module 'block_clock_wrapper' [C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.gen/sources_1/bd/block_clock/hdl/block_clock_wrapper.v:13]
 INFO: [Synth 8-6157] synthesizing module 'block_clock' [c:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.gen/sources_1/bd/block_clock/synth/block_clock.v:13]
-INFO: [Synth 8-6157] synthesizing module 'block_clock_clk_wiz_0_0' [C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.runs/synth_1/.Xil/Vivado-9120-MikeHP/realtime/block_clock_clk_wiz_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'block_clock_clk_wiz_0_0' (0#1) [C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.runs/synth_1/.Xil/Vivado-9120-MikeHP/realtime/block_clock_clk_wiz_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'block_clock_clk_wiz_0_0' [C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.runs/synth_1/.Xil/Vivado-7368-MikeHP/realtime/block_clock_clk_wiz_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'block_clock_clk_wiz_0_0' (0#1) [C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.runs/synth_1/.Xil/Vivado-7368-MikeHP/realtime/block_clock_clk_wiz_0_0_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'block_clock' (0#1) [c:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.gen/sources_1/bd/block_clock/synth/block_clock.v:13]
 INFO: [Synth 8-6155] done synthesizing module 'block_clock_wrapper' (0#1) [C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.gen/sources_1/bd/block_clock/hdl/block_clock_wrapper.v:13]
-WARNING: [Synth 8-6104] Input port 'CTS' has an internal driver [C:/Users/mique/Desktop/TDC-in-Artix-7/top.v:232]
+WARNING: [Synth 8-6104] Input port 'CTS' has an internal driver [C:/Users/mique/Desktop/TDC-in-Artix-7/top.v:242]
 INFO: [Synth 8-6157] synthesizing module 'uart_tx' [C:/Users/mique/Desktop/TDC-in-Artix-7/uart_tx.v:19]
 	Parameter NB bound to: 8 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'uart_tx' (0#1) [C:/Users/mique/Desktop/TDC-in-Artix-7/uart_tx.v:19]
-INFO: [Synth 8-226] default block is never used [C:/Users/mique/Desktop/TDC-in-Artix-7/top.v:290]
+INFO: [Synth 8-226] default block is never used [C:/Users/mique/Desktop/TDC-in-Artix-7/top.v:300]
 INFO: [Synth 8-6155] done synthesizing module 'top' (0#1) [C:/Users/mique/Desktop/TDC-in-Artix-7/top.v:11]
-WARNING: [Synth 8-3848] Net outFF in module/entity Fine does not have driver. [C:/Users/mique/Desktop/TDC-in-Artix-7/Fine.v:29]
-WARNING: [Synth 8-6014] Unused sequential element startWriting_reg was removed.  [C:/Users/mique/Desktop/TDC-in-Artix-7/top.v:174]
-WARNING: [Synth 8-3848] Net RTS in module/entity top does not have driver. [C:/Users/mique/Desktop/TDC-in-Artix-7/top.v:29]
-WARNING: [Synth 8-7129] Port outFF[239] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[238] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[237] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[236] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[235] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[234] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[233] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[232] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[231] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[230] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[229] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[228] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[227] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[226] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[225] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[224] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[223] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[222] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[221] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[220] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[219] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[218] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[217] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[216] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[215] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[214] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[213] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[212] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[211] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[210] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[209] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[208] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[207] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[206] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[205] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[204] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[203] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[202] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[201] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[200] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[199] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[198] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[197] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[196] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[195] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[194] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[193] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[192] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[191] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[190] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[189] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[188] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[187] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[186] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[185] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[184] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[183] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[182] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[181] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[180] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[179] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[178] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[177] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[176] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[175] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[174] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[173] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[172] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[171] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[170] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[169] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[168] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[167] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[166] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[165] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[164] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[163] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[162] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[161] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[160] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[159] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[158] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[157] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[156] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[155] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[154] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[153] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[152] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[151] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[150] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[149] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[148] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[147] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[146] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[145] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[144] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[143] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[142] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[141] in module Fine is either unconnected or has no load
-WARNING: [Synth 8-7129] Port outFF[140] in module Fine is either unconnected or has no load
-INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-6014] Unused sequential element startWriting_reg was removed.  [C:/Users/mique/Desktop/TDC-in-Artix-7/top.v:180]
+WARNING: [Synth 8-3848] Net RTS in module/entity top does not have driver. [C:/Users/mique/Desktop/TDC-in-Artix-7/top.v:31]
+WARNING: [Synth 8-7129] Port debug_mode in module Fine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port debug_hit in module Fine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port debug_mode in module TDC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port RTS in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port RX in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CTS in module top is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1515.852 ; gain = 596.555
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1551.273 ; gain = 631.508
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:11 . Memory (MB): peak = 1515.852 ; gain = 596.555
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1551.273 ; gain = 631.508
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:11 . Memory (MB): peak = 1515.852 ; gain = 596.555
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1551.273 ; gain = 631.508
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.097 . Memory (MB): peak = 1515.852 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.039 . Memory (MB): peak = 1551.273 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 62 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -232,21 +138,21 @@ Parsing XDC File [C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Fina
 Finished Parsing XDC File [C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1554.898 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1647.742 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 El sistema no puede encontrar la ruta especificada.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1554.898 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.026 . Memory (MB): peak = 1647.742 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:25 . Memory (MB): peak = 1554.898 ; gain = 635.602
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:19 . Memory (MB): peak = 1647.742 ; gain = 727.977
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tfbg676-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:25 . Memory (MB): peak = 1554.898 ; gain = 635.602
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:19 . Memory (MB): peak = 1647.742 ; gain = 727.977
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -258,9 +164,11 @@ Applied set_property CLOCK_BUFFER_TYPE = NONE for clk_p. (constraint file  {c:/U
 Applied set_property KEEP_HIERARCHY = SOFT for u_clk/block_clock_i. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for u_clk/block_clock_i/clk_wiz_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:25 . Memory (MB): peak = 1554.898 ; gain = 635.602
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:19 . Memory (MB): peak = 1647.742 ; gain = 727.977
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'r_SM_Main_reg' in module 'uart_tx'
+WARNING: [Synth 8-327] inferring latch for variable 'bin_reg' [C:/Users/mique/Desktop/TDC-in-Artix-7/DecodeStart.v:35]
+WARNING: [Synth 8-327] inferring latch for variable 'bin_reg' [C:/Users/mique/Desktop/TDC-in-Artix-7/DecodeStop.v:36]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -271,7 +179,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'r_SM_Main_reg' in module 'u
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'r_SM_Main_reg' using encoding 'sequential' in module 'uart_tx'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:28 . Memory (MB): peak = 1554.898 ; gain = 635.602
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1647.742 ; gain = 727.977
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -280,6 +188,7 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input   16 Bit       Adders := 3     
 	   3 Input   16 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 480   
 	   2 Input    5 Bit       Adders := 1     
 	   2 Input    4 Bit       Adders := 1     
 	   2 Input    3 Bit       Adders := 2     
@@ -292,14 +201,15 @@ Detailed RTL Component Info :
 	                4 Bit    Registers := 1     
 	                3 Bit    Registers := 2     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 18    
+	                1 Bit    Registers := 19    
 +---Muxes : 
-	   2 Input    8 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 480   
 	   4 Input    8 Bit        Muxes := 1     
 	   2 Input    4 Bit        Muxes := 1     
 	   2 Input    3 Bit        Muxes := 1     
 	   4 Input    2 Bit        Muxes := 1     
 	   2 Input    2 Bit        Muxes := 2     
+	 240 Input    1 Bit        Muxes := 2     
 	   2 Input    1 Bit        Muxes := 12    
 	   4 Input    1 Bit        Muxes := 6     
 	   3 Input    1 Bit        Muxes := 1     
@@ -319,26 +229,32 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port debug_mode in module Fine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port debug_hit in module Fine is either unconnected or has no load
+WARNING: [Synth 8-7129] Port debug_mode in module TDC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port RTS in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port RX in module top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CTS in module top is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:49 . Memory (MB): peak = 1661.598 ; gain = 742.301
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:01:24 . Memory (MB): peak = 1716.555 ; gain = 796.789
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:57 . Memory (MB): peak = 1661.598 ; gain = 742.301
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:45 ; elapsed = 00:01:29 . Memory (MB): peak = 1716.555 ; gain = 796.789
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:01:01 . Memory (MB): peak = 1661.598 ; gain = 742.301
+Finished Timing Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:01:30 . Memory (MB): peak = 1716.555 ; gain = 796.789
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:01:03 . Memory (MB): peak = 1661.598 ; gain = 742.301
+Finished Technology Mapping : Time (s): cpu = 00:00:49 ; elapsed = 00:01:36 . Memory (MB): peak = 1743.863 ; gain = 824.098
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -355,38 +271,39 @@ Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
+WARNING: [Synth 8-3295] tying undriven pin u_tdc:debug_hit to constant 0
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:01:10 . Memory (MB): peak = 1661.598 ; gain = 742.301
+Finished IO Insertion : Time (s): cpu = 00:00:51 ; elapsed = 00:01:41 . Memory (MB): peak = 1758.672 ; gain = 838.906
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:01:10 . Memory (MB): peak = 1661.598 ; gain = 742.301
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:51 ; elapsed = 00:01:41 . Memory (MB): peak = 1758.672 ; gain = 838.906
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:01:11 . Memory (MB): peak = 1661.598 ; gain = 742.301
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:52 ; elapsed = 00:01:42 . Memory (MB): peak = 1758.672 ; gain = 838.906
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:01:11 . Memory (MB): peak = 1661.598 ; gain = 742.301
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:52 ; elapsed = 00:01:42 . Memory (MB): peak = 1758.672 ; gain = 838.906
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:01:11 . Memory (MB): peak = 1661.598 ; gain = 742.301
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:52 ; elapsed = 00:01:42 . Memory (MB): peak = 1758.672 ; gain = 838.906
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:01:11 . Memory (MB): peak = 1661.598 ; gain = 742.301
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:52 ; elapsed = 00:01:42 . Memory (MB): peak = 1758.672 ; gain = 838.906
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -405,45 +322,48 @@ Report Cell Usage:
 +------+----------------------+------+
 |1     |block_clock_clk_wiz_0 |     1|
 |2     |BUFG                  |     1|
-|3     |CARRY4                |    78|
+|3     |CARRY4                |    82|
 |4     |FIFO36E1              |     1|
 |5     |LUT1                  |     6|
-|6     |LUT2                  |   107|
-|7     |LUT3                  |    60|
-|8     |LUT4                  |    64|
-|9     |LUT5                  |   349|
-|10    |LUT6                  |   525|
-|11    |FDCE                  |   730|
-|12    |FDRE                  |   224|
-|13    |FDSE                  |     1|
-|14    |IBUF                  |     3|
-|15    |IBUFDS                |     1|
-|16    |OBUF                  |     5|
-|17    |OBUFT                 |     1|
+|6     |LUT2                  |  1252|
+|7     |LUT3                  |  1488|
+|8     |LUT4                  |   743|
+|9     |LUT5                  |  1639|
+|10    |LUT6                  |  5064|
+|11    |MUXF7                 |     4|
+|12    |FDCE                  |   730|
+|13    |FDRE                  |   225|
+|14    |FDSE                  |     1|
+|15    |LD                    |    16|
+|16    |IBUF                  |     4|
+|17    |IBUFDS                |     1|
+|18    |OBUF                  |     5|
+|19    |OBUFT                 |     1|
 +------+----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:01:11 . Memory (MB): peak = 1661.598 ; gain = 742.301
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:52 ; elapsed = 00:01:42 . Memory (MB): peak = 1758.672 ; gain = 838.906
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 244 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:01:06 . Memory (MB): peak = 1661.598 ; gain = 703.254
-Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:01:11 . Memory (MB): peak = 1661.598 ; gain = 742.301
+Synthesis finished with 0 errors, 0 critical warnings and 10 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:46 ; elapsed = 00:01:39 . Memory (MB): peak = 1758.672 ; gain = 742.438
+Synthesis Optimization Complete : Time (s): cpu = 00:00:52 ; elapsed = 00:01:42 . Memory (MB): peak = 1758.672 ; gain = 838.906
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.044 . Memory (MB): peak = 1661.598 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 80 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.069 . Memory (MB): peak = 1758.672 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 104 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1661.598 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1758.672 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
+  A total of 16 instances were transformed.
+  LD => LDCE: 16 instances
 
 El sistema no puede encontrar la ruta especificada.
-Synth Design complete | Checksum: ccc32b69
+Synth Design complete | Checksum: e8f0b688
 INFO: [Common 17-83] Releasing license: Synthesis
-60 Infos, 113 Warnings, 0 Critical Warnings and 0 Errors encountered.
+61 Infos, 27 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:31 ; elapsed = 00:01:20 . Memory (MB): peak = 1661.598 ; gain = 1188.219
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1661.598 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:55 ; elapsed = 00:01:49 . Memory (MB): peak = 1758.672 ; gain = 1287.770
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 1758.672 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.runs/synth_1/top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri May 17 13:32:46 2024...
+INFO: [Common 17-206] Exiting Vivado at Fri May 24 19:30:16 2024...

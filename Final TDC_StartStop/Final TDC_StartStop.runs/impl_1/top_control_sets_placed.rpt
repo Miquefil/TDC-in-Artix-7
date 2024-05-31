@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri May 17 13:35:04 2024
+| Date         : Fri May 24 19:31:29 2024
 | Host         : MikeHP running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    26 |
-|    Minimum number of control sets                        |    26 |
+| Total control sets                                       |    28 |
+|    Minimum number of control sets                        |    28 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
 | Unused register locations in slices containing registers |    61 |
@@ -39,11 +39,11 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    26 |
+| Total control sets |    28 |
 | >= 0 to < 4        |     7 |
 | >= 4 to < 6        |     4 |
 | >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     3 |
+| >= 8 to < 10       |     5 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              28 |           12 |
+| No           | No                    | No                     |              44 |           19 |
 | No           | No                    | Yes                    |             243 |           63 |
 | No           | Yes                   | No                     |               5 |            1 |
-| Yes          | No                    | No                     |             120 |           28 |
-| Yes          | No                    | Yes                    |             486 |          195 |
-| Yes          | Yes                   | No                     |              73 |           22 |
+| Yes          | No                    | No                     |             120 |           31 |
+| Yes          | No                    | Yes                    |             486 |          283 |
+| Yes          | Yes                   | No                     |              73 |           23 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,32 +73,34 @@ Table of Contents
 +----------------------------------------------+-------------------------------------------+-------------------------------------------+------------------+----------------+--------------+
 |                 Clock Signal                 |               Enable Signal               |              Set/Reset Signal             | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------------------------------------+-------------------------------------------+-------------------------------------------+------------------+----------------+--------------+
-|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out  |                                           |                                           |                1 |              1 |         1.00 |
-|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 |                                           | u_tdc/u_merge/done                        |                1 |              1 |         1.00 |
 |  u_tdc/u_EdgeDetector/oFall                  |                                           | u_tdc/rst                                 |                1 |              1 |         1.00 |
 |  u_tdc/u_EdgeDetector/oRise                  |                                           | u_tdc/rst                                 |                1 |              1 |         1.00 |
+|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 |                                           | u_tdc/u_merge/done                        |                1 |              1 |         1.00 |
+|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out  |                                           |                                           |                1 |              1 |         1.00 |
 |  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | but_startReading_IBUF                     | but_startWriting_IBUF                     |                2 |              2 |         1.00 |
 |  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | startTDC                                  | u_tdc/rst                                 |                1 |              2 |         2.00 |
 |  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | u_tdc/u_merge/storeStop                   | u_tdc/u_merge/counter[2]_i_1_n_0          |                1 |              3 |         3.00 |
-|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 |                                           |                                           |                3 |              4 |         1.33 |
-|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out3 | startTDC                                  | u_tdc/rst                                 |                3 |              4 |         1.33 |
 |  uart_clk_BUFG                               | starting_flag                             | starting_delay_counter[3]_i_1_n_0         |                1 |              4 |         4.00 |
+|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out3 | startTDC                                  | u_tdc/rst                                 |                1 |              4 |         4.00 |
+|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 |                                           |                                           |                3 |              4 |         1.33 |
 |  u_clk/block_clock_i/clk_wiz_0/inst/clk_out  |                                           | TOP_COUNTER                               |                1 |              5 |         5.00 |
-|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | u_tdc/u_merge/StartEdge_stored[7]_i_2_n_0 | u_tdc/u_merge/StartEdge_stored[7]_i_1_n_0 |                1 |              8 |         8.00 |
+|  u_tdc/u_DecStop/bin_reg[7]_i_2_n_0          |                                           |                                           |                4 |              8 |         2.00 |
+|  uart_clk_BUFG                               | u_uart/r_Tx_Data_0                        |                                           |                3 |              8 |         2.67 |
+|  u_tdc/u_DecStart/bin_reg[7]_i_2_n_0         |                                           |                                           |                4 |              8 |         2.00 |
+|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | u_tdc/u_merge/StartEdge_stored[7]_i_2_n_0 | u_tdc/u_merge/StartEdge_stored[7]_i_1_n_0 |                2 |              8 |         4.00 |
 |  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | u_tdc/u_merge/StopEdge_stored[7]_i_2_n_0  | u_tdc/u_merge/StopEdge_stored[7]_i_1_n_0  |                2 |              8 |         4.00 |
-|  uart_clk_BUFG                               | u_uart/r_Tx_Data_0                        |                                           |                2 |              8 |         4.00 |
-|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | u_tdc/u_EdgeDetector/oFall                |                                           |                5 |             16 |         3.20 |
-|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | hit                                       | u_tdc/rst                                 |                5 |             16 |         3.20 |
-|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out3 | u_tdc/u_EdgeDetector_1/oFall              |                                           |                4 |             16 |         4.00 |
+|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out3 | u_tdc/u_EdgeDetector_1/oFall              |                                           |                3 |             16 |         5.33 |
 |  u_clk/block_clock_i/clk_wiz_0/inst/clk_out3 | hit                                       | u_tdc/rst                                 |                5 |             16 |         3.20 |
+|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | u_tdc/u_EdgeDetector/oFall                |                                           |                6 |             16 |         2.67 |
+|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | hit                                       | u_tdc/rst                                 |                5 |             16 |         3.20 |
 |  u_clk/block_clock_i/clk_wiz_0/inst/clk_out4 | u_tdc/u_EdgeDetector_2/oFall              |                                           |                4 |             16 |         4.00 |
 |  u_clk/block_clock_i/clk_wiz_0/inst/clk_out4 | hit                                       | u_tdc/rst                                 |                5 |             16 |         3.20 |
-|  uart_clk_BUFG                               |                                           |                                           |                8 |             23 |         2.88 |
-|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out  | led_ReadStage_OBUF                        |                                           |                5 |             32 |         6.40 |
-|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | u_tdc/u_merge/done                        |                                           |                8 |             32 |         4.00 |
+|  uart_clk_BUFG                               |                                           |                                           |                7 |             23 |         3.29 |
+|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | u_tdc/u_merge/done                        |                                           |                9 |             32 |         3.56 |
+|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out  | led_ReadStage_OBUF                        |                                           |                6 |             32 |         5.33 |
 |  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 |                                           | u_tdc/rst                                 |               60 |            240 |         4.00 |
-|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | u_tdc/u_EdgeDetector/oFall                | u_tdc/rst                                 |               95 |            240 |         2.53 |
-|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | u_tdc/u_EdgeDetector/oRise                | u_tdc/rst                                 |               96 |            240 |         2.50 |
+|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | u_tdc/u_EdgeDetector/oFall                | u_tdc/rst                                 |              134 |            240 |         1.79 |
+|  u_clk/block_clock_i/clk_wiz_0/inst/clk_out2 | u_tdc/u_EdgeDetector/oRise                | u_tdc/rst                                 |              147 |            240 |         1.63 |
 +----------------------------------------------+-------------------------------------------+-------------------------------------------+------------------+----------------+--------------+
 
 

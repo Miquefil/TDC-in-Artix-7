@@ -9,7 +9,7 @@
 // Notes:
 // - 
 ////////////////////////////////////////////////////////////////////////////////////
-
+`include "defines.v"
 (* keep_hierarchy = "TRUE" *) 
 module Fine #(parameter NUM = 12)                    ///parameter should be multiple of 4
     (
@@ -18,15 +18,15 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
         input   wire            iHit,
         input   wire            iStopEnable,
         input   wire            iStartEnable,
+        input   wire            debug_mode,
+        input   wire            debug_hit,
 
         //Real Outputs
         output  wire[NUM-1:0]   oFFStart,       //FF outputs of Start column
         output  wire[NUM-1:0]   oFFStop ,       //FF outputs of Stop column
+        output  wire            out_arbiter_start_ff,        //output from the Carrys output
+        output  wire            out_arbiter_stop_ff        //output from the Carrys output
 
-
-        //debugging signals
-        output  wire[NUM-1:0]   outTaps,        //output from the Carrys output
-        output  wire[NUM-1:0]   outFF           //output from the first column of FF
     );
 
 
@@ -34,7 +34,19 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
     wire[NUM-1: 0]  wOutput;                //salida de outputs
     wire[NUM-1: 0]  wTapsOut;               //salidas luego de flipflops
     wire[NUM-1: 0]  wFirstFF;               //salidas luego de flipflops
+    reg             fine_in;
+    assign          out_arbiter_start_ff = oFFStart[`TOLERANCE_COARSE];
+    assign          out_arbiter_stop_ff  = oFFStop[`TOLERANCE_COARSE];
 
+    //Mux for debug mode: 
+    // debug_hit will be a synthetic hit, implemented with a PLL.
+    // always @(*) begin
+    //     case (debug_mode)
+    //         1'b0 :      fine_in      = iHit;
+    //         1'b1 :      fine_in      = debug_hit;
+    //         default:    fine_in      = iHit;
+    //     endcase
+    // end
 
     /////////INITIALIZATION OF CARRY4s //////////////////////////////////////////////
     //first Carry4
@@ -54,8 +66,8 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
                 .CO(wCarryOutputs[4*(i+1)-1: 4*i]),         // 4-bit carry out
                 .O(wOutput[4*(i+1)-1: 4*i]),             // 4-bit carry chain XOR data out
                 .CI(wCarryOutputs[4*i-1]),         // 1-bit carry cascade input
-                .CYINIT(1'b0),     // 1-bit carry initialization
-                .DI(4'b0000),         // 4-bit carry-MUX data in
+                .CYINIT(1'b0),                  // 1-bit carry initialization
+                .DI(4'b0000),                   // 4-bit carry-MUX data in
                 .S(4'b1111)            // 4-bit carry-MUX select input
             );
         end
@@ -96,7 +108,7 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
                 .Q(oFFStop[i])      ,     
                 .C(clk)             ,     
                 .CE(iStopEnable)    ,
-                .CLR(iRst)           ,
+                .CLR(iRst)          ,
                 .D(wFirstFF[i])   
             );
         end

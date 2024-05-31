@@ -46,7 +46,7 @@
         "parameters": {
           "CLK_DOMAIN": {
             "value": "/clk_wiz_0_clk_out1",
-            "value_src": "default"
+            "value_src": "default_prop"
           },
           "FREQ_HZ": {
             "value": "7339449",
@@ -241,6 +241,15 @@
           "CLKOUT5_DRIVES": {
             "value": "BUFG"
           },
+          "CLKOUT5_JITTER": {
+            "value": "114.523"
+          },
+          "CLKOUT5_PHASE_ERROR": {
+            "value": "97.786"
+          },
+          "CLKOUT5_USED": {
+            "value": "false"
+          },
           "CLKOUT6_DRIVES": {
             "value": "BUFG"
           },
@@ -288,6 +297,9 @@
           },
           "MMCM_CLKOUT3_PHASE": {
             "value": "78.750"
+          },
+          "MMCM_CLKOUT4_DIVIDE": {
+            "value": "1"
           },
           "MMCM_COMPENSATION": {
             "value": "ZHOLD"

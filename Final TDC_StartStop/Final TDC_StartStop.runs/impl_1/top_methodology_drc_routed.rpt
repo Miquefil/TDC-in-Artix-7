@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri May 17 13:37:06 2024
+| Date         : Fri May 24 19:33:41 2024
 | Host         : MikeHP running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 | Design       : top
@@ -23,15 +23,17 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 112
-+-----------+------------------+-------------------------------+------------+
-| Rule      | Severity         | Description                   | Violations |
-+-----------+------------------+-------------------------------+------------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell   | 38         |
-| LUTAR-1   | Warning          | LUT drives async reset alert  | 2          |
-| TIMING-16 | Warning          | Large setup violation         | 64         |
-| TIMING-18 | Warning          | Missing input or output delay | 8          |
-+-----------+------------------+-------------------------------+------------+
+             Violations found: 113
++-----------+------------------+--------------------------------+------------+
+| Rule      | Severity         | Description                    | Violations |
++-----------+------------------+--------------------------------+------------+
+| TIMING-17 | Critical Warning | Non-clocked sequential cell    | 38         |
+| LUTAR-1   | Warning          | LUT drives async reset alert   | 2          |
+| TIMING-16 | Warning          | Large setup violation          | 48         |
+| TIMING-18 | Warning          | Missing input or output delay  | 8          |
+| TIMING-20 | Warning          | Non-clocked latch              | 16         |
+| LATCH-1   | Advisory         | Existing latches in the design | 1          |
++-----------+------------------+--------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
@@ -251,322 +253,242 @@ Related violations: <none>
 
 TIMING-16#1 Warning
 Large setup violation  
-There is a large setup violation of -1.179 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[12]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.411 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[10]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#2 Warning
 Large setup violation  
-There is a large setup violation of -1.244 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[0]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.411 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[11]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#3 Warning
 Large setup violation  
-There is a large setup violation of -1.244 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[11]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.411 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[12]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#4 Warning
 Large setup violation  
-There is a large setup violation of -1.244 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[13]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.411 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[9]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#5 Warning
 Large setup violation  
-There is a large setup violation of -1.244 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[6]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.469 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[8]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#6 Warning
 Large setup violation  
-There is a large setup violation of -1.244 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[7]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.518 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[5]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#7 Warning
 Large setup violation  
-There is a large setup violation of -1.244 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[8]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.518 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[6]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#8 Warning
 Large setup violation  
-There is a large setup violation of -1.244 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[9]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.518 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[7]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#9 Warning
 Large setup violation  
-There is a large setup violation of -1.274 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[13]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.518 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[8]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#10 Warning
 Large setup violation  
-There is a large setup violation of -1.274 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[14]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.522 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[13]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#11 Warning
 Large setup violation  
-There is a large setup violation of -1.274 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[15]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.522 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[14]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#12 Warning
 Large setup violation  
-There is a large setup violation of -1.297 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[0]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.522 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[15]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#13 Warning
 Large setup violation  
-There is a large setup violation of -1.301 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[10]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.528 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[1]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#14 Warning
 Large setup violation  
-There is a large setup violation of -1.301 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[11]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.528 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[2]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#15 Warning
 Large setup violation  
-There is a large setup violation of -1.301 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[12]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.528 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[3]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#16 Warning
 Large setup violation  
-There is a large setup violation of -1.301 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[9]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.528 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[4]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#17 Warning
 Large setup violation  
-There is a large setup violation of -1.324 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[10]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.532 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[10]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#18 Warning
 Large setup violation  
-There is a large setup violation of -1.324 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[14]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.532 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[11]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#19 Warning
 Large setup violation  
-There is a large setup violation of -1.324 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[15]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.532 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[13]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#20 Warning
 Large setup violation  
-There is a large setup violation of -1.324 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[1]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.532 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[1]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#21 Warning
 Large setup violation  
-There is a large setup violation of -1.324 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[2]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.532 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[4]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#22 Warning
 Large setup violation  
-There is a large setup violation of -1.324 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[3]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.532 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[5]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#23 Warning
 Large setup violation  
-There is a large setup violation of -1.324 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[4]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.532 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[7]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#24 Warning
 Large setup violation  
-There is a large setup violation of -1.324 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd1/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[5]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.532 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[9]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#25 Warning
 Large setup violation  
-There is a large setup violation of -1.327 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[5]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.535 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[0]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#26 Warning
 Large setup violation  
-There is a large setup violation of -1.327 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[6]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.535 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[2]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#27 Warning
 Large setup violation  
-There is a large setup violation of -1.327 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[7]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.535 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[3]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#28 Warning
 Large setup violation  
-There is a large setup violation of -1.327 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[8]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.535 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[6]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#29 Warning
 Large setup violation  
-There is a large setup violation of -1.361 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[1]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.563 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[0]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#30 Warning
 Large setup violation  
-There is a large setup violation of -1.361 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[2]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.568 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[12]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#31 Warning
 Large setup violation  
-There is a large setup violation of -1.361 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[3]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.568 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[14]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#32 Warning
 Large setup violation  
-There is a large setup violation of -1.361 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/count_reg[4]/R (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.568 ns between u_tdc/u_EdgeDetector_2/edge_detector_ffd0/C (clocked by clk_out3_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_2/stored_reg[15]/CE (clocked by clk_out4_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#33 Warning
 Large setup violation  
-There is a large setup violation of -1.375 ns between u_tdc/u_FineDelay/genblk3[71].Startff/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[16]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.867 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[0]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#34 Warning
 Large setup violation  
-There is a large setup violation of -1.511 ns between u_tdc/u_FineDelay/genblk3[71].Startff/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[17]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.891 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[10]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#35 Warning
 Large setup violation  
-There is a large setup violation of -1.826 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[10]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.891 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[11]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#36 Warning
 Large setup violation  
-There is a large setup violation of -1.826 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[11]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.891 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[12]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#37 Warning
 Large setup violation  
-There is a large setup violation of -1.826 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[12]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.891 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[9]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#38 Warning
 Large setup violation  
-There is a large setup violation of -1.826 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[1]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.998 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[5]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#39 Warning
 Large setup violation  
-There is a large setup violation of -1.826 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[2]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.998 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[6]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#40 Warning
 Large setup violation  
-There is a large setup violation of -1.826 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[3]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.998 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[7]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#41 Warning
 Large setup violation  
-There is a large setup violation of -1.826 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[4]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.998 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[8]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#42 Warning
 Large setup violation  
-There is a large setup violation of -1.826 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[9]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.999 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[1]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#43 Warning
 Large setup violation  
-There is a large setup violation of -1.842 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[13]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.999 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[2]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#44 Warning
 Large setup violation  
-There is a large setup violation of -1.842 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[14]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.999 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[3]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#45 Warning
 Large setup violation  
-There is a large setup violation of -1.842 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[15]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -1.999 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[4]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#46 Warning
 Large setup violation  
-There is a large setup violation of -1.876 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[0]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -2.001 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[13]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#47 Warning
 Large setup violation  
-There is a large setup violation of -1.876 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[5]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -2.001 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[14]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#48 Warning
 Large setup violation  
-There is a large setup violation of -1.876 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[6]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#49 Warning
-Large setup violation  
-There is a large setup violation of -1.876 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[7]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#50 Warning
-Large setup violation  
-There is a large setup violation of -1.876 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[8]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#51 Warning
-Large setup violation  
-There is a large setup violation of -1.899 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[18]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#52 Warning
-Large setup violation  
-There is a large setup violation of -1.949 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[19]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#53 Warning
-Large setup violation  
-There is a large setup violation of -2.055 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[20]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#54 Warning
-Large setup violation  
-There is a large setup violation of -2.074 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[22]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#55 Warning
-Large setup violation  
-There is a large setup violation of -2.134 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[23]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#56 Warning
-Large setup violation  
-There is a large setup violation of -2.139 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[21]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#57 Warning
-Large setup violation  
-There is a large setup violation of -2.152 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[24]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#58 Warning
-Large setup violation  
-There is a large setup violation of -2.171 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[26]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#59 Warning
-Large setup violation  
-There is a large setup violation of -2.231 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[27]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#60 Warning
-Large setup violation  
-There is a large setup violation of -2.236 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[25]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#61 Warning
-Large setup violation  
-There is a large setup violation of -2.250 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[28]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#62 Warning
-Large setup violation  
-There is a large setup violation of -2.269 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[30]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#63 Warning
-Large setup violation  
-There is a large setup violation of -2.329 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[31]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#64 Warning
-Large setup violation  
-There is a large setup violation of -2.334 ns between u_tdc/u_FineDelay/genblk4[121].StopFF/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_merge/out_reg[29]/D (clocked by clk_out2_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -2.001 ns between u_tdc/u_merge/counter_reg[1]/C (clocked by clk_out2_block_clock_clk_wiz_0_0) and u_tdc/u_Coarse_1/count_reg[15]/R (clocked by clk_out3_block_clock_clk_wiz_0_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-18#1 Warning
@@ -607,6 +529,91 @@ Related violations: <none>
 TIMING-18#8 Warning
 Missing input or output delay  
 An output delay is missing on led_WriteStage relative to the rising and/or falling clock edge(s) of clk_p.
+Related violations: <none>
+
+TIMING-20#1 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStart/bin_reg[0] cannot be properly analyzed as its control pin u_tdc/u_DecStart/bin_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#2 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStart/bin_reg[1] cannot be properly analyzed as its control pin u_tdc/u_DecStart/bin_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#3 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStart/bin_reg[2] cannot be properly analyzed as its control pin u_tdc/u_DecStart/bin_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#4 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStart/bin_reg[3] cannot be properly analyzed as its control pin u_tdc/u_DecStart/bin_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#5 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStart/bin_reg[4] cannot be properly analyzed as its control pin u_tdc/u_DecStart/bin_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#6 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStart/bin_reg[5] cannot be properly analyzed as its control pin u_tdc/u_DecStart/bin_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#7 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStart/bin_reg[6] cannot be properly analyzed as its control pin u_tdc/u_DecStart/bin_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#8 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStart/bin_reg[7] cannot be properly analyzed as its control pin u_tdc/u_DecStart/bin_reg[7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#9 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStop/bin_reg[0] cannot be properly analyzed as its control pin u_tdc/u_DecStop/bin_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#10 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStop/bin_reg[1] cannot be properly analyzed as its control pin u_tdc/u_DecStop/bin_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#11 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStop/bin_reg[2] cannot be properly analyzed as its control pin u_tdc/u_DecStop/bin_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#12 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStop/bin_reg[3] cannot be properly analyzed as its control pin u_tdc/u_DecStop/bin_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#13 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStop/bin_reg[4] cannot be properly analyzed as its control pin u_tdc/u_DecStop/bin_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#14 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStop/bin_reg[5] cannot be properly analyzed as its control pin u_tdc/u_DecStop/bin_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#15 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStop/bin_reg[6] cannot be properly analyzed as its control pin u_tdc/u_DecStop/bin_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#16 Warning
+Non-clocked latch  
+The latch u_tdc/u_DecStop/bin_reg[7] cannot be properly analyzed as its control pin u_tdc/u_DecStop/bin_reg[7]/G is not reached by a timing clock
+Related violations: <none>
+
+LATCH-1#1 Advisory
+Existing latches in the design  
+There are 16 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
 Related violations: <none>
 
 

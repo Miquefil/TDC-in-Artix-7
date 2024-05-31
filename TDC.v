@@ -4,17 +4,14 @@ module TDC (
     input  wire                     clk0,
     input  wire                     clk1,
     input  wire                     clk2,
+    input  wire                     debug_mode,
+    input  wire                     debug_hit,
     input  wire                     iRst,
     input  wire                     iHit,
     input  wire                     enable,
     output wire [`DIG_OUT-1:0]      oTDC,
     output wire                     done
-    
-    //Debugging Signals
-    // output                          StopConv,
-    // output[`NUM_TAPS-1:0]           FFStart, FFStop,
-    // output[`NUM_TAPS-1:0]           taps
-    );  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+);  
 
 
     wire                         Rise, Fall;
@@ -75,6 +72,8 @@ module TDC (
         .enable     (enable)
     );
 
+    wire arbiter_stop;   
+    wire arbiter_start;
     Fine #(`NUM_TAPS) u_FineDelay(
         .clk               (clk0),
         .iRst              (rst),
@@ -83,8 +82,10 @@ module TDC (
         .iStartEnable      (Rise),
         .oFFStart          (Start_Edge),    //FF outputs of Start_Edge column
         .oFFStop           (Stop_Edge),     //FF outputs of Stop_Edge column
-        .outTaps           (),              //output from the Carrys output
-        .outFF             () 
+        .debug_mode        (1'b0),
+        .debug_hit         (debug_hit),
+        .out_arbiter_start_ff(arbiter_stop),        //output from the Carrys output
+        .out_arbiter_stop_ff(arbiter_start)  
     );
 
     DecodeStart #(`NUM_TAPS, `NUM_DECODE) u_DecStart(
@@ -125,14 +126,15 @@ module TDC (
     );
 
     // Arbiter and Merging
+    //TODO: solve arbiter_stop/start condition, how to get it when using ones counter
     reg[`COUNTER_DIG-1:0]          CoarseStamp_final;
     always @(*) begin
         CoarseStamp_final = CoarseStamp_1;
 
-        if((CoarseStamp_1 == CoarseStamp_2)&&(DecodedStart >= `TOLERANCE_COARSE)) begin
+        if((CoarseStamp_1 == CoarseStamp_2)&&(CoarseStamp_0 < CoarseStamp_1)) begin
             CoarseStamp_final = CoarseStamp_final - {{`COUNTER_DIG-1{1'b0}}, 1'b1};
         end
-        if((CoarseStamp_1 == CoarseStamp_2)&&(DecodedStop >= `TOLERANCE_COARSE)) begin
+        if((CoarseStamp_1 == CoarseStamp_2)&&(CoarseStamp_0 > CoarseStamp_1)) begin
             CoarseStamp_final = CoarseStamp_final + {{`COUNTER_DIG-1{1'b0}}, 1'b1};
         end
     end
