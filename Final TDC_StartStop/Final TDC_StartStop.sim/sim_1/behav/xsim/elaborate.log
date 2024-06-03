@@ -17,10 +17,9 @@ Compiling module unisims_ver.FDCE_default
 Compiling module xil_defaultlib.Edge
 Compiling module unisims_ver.CARRY4
 Compiling module xil_defaultlib.Fine(NUM=240)
-Compiling module xil_defaultlib.DecodeStart(NUM_FF=240)
-Compiling module xil_defaultlib.DecodeStop(NUM_FF=240)
+Compiling module xil_defaultlib.decode
 Compiling module xil_defaultlib.Coarse(C_DIG=16)
-Compiling module xil_defaultlib.merging(N=3)
+Compiling module xil_defaultlib.merging(N=8)
 Compiling module xil_defaultlib.TDC
 Compiling module unisims_ver.FF36_INTERNAL_VLOG(DATA_WIDTH=36...
 Compiling module unisims_ver.FIFO36E1(DATA_WIDTH=36,FIRST_WOR...

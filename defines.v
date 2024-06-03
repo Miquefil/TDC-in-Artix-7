@@ -5,6 +5,7 @@
 `ifndef FLAG
     `define FLAG                1
     `define NUM_TAPS            240
+    `define HALF_NUM_TAPS       120
     `define NUM_DECODE          8               //2^(NUM_DECODE) >= NUM_TAPS
     `define COUNTER_DIG         16
     `define DIG_OUT             16+8+8          //CoarseCounter + 2*Decoders

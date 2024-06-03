@@ -6,10 +6,6 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix
 INFO: [VRFC 10-311] analyzing module block_clock
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/Coarse.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Coarse
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/DecodeStart.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module DecodeStart
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/DecodeStop.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module DecodeStop
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/Edge.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Edge
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/Fine.v" into library xil_defaultlib
@@ -18,6 +14,8 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix
 INFO: [VRFC 10-311] analyzing module TDC
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.gen/sources_1/bd/block_clock/hdl/block_clock_wrapper.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module block_clock_wrapper
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/decode.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module decode
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/memory_ctrl.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module memory_ctrl
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/mique/Desktop/TDC-in-Artix-7/merging.v" into library xil_defaultlib
