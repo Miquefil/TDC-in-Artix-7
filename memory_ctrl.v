@@ -19,6 +19,7 @@ module memory_ctrl (
     input   wire                              WriteEN,
     input   wire [31:0]                       data_input,
     output  wire [31:0]                       data_output,
+    output  wire [12:0]                       r_count,
     output  wire                              almost_full,
     output  wire                              almost_empty,
     output  wire                              empty,
@@ -52,7 +53,7 @@ module memory_ctrl (
         .EN_ECC_WRITE("FALSE"),                                 // Enable ECC encoder, FALSE, TRUE
         .EN_SYN("FALSE"),                                       // Specifies FIFO as Asynchronous (FALSE) or Synchronous (TRUE)
         .FIFO_MODE("FIFO36"),                                   // Sets mode to "FIFO36" or "FIFO36_72"
-        .FIRST_WORD_FALL_THROUGH("TRUE"),                      // Sets the FIFO FWFT to FALSE, TRUE
+        .FIRST_WORD_FALL_THROUGH("TRUE"),                       // Sets the FIFO FWFT to FALSE, TRUE
         .INIT(72'h000000000000000000),                          // Initial values on output port
         .SIM_DEVICE("7SERIES"),                                 // Must be set to "7SERIES" for simulation behavior
         .SRVAL(72'h000000000000000000)                          // Set/Reset value for output port
@@ -70,7 +71,7 @@ module memory_ctrl (
         .ALMOSTFULL(m_ALMOSTFULL),                              // 1-bit output: Almost full flag
         .EMPTY(m_EMPTY),                                        // 1-bit output: Empty flag
         .FULL(full),                                          // 1-bit output: Full flag
-        .RDCOUNT(),                                             // 13-bit output: Read count
+        .RDCOUNT(r_count),                                             // 13-bit output: Read count
         .RDERR(m_READERROR),                                    // 1-bit output: Read error
         .WRCOUNT(m_WRCOUNT),                                    // 13-bit output: Write count
         .WRERR(m_WRERR),                                        // 1-bit output: Write error

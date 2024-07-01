@@ -1,0 +1,2 @@
+- estaba implementado el contador grueso por defecto, y no el arbitro
+- hacer nuevas mediciones para corregir grueso

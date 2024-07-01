@@ -50,6 +50,8 @@ Final degree project for Electronic Engineering
 |    P6          |      SW3.3      |   startReading  | Boton Norte |
 |    U5          |      SW5.3      |   startWriting  | Boton Este  |
 |    U4          |      SW8.3      |      but_rst    |  CPU Reset  |
+|    R8          |      SW2.1      |    selector_0   |  fine debug |
+|    P8          |      SW2.2      |    selector_1   |  fine debug |
 
 
 #### UART diagram
@@ -76,3 +78,77 @@ We've used a phase difference of 40°, approximately $\frac{1}{8} \; T_{clk}$ of
 ### Fine stamp processing:
 For the fine stamp processing, first an edge detector was implemented. For Start or Stop fine stamp, some kind of filter was implemented, which searched for a certain sequence in the delay chain, it may be '1110' for start edge, or '0001' for stop edge. Bubble problems arise naturally in this type of architecture, thus interferring with the edge detector since if a bit is changed no sequence may be detected in the chain. To overcome this we implemented another type of processing architecture, a 'ones counter' architecture. Counting how many ones remain in the delay chain should be a direct way of a counting the edge in the delay chain. For this, a summing tree was implemented [Wang]
 ![ones counter](/images/ones_counter.png)
+
+
+#### Ones counter
+| in[5] | in[4] | in[3] | in[2] | in[1] | in[0] | ones counted | binary output | LUT_2 (MSB) | LUT_1 | LUT_0 (LSB) |
+| ----- | ----- | ----- | ----- | ----- | ----- | ------------ | ------------- | ----------- | ----- | ----------- |
+| 0     | 0     | 0     | 0     | 0     | 0     | 0            | 000           | 0           | 0     | 0           |
+| 0     | 0     | 0     | 0     | 0     | 1     | 1            | 001           | 0           | 0     | 1           |
+| 0     | 0     | 0     | 0     | 1     | 0     | 1            | 001           | 0           | 0     | 1           |
+| 0     | 0     | 0     | 0     | 1     | 1     | 2            | 010           | 0           | 1     | 0           |
+| 0     | 0     | 0     | 1     | 0     | 0     | 1            | 001           | 0           | 0     | 1           |
+| 0     | 0     | 0     | 1     | 0     | 1     | 2            | 010           | 0           | 1     | 0           |
+| 0     | 0     | 0     | 1     | 1     | 0     | 2            | 010           | 0           | 1     | 0           |
+| 0     | 0     | 0     | 1     | 1     | 1     | 3            | 011           | 0           | 1     | 1           |
+| 0     | 0     | 1     | 0     | 0     | 0     | 1            | 001           | 0           | 0     | 1           |
+| 0     | 0     | 1     | 0     | 0     | 1     | 2            | 010           | 0           | 1     | 0           |
+| 0     | 0     | 1     | 0     | 1     | 0     | 2            | 010           | 0           | 1     | 0           |
+| 0     | 0     | 1     | 0     | 1     | 1     | 3            | 011           | 0           | 1     | 1           |
+| 0     | 0     | 1     | 1     | 0     | 0     | 2            | 010           | 0           | 1     | 0           |
+| 0     | 0     | 1     | 1     | 0     | 1     | 3            | 011           | 0           | 1     | 1           |
+| 0     | 0     | 1     | 1     | 1     | 0     | 3            | 011           | 0           | 1     | 1           |
+| 0     | 0     | 1     | 1     | 1     | 1     | 4            | 100           | 1           | 0     | 0           |
+| 0     | 1     | 0     | 0     | 0     | 0     | 1            | 001           | 0           | 0     | 1           |
+| 0     | 1     | 0     | 0     | 0     | 1     | 2            | 010           | 0           | 1     | 0           |
+| 0     | 1     | 0     | 0     | 1     | 0     | 2            | 010           | 0           | 1     | 0           |
+| 0     | 1     | 0     | 0     | 1     | 1     | 3            | 011           | 0           | 1     | 1           |
+| 0     | 1     | 0     | 1     | 0     | 0     | 2            | 010           | 0           | 1     | 0           |
+| 0     | 1     | 0     | 1     | 0     | 1     | 3            | 011           | 0           | 1     | 1           |
+| 0     | 1     | 0     | 1     | 1     | 0     | 3            | 011           | 0           | 1     | 1           |
+| 0     | 1     | 0     | 1     | 1     | 1     | 4            | 100           | 1           | 0     | 0           |
+| 0     | 1     | 1     | 0     | 0     | 0     | 2            | 010           | 0           | 1     | 0           |
+| 0     | 1     | 1     | 0     | 0     | 1     | 3            | 011           | 0           | 1     | 1           |
+| 0     | 1     | 1     | 0     | 1     | 0     | 3            | 011           | 0           | 1     | 1           |
+| 0     | 1     | 1     | 0     | 1     | 1     | 4            | 100           | 1           | 0     | 0           |
+| 0     | 1     | 1     | 1     | 0     | 0     | 3            | 011           | 0           | 1     | 1           |
+| 0     | 1     | 1     | 1     | 0     | 1     | 4            | 100           | 1           | 0     | 0           |
+| 0     | 1     | 1     | 1     | 1     | 0     | 4            | 100           | 1           | 0     | 0           |
+| 0     | 1     | 1     | 1     | 1     | 1     | 5            | 101           | 1           | 0     | 1           |
+| 1     | 0     | 0     | 0     | 0     | 0     | 1            | 001           | 0           | 0     | 1           |
+| 1     | 0     | 0     | 0     | 0     | 1     | 2            | 010           | 0           | 1     | 0           |
+| 1     | 0     | 0     | 0     | 1     | 0     | 2            | 010           | 0           | 1     | 0           |
+| 1     | 0     | 0     | 0     | 1     | 1     | 3            | 011           | 0           | 1     | 1           |
+| 1     | 0     | 0     | 1     | 0     | 0     | 2            | 010           | 0           | 1     | 0           |
+| 1     | 0     | 0     | 1     | 0     | 1     | 3            | 011           | 0           | 1     | 1           |
+| 1     | 0     | 0     | 1     | 1     | 0     | 3            | 011           | 0           | 1     | 1           |
+| 1     | 0     | 0     | 1     | 1     | 1     | 4            | 100           | 1           | 0     | 0           |
+| 1     | 0     | 1     | 0     | 0     | 0     | 2            | 010           | 0           | 1     | 0           |
+| 1     | 0     | 1     | 0     | 0     | 1     | 3            | 011           | 0           | 1     | 1           |
+| 1     | 0     | 1     | 0     | 1     | 0     | 3            | 011           | 0           | 1     | 1           |
+| 1     | 0     | 1     | 0     | 1     | 1     | 4            | 100           | 1           | 0     | 0           |
+| 1     | 0     | 1     | 1     | 0     | 0     | 3            | 011           | 0           | 1     | 1           |
+| 1     | 0     | 1     | 1     | 0     | 1     | 4            | 100           | 1           | 0     | 0           |
+| 1     | 0     | 1     | 1     | 1     | 0     | 4            | 100           | 1           | 0     | 0           |
+| 1     | 0     | 1     | 1     | 1     | 1     | 5            | 101           | 1           | 0     | 1           |
+| 1     | 1     | 0     | 0     | 0     | 0     | 2            | 010           | 0           | 1     | 0           |
+| 1     | 1     | 0     | 0     | 0     | 1     | 3            | 011           | 0           | 1     | 1           |
+| 1     | 1     | 0     | 0     | 1     | 0     | 3            | 011           | 0           | 1     | 1           |
+| 1     | 1     | 0     | 0     | 1     | 1     | 4            | 100           | 1           | 0     | 0           |
+| 1     | 1     | 0     | 1     | 0     | 0     | 3            | 011           | 0           | 1     | 1           |
+| 1     | 1     | 0     | 1     | 0     | 1     | 4            | 100           | 1           | 0     | 0           |
+| 1     | 1     | 0     | 1     | 1     | 0     | 4            | 100           | 1           | 0     | 0           |
+| 1     | 1     | 0     | 1     | 1     | 1     | 5            | 101           | 1           | 0     | 1           |
+| 1     | 1     | 1     | 0     | 0     | 0     | 3            | 011           | 0           | 1     | 1           |
+| 1     | 1     | 1     | 0     | 0     | 1     | 4            | 100           | 1           | 0     | 0           |
+| 1     | 1     | 1     | 0     | 1     | 0     | 4            | 100           | 1           | 0     | 0           |
+| 1     | 1     | 1     | 0     | 1     | 1     | 5            | 101           | 1           | 0     | 1           |
+| 1     | 1     | 1     | 1     | 0     | 0     | 4            | 100           | 1           | 0     | 0           |
+| 1     | 1     | 1     | 1     | 0     | 1     | 5            | 101           | 1           | 0     | 1           |
+| 1     | 1     | 1     | 1     | 1     | 0     | 5            | 101           | 1           | 0     | 1           |
+| 1     | 1     | 1     | 1     | 1     | 1     | 6            | 110           | 1           | 1     | 0           |
+
+#### LUT configuration vectors: 
+- L0 (LSB):6996966996696996
+- L1 : 8117177E177E7EE8
+- L2 (MSB): FEE8E880E8808000

@@ -9,6 +9,8 @@ verilog xil_defaultlib  --include "../../../../Final TDC_StartStop.gen/sources_1
 "../../../../../TDC.v" \
 "../../../../Final TDC_StartStop.gen/sources_1/bd/block_clock/hdl/block_clock_wrapper.v" \
 "../../../../../decode.v" \
+"../../../../../enabler.v" \
+"../../../../../fine_debugger.v" \
 "../../../../../memory_ctrl.v" \
 "../../../../../merging.v" \
 "../../../../../top.v" \

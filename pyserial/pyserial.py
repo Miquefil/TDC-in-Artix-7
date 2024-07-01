@@ -10,6 +10,9 @@
 @Description :  Serial console for saving results. 
 '''
 import serial
+import os
+
+os.chdir('./pyserial/')
 def TDCSerial(port, speed, output_file):
 
     #initializing serial communication
@@ -25,7 +28,7 @@ def TDCSerial(port, speed, output_file):
     i           = 0
     NUM_WAITS   = 10
     # Open the output file in append mode to save received data
-    with open(output_file, 'a') as file: 
+    with open(output_file, 'w') as file: 
         file.write("UART SPEED: " + str(speed) + '\n')
         try:
             while Wait:

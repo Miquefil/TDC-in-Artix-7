@@ -6,7 +6,7 @@ SIX_MHZ           = "C:/Users/mique/Desktop/TDC-in-Artix-7/data/third attempt/pr
 TENHALF_MHZ        = "C:/Users/mique/Desktop/TDC-in-Artix-7/data/third attempt/processed/data_10,5 M.txt"
 MAGIC_MHZ      = "C:/Users/mique/Desktop/TDC-in-Artix-7/data/third attempt/processed/data_5123456.txt"
 
-PATH_FILE   = MAGIC_MHZw
+PATH_FILE   = MAGIC_MHZ
 base_name = os.path.basename(PATH_FILE)
 TITLE, file_extension = os.path.splitext(base_name)
 
@@ -56,3 +56,5 @@ plt.legend()
 plt.tight_layout()
 plt.savefig(TITLE + '.png', format='png')
 plt.show()
+# 82
+# 30

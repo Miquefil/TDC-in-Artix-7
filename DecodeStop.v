@@ -34,6 +34,6 @@ module DecodeStop #(parameter  NUM_FF= 1, parameter BITS_DECO = 8) (
     // end
 
     //Implementing Ones Counter
-    `include "decode_strategy.vh"
+    // `include "decode_strategy.vh"
 
 endmodule //

@@ -5,14 +5,14 @@ module TDC (
     input  wire                     clk1,
     input  wire                     clk2,
     input  wire                     debug_mode,
-    input  wire                     debug_hit,
     input  wire                     iRst,
     input  wire                     iHit,
     input  wire                     enable,
+    
+    output wire                     debug_hit_enabler,
     output wire [`DIG_OUT-1:0]      oTDC,
     output wire                     done
 );  
-
 
     wire                         Rise, Fall;
     wire[`NUM_TAPS-1:0]          Stop_Edge, Start_Edge;
@@ -43,48 +43,16 @@ module TDC (
     );
     /////////-----Start Main TDC --------/////////////////////////////////
     
-
-    ///Edge auxiliar begins --------- this blocks is for counting a rise and a fall edge, if both already happened
-    //it allows the principal edge detector to work, if a rise edge happened but a fall edge still didnt, then dont let
-    //principal edge detector work
-    wire                rise_aux;
-    wire                fall_aux;
-    reg                 rise_fall_counter   = 1'b1;   //zero: odd number of edges
-    reg                 already_merged      = 1'b1;
-    reg                 allow_enable        = 1'b1;               
-    wire                enable_edge;
-    assign              enable_edge         = allow_enable & enable;
-    Edge u_EdgeDetector_auxiliar(
-        .iClk        (clk0),
-        .iRst        (rst),
-        .iHit        (iHit),
-        .oRise       (rise_aux),
-        .oFall       (fall_aux),
-        .enable      (1'b1)
+    wire            wDecodeFinishedStop;
+    wire            wEnabler;
+    assign          debug_hit_enabler = wEnabler;
+    enabler      u_enabler(
+        .clk                (clk0),                     //input   wire
+        .rst                (rst),                      //input   wire
+        .hit                (iHit),                     //input   wire
+        .processing_ended   (done),                     //input   wire
+        .enable             (wEnabler)                  //output  wire
     );
-
-    always @(posedge clk0) begin
-        if(rise_aux && rise_fall_counter == 1'b1) begin      
-            rise_fall_counter   <= 1'b0;
-        end
-        if(fall_aux && rise_fall_counter == 1'b0) begin
-            rise_fall_counter   <= 1'b1;
-        end
-
-        if(done) begin
-            already_merged <= 1'b1;
-        end
-
-        if(rise_fall_counter && already_merged) begin
-            allow_enable    <= 1'b1;
-        end
-
-        if(Fall) begin
-            already_merged  <= 1'b0;
-            allow_enable    <= 1'b0;
-        end
-
-    end
 
     Edge u_EdgeDetector(
         .iClk        (clk0),
@@ -92,70 +60,57 @@ module TDC (
         .iHit        (iHit),
         .oRise       (Rise),
         .oFall       (Fall),
-        .enable      (enable_edge)
+        .enable      (wEnabler)
     );
     
     wire    Fall_1;
     Edge u_EdgeDetector_1(
-        .iClk        (clk1),
-        .iRst        (rst),
+        .iClk       (clk1),
+        .iRst       (rst),
         .iHit       (iHit),
         .oRise      (),
         .oFall      (Fall_1),
-        .enable     (enable_edge)
+        .enable     (wEnabler)
     );
 
     wire    Fall_2;
     Edge u_EdgeDetector_2(
-        .iClk        (clk1),
+        .iClk        (clk2),
         .iRst        (rst),
         .iHit       (iHit),
         .oRise      (),
         .oFall      (Fall_2),
-        .enable     (enable_edge)
+        .enable     (wEnabler)
     );
 
-    wire arbiter_stop;   
-    wire arbiter_start;
+    wire    arbiter_stop;   
+    wire    arbiter_start;
     Fine #(`NUM_TAPS) u_FineDelay(
-        .clk               (clk0),
-        .iRst              (rst),
-        .iHit              (iHit),
-        .iStopEnable       (Fall),
-        .iStartEnable      (Rise),
-        .oFFStart          (Start_Edge),    //FF outputs of Start_Edge column
-        .oFFStop           (Stop_Edge),     //FF outputs of Stop_Edge column
-        .debug_mode        (1'b0),
-        .debug_hit         (debug_hit),
-        .out_arbiter_start_ff(arbiter_stop),        //output from the Carrys output
-        .out_arbiter_stop_ff(arbiter_start)  
+        .clk                    (clk0),
+        .iRst                   (rst),
+        .iHit                   (iHit),
+        .iStopEnable            (Fall),
+        .iStartEnable           (Rise),
+        .oFFStart               (Start_Edge),    //FF outputs of Start_Edge column
+        .oFFStop                (Stop_Edge),     //FF outputs of Stop_Edge column
+        .out_arbiter_start_ff   (),        //output from the Carrys output
+        .out_arbiter_stop_ff    ()  
     );
-
-    // DecodeStart #(`NUM_TAPS, `NUM_DECODE) u_DecStart(
-    //     .wDecoStartIn       (Start_Edge),
-    //     .rst                (rst),
-    //     .wDecoStartOut      (DecodedStart)
-    // );
 
     wire                    wDecodeGoStart;
     wire                    wDecodeFinishedStart;
+    // reg[`NUM_TAPS-1:0]      dummy_debug = 240'h9fff70000000000000000000000000000000;
     decode #(.falling(1'b0)) u_DecStart(
-        .go                 (Rise),               //input   wire
-        .rst                (rst),                          //input   wire
-        .clk                (clk0),                         //input   wire
-        .wDecodeIn          (Start_Edge),                   //input   wire
-        .finished           (wDecodeFinishedStart),         //output  wire
-        .wDecodeOut         (DecodedStart)                  //output  wire
+        .go                 (Rise),                     //input   wire
+        .rst                (rst),                      //input   wire
+        .clk                (clk0),                     //input   wire
+        .wDecodeIn          (Start_Edge),            //input   wire
+        // .wDecodeIn          (dummy_debug),              //input   wire
+        .finished           (wDecodeFinishedStart),     //output  wire
+        .wDecodeOut         (DecodedStart)              //output  wire
     );
 
-    // DecodeStop  #(`NUM_TAPS, `NUM_DECODE) u_DecStop(
-    //     .wDecoStopIn       (Stop_Edge),
-    //     .rst                (rst),
-    //     .wDecoStopOut       (DecodedStop)
-    // );
-
     wire                    wDecodeGoStop;
-    wire                    wDecodeFinishedStop;
     decode #(.falling(1'b1)) u_DecStop(
         .go                 (Fall),                //input   wire
         .rst                (rst),                          //input   wire
@@ -197,23 +152,24 @@ module TDC (
     reg[`COUNTER_DIG-1:0]          CoarseStamp_final;
     always @(*) begin
         CoarseStamp_final = CoarseStamp_1;
-
-        if((CoarseStamp_1 == CoarseStamp_2)&&(CoarseStamp_0 < CoarseStamp_1)) begin
-            CoarseStamp_final = CoarseStamp_final - {{`COUNTER_DIG-1{1'b0}}, 1'b1};
-        end
-        if((CoarseStamp_1 == CoarseStamp_2)&&(CoarseStamp_0 > CoarseStamp_1)) begin
-            CoarseStamp_final = CoarseStamp_final + {{`COUNTER_DIG-1{1'b0}}, 1'b1};
+        if(CoarseStamp_1 == CoarseStamp_2) begin
+            if (CoarseStamp_0 < CoarseStamp_1) begin
+                CoarseStamp_final = CoarseStamp_1 - {{`COUNTER_DIG-1{1'b0}}, 1'b1};    
+            end
+            else begin
+                CoarseStamp_final = CoarseStamp_1 + {{`COUNTER_DIG-1{1'b0}}, 1'b1};    
+            end
         end
     end
 
-    merging #(.N(8)) u_merge (
+    merging #(.N(3)) u_merge (
         .clk            (clk0),
         .irst           (rst),
-        .fall           (wDecodeFinishedStop),
-        .rise           (wDecodeFinishedStart),
+        .in_store_stop  (wDecodeFinishedStop),
+        .in_store_start (wDecodeFinishedStart),
         .FallEdge       (DecodedStop),
-        .StartEdge      (DecodedStart),
-        .Coarse         (CoarseStamp_final),
+        .StartEdge      (DecodedStart),  
+        .Coarse         (CoarseStamp_final),            //!!COARSE TEST
         .done           (done),
         .out            (oTDC)
     );

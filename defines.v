@@ -4,11 +4,13 @@
 
 `ifndef FLAG
     `define FLAG                1
-    `define NUM_TAPS            240
-    `define HALF_NUM_TAPS       120
-    `define NUM_DECODE          8               //2^(NUM_DECODE) >= NUM_TAPS
-    `define COUNTER_DIG         16
-    `define DIG_OUT             16+8+8          //CoarseCounter + 2*Decoders
+    `define NUM_TAPS            300
+    `define HALF_NUM_TAPS       150
+    `define NUM_LUT6            50
+    `define NUM_DECODE          10               //2^(NUM_DECODE) >= NUM_TAPS
+    `define HALF_NUM_DECODE     5
+    `define COUNTER_DIG         12
+    `define DIG_OUT             32          //CoarseCounter + 2*Decoders
     `define TOLERANCE_COARSE    205             // Phase in PLL is 40°, that is 1/8Tclk of delay, so we expect
                                                 // to have 7/8 of NUM_TAPS asserted high
 `endif 

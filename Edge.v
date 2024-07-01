@@ -22,7 +22,8 @@ module Edge(
     assign q2 = wEDGE[1];
 
 
-    (* dont_touch = "TRUE" *) FDCE #(.INIT(1'b0)) edge_detector_ffd0(
+    (* dont_touch = "TRUE" *) 
+    FDCE #(.INIT(1'b0)) edge_detector_ffd0(
         .Q(wEDGE[0]),
         .C(iClk),
         .CE(enable),
@@ -30,7 +31,8 @@ module Edge(
         .D(iHit)
     );
 
-    (* dont_touch = "TRUE" *) FDCE #(.INIT(1'b0)) edge_detector_ffd1(
+    (* dont_touch = "TRUE" *) 
+    FDCE #(.INIT(1'b0)) edge_detector_ffd1(
         .Q(wEDGE[1]),
         .C(iClk),
         .CE(enable),

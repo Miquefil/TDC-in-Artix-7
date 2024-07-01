@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////
 // Module Name: merging
-// Description: When fall edge comes, it counts N clocks and computes 
+// Description: When    in_store_stop edge comes, it counts N clocks and computes 
 //              the output. Also manages busy output, rst, and ready.
 //              
 //
@@ -17,14 +17,14 @@
 (* keep_hierarchy = "TRUE" *)
 module merging #(parameter N = 2) (
     input  wire                         clk,
-    input  wire                         fall,
-    input  wire                         rise,
+    input  wire                         in_store_stop,
+    input  wire                         in_store_start,
     input  wire                         irst,
     input  wire[`NUM_DECODE-1:0]        FallEdge,
     input  wire[`NUM_DECODE-1:0]        StartEdge,
     input  wire[`COUNTER_DIG-1:0]       Coarse,
 
-    output reg[`DIG_OUT-1:0]            out,
+    output wire[`DIG_OUT-1:0]            out,
     output wire                         done            //Used to reset the system JUST ONE CLK 
     //debugging
     //output wire                         debugRst    
@@ -32,7 +32,7 @@ module merging #(parameter N = 2) (
     //NOTES:           --------------------------------------------
     //  Stores decodedStart 1 clock later that StartEdge comes
     //  Stores decodedStop 1 clock later that FallEdge comes
-    //  Once 'fall' comes: 4 clocks later output is merged
+    //  Once    in_store_stop' comes: 4 clocks later output is merged
 
 
     wire    rst;   
@@ -53,7 +53,8 @@ module merging #(parameter N = 2) (
 
 
     //////////////
-    always @(posedge rise or posedge rst) begin
+    //If edge detector detects a rising edge or a rising rst is done:
+    always @(posedge in_store_start or posedge rst) begin    
         if (rst) begin
             storeStart          <= 1'b0;
         end
@@ -62,7 +63,8 @@ module merging #(parameter N = 2) (
         end
     end
     /////////////
-    always @(posedge fall or posedge rst) begin
+    //If edge detector detects a falling edge or a rising rst is done:
+    always @(posedge in_store_stop or posedge rst) begin
         if (rst) begin
             enable_counter      <= 1'b0;
             storeStop           <= 1'b0;
@@ -85,7 +87,7 @@ module merging #(parameter N = 2) (
                 counter         <= {N{1'b0}};
                 r_done          <= 1'b1;
                 //this implementation is important AND SHOULD NOT BE REPLACED BY TOP_COUNTER ASSIGN
-                //The systems need that done output asserts high one clock later of merging module finish
+                //The systems needs that done output asserts high one clock later of merging module finish
             end
             else begin
                 counter         <= counter + {{N-1{1'b0}}, 1'b1};
@@ -103,13 +105,9 @@ module merging #(parameter N = 2) (
         if(storeStop) begin
             StopEdge_stored  <= FallEdge;
         end
-
-        /// refresh output
-        if(counter == {N{1'b1}}) begin
-            out         <=  {Coarse, StartEdge_stored, StopEdge_stored};
-        end
     end
 
-    assign done    = r_done;        //resets the whole systems at the same time
+    assign done     = r_done;        //resets the whole systems at the same time
+    assign out      = {Coarse, StartEdge_stored, StopEdge_stored};
 
 endmodule //
