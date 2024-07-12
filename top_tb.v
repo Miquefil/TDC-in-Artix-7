@@ -55,6 +55,19 @@ module top_tb(
     end
 
 
+    //60mhz hit signal for testing
+    reg             signal_p, signal_n;
+    initial begin
+        forever begin
+            signal_n = 1'b0;
+            signal_p = 1'b1;
+            #7; 
+            signal_n = 1'b1; 
+            signal_p = 1'b0;
+            #8; 
+        end
+    end
+
 
     integer i = 0;
     initial begin     
@@ -71,59 +84,80 @@ module top_tb(
         #(300_000);
 
 
-        start_debug = 1'b1;
-        #15 start_debug = 1'b0;
-        #(300_000);
+        // start_debug = 1'b1;
+        // #15 start_debug = 1'b0;
+        // // #(400_000);
+        // #(3_200_000);
+
        
+        //Prueba de superposición de medidas
+        startWr    = 1'b1;
+        #5;
+        startWr    = 1'b0;
+        for (i = 0; i < 300 ; i=i+1) begin
+            hit_p        = 1'b1;
+            hit_n        = 1'b0;
+            #($urandom %50);
+            // #(20*TCLK);
+            // #7
+            hit_p        = 1'b0;
+            hit_n        = 1'b1;            
+            // #(20*TCLK);
+            // #8;
+            #3;   //este delay es importante en 150nS, starting time
+        end
 
         // startWr    = 1'b1;
         // #5;
         // startWr    = 1'b0;
-        // for (i = 0; i < 32 ; i=i+1) begin
+        // for (i = 0; i < 300 ; i=i+1) begin
         //     hit_p        = 1'b1;
         //     hit_n        = 1'b0;
         //     #($urandom %50);
-        //     #(20*TCLK);
+        //     // #(20*TCLK);
+        //     // #7
         //     hit_p        = 1'b0;
         //     hit_n        = 1'b1;            
         //     #(20*TCLK);
+        //     // #8;
         //     #50;   //este delay es importante en 150nS, starting time
         // end
 
-        // #100000;       //IMPORTANT delay
-        // startWr         = 1'b0;
-        // startRead       = 1'b1;
-        // # 10 startRead  = 1'b0;
-        // #(12_000_000);
-        // //!!IMPORTANT DELAY: usually 'empty' flag foes off about 2 (slowest) clock after being written
+        #100000;       //IMPORTANT delay
+        startWr         = 1'b0;
+        startRead       = 1'b1;
+        # 10 startRead  = 1'b0;
+        #(12_000_000);
+        //!!IMPORTANT DELAY: usually 'empty' flag foes off about 2 (slowest) clock after being written
         
 
 
-        // #(100_000);
-        // rst         = 1'b1;
-        // #10 rst     = 1'b0;
-        // #(300_000);
+        #(100_000);
+        rst         = 1'b1;
+        #10 rst     = 1'b0;
+        #(300_000);
         
-        // startRead       = 1'b0;
-        // startWr         = 1'b1;
-        // #5; startWr     = 1'b0;
+        startRead       = 1'b0;
+        startWr         = 1'b1;
+        #5; startWr     = 1'b0;
         
-        // for (i = 0; i < 32 ; i=i+1) begin
-        //     hit_p        = 1'b1;
-        //     hit_n        = 1'b0;
-        //     #($urandom %50);
-        //     #(20*TCLK);
-        //     hit_p        = 1'b0;
-        //     hit_n        = 1'b1;            
-        //     #(20*TCLK);
-        //     #50;   //este delay es importante en 150nS, starting time
-        // end
+        for (i = 0; i < 32 ; i=i+1) begin
+            hit_p        = 1'b1;
+            hit_n        = 1'b0;
+            #($urandom %50);
+            #(20*TCLK);
+            hit_p        = 1'b0;
+            hit_n        = 1'b1;            
+            #(20*TCLK);
+            #50;   //este delay es importante en 150nS, starting time
+        end
 
 
         startRead       = 1'b1;
         startWr         = 1'b0;
+        #10 startRead   = 1'b0;
         
-        #(1_000_000);
+        #(3_000_000);
         #(5*TCLK);
         $finish;
     end

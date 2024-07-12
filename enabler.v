@@ -6,13 +6,15 @@
 // Date: 04-06-2024
 //
 //////////////////////////////////////////////////////////////////////
-
+(* keep_hierarchy = "TRUE" *) 
 module enabler (
     input   wire            clk,
     input   wire            rst,
     input   wire            hit,
     input   wire            processing_ended,
-    output  wire            enable
+    output  wire            enable,
+    output  wire            rise_edge,
+    output  wire            fall_edge
 );
     wire    rise;
     wire    fall;
@@ -26,6 +28,8 @@ module enabler (
     );
 
     reg         r_enable            = 1'b0;
+    reg         r_enable_rise       = 1'b1;
+    reg         r_enable_fall       = 1'b1;
     assign      enable              = r_enable;
     
     parameter   SM_RESET            = 3'd1;
@@ -37,6 +41,10 @@ module enabler (
     parameter   SM_WAIT_FOR_FALL    = 3'd7;
     reg[2:0]    SM_CURRENT_STATE    = SM_RESET;
 
+
+    assign rise_edge = (rise & r_enable_rise);
+    assign fall_edge = (fall & r_enable_fall);
+
     always @(posedge clk) begin
         //!Important to have this commented in order to avoid SM_RESET when rst, since when measure is done then the whole TDC is resetted,
         //but if its done during a hit, after reseting de states machine we will wrongly detect a hit
@@ -47,6 +55,8 @@ module enabler (
         case (SM_CURRENT_STATE)
             SM_RESET: begin
                 r_enable                <= 1'b0;
+                r_enable_rise           <= 1'b1;
+                r_enable_fall           <= 1'b1;
                 if(!rst)    begin
                     SM_CURRENT_STATE    <= SM_WAITING;
                 end
@@ -54,6 +64,8 @@ module enabler (
 
             SM_WAITING: begin               //Nor hit pulse has been detected
                 r_enable                <= 1'b1;
+                r_enable_rise           <= 1'b1;
+                r_enable_fall           <= 1'b0;
                 if (rise) begin
                     SM_CURRENT_STATE    <= SM_RISED;
                 end
@@ -61,6 +73,8 @@ module enabler (
 
             SM_RISED: begin
                 r_enable                <= 1'b1;
+                r_enable_rise           <= 1'b0;
+                r_enable_fall           <= 1'b1;
                 if(fall) begin
                     SM_CURRENT_STATE    <= SM_FALL;
                 end
@@ -70,6 +84,8 @@ module enabler (
                 //Should block until processing_ended
                 //Maybe another rise comes before that, so we should wait the whole hit to pass before enabling
                 r_enable                <= 1'b0;
+                r_enable_rise           <= 1'b0;
+                r_enable_fall           <= 1'b0;
                 if(rise) begin
                     SM_CURRENT_STATE    <= SM_LET_HIT_PASS;
                 end
@@ -80,6 +96,8 @@ module enabler (
 
             SM_LET_HIT_PASS: begin
                 r_enable                <= 1'b0;
+                r_enable_rise           <= 1'b0;
+                r_enable_fall           <= 1'b0;
                 if(fall) begin
                     SM_CURRENT_STATE    <= SM_FALL;
                 end
@@ -89,6 +107,8 @@ module enabler (
             end
 
             SM_WAIT_FOR_FALL:   begin
+                r_enable_rise           <= 1'b0;
+                r_enable_fall           <= 1'b1;
                 if(fall) begin
                     SM_CURRENT_STATE    <= SM_WAITING;
                 end

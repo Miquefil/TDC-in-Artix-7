@@ -18,9 +18,6 @@ module Edge(
 );
 
     wire [1:0] wEDGE;
-    assign q1 = wEDGE[0];
-    assign q2 = wEDGE[1];
-
 
     (* dont_touch = "TRUE" *) 
     FDCE #(.INIT(1'b0)) edge_detector_ffd0(

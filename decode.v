@@ -29,8 +29,8 @@ module decode #(parameter falling = 1'b0) (
     //SIMPLE EDGE DETECTOR-------------------------------------------------------------
     //---------------------------------------------------------------------------------
     integer i;
-    reg[`NUM_DECODE-1:0]            bin                     = {`NUM_DECODE{1'b0}};
-    reg[`NUM_DECODE-1:0]            r_bin                   = {`NUM_DECODE{1'b0}};
+    (* dont_touch = "TRUE" *) reg[`NUM_DECODE-1:0]            bin   = {`NUM_DECODE{1'b0}};
+    // (* dont_touch = "TRUE" *) reg[`NUM_DECODE-1:0]            r_bin = {`NUM_DECODE{1'b0}};
     reg[1:0]                        finish_counter          = 2'b00;
     reg                             flag_start              = 1'b0;
     reg                             r_finished              = 1'b0;
@@ -66,6 +66,11 @@ module decode #(parameter falling = 1'b0) (
             if(flag_start && (finish_counter<2'b11)) begin    //COUNT
                 finish_counter <= finish_counter + 2'b01;
             end
+
+            //REGISTER OUTPUT
+            // if(finish_counter == 2'b10) begin
+            //     r_bin <= bin;
+            // end
 
             //ONCE FINISHED COUNTING
             //  -ASSERT FINISH FLAG HIGH

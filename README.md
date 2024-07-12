@@ -53,7 +53,10 @@ Final degree project for Electronic Engineering
 |    R8          |      SW2.1      |    selector_0   |  fine debug |
 |    P8          |      SW2.2      |    selector_1   |  fine debug |
 
+#### (Messy) Clock Instantiation
+![alt text](images/clk.png)
 
+![alt text](images/clk2.png)
 #### UART diagram
 
 ![imagen_uart](wave_diagrams/UART.svg)

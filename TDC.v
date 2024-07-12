@@ -4,7 +4,6 @@ module TDC (
     input  wire                     clk0,
     input  wire                     clk1,
     input  wire                     clk2,
-    input  wire                     debug_mode,
     input  wire                     iRst,
     input  wire                     iHit,
     input  wire                     enable,
@@ -51,17 +50,19 @@ module TDC (
         .rst                (rst),                      //input   wire
         .hit                (iHit),                     //input   wire
         .processing_ended   (done),                     //input   wire
-        .enable             (wEnabler)                  //output  wire
+        .enable             (wEnabler),                  //output  wire
+        .rise_edge          (Rise),            //output  wire
+        .fall_edge          (Fall)             //output  wire
     );
 
-    Edge u_EdgeDetector(
-        .iClk        (clk0),
-        .iRst        (rst),
-        .iHit        (iHit),
-        .oRise       (Rise),
-        .oFall       (Fall),
-        .enable      (wEnabler)
-    );
+    // Edge u_EdgeDetector(
+    //     .iClk        (clk0),
+    //     .iRst        (rst),
+    //     .iHit        (iHit),
+    //     .oRise       (Rise),
+    //     .oFall       (Fall),
+    //     .enable      (wEnabler)
+    // );
     
     wire    Fall_1;
     Edge u_EdgeDetector_1(
@@ -83,8 +84,6 @@ module TDC (
         .enable     (wEnabler)
     );
 
-    wire    arbiter_stop;   
-    wire    arbiter_start;
     Fine #(`NUM_TAPS) u_FineDelay(
         .clk                    (clk0),
         .iRst                   (rst),
@@ -92,25 +91,18 @@ module TDC (
         .iStopEnable            (Fall),
         .iStartEnable           (Rise),
         .oFFStart               (Start_Edge),    //FF outputs of Start_Edge column
-        .oFFStop                (Stop_Edge),     //FF outputs of Stop_Edge column
-        .out_arbiter_start_ff   (),        //output from the Carrys output
-        .out_arbiter_stop_ff    ()  
+        .oFFStop                (Stop_Edge)     //FF outputs of Stop_Edge column
     );
 
-    wire                    wDecodeGoStart;
-    wire                    wDecodeFinishedStart;
-    // reg[`NUM_TAPS-1:0]      dummy_debug = 240'h9fff70000000000000000000000000000000;
     decode #(.falling(1'b0)) u_DecStart(
         .go                 (Rise),                     //input   wire
         .rst                (rst),                      //input   wire
         .clk                (clk0),                     //input   wire
         .wDecodeIn          (Start_Edge),            //input   wire
-        // .wDecodeIn          (dummy_debug),              //input   wire
         .finished           (wDecodeFinishedStart),     //output  wire
         .wDecodeOut         (DecodedStart)              //output  wire
     );
 
-    wire                    wDecodeGoStop;
     decode #(.falling(1'b1)) u_DecStop(
         .go                 (Fall),                //input   wire
         .rst                (rst),                          //input   wire
@@ -151,12 +143,12 @@ module TDC (
     //TODO: solve arbiter_stop/start condition, how to get it when using ones counter
     reg[`COUNTER_DIG-1:0]          CoarseStamp_final;
     always @(*) begin
-        CoarseStamp_final = CoarseStamp_1;
+        CoarseStamp_final = CoarseStamp_0;
         if(CoarseStamp_1 == CoarseStamp_2) begin
-            if (CoarseStamp_0 < CoarseStamp_1) begin
-                CoarseStamp_final = CoarseStamp_1 - {{`COUNTER_DIG-1{1'b0}}, 1'b1};    
+            if ((CoarseStamp_0 < CoarseStamp_1)&&(DecodedStart > 200)) begin
+                CoarseStamp_final = CoarseStamp_1 - {{`COUNTER_DIG-1{1'b0}}, 1'b1};
             end
-            else begin
+            else if((CoarseStamp_0 > CoarseStamp_1)&&(DecodedStop > 200)) begin
                 CoarseStamp_final = CoarseStamp_1 + {{`COUNTER_DIG-1{1'b0}}, 1'b1};    
             end
         end
@@ -169,7 +161,7 @@ module TDC (
         .in_store_start (wDecodeFinishedStart),
         .FallEdge       (DecodedStop),
         .StartEdge      (DecodedStart),  
-        .Coarse         (CoarseStamp_final),            //!!COARSE TEST
+        .Coarse         (CoarseStamp_final),         
         .done           (done),
         .out            (oTDC)
     );

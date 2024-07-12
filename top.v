@@ -58,9 +58,10 @@ module top (
     //---- DIFERRENTIAL HIT- -------------------------------------
     wire                            external_hit;
     IBUFDS #(
-        .DIFF_TERM("FALSE"),       // Differential Termination
-        .IBUF_LOW_PWR("FALSE"),     // Low power="TRUE", Highest performance="FALSE"
-        .IOSTANDARD("DEFAULT")     // Specify the input I/O standard
+        .DIFF_TERM      ("FALSE"),      // Differential Termination
+        .IBUF_LOW_PWR   ("FALSE"),      // Low power="TRUE", Highest performance="FALSE"
+        .IOSTANDARD     ("LVDS_25")     // Specify the input I/O standard
+        // .IOSTANDARD     ("DEFAULT")     // Specify the input I/O standard
     ) IBUFDS_inst (
         .O(external_hit),  // Buffer output
         .I(hit_p),  // Diff_p buffer input (connect directly to top-level port)
@@ -86,7 +87,7 @@ module top (
     reg                     starting_flag_reset = 1'b0;
 
     assign                  led_debugmode       = debugmode;
-    assign                  rCLK            = uart_clk;
+    assign                  rCLK                = uart_clk;
 
     assign  selector[0] = selector_0;
     assign  selector[1] = selector_1;
@@ -115,31 +116,34 @@ module top (
         .clk0               (clk),          
         .clk1               (clk1),               
         .clk2               (clk2),  
-        .debug_mode         (debugmode),   
+        // .debug_mode         (debugmode),   
         .iRst               (rst_tdc),                        
-        .iHit               (hit),                        
-        .enable             (startTDC),                  
+        .iHit               (external_hit),                        
+        // .iHit               (debug_hit),         
+        .enable             (startTDC), 
+        // .enable             (1'b1), ///TODO: FUNCIONA BIEN!!
         .oTDC               (data),    
-        .debug_hit_enabler  (debug_hit_enabler),              
+        .debug_hit_enabler  (debug_hit_enabler),        //out wire          
         .done               (measure_done)
     );
 
     ///////////------ MEMORY -----------------------------------------------------
-    reg                                          flag_empty = 1'b0;
-    wire                                         wCLK;
-    assign                                       wCLK       = clk;
-    reg                                          readEN     = 1'b0;
-    wire                                         writeEN;
-    wire                                         mem_full;
-    // assign                                       writeEN = ((~start_mem_reset) && (~mem_full) && startWriting );   //!!DEBUG MODE -- Comment for normal mode
-    assign                                       writeEN = (measure_done && (~mem_full) && startWriting); //!!NORMAL MODE-- Uncomment
-    wire [31:0]                                  mem_output;
-    wire [12:0]                                  mem_r_count;
-    wire                                         mem_busy;
-    wire                                         mem_empty;
-    wire                                         mem_readerr;//
-    wire                                         mem_writeerr;//
-    wire [31:0]                                  mem_input;//
+    reg                 flag_empty = 1'b0;
+    wire                wCLK;
+    assign              wCLK       = clk;
+    reg                 readEN     = 1'b0;
+    // wire                readEN;
+    wire                writeEN;
+    wire                mem_full;
+    // assign              writeEN = ((~start_mem_reset) && (~mem_full) && startWriting);   //!!DEBUG MODE -- Comment for normal mode
+    assign              writeEN = (measure_done && (~mem_full) && startWriting); //!!NORMAL MODE-- Uncomment
+    wire [31:0]         mem_output;
+    wire [12:0]         mem_r_count;
+    wire                mem_busy;
+    wire                mem_empty;
+    wire                mem_readerr;//
+    wire                mem_writeerr;//
+    wire [31:0]         mem_input;//
     //----------> !!Debugging mem and uart (!!!COMMENT ALL THIS SECTION IN NORMAL MODE)
     //---------->  Preloading data to FIFO to check UART 
 
@@ -163,7 +167,6 @@ module top (
         .rst                        (mem_rst),                                      //input
         .data_input                 (mem_input),                                    //input
         .data_output                (mem_output), 
-        .r_count                    (mem_r_count),
         .full                       (mem_full),                                     //output //1: memory full
         .empty                      (mem_empty),                                    //
         .almost_full                (),                                  //output
@@ -177,11 +180,11 @@ module top (
     ////        when doing the first read, we save the value of rdcounter
     ////        to rdcounter_init
     ////        then readEN is high while rdcounter < rdcounter_init + 1024
-    reg                 first_read_en               = 1'b0;
-    reg                 r_init_saved                = 1'b0;
-    reg [12:0]          rd_counter_init             = 13'd0;
-    wire                rd_counter_condition;
-    assign              rd_counter_condition = ( mem_r_count < (rd_counter_init + 1022) );
+    // reg                 first_read_en               = 1'b0;
+    // reg                 r_init_saved                = 1'b0;
+    // reg [12:0]          rd_counter_init             = 13'd0;
+    // wire                rd_counter_condition;
+    // assign              rd_counter_condition = ( mem_r_count < (rd_counter_init + 1022) );
 
     //State Machine ------------------------------------------------
     reg                     reset_debugger  = 1'b0;
@@ -195,12 +198,12 @@ module top (
     //---------------------------------------------------------------
     always @(posedge wCLK) begin
         // // !!DEBUGGING: Just for preloaded FIFO ------COMMENT BETWEEN THIS LINES FOR NORMAL MODE ------------------------------- 
-        // if(writeEN && !(mem_debug_counter == 1024)) begin
-        //     mem_debug_counter <= mem_debug_counter + 10'd1;
+        // if(startWriting && !(mem_debug_counter > 1024)) begin
+        //     mem_debug_counter <= mem_debug_counter + 10'd1;    
         // end
-//        if(but_rst) begin
-//            mem_debug_counter <= 0;
-//        end
+    // //    if(but_rst) begin
+    // //        mem_debug_counter <= 0;
+    // //    end
         // //-----------------------------------------------------DEBUG
         //STATES MACHINE- --------------//
 
@@ -270,9 +273,9 @@ module top (
                 ledRead             <= 1'b1;
                 rst_tdc             <= 1'b0;
 
-                // if(but_startReading) begin
-                    // TOP_SM          <= WAITING_STATE;    //TODO: Cuidado! puede rebotar de estados
-                // end 
+                if(but_startWriting) begin
+                    TOP_SM          <= WAITING_STATE;    //TODO: Cuidado! puede rebotar de estados
+                end 
             end
 
             DEBUG_STATE: begin
@@ -283,14 +286,11 @@ module top (
                 startTDC            <= 1'b1;
                 ledWrite            <= 1'b1;
                 ledRead             <= 1'b0;
-
                 
                 if(debug_finished) begin
                     TOP_SM          <= WAITING_STATE;
                 end
             end
-
-
 
             default: TOP_SM         <= RESET_STATE;
         endcase
@@ -317,35 +317,35 @@ module top (
         end
 
 
-        if(startReading) begin
-            first_read_en   <= 1'b1;
-        end
-        if(first_read_en & !r_init_saved) begin
-            rd_counter_init <= mem_r_count;
-            r_init_saved    <= 1'b1;
-        end
+        // if(startReading) begin
+        //     first_read_en   <= 1'b1;
+        // end
+        // if(first_read_en & !r_init_saved) begin
+        //     rd_counter_init <= mem_r_count;
+        //     r_init_saved    <= 1'b1;
+        // end
     end
     ///////////////////////------------------------------------------------------------
     ///---  COARSE DEBUGGER ------------------------------------------------------------------
-    // debugger    u_coarse_debug (
-    //     .clk            (clk),                      //input   wire
-    //     .rst            (reset_debugger),           //input   wire
-    //     .enabler        (debug_hit_enabler),        //input   wire  --- ENABLER FOR HIT
-    //     .debug_enabler  (debugmode),                //input wire -- ENABLER OF THE WHOLE BLOCK
-    //     .debug_hit      (debug_hit),                //output  wire
-    //     .finished       (debug_finished)            //output wire
-    // );
-    //
-    ///---  FINE DEBUGGER ------------------------------------------------------------------
-    fine_debugger    u_fine_debug (
+    debugger    u_coarse_debug (
         .clk            (clk),                      //input   wire
         .rst            (reset_debugger),           //input   wire
-        .delay_sel      (selector),                 //input   wire [1:0]      
         .enabler        (debug_hit_enabler),        //input   wire  --- ENABLER FOR HIT
         .debug_enabler  (debugmode),                //input wire -- ENABLER OF THE WHOLE BLOCK
         .debug_hit      (debug_hit),                //output  wire
         .finished       (debug_finished)            //output wire
     );
+    //
+    ///---  FINE DEBUGGER ------------------------------------------------------------------
+    // fine_debugger    u_fine_debug (
+    //     .clk            (clk),                      //input   wire
+    //     .rst            (reset_debugger),           //input   wire
+    //     .delay_sel      (selector),                 //input   wire [1:0]      
+    //     .enabler        (debug_hit_enabler),        //input   wire  --- ENABLER FOR HIT
+    //     .debug_enabler  (debugmode),                //input wire -- ENABLER OF THE WHOLE BLOCK
+    //     .debug_hit      (debug_hit),                //output  wire
+    //     .finished       (debug_finished)            //output wire
+    // );
     //////////////////////--------------------------------------------------------------
     ///////////------ CLOCK ------------------------------------------------------------
     wire                            clkWizard;
@@ -411,8 +411,15 @@ module top (
     wire                            TOP_BYTE;
     assign                          TOP_BYTE = (buffer_counter == 2'b11);
 
+    //Read stop: flag asserts high when more than 1024 reads are intended
+    //TODO: important!! ReadEn can be replaced by uart_reload!!!!!! NO!XXXX
+    //TODO: read enable will go high when in the middle of buffer_counter = 3 just one clock
+    // assign                          readEN = (buffer_counter == 2'b10) & uart_reload;
+    reg [2:0]           read_enable_wait_counter = 3'b00;
+
+
     reg[10:0]                       read_counts = 11'd0;
-    wire                            read_stop;
+    wire                            read_stop;          
     assign                          read_stop = (read_counts >= 1024);
     always @(*) begin
         case (buffer_counter)
@@ -423,6 +430,7 @@ module top (
             default: uart_buffer = 8'h00;
         endcase
     end
+
 
     always @(posedge uart_clk) begin
         ////----- Updating uart_buffer --- counting the 4 bytes in mem_buffer
@@ -435,21 +443,29 @@ module top (
                 buffer_counter      <= buffer_counter + {1'b0, 1'b1};
             end
         end
-
         //----------------------------------------------------------------------
         // READ ENABLE ---------------------------------------------------------
         // -readEN asserted high just for one clock
         if(readEN) begin        
                 readEN  <= 1'b0;
         end 
-        else begin
-            if(startReading && !mem_empty && !flag_empty && 
-            uart_reload && TOP_BYTE && !flag_empty && (!read_stop))  begin
-                readEN          <= 1'b1;
-                read_counts     <= read_counts + 11'd1;
+        if(buffer_counter  == 2'b11) begin
+            //When sending the lasy byte (buffer_counter == 3) then
+            // wait 5 clocks to make a read.
+            //          |---byte0---|---byte1---|---byte2---|---byte3---|
+            //readEN:   _______________________________________----______
+            if (read_enable_wait_counter == 3'd5) begin
+                read_enable_wait_counter    <= 3'b00;
+                readEN                      <= 1'b1;
+                read_counts                 <= read_counts + 11'd1;
             end
-        end
-
+            else begin
+                read_enable_wait_counter <= read_enable_wait_counter + 3'b001;
+            end
+        end  
+        else begin
+            read_enable_wait_counter        <= 3'd0;
+        end 
         //-----------------------------------------------------------------------
     end
 

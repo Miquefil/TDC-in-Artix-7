@@ -683,10 +683,10 @@ set_property IOSTANDARD SSTL15 [get_ports but_startWriting]
 # set_property IOSTANDARD SSTL15 [get_ports GPIO_SW_C]
 # set_property PACKAGE_PIN U5 [get_ports GPIO_SW_E]
 # set_property IOSTANDARD SSTL15 [get_ports GPIO_SW_E]
-set_property PACKAGE_PIN R8     [get_ports selector_0]
-set_property IOSTANDARD SSTL15  [get_ports selector_0]
-set_property PACKAGE_PIN P8     [get_ports selector_1]
-set_property IOSTANDARD SSTL15  [get_ports selector_1]
+set_property PACKAGE_PIN R8 [get_ports selector_0]
+set_property IOSTANDARD SSTL15 [get_ports selector_0]
+set_property PACKAGE_PIN P8 [get_ports selector_1]
+set_property IOSTANDARD SSTL15 [get_ports selector_1]
 # set_property PACKAGE_PIN R7 [get_ports GPIO_DIP_SW2]
 # set_property IOSTANDARD SSTL15 [get_ports GPIO_DIP_SW2]
 # set_property PACKAGE_PIN R6 [get_ports GPIO_DIP_SW3]
@@ -834,3 +834,17 @@ set_property PACKAGE_PIN R5 [get_ports but_debugmode]
 
 # set_property PACKAGE_PIN U4 [get_ports but_rst]
 # set_property IOSTANDARD SSTL15 [get_ports but_rst]
+
+#create_generated_clock -name clk0 -source [get_pins u_clk/CLK] -multiply_by 1 [get_pins u_tdc/clk0]
+#create_generated_clock -name clk_uart -source [get_pins u_clk/block_clock_i/clk_wiz_0/inst/plle2_adv_inst/CLKOUT0] -divide_by 64 [get_pins uart_clk_reg/Q]
+
+#create_generated_clock -name clk1 -source [get_pins u_clk/clk_out3_0] -multiply_by 1 [get_pins u_tdc/u_Coarse_1/clk]
+#create_generated_clock -name clk2 -source [get_pins u_clk/clk_out4_0] -multiply_by 1 [get_pins u_tdc/u_Coarse_2/clk]
+
+#create_generated_clock -name u_tdc/u_DecStart/finished -source [get_pins u_clk/block_clock_i/clk_wiz_0/inst/plle2_adv_inst/CLKOUT1] -divide_by 1 [get_pins u_tdc/u_DecStart/r_finished_reg/Q]
+#create_generated_clock -name u_tdc/u_DecStop/finished -source [get_pins u_clk/block_clock_i/clk_wiz_0/inst/plle2_adv_inst/CLKOUT1] -divide_by 1 [get_pins u_tdc/u_DecStop/r_finished_reg/Q]
+
+
+
+
+#create_generated_clock -name uart_clk -source [get_pins u_clk/block_clock_i/clk_wiz_0/inst/plle2_adv_inst/CLKOUT0] -divide_by 64 [get_pins uart_clk_reg/Q]

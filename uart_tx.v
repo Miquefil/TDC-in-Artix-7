@@ -27,7 +27,7 @@ module uart_tx
     output  reg         o_Tx_Reload
     );
 
-    parameter N_COMBINATIONS = $clog2(NB);
+    localparam N_COMBINATIONS = $clog2(NB);
     parameter s_IDLE         = 3'b000;
     parameter s_TX_START_BIT = 3'b001;
     parameter s_TX_DATA_BITS = 3'b010;
@@ -50,6 +50,7 @@ module uart_tx
             o_Tx_Serial   <= 1'b1;         // Drive Line High for Idle
             r_Tx_Done     <= 1'b0;
             r_Bit_Index   <= 0;
+            o_Tx_Reload   <= 1'b0;
             
             if (i_Tx_DV == 1'b1)
             begin

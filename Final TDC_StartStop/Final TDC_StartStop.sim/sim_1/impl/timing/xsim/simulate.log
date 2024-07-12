@@ -1,2 +1,4 @@
 Time resolution is 1 ps
-INFO: xsimkernel Simulation Memory Usage: 47584 KB (Peak: 47584 KB), Simulation CPU Usage: 32827 ms
+WARNING: "C:/Xilinx/Vivado/2023.2/data/verilog/src/unisims/FIFO36E1.v" Line 462: Timing violation in scope /top_tb/u_top/u_memory/u_FIFO36E1/TChk462_11790 at time 100212811 ps $recrem (negedge RST,posedge RDCLK,(0:0:0),(0:0:0),notifier_rdclk,rdclk_en_p,rdclk_en_p,RST_dly,RDCLK_dly)  $removal violation detected. Time: 100212811 ps, Ref Event Time Stamp: 100212811 ps, Data Event Time Stamp: 100211911 ps, Limit: 2068 ps
+WARNING: "C:/Xilinx/Vivado/2023.2/data/verilog/src/unisims/FIFO36E1.v" Line 463: Timing violation in scope /top_tb/u_top/u_memory/u_FIFO36E1/TChk463_11791 at time 100212811 ps $recrem (negedge RST,posedge WRCLK,(0:0:0),(0:0:0),notifier_wrclk,wrclk_en_p,wrclk_en_p,RST_dly,WRCLK_dly)  $removal violation detected. Time: 100212811 ps, Ref Event Time Stamp: 100212811 ps, Data Event Time Stamp: 100212029 ps, Limit: 2068 ps
+INFO: xsimkernel Simulation Memory Usage: 72324 KB (Peak: 72324 KB), Simulation CPU Usage: 60202 ms

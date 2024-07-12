@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Fri May 24 18:35:16 2024
+// Date        : Fri May 24 18:35:15 2024
 // Host        : MikeHP running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim {c:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final
-//               TDC_StartStop.gen/sources_1/bd/block_clock/ip/block_clock_clk_wiz_0_0/block_clock_clk_wiz_0_0_sim_netlist.v}
+// Command     : write_verilog -force -mode funcsim -rename_top block_clock_clk_wiz_0_0 -prefix
+//               block_clock_clk_wiz_0_0_ block_clock_clk_wiz_0_0_sim_netlist.v
 // Design      : block_clock_clk_wiz_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -41,7 +41,7 @@ module block_clock_clk_wiz_0_0
   wire locked;
   wire reset;
 
-  block_clock_clk_wiz_0_0_clk_wiz inst
+  block_clock_clk_wiz_0_0_block_clock_clk_wiz_0_0_clk_wiz inst
        (.clk_in1_n(clk_in1_n),
         .clk_in1_p(clk_in1_p),
         .clk_out(clk_out),
@@ -52,7 +52,7 @@ module block_clock_clk_wiz_0_0
         .reset(reset));
 endmodule
 
-module block_clock_clk_wiz_0_0_clk_wiz
+module block_clock_clk_wiz_0_0_block_clock_clk_wiz_0_0_clk_wiz
    (clk_out,
     clk_out2,
     clk_out3,

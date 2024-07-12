@@ -19,7 +19,6 @@ module memory_ctrl (
     input   wire                              WriteEN,
     input   wire [31:0]                       data_input,
     output  wire [31:0]                       data_output,
-    output  wire [12:0]                       r_count,
     output  wire                              almost_full,
     output  wire                              almost_empty,
     output  wire                              empty,
@@ -33,15 +32,17 @@ module memory_ctrl (
     wire            m_EMPTY;
     wire            m_FULL;
     wire            m_READERROR;
-    wire            m_WRCOUNT;      //El puerto es de 13 bits (8000 combinaciones) por si usamos datas de 4bitss
     wire            m_WRERR;        //Error if its full. Synchronous with WRCLK
 
+    // wire [63:0]            memory_output;
+    // assign                 data_output = memory_output[31:0];
 
     assign almost_full          = m_ALMOSTFULL;
     assign almost_empty         = m_ALMOSTEMPTY;
     assign empty                = m_EMPTY;
     assign readERR              = m_READERROR;
     assign writeERR             = m_WRERR;
+
 
     (* dont_touch = "TRUE" *)
     FIFO36E1 #(
@@ -71,9 +72,9 @@ module memory_ctrl (
         .ALMOSTFULL(m_ALMOSTFULL),                              // 1-bit output: Almost full flag
         .EMPTY(m_EMPTY),                                        // 1-bit output: Empty flag
         .FULL(full),                                          // 1-bit output: Full flag
-        .RDCOUNT(r_count),                                             // 13-bit output: Read count
+        .RDCOUNT(),                                             // 13-bit output: Read count
         .RDERR(m_READERROR),                                    // 1-bit output: Read error
-        .WRCOUNT(m_WRCOUNT),                                    // 13-bit output: Write count
+        .WRCOUNT(),                                    // 13-bit output: Write count
         .WRERR(m_WRERR),                                        // 1-bit output: Write error
         // ECC Signals: 1-bit (each) input: Error Correction Circuitry ports
         .INJECTDBITERR(),                                       // 1-bit input: Inject a double bit error input
@@ -88,7 +89,7 @@ module memory_ctrl (
         .WRCLK(Wclk),                                           // 1-bit input: Rising edge write clock.
         .WREN(WriteEN),                                         // 1-bit input: Write enable
         // Write Data: 64-bit (each) input: Write input data
-        .DI(data_input),                                        // 64-bit input: Data input
+        .DI({{32{1'b0}}, data_input}),                                        // 64-bit input: Data input
         .DIP()                                                  // 8-bit input: Parity input
     );
 

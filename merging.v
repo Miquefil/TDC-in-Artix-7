@@ -26,8 +26,6 @@ module merging #(parameter N = 2) (
 
     output wire[`DIG_OUT-1:0]            out,
     output wire                         done            //Used to reset the system JUST ONE CLK 
-    //debugging
-    //output wire                         debugRst    
     );
     //NOTES:           --------------------------------------------
     //  Stores decodedStart 1 clock later that StartEdge comes
@@ -38,42 +36,41 @@ module merging #(parameter N = 2) (
     wire    rst;   
     assign  rst = irst;       
 
-
-    reg                                                 r_done         = 1'b0;
-    reg                                                 enable_counter = 1'b0;
-    reg [`NUM_DECODE-1:0]                               StartEdge_stored = {`NUM_DECODE{1'b0}};
-    reg                                                 storeStart       = 1'b0;
-    reg [`NUM_DECODE-1:0]                               StopEdge_stored  = {`NUM_DECODE{1'b0}};
-    reg                                                 storeStop        = 1'b0;
-    (* DONT_TOUCH = "yes" *) reg[N-1:0]                 counter          = {N{1'b0}};
-
-    wire                                                TOP_COUNTER;
-    assign                                              TOP_COUNTER = (counter == {N{1'b1}});
+    reg [`COUNTER_DIG-1:0]                      Coarse_stored   = {`COUNTER_DIG{1'b0}};
+    reg                                         r_done          = 1'b0;
+    reg                                         enable_counter  = 1'b0;
+    reg [`NUM_DECODE-1:0]                       StartEdge_stored = {`NUM_DECODE{1'b0}};
+    reg                                         storeStart       = 1'b0;
+    reg [`NUM_DECODE-1:0]                       StopEdge_stored  = {`NUM_DECODE{1'b0}};
+    reg                                         storeStop        = 1'b0;
+    (* DONT_TOUCH = "yes" *) reg[N-1:0]         counter          = {N{1'b0}};
+    wire                                        TOP_COUNTER;
+    assign                                      TOP_COUNTER = (counter == {N{1'b1}});
 
 
 
     //////////////
     //If edge detector detects a rising edge or a rising rst is done:
-    always @(posedge in_store_start or posedge rst) begin    
-        if (rst) begin
-            storeStart          <= 1'b0;
-        end
-        else begin
-            storeStart          <= 1'b1;
-        end
-    end
+    // always @(posedge in_store_start or posedge rst) begin    
+    //     if (rst) begin
+    //         storeStart          <= 1'b0;
+    //     end
+    //     else begin
+    //         storeStart          <= 1'b1;
+    //     end
+    // end
     /////////////
     //If edge detector detects a falling edge or a rising rst is done:
-    always @(posedge in_store_stop or posedge rst) begin
-        if (rst) begin
-            enable_counter      <= 1'b0;
-            storeStop           <= 1'b0;
-        end
-        else begin
-            enable_counter      <= 1'b1;     
-            storeStop           <= 1'b1;
-        end
-    end
+    // always @(posedge in_store_stop or posedge rst) begin
+    //     if (rst) begin
+    //         enable_counter      <= 1'b0;
+    //         storeStop           <= 1'b0;
+    //     end
+    //     else begin
+    //         enable_counter      <= 1'b1;     
+    //         storeStop           <= 1'b1;
+    //     end
+    // end
     /////////////////////
     always @(posedge clk) begin
         //Counter
@@ -81,9 +78,11 @@ module merging #(parameter N = 2) (
             counter             <= {N{1'b0}};
             StopEdge_stored     <= {`NUM_DECODE{1'b0}};
             StartEdge_stored    <= {`NUM_DECODE{1'b0}};
+            Coarse_stored       <= {`COUNTER_DIG{1'b0}};
         end 
         else if (enable_counter) begin
             if (TOP_COUNTER) begin
+                enable_counter  <= 1'b0;
                 counter         <= {N{1'b0}};
                 r_done          <= 1'b1;
                 //this implementation is important AND SHOULD NOT BE REPLACED BY TOP_COUNTER ASSIGN
@@ -99,15 +98,26 @@ module merging #(parameter N = 2) (
         end 
 
         //Store
-        if(storeStart) begin       
-            StartEdge_stored <= StartEdge;
+        // if(storeStart) begin       
+        //     StartEdge_stored    <= StartEdge;
+        // end
+        // if(storeStop) begin
+        //     StopEdge_stored     <= FallEdge;
+        //     Coarse_stored       <= Coarse;
+        // end
+
+        //STORE
+        if (in_store_stop) begin
+            StopEdge_stored     <= FallEdge;
+            Coarse_stored       <= Coarse;
+            enable_counter      <= 1'b1;
         end
-        if(storeStop) begin
-            StopEdge_stored  <= FallEdge;
+        if (in_store_start) begin
+            StartEdge_stored    <= StartEdge;
         end
     end
 
     assign done     = r_done;        //resets the whole systems at the same time
-    assign out      = {Coarse, StartEdge_stored, StopEdge_stored};
+    assign out      = {Coarse_stored, StartEdge_stored, StopEdge_stored};
 
 endmodule //

@@ -97,9 +97,9 @@ read_verilog -library xil_defaultlib {
   C:/Users/mique/Desktop/TDC-in-Artix-7/Fine.v
   C:/Users/mique/Desktop/TDC-in-Artix-7/TDC.v
   {C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.gen/sources_1/bd/block_clock/hdl/block_clock_wrapper.v}
+  C:/Users/mique/Desktop/TDC-in-Artix-7/debugger.v
   C:/Users/mique/Desktop/TDC-in-Artix-7/decode.v
   C:/Users/mique/Desktop/TDC-in-Artix-7/enabler.v
-  C:/Users/mique/Desktop/TDC-in-Artix-7/fine_debugger.v
   C:/Users/mique/Desktop/TDC-in-Artix-7/memory_ctrl.v
   C:/Users/mique/Desktop/TDC-in-Artix-7/merging.v
   C:/Users/mique/Desktop/TDC-in-Artix-7/uart_tx.v

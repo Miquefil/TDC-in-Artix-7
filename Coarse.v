@@ -22,8 +22,8 @@ module Coarse #(parameter C_DIG = 10) (
     output  wire [C_DIG-1:0]    oCoarse
 );
 
-    (* DONT_TOUCH = "yes" *) reg[C_DIG-1:0]    count;
-    (* DONT_TOUCH = "yes" *) reg[C_DIG-1:0]    stored;
+    (* DONT_TOUCH = "yes" *) reg[C_DIG-1:0]    count    = {C_DIG{1'b0}};
+    (* DONT_TOUCH = "yes" *) reg[C_DIG-1:0]    stored   = {C_DIG{1'b0}};
 
     always @(posedge clk) begin
         if(iRst) begin
@@ -34,7 +34,7 @@ module Coarse #(parameter C_DIG = 10) (
         end
     end
 
-    always @(posedge clk ) begin
+    always @(posedge clk) begin
         if (iStore) begin
             stored <= count;
         end

@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Fri May 24 18:35:16 2024
+-- Date        : Fri May 24 18:35:15 2024
 -- Host        : MikeHP running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim {c:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final
---               TDC_StartStop.gen/sources_1/bd/block_clock/ip/block_clock_clk_wiz_0_0/block_clock_clk_wiz_0_0_sim_netlist.vhdl}
+-- Command     : write_vhdl -force -mode funcsim -rename_top block_clock_clk_wiz_0_0 -prefix
+--               block_clock_clk_wiz_0_0_ block_clock_clk_wiz_0_0_sim_netlist.vhdl
 -- Design      : block_clock_clk_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -15,7 +15,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity block_clock_clk_wiz_0_0_clk_wiz is
+entity block_clock_clk_wiz_0_0_block_clock_clk_wiz_0_0_clk_wiz is
   port (
     clk_out : out STD_LOGIC;
     clk_out2 : out STD_LOGIC;
@@ -26,9 +26,9 @@ entity block_clock_clk_wiz_0_0_clk_wiz is
     clk_in1_p : in STD_LOGIC;
     clk_in1_n : in STD_LOGIC
   );
-end block_clock_clk_wiz_0_0_clk_wiz;
+end block_clock_clk_wiz_0_0_block_clock_clk_wiz_0_0_clk_wiz;
 
-architecture STRUCTURE of block_clock_clk_wiz_0_0_clk_wiz is
+architecture STRUCTURE of block_clock_clk_wiz_0_0_block_clock_clk_wiz_0_0_clk_wiz is
   signal clk_in1_block_clock_clk_wiz_0_0 : STD_LOGIC;
   signal clk_out2_block_clock_clk_wiz_0_0 : STD_LOGIC;
   signal clk_out3_block_clock_clk_wiz_0_0 : STD_LOGIC;
@@ -168,7 +168,7 @@ end block_clock_clk_wiz_0_0;
 
 architecture STRUCTURE of block_clock_clk_wiz_0_0 is
 begin
-inst: entity work.block_clock_clk_wiz_0_0_clk_wiz
+inst: entity work.block_clock_clk_wiz_0_0_block_clock_clk_wiz_0_0_clk_wiz
      port map (
       clk_in1_n => clk_in1_n,
       clk_in1_p => clk_in1_p,

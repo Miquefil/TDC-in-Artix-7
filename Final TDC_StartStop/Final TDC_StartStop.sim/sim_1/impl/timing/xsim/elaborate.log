@@ -11,10 +11,10 @@ Completed simulation data flow analysis
 INFO: [XSIM 43-3451] SDF backannotation process started with SDF file "top_tb_time_impl.sdf", for root module "top_tb/u_top".
 INFO: [XSIM 43-3452] SDF backannotation was successful for SDF file "top_tb_time_impl.sdf", for root module "top_tb/u_top".
 Time Resolution for simulation is 1ps
+Compiling module simprims_ver.FDRE_default
 Compiling module simprims_ver.IBUFDS
 Compiling module simprims_ver.OBUFT
 Compiling module simprims_ver.OBUF
-Compiling module simprims_ver.FDRE_default
 Compiling module simprims_ver.IBUF
 Compiling module simprims_ver.x_lut1_mux2
 Compiling module simprims_ver.LUT1
@@ -26,23 +26,29 @@ Compiling module simprims_ver.LUT4
 Compiling module simprims_ver.LUT5
 Compiling module simprims_ver.LUT6
 Compiling module simprims_ver.BUFG
-Compiling module simprims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=4.0,C...
+Compiling module simprims_ver.PLLE2_ADV(CLKFBOUT_MULT=4,CLKIN1...
 Compiling module xil_defaultlib.block_clock_clk_wiz_0_0_clk_wiz
 Compiling module xil_defaultlib.block_clock_clk_wiz_0_0
 Compiling module xil_defaultlib.block_clock
 Compiling module xil_defaultlib.block_clock_wrapper
+Compiling module simprims_ver.MUXF7
+Compiling module xil_defaultlib.fine_debugger
 Compiling module simprims_ver.FF36_INTERNAL_VLOG(DATA_WIDTH=36...
-Compiling module simprims_ver.FIFO36E1(DATA_WIDTH=36)
+Compiling module simprims_ver.FIFO36E1(DATA_WIDTH=36,FIRST_WOR...
 Compiling module xil_defaultlib.memory_ctrl
 Compiling module simprims_ver.FDCE_default
 Compiling module simprims_ver.CARRY4
+Compiling module xil_defaultlib.Coarse__1
+Compiling module xil_defaultlib.Coarse__2
 Compiling module xil_defaultlib.Coarse
-Compiling module xil_defaultlib.DecodeStart
-Compiling module xil_defaultlib.DecodeStop
+Compiling module xil_defaultlib.decode
+Compiling module xil_defaultlib.decode__parameterized0
+Compiling module xil_defaultlib.Edge__2
+Compiling module xil_defaultlib.Edge__3
 Compiling module xil_defaultlib.Edge
 Compiling module xil_defaultlib.Fine
-Compiling module simprims_ver.GND
-Compiling module simprims_ver.FDSE(INIT=1'b0)
+Compiling module xil_defaultlib.Edge__1
+Compiling module xil_defaultlib.enabler
 Compiling module xil_defaultlib.merging
 Compiling module xil_defaultlib.TDC
 Compiling module xil_defaultlib.uart_tx

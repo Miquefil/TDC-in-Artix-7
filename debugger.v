@@ -61,7 +61,7 @@ module debugger (
             debug_flag_finished <= 1'b1;
         end
     end
-    assign  finished        = debug_flag_finished;
+    assign  finished    = debug_flag_finished;
     assign  debug_hit   = (debug_hit_counter < debug_hit_compare)&
                             (!debug_flag_finished)&(enabler)&(debug_enabler)&(one_counter_cycle);
     

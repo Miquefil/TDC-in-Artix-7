@@ -51,32 +51,45 @@ combined_edges      = np.add(stop_edges, start_edges)
 substracted_edges   = np.subtract(stop_edges, start_edges)
 
 
-print(stop_edges)
-print(len(stop_edges))
+
+# file_stop = 'stop.txt'
+# with open(file_stop, 'w') as file:
+#         for item in stop_edges:
+#             file.write(f"{item}\n")
+
+# print(stop_edges)
+
+file_start = 'start.txt'
+with open(file_start, 'w') as file:
+        for item in start_edges:
+            file.write(f"{item}\n")
 
 
-indices = list(range(0, 1025))
-
+indices = list(range(0, 1024))
+bines = np.linspace(-0.5, 300.5, 302)
+# bines = np.linspace(-0.5, 400.5, 402)
 
 # Create histograms
 plt.figure(figsize=(12, 6))
 
 # Histogram for stop_edge and start_edge
+# print(bines)
 plt.subplot(3, 2, 1)
-# plt.hist(stop_edges, bins=range(300), alpha=0.5, align='mid', color='blue', label='Combined Edges')
-count, bins = np.histogram(stop_edges, bins=300)
-plt.plot(bins[1:], count, 'o')
+plt.hist(stop_edges, bins=bines, alpha=0.5, align='mid', color='blue', label='Combined Edges')
+# count, bins = np.histogram(stop_edges, bins=300)
+# plt.plot(bins[1:], count, 'o')
 plt.title('Histogram of Stop')
 plt.xlabel('Value')
 plt.ylabel('Frequency')
 plt.legend()
-print(stop_edges)
+# print(stop_edges)
 
 #
 plt.subplot(3, 2, 2)
-# plt.hist(start_edges, bins=300, color='red', align='mid', label='Coarsecounter')
-count, bins = np.histogram(start_edges, bins=300)
-plt.plot(bins[1:], count, '*')
+plt.hist(start_edges, bins=bines, color='red', align='mid', label='start edge')
+print(start_edges)
+# count, bins = np.histogram(start_edges, bins=300)
+# plt.plot(bins[1:], count, '*')
 plt.title('Histogram of Start')
 plt.xlabel('Value')
 plt.ylabel('Frequency')
@@ -84,10 +97,10 @@ plt.legend()
 
 
 plt.subplot(3, 2, 3)
-plt.hist(combined_edges, bins=range(600), color='blue', align='right', label='Coarsecounter')
+plt.hist(combined_edges, bins=range(600), color='blue', align='mid', label='Coarsecounter')
 # plt.plot(indices, substracted_edges, '*')
 # plt.plot(substracted_edges, bins=range(600), color='blue', align='right')
-plt.title('Histogram of Coarsecounter')
+plt.title('Suma de finos')
 plt.xlabel('Value')
 plt.ylabel('Frequency')
 plt.legend()
@@ -97,21 +110,23 @@ plt.subplot(3, 2, 4)
 # plt.plot(indices, combined_edges)
 plt.hist(substracted_edges, bins = range(-150, 150), color='blue', align='right')
 # plt.hist(coarse_counters, bins=range(max(coarse_counters) + 1), color='green', align='right', label='Coarsecounter')
-plt.title('Finos combinados')
+plt.title('Resta de finos')
 plt.xlabel('n° of measurement')
 plt.ylabel('bin')
 # plt.legend()
 
 plt.subplot(3, 2, 5)
-# plt.plot(indices, start_edges)
-# plt.title('Start edge')
-# plt.xlabel('number of measurement')
-# plt.ylabel('value')
+plt.plot(indices, start_edges)
+# plt.plot(indices, stop_edges)
+plt.title('Start edge')
+plt.xlabel('number of measurement')
+plt.ylabel('value')
 
 
 plt.subplot(3, 2, 6)
-# plt.plot(indices, stop_edges)
-plt.hist(coarse_counters, bins=range(max(coarse_counters) + 1), color='green', align='right', label='Coarsecounter')
+# plt.plot(indices, stop_edges, '*')
+plt.hist(coarse_counters, bins=range(max(coarse_counters) + 10), color='green', align='right', label='Coarsecounter')
+# print(coarse_counters)
 plt.title('Coarse')
 plt.xlabel('value')
 plt.ylabel('frequency')
@@ -121,12 +136,12 @@ plt.savefig(TITLE + '.png', format='png')
 plt.show()
 
 #
-for x in stop_edges:
-    if(x>300):
-        print('Cuidado con Stop!')
-for x in start_edges:
-    if(x>300):
-        print('Cuidado con Start!')
+# for x in stop_edges:
+#     if(x>300):
+#         print('Cuidado con Stop!')
+# for x in start_edges:
+#     if(x>300):
+#         print('Cuidado con Start!')
 
 
 

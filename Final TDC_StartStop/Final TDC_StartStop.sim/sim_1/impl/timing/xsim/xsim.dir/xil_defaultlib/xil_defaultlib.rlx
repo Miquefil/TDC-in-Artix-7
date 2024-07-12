@@ -2,6 +2,6 @@
 2020.2
 Oct 13 2023
 20:47:58
-C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/Final TDC_StartStop/Final TDC_StartStop.sim/sim_1/impl/timing/xsim/top_tb_time_impl.v,1715040258,verilog,,C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top_tb.v,,Coarse;DecodeStart;DecodeStop;Edge;Fine;TDC;block_clock;block_clock_clk_wiz_0_0;block_clock_clk_wiz_0_0_clk_wiz;block_clock_wrapper;glbl;memory_ctrl;merging;top;uart_tx,,,../../../../../../;../../../../../Final TDC_StartStop.gen/sources_1/bd/block_clock/ipshared/c2c6,,,,,
-C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/defines.v,1713895563,verilog,,,,,,,,,,,,
-C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/top_tb.v,1714949670,verilog,,,C:/Users/mique/Desktop/TDC-in-Artix-7/TDC/defines.v,top_tb,,,../../../../../../;../../../../../Final TDC_StartStop.gen/sources_1/bd/block_clock/ipshared/c2c6,,,,,
+C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.sim/sim_1/impl/timing/xsim/top_tb_time_impl.v,1720755730,verilog,,C:/Users/mique/Desktop/TDC-in-Artix-7/top_tb.v,,Coarse;Coarse__1;Coarse__2;Edge;Edge__1;Edge__2;Edge__3;Fine;TDC;block_clock;block_clock_clk_wiz_0_0;block_clock_clk_wiz_0_0_clk_wiz;block_clock_wrapper;decode;decode__parameterized0;enabler;fine_debugger;glbl;memory_ctrl;merging;top;uart_tx,,,../../../../../../;../../../../../Final TDC_StartStop.gen/sources_1/bd/block_clock/ipshared/c2c6,,,,,
+C:/Users/mique/Desktop/TDC-in-Artix-7/defines.v,1720631944,verilog,,,,,,,,,,,,
+C:/Users/mique/Desktop/TDC-in-Artix-7/top_tb.v,1720463335,verilog,,,C:/Users/mique/Desktop/TDC-in-Artix-7/defines.v,top_tb,,,../../../../../../;../../../../../Final TDC_StartStop.gen/sources_1/bd/block_clock/ipshared/c2c6,,,,,

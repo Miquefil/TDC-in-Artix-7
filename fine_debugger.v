@@ -153,7 +153,6 @@ module fine_debugger (
     assign out_chain[3] = o_LUT_delay[3];
 
     wire[1:0]           mux7_outputs;
-    wire                mux8_output;
    (* dont_touch = "TRUE" *) MUXF7
    MUX7_1 (
         .O      (mux7_outputs[0]),              // Output of MUX to general routing

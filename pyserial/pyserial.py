@@ -55,49 +55,6 @@ def TDCSerial(port, speed, output_file):
     
     ser.close()
 
-##V2--------------------------------------------
-# def TDCSerial(port, speed, output_file):
-
-#     #initializing serial communication
-#     ser = serial.Serial(port, speed, timeout=1,  bytesize=serial.EIGHTBITS, 
-#                         parity='N', stopbits=1, xonxoff=0, rtscts=0)
-    
-#     try: 
-#         ser.open()
-#     except serial.serialutil.SerialException:
-#         print("---- PORT ALREADY OPENED")
-
-#     Wait        = True
-#     i           = 0
-#     NUM_WAITS   = 10
-#     # Open the output file in append mode to save received data
-#     with open(output_file, 'a') as file: 
-#         try:
-#             while Wait:
-#             data = ser.read(ser.in_waiting or 1)
-#             if not data:
-#                 i += 1
-#             else:
-#                 i = 0
-#                 hex_data = ''.join(['{:02X}'.format(byte) for byte in data])
-#                 file.write(hex_data)
-#                 print(hex_data)
-#             if i >= NUM_WAITS:
-#                 Wait = False
-#             if i % 4 == 0 and i != 0:
-#                 file.write('\n')
-#         except KeyboardInterrupt:
-#             print("----Closing serial port and saving output file.")
-#             ser.close()
-#             file.close()
-#         except Exception as e:
-#             print("----Error occurred:", str(e))
-#             print("----Closing serial port and saving output file.")
-#             ser.close()
-#             file.close()
-    
-#     ser.close()
-
-TDCSerial("COM3", 114680, 'data.txt')
+TDCSerial("COM3", 114679, 'data.txt')
 
 
