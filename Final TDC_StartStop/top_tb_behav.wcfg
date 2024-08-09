@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="300,053.904 ns"></ZoomStartTime>
-      <ZoomEndTime time="300,067.065 ns"></ZoomEndTime>
-      <Cursor1Time time="300,055.000 ns"></Cursor1Time>
+      <ZoomStartTime time="299,782.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="300,181.001 ns"></ZoomEndTime>
+      <Cursor1Time time="300,165.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="207"></NameColumnWidth>
-      <ValueColumnWidth column_width="166"></ValueColumnWidth>
+      <ValueColumnWidth column_width="158"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="28" />
    <wvobject fp_name="/top_tb/u_top/clk_p" type="logic">
@@ -118,20 +118,23 @@
          <obj_property name="ObjectShortName">ready</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/u_top/u_tdc/u_FineDelay/oFFStart" type="array">
-         <obj_property name="ElementShortName">oFFStart[399:0]</obj_property>
-         <obj_property name="ObjectShortName">oFFStart[399:0]</obj_property>
+         <obj_property name="ElementShortName">oFFStart[355:0]</obj_property>
+         <obj_property name="ObjectShortName">oFFStart[355:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/u_top/u_tdc/u_FineDelay/oFFStop" type="array">
-         <obj_property name="ElementShortName">oFFStop[399:0]</obj_property>
-         <obj_property name="ObjectShortName">oFFStop[399:0]</obj_property>
+         <obj_property name="ElementShortName">oFFStop[355:0]</obj_property>
+         <obj_property name="ObjectShortName">oFFStop[355:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_FineDelay/iRst" type="logic">
+         <obj_property name="ElementShortName">iRst</obj_property>
+         <obj_property name="ObjectShortName">iRst</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group254" type="group">
       <obj_property name="label">ENABLER</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/u_top/clk" type="logic">
          <obj_property name="ElementShortName">clk</obj_property>
          <obj_property name="ObjectShortName">clk</obj_property>
@@ -168,16 +171,74 @@
          <obj_property name="ElementShortName">iRst</obj_property>
          <obj_property name="ObjectShortName">iRst</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/u_top/u_tdc/u_enabler/u_EdgeDetector_enabler/wEDGE" type="array">
-         <obj_property name="ElementShortName">wEDGE[1:0]</obj_property>
-         <obj_property name="ObjectShortName">wEDGE[1:0]</obj_property>
-         <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_enabler/SM_CURRENT_STATE" type="array">
+         <obj_property name="ElementShortName">SM_CURRENT_STATE[2:0]</obj_property>
+         <obj_property name="ObjectShortName">SM_CURRENT_STATE[2:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group510" type="group">
+      <obj_property name="label">MERGE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/iHit" type="logic">
+         <obj_property name="ElementShortName">iHit</obj_property>
+         <obj_property name="ObjectShortName">iHit</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/in_store_stop" type="logic">
+         <obj_property name="ElementShortName">in_store_stop</obj_property>
+         <obj_property name="ObjectShortName">in_store_stop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/in_store_start" type="logic">
+         <obj_property name="ElementShortName">in_store_start</obj_property>
+         <obj_property name="ObjectShortName">in_store_start</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/done" type="logic">
+         <obj_property name="ElementShortName">done</obj_property>
+         <obj_property name="ObjectShortName">done</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/out" type="array">
+         <obj_property name="ElementShortName">out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/Coarse" type="array">
+         <obj_property name="ElementShortName">Coarse[11:0]</obj_property>
+         <obj_property name="ObjectShortName">Coarse[11:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/StartEdge" type="array">
+         <obj_property name="ElementShortName">StartEdge[9:0]</obj_property>
+         <obj_property name="ObjectShortName">StartEdge[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/FallEdge" type="array">
+         <obj_property name="ElementShortName">FallEdge[9:0]</obj_property>
+         <obj_property name="ObjectShortName">FallEdge[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group502" type="group">
+      <obj_property name="label">STOP DECODER</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_DecStop/finished" type="logic">
+         <obj_property name="ElementShortName">finished</obj_property>
+         <obj_property name="ObjectShortName">finished</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_DecStop/wDecodeIn" type="array">
+         <obj_property name="ElementShortName">wDecodeIn[355:0]</obj_property>
+         <obj_property name="ObjectShortName">wDecodeIn[355:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/u_top/u_tdc/u_DecStop/wDecodeOut" type="array">
+         <obj_property name="ElementShortName">wDecodeOut[9:0]</obj_property>
+         <obj_property name="ObjectShortName">wDecodeOut[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group512" type="group">
       <obj_property name="label">UART</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/u_top/readEN" type="logic">
          <obj_property name="ElementShortName">readEN</obj_property>
          <obj_property name="ObjectShortName">readEN</obj_property>
@@ -214,7 +275,6 @@
    <wvobject fp_name="group647" type="group">
       <obj_property name="label">COARSE</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/u_top/u_tdc/u_Coarse_1/oCoarse" type="array">
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="ElementShortName">oCoarse[11:0]</obj_property>
@@ -254,7 +314,6 @@
    <wvobject fp_name="group648" type="group">
       <obj_property name="label">TOP</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/u_top/startWriting" type="logic">
          <obj_property name="ElementShortName">startWriting</obj_property>
          <obj_property name="ObjectShortName">startWriting</obj_property>
@@ -284,45 +343,12 @@
       <obj_property name="label">Memory</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="group510" type="group">
-      <obj_property name="label">MERGE</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/top_tb/u_top/u_tdc/iHit" type="logic">
-         <obj_property name="ElementShortName">iHit</obj_property>
-         <obj_property name="ObjectShortName">iHit</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/done" type="logic">
-         <obj_property name="ElementShortName">done</obj_property>
-         <obj_property name="ObjectShortName">done</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/out" type="array">
-         <obj_property name="ElementShortName">out[31:0]</obj_property>
-         <obj_property name="ObjectShortName">out[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/Coarse" type="array">
-         <obj_property name="ElementShortName">Coarse[11:0]</obj_property>
-         <obj_property name="ObjectShortName">Coarse[11:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/StartEdge" type="array">
-         <obj_property name="ElementShortName">StartEdge[9:0]</obj_property>
-         <obj_property name="ObjectShortName">StartEdge[9:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/u_top/u_tdc/u_merge/FallEdge" type="array">
-         <obj_property name="ElementShortName">FallEdge[9:0]</obj_property>
-         <obj_property name="ObjectShortName">FallEdge[9:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-   </wvobject>
    <wvobject fp_name="group507" type="group">
       <obj_property name="label">START DECODER</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <wvobject fp_name="/top_tb/u_top/u_tdc/u_DecStart/wDecodeIn" type="array">
-         <obj_property name="ElementShortName">wDecodeIn[399:0]</obj_property>
-         <obj_property name="ObjectShortName">wDecodeIn[399:0]</obj_property>
+         <obj_property name="ElementShortName">wDecodeIn[355:0]</obj_property>
+         <obj_property name="ObjectShortName">wDecodeIn[355:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/u_top/u_tdc/u_DecStart/wDecodeOut" type="array">
@@ -338,20 +364,6 @@
    <wvobject fp_name="/top_tb/u_top/u_tdc/u_DecStart/finished" type="logic">
       <obj_property name="ElementShortName">finished</obj_property>
       <obj_property name="ObjectShortName">finished</obj_property>
-   </wvobject>
-   <wvobject fp_name="group502" type="group">
-      <obj_property name="label">STOP DECODER</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/top_tb/u_top/u_tdc/u_DecStop/wDecodeIn" type="array">
-         <obj_property name="ElementShortName">wDecodeIn[399:0]</obj_property>
-         <obj_property name="ObjectShortName">wDecodeIn[399:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/u_top/u_tdc/u_DecStop/wDecodeOut" type="array">
-         <obj_property name="ElementShortName">wDecodeOut[9:0]</obj_property>
-         <obj_property name="ObjectShortName">wDecodeOut[9:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject fp_name="group371" type="group">
       <obj_property name="label">FINE</obj_property>
@@ -370,8 +382,8 @@
          <obj_property name="ObjectShortName">iStartEnable</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/u_top/u_tdc/u_FineDelay/oFFStart" type="array">
-         <obj_property name="ElementShortName">oFFStart[399:0]</obj_property>
-         <obj_property name="ObjectShortName">oFFStart[399:0]</obj_property>
+         <obj_property name="ElementShortName">oFFStart[355:0]</obj_property>
+         <obj_property name="ObjectShortName">oFFStart[355:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/u_top/u_tdc/u_FineDelay/iStopEnable" type="logic">
@@ -379,8 +391,8 @@
          <obj_property name="ObjectShortName">iStopEnable</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/u_top/u_tdc/u_FineDelay/oFFStop" type="array">
-         <obj_property name="ElementShortName">oFFStop[399:0]</obj_property>
-         <obj_property name="ObjectShortName">oFFStop[399:0]</obj_property>
+         <obj_property name="ElementShortName">oFFStop[355:0]</obj_property>
+         <obj_property name="ObjectShortName">oFFStop[355:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
    </wvobject>
@@ -391,7 +403,6 @@
    <wvobject fp_name="group120" type="group">
       <obj_property name="label">COARSE DEBUGGER</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/u_top/u_coarse_debug/debug_writing_steps" type="array">
          <obj_property name="ElementShortName">debug_writing_steps[8:0]</obj_property>
          <obj_property name="ObjectShortName">debug_writing_steps[8:0]</obj_property>

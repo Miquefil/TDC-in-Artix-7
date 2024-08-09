@@ -57,8 +57,9 @@ module top (
     //------------------------------------------------------------
     //---- DIFERRENTIAL HIT- -------------------------------------
     wire                            external_hit;
+    
     IBUFDS #(
-        .DIFF_TERM      ("FALSE"),      // Differential Termination
+        .DIFF_TERM      ("TRUE"),      // //important!!! Set true to have 50ohm at input!!!!!!!!
         .IBUF_LOW_PWR   ("FALSE"),      // Low power="TRUE", Highest performance="FALSE"
         .IOSTANDARD     ("LVDS_25")     // Specify the input I/O standard
         // .IOSTANDARD     ("DEFAULT")     // Specify the input I/O standard
@@ -357,7 +358,11 @@ module top (
         .clk_out3_0(clk1),                           //200Mhz + phase
         .clk_out4_0(clk2),                           //200Mhz + 2*phase
         .locked_0(),                                 //
-        .reset_0()                                   //
+        .reset_0(),                                   //
+        .clk_out_ce_0                            (1'b1),
+        .clk_out2_ce_0                          (1'b1),
+        .clk_out3_ce_0                          (1'b1),
+        .clk_out4_ce_0                           (1'b1)
         );
 
     ///////////------ UART ------------------------------------------------------------

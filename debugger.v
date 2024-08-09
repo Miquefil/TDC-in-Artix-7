@@ -62,8 +62,22 @@ module debugger (
         end
     end
     assign  finished    = debug_flag_finished;
-    assign  debug_hit   = (debug_hit_counter < debug_hit_compare)&
+
+    wire debug_hit_aux;
+    assign  debug_hit_aux   = (debug_hit_counter < debug_hit_compare)&
                             (!debug_flag_finished)&(enabler)&(debug_enabler)&(one_counter_cycle);
-    
+
+    wire [3:0] carry_out;
+    (* DONT_TOUCH = "yes" *)
+    CARRY4 carry_debugger
+    (   .CO(carry_out),           // 4-bit carry out
+        .O(),                  // 4-bit carry chain XOR data out
+        .CI(1'b0),                          // 1-bit carry cascade input
+        .CYINIT(debug_hit_aux),                   // 1-bit carry initialization
+        .DI(4'b0000),                       // 4-bit carry-MUX data in
+        .S(4'b1111)                         // 4-bit carry-MUX select input
+    );
+
+    assign debug_hit = carry_out[3];
     
 endmodule //

@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 1
-set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a200tfbg676-2
 
@@ -89,8 +87,12 @@ set_property ip_output_repo {c:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_Sta
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog C:/Users/mique/Desktop/TDC-in-Artix-7/defines.v
+read_verilog {
+  C:/Users/mique/Desktop/TDC-in-Artix-7/defines.v
+  C:/Users/mique/Desktop/TDC-in-Artix-7/Start_Stop_FlipFlops.v
+}
 set_property file_type "Verilog Header" [get_files C:/Users/mique/Desktop/TDC-in-Artix-7/defines.v]
+set_property file_type "Verilog Header" [get_files C:/Users/mique/Desktop/TDC-in-Artix-7/Start_Stop_FlipFlops.v]
 read_verilog -library xil_defaultlib {
   C:/Users/mique/Desktop/TDC-in-Artix-7/Coarse.v
   C:/Users/mique/Desktop/TDC-in-Artix-7/Edge.v

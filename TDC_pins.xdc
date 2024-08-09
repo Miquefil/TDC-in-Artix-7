@@ -691,10 +691,7 @@ set_property IOSTANDARD SSTL15 [get_ports selector_1]
 # set_property IOSTANDARD SSTL15 [get_ports GPIO_DIP_SW2]
 # set_property PACKAGE_PIN R6 [get_ports GPIO_DIP_SW3]
 # set_property IOSTANDARD SSTL15 [get_ports GPIO_DIP_SW3]
-set_property IOSTANDARD LVDS_25 [get_ports hit_p]
-set_property PACKAGE_PIN T8 [get_ports hit_p]
-set_property PACKAGE_PIN T7 [get_ports hit_n]
-set_property IOSTANDARD LVDS_25 [get_ports hit_n]
+
 # set_property PACKAGE_PIN U4 [get_ports but_rst]
 # set_property IOSTANDARD LVCMOS15 [get_ports but_rst]
 # set_property PACKAGE_PIN J8 [get_ports No]
@@ -821,7 +818,7 @@ set_property IOSTANDARD LVDS_25 [get_ports hit_n]
 
 
 set_property CFGBVS VCCO [current_design]
-set_property CONFIG_VOLTAGE 3.3 [current_design]
+set_property CONFIG_VOLTAGE 2.5 [current_design]
 
 set_property BITSTREAM.CONFIG.SPI_BUSWIDTH 4 [current_design]
 
@@ -848,3 +845,22 @@ set_property PACKAGE_PIN R5 [get_ports but_debugmode]
 
 
 #create_generated_clock -name uart_clk -source [get_pins u_clk/block_clock_i/clk_wiz_0/inst/plle2_adv_inst/CLKOUT0] -divide_by 64 [get_pins uart_clk_reg/Q]
+
+set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkf_buf]
+set_property LOC BUFGCTRL_X0Y5 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkf_buf]
+set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout1_buf]
+set_property LOC BUFGCTRL_X0Y4 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout1_buf]
+set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout4_buf]
+set_property LOC BUFGCTRL_X0Y3 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout4_buf]
+set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout3_buf]
+set_property LOC BUFGCTRL_X0Y2 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout3_buf]
+set_property BEL BUFG [get_cells uart_clk_BUFG_inst]
+set_property LOC BUFGCTRL_X0Y1 [get_cells uart_clk_BUFG_inst]
+set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout2_buf]
+set_property LOC BUFGCTRL_X0Y0 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout2_buf]
+
+
+set_property PACKAGE_PIN T8 [get_ports hit_p]
+set_property IOSTANDARD LVDS_25 [get_ports hit_p]
+set_property PACKAGE_PIN T7 [get_ports hit_n]
+set_property IOSTANDARD LVDS_25 [get_ports hit_n]

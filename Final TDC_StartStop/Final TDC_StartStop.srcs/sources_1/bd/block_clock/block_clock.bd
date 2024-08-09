@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x58A4AA39492C86DC",
+      "boundary_crc": "0xF5E6135098B0C5EB",
       "device": "xc7a200tfbg676-2",
       "gen_directory": "../../../../Final TDC_StartStop.gen/sources_1/bd/block_clock",
       "name": "block_clock",
@@ -155,6 +155,42 @@
             "value": "0",
             "value_src": "default"
           },
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "clk_out4_ce_0": {
+        "type": "ce",
+        "direction": "I",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "clk_out2_ce_0": {
+        "type": "ce",
+        "direction": "I",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "clk_out3_ce_0": {
+        "type": "ce",
+        "direction": "I",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "clk_out_ce_0": {
+        "type": "ce",
+        "direction": "I",
+        "parameters": {
           "POLARITY": {
             "value": "ACTIVE_HIGH"
           }

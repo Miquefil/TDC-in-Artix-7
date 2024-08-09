@@ -52,10 +52,10 @@ substracted_edges   = np.subtract(stop_edges, start_edges)
 
 
 
-# file_stop = 'stop.txt'
-# with open(file_stop, 'w') as file:
-#         for item in stop_edges:
-#             file.write(f"{item}\n")
+file_stop = 'stop.txt'
+with open(file_stop, 'w') as file:
+        for item in stop_edges:
+            file.write(f"{item}\n")
 
 # print(stop_edges)
 

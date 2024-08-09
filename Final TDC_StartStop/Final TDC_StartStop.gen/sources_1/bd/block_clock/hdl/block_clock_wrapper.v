@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-//Date        : Tue Jul  2 14:27:45 2024
+//Date        : Mon Aug  5 17:00:50 2024
 //Host        : MikeHP running 64-bit major release  (build 9200)
 //Command     : generate_target block_clock_wrapper.bd
 //Design      : block_clock_wrapper
@@ -14,26 +14,38 @@ module block_clock_wrapper
    (CLK_IN1_D_0_clk_n,
     CLK_IN1_D_0_clk_p,
     clk_out2_0,
+    clk_out2_ce_0,
     clk_out3_0,
+    clk_out3_ce_0,
     clk_out4_0,
+    clk_out4_ce_0,
     clk_out_0,
+    clk_out_ce_0,
     locked_0,
     reset_0);
   input CLK_IN1_D_0_clk_n;
   input CLK_IN1_D_0_clk_p;
   output clk_out2_0;
+  input clk_out2_ce_0;
   output clk_out3_0;
+  input clk_out3_ce_0;
   output clk_out4_0;
+  input clk_out4_ce_0;
   output clk_out_0;
+  input clk_out_ce_0;
   output locked_0;
   input reset_0;
 
   wire CLK_IN1_D_0_clk_n;
   wire CLK_IN1_D_0_clk_p;
   wire clk_out2_0;
+  wire clk_out2_ce_0;
   wire clk_out3_0;
+  wire clk_out3_ce_0;
   wire clk_out4_0;
+  wire clk_out4_ce_0;
   wire clk_out_0;
+  wire clk_out_ce_0;
   wire locked_0;
   wire reset_0;
 
@@ -41,9 +53,13 @@ module block_clock_wrapper
        (.CLK_IN1_D_0_clk_n(CLK_IN1_D_0_clk_n),
         .CLK_IN1_D_0_clk_p(CLK_IN1_D_0_clk_p),
         .clk_out2_0(clk_out2_0),
+        .clk_out2_ce_0(clk_out2_ce_0),
         .clk_out3_0(clk_out3_0),
+        .clk_out3_ce_0(clk_out3_ce_0),
         .clk_out4_0(clk_out4_0),
+        .clk_out4_ce_0(clk_out4_ce_0),
         .clk_out_0(clk_out_0),
+        .clk_out_ce_0(clk_out_ce_0),
         .locked_0(locked_0),
         .reset_0(reset_0));
 endmodule

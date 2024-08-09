@@ -3,12 +3,12 @@ Configuration Memory information
 ===================================
 File Format        MCS
 Interface          SPIX4
-Size               32M
+Size               256M
 Start Address      0x00000000
-End Address        0x01FFFFFF
-Checksum           0x6A494226
+End Address        0x0FFFFFFF
+Checksum           0x5C663721
 Fill Value         0xFF
 
 Addr1         Addr2         Date                    File(s)                                                                                              Checksum
-0x00000000    0x00947A5B    May 16 21:02:20 2024    C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.runs/impl_1/top.bit    0x002F23CA
-File Checksum Total                                                                                                                                      0x002F23CA
+0x00000000    0x00947A5B    Aug  1 18:17:58 2024    C:/Users/mique/Desktop/TDC-in-Artix-7/Final TDC_StartStop/Final TDC_StartStop.runs/impl_1/top.bit    0x004C18C5
+File Checksum Total                                                                                                                                      0x004C18C5

@@ -10,6 +10,7 @@
 // - 
 ////////////////////////////////////////////////////////////////////////////////////
 `include "defines.v"
+`include "Start_Stop_FlipFlops.v"
 (* keep_hierarchy = "TRUE" *) 
 module Fine #(parameter NUM = 12)                    ///parameter should be multiple of 4
     (
@@ -37,7 +38,7 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
     ////////             COMMENT IN DEBUG MODE!!!       ////////////////////////////
     //firstCarry4
     (* DONT_TOUCH = "yes" *)
-    // (* LOC = "SLICE_X84Y100"*)
+    (* LOC = "SLICE_X84Y100"*)
     CARRY4 carry_40
             (   .CO(wCarryOutputs[3: 0]),           // 4-bit carry out
                 .O(wOutput[3: 0]),                  // 4-bit carry chain XOR data out
@@ -102,7 +103,8 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
     //First column
     generate
         for (i = 0; i < NUM ; i=i+1) begin: PrimeraColumnaFlipFlops
-            (* DONT_TOUCH = "yes" *) FDCE #(.INIT(1'b0)) Firstff(
+            (* DONT_TOUCH = "yes" *) 
+            FDCE #(.INIT(1'b0)) Firstff(
                 .Q(wFirstFF[i])         ,
                 .C(clk)                 ,
                 .CE(1'b1)               ,   //siempre enableado
@@ -113,36 +115,64 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
     endgenerate
     
     // //Second Column: START COLUMN
-     generate
-         for (i = 0; i < NUM ; i=i+1) begin: StartFlipFlops
-            (* DONT_TOUCH = "yes" *)
-            // (* LOC = {"SLICEX85Y", 100+i/4} *)
-                FDCE #(.INIT(1'b0)) Startff(
-                .Q          (oFFStart[i]),   
-                .C          (clk),   
-                .CE         (iStartEnable),    
-                .CLR        (iRst),     
-                .D          (wFirstFF[i])          
-            );
-         end
-     endgenerate
+    // (* DONT_TOUCH = "yes" *)
+    // (* LOC = "SLICE_X85Y114"*)
+    //     FDCE #(.INIT(1'b0)) Startff_000(
+    //     .Q          (oFFStart[0]),   
+    //     .C          (clk),   
+    //     .CE         (iStartEnable),    
+    //     .CLR        (iRst),     
+    //     .D          (wFirstFF[0])          
+    // );
+    // //if the previous block is commented, then i=0, if not i=1
+    // generate
+    //     for (i = 1; i < NUM ; i=i+1) begin: StartFlipFlops
+    //     (* DONT_TOUCH = "yes" *)
+    //     // (* LOC = {"SLICEX85Y", 100+i/4} *)
+    //         FDCE #(.INIT(1'b0)) Startff(
+    //         .Q          (oFFStart[i]),   
+    //         .C          (clk),   
+    //         .CE         (iStartEnable),    
+    //         .CLR        (iRst),     
+    //         .D          (wFirstFF[i])          
+    //     );
+    //     end
+    // endgenerate
 
     // //Third Column: STOP COLUMN
-    generate
-        for (i = 0; i < NUM ; i=i+1) begin: StopFlipFlops
-            (* DONT_TOUCH = "yes" *) 
-            // (* LOC = {"SLICEX87Y", 100+i/4} *)
-            FDCE #(.INIT(1'b0)) StopFF(
-                .Q          (oFFStop[i]) ,     
-                .C          (clk),     
-                .CE         (iStopEnable),
-                .CLR        (iRst),
-                .D          (wFirstFF[i])
-            );  
-        end
-    endgenerate
+    // (* DONT_TOUCH = "yes" *) 
+    // (* LOC = "SLICE_X87Y114" *)
+    // FDCE #(.INIT(1'b0)) StopFF_000(
+    //     .Q          (oFFStop[0]) ,     
+    //     .C          (clk),     
+    //     .CE         (iStopEnable),
+    //     .CLR        (iRst),
+    //     .D          (wFirstFF[0])
+    // );
+    // generate
+    //     for (i = 0; i < NUM ; i=i+1) begin: StopFlipFlops
+    //         (* DONT_TOUCH = "yes" *) 
+    //         // (* LOC = {"SLICEX87Y", 100+i/4} *)
+    //         FDCE #(.INIT(1'b0)) StopFF(
+    //             .Q          (oFFStop[i]) ,     
+    //             .C          (clk),     
+    //             .CE         (iStopEnable),
+    //             .CLR        (iRst),
+    //             .D          (wFirstFF[i])
+    //         );  
+    //     end
+    // endgenerate
 
 
+    Start_Stop_FlipFlops        u_flip_flops(
+        .clk                        (clk),         //input  wire
+        .iStartEnable               (iStartEnable),         //input  wire
+        .iStopEnable                (iStopEnable),         //input  wire
+        .iRst                       (iRst),         //input  wire
+        .wFirstFF                   (wFirstFF),         //input  wire 
+        .oFFStart                   (oFFStart),         //output wire 
+        .oFFStop                    (oFFStop)          //output wire
+    );
 
 
 

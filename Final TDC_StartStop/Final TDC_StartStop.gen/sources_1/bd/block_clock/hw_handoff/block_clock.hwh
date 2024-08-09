@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jul  2 14:27:46 2024" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Aug  5 17:00:52 2024" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="xilinx.com:ac701:part0:1.4" DEVICE="7a200t" NAME="block_clock" PACKAGE="fbg676" SPEEDGRADE="-2"/>
 
@@ -19,21 +19,25 @@
         <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out2"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="I" NAME="clk_out2_ce_0" POLARITY="ACTIVE_HIGH" SIGIS="ce"/>
     <PORT CLKFREQUENCY="200000000" DIR="O" NAME="clk_out3_0" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out3">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out3"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="I" NAME="clk_out3_ce_0" POLARITY="ACTIVE_HIGH" SIGIS="ce"/>
     <PORT CLKFREQUENCY="200000000" DIR="O" NAME="clk_out4_0" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out4">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out4"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="I" NAME="clk_out4_ce_0" POLARITY="ACTIVE_HIGH" SIGIS="ce"/>
     <PORT CLKFREQUENCY="7339449" DIR="O" NAME="clk_out_0" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="I" NAME="clk_out_ce_0" POLARITY="ACTIVE_HIGH" SIGIS="ce"/>
     <PORT DIR="O" NAME="locked_0" SIGIS="undef" SIGNAME="clk_wiz_0_locked">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_wiz_0" PORT="locked"/>

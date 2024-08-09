@@ -56,17 +56,17 @@ module top_tb(
 
 
     //60mhz hit signal for testing
-    reg             signal_p, signal_n;
-    initial begin
-        forever begin
-            signal_n = 1'b0;
-            signal_p = 1'b1;
-            #7; 
-            signal_n = 1'b1; 
-            signal_p = 1'b0;
-            #8; 
-        end
-    end
+    // reg             signal_p, signal_n;
+    // initial begin
+    //     forever begin
+    //         signal_n = 1'b0;
+    //         signal_p = 1'b1;
+    //         #7; 
+    //         signal_n = 1'b1; 
+    //         signal_p = 1'b0;
+    //         #8; 
+    //     end
+    // end
 
 
     integer i = 0;
@@ -97,14 +97,14 @@ module top_tb(
         for (i = 0; i < 300 ; i=i+1) begin
             hit_p        = 1'b1;
             hit_n        = 1'b0;
-            #($urandom %50);
-            // #(20*TCLK);
+            // #($urandom %50);
+            #(7*TCLK);
             // #7
             hit_p        = 1'b0;
             hit_n        = 1'b1;            
-            // #(20*TCLK);
+            #(8*TCLK);
             // #8;
-            #3;   //este delay es importante en 150nS, starting time
+            // #3;   //este delay es importante en 150nS, starting time
         end
 
         // startWr    = 1'b1;

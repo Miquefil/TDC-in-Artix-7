@@ -18,11 +18,20 @@ module TDC (
     wire[`NUM_DECODE-1:0]        DecodedStop, DecodedStart;
 
 
-    wire                ready;
+    wire                ready; 
     wire                rst_int;    
     assign              rst_int = done;                 //If a measure is done, reset the TDC
-    wire                rst;                            //manages internal and external rst
-    assign              rst = (~ready|iRst|rst_int);    //reset if NOTready/external/interal
+    // wire                rst;                            //manages internal and external rst
+    // assign              rst = (~ready|iRst|rst_int);    //reset if NOTready/external/interal
+    reg rst;
+    always @(posedge clk0) begin
+        if(rst) begin
+            rst <= 1'b0;
+        end
+        else begin
+            rst <= (~ready|iRst|rst_int);     
+        end
+    end
 
     //////////////////////Wait for some clocks and then go ready --------------
     wire                FFDelayStart;
@@ -51,38 +60,38 @@ module TDC (
         .hit                (iHit),                     //input   wire
         .processing_ended   (done),                     //input   wire
         .enable             (wEnabler),                  //output  wire
-        .rise_edge          (Rise),            //output  wire
-        .fall_edge          (Fall)             //output  wire
+        .rise_edge          (),            //output  wire
+        .fall_edge          ()             //output  wire
     );
 
-    // Edge u_EdgeDetector(
-    //     .iClk        (clk0),
-    //     .iRst        (rst),
-    //     .iHit        (iHit),
-    //     .oRise       (Rise),
-    //     .oFall       (Fall),
-    //     .enable      (wEnabler)
-    // );
-    
-    wire    Fall_1;
-    Edge u_EdgeDetector_1(
-        .iClk       (clk1),
-        .iRst       (rst),
-        .iHit       (iHit),
-        .oRise      (),
-        .oFall      (Fall_1),
-        .enable     (wEnabler)
-    );
-
-    wire    Fall_2;
-    Edge u_EdgeDetector_2(
-        .iClk        (clk2),
+    Edge u_EdgeDetector(
+        .iClk        (clk0),
         .iRst        (rst),
-        .iHit       (iHit),
-        .oRise      (),
-        .oFall      (Fall_2),
-        .enable     (wEnabler)
+        .iHit        (iHit),
+        .oRise       (Rise),
+        .oFall       (Fall),
+        .enable      (wEnabler)
     );
+    
+    // wire    Fall_1;
+    // Edge u_EdgeDetector_1(
+    //     .iClk       (clk1),
+    //     .iRst       (rst),
+    //     .iHit       (iHit),
+    //     .oRise      (),
+    //     .oFall      (Fall_1),
+    //     .enable     (wEnabler)
+    // );
+
+    // wire    Fall_2;
+    // Edge u_EdgeDetector_2(
+    //     .iClk        (clk2),
+    //     .iRst        (rst),
+    //     .iHit       (iHit),
+    //     .oRise      (),
+    //     .oFall      (Fall_2),
+    //     .enable     (wEnabler)
+    // );
 
     Fine #(`NUM_TAPS) u_FineDelay(
         .clk                    (clk0),
@@ -121,37 +130,47 @@ module TDC (
         .oCoarse        (CoarseStamp_0)   
     );
 
-    wire[`COUNTER_DIG-1:0]       CoarseStamp_1;
-    Coarse #(`COUNTER_DIG) u_Coarse_1 (
-        .clk            (clk1),
-        .iRst           (rst),       //reset count
-        .iCE            (iHit),        //enable
-        .iStore         (Fall_1),
-        .oCoarse        (CoarseStamp_1)   
-    );
+    // wire[`COUNTER_DIG-1:0]       CoarseStamp_1;
+    // Coarse #(`COUNTER_DIG) u_Coarse_1 (
+    //     .clk            (clk1),
+    //     .iRst           (rst),       //reset count
+    //     .iCE            (iHit),        //enable
+    //     .iStore         (Fall_1),
+    //     .oCoarse        (CoarseStamp_1)   
+    // );
 
-    wire[`COUNTER_DIG-1:0]       CoarseStamp_2;
-    Coarse #(`COUNTER_DIG) u_Coarse_2 (
-        .clk            (clk2),
-        .iRst           (rst),       //reset count
-        .iCE            (iHit),        //enable
-        .iStore         (Fall_2),
-        .oCoarse        (CoarseStamp_2)   
-    );
+    // wire[`COUNTER_DIG-1:0]       CoarseStamp_2;
+    // Coarse #(`COUNTER_DIG) u_Coarse_2 (
+    //     .clk            (clk2),
+    //     .iRst           (rst),       //reset count
+    //     .iCE            (iHit),        //enable
+    //     .iStore         (Fall_2),
+    //     .oCoarse        (CoarseStamp_2)   
+    // );
 
     // Arbiter and Merging
     //TODO: solve arbiter_stop/start condition, how to get it when using ones counter
-    reg[`COUNTER_DIG-1:0]          CoarseStamp_final;
+    reg[`COUNTER_DIG-1:0]          CoarseStamp_final        = {`COUNTER_DIG{1'b0}};
+    reg[`COUNTER_DIG-1:0]          coarse_bias_start        = {`COUNTER_DIG{1'b0}};
+    reg[`COUNTER_DIG-1:0]          coarse_bias_stop         = {`COUNTER_DIG{1'b0}};
     always @(*) begin
+        coarse_bias_start   = {`COUNTER_DIG{1'b0}};
+        coarse_bias_stop    = {`COUNTER_DIG{1'b0}};
+
+        // if ((CoarseStamp_0 == CoarseStamp_1-1) && (CoarseStamp_1 == CoarseStamp_2) && (DecodedStart > 256)) begin   //Case II
+        //     coarse_bias_start   = {{`COUNTER_DIG-1{1'b0}}, 1'b1}; ///substracts 1
+        // end
+        // if ((CoarseStamp_0 == CoarseStamp_1+1) && (CoarseStamp_1 == CoarseStamp_2) && (DecodedStop > 256)) begin   //Case II
+        //     coarse_bias_stop    = {{`COUNTER_DIG-1{1'b0}}, 1'b1}; ///adds 1
+        // end
+        
+        // if ((coarse_bias_stop==1'b0)&&(coarse_bias_start==1'b0)) begin
+        //     CoarseStamp_final = CoarseStamp_0;
+        // end
+        // else begin
+        //     CoarseStamp_final = CoarseStamp_1 - coarse_bias_start + coarse_bias_stop;    
+        // end
         CoarseStamp_final = CoarseStamp_0;
-        if(CoarseStamp_1 == CoarseStamp_2) begin
-            if ((CoarseStamp_0 < CoarseStamp_1)&&(DecodedStart > 200)) begin
-                CoarseStamp_final = CoarseStamp_1 - {{`COUNTER_DIG-1{1'b0}}, 1'b1};
-            end
-            else if((CoarseStamp_0 > CoarseStamp_1)&&(DecodedStop > 200)) begin
-                CoarseStamp_final = CoarseStamp_1 + {{`COUNTER_DIG-1{1'b0}}, 1'b1};    
-            end
-        end
     end
 
     merging #(.N(3)) u_merge (

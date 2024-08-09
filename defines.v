@@ -4,7 +4,7 @@
 
 `ifndef FLAG
     `define FLAG                1
-    `define NUM_TAPS            300
+    `define NUM_TAPS            400
     `define HALF_NUM_TAPS       150
     `define NUM_LUT6            50
     `define NUM_DECODE          10               //2^(NUM_DECODE) >= NUM_TAPS

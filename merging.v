@@ -96,19 +96,10 @@ module merging #(parameter N = 2) (
         if(r_done) begin
             r_done <= 1'b0;
         end 
-
-        //Store
-        // if(storeStart) begin       
-        //     StartEdge_stored    <= StartEdge;
-        // end
-        // if(storeStop) begin
-        //     StopEdge_stored     <= FallEdge;
-        //     Coarse_stored       <= Coarse;
-        // end
-
+        
         //STORE
         if (in_store_stop) begin
-            StopEdge_stored     <= FallEdge;
+            StopEdge_stored     <= FallEdge;        //TODO: registrar salida de decoder
             Coarse_stored       <= Coarse;
             enable_counter      <= 1'b1;
         end

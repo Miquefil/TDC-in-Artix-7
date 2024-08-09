@@ -1,27 +1,31 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"-262,-66",
+   "Default View_TopLeft":"-217,-157",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 threadsafe
 #  -string -flagsOSRD
-preplace port CLK_IN1_D_0 -pg 1 -lvl 0 -x -50 -y 10 -defaultsOSRD
-preplace port port-id_clk_out_0 -pg 1 -lvl 2 -x 220 -y 0 -defaultsOSRD
-preplace port port-id_clk_out2_0 -pg 1 -lvl 2 -x 220 -y 30 -defaultsOSRD
-preplace port port-id_clk_out3_0 -pg 1 -lvl 2 -x 220 -y 50 -defaultsOSRD
-preplace port port-id_clk_out4_0 -pg 1 -lvl 2 -x 220 -y 70 -defaultsOSRD
-preplace port port-id_locked_0 -pg 1 -lvl 2 -x 220 -y 90 -defaultsOSRD
-preplace port port-id_reset_0 -pg 1 -lvl 0 -x -50 -y 60 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 80 -y 50 -defaultsOSRD
-preplace netloc clk_wiz_0_clk_out 1 1 1 190 0n
-preplace netloc clk_wiz_0_clk_out2 1 1 1 N 30
-preplace netloc clk_wiz_0_clk_out3 1 1 1 N 50
-preplace netloc clk_wiz_0_clk_out4 1 1 1 NJ 70
-preplace netloc clk_wiz_0_locked 1 1 1 NJ 90
-preplace netloc reset_0_1 1 0 1 N 60
-preplace netloc CLK_IN1_D_0_1 1 0 1 -30 10n
-levelinfo -pg 1 -50 80 220
-pagesize -pg 1 -db -bbox -sgen -200 -50 350 200
+preplace port CLK_IN1_D_0 -pg 1 -lvl 0 -x -10 -y 60 -defaultsOSRD
+preplace port port-id_clk_out_0 -pg 1 -lvl 2 -x 260 -y 70 -defaultsOSRD
+preplace port port-id_clk_out2_0 -pg 1 -lvl 2 -x 260 -y 90 -defaultsOSRD
+preplace port port-id_clk_out3_0 -pg 1 -lvl 2 -x 260 -y 110 -defaultsOSRD
+preplace port port-id_clk_out4_0 -pg 1 -lvl 2 -x 260 -y 130 -defaultsOSRD
+preplace port port-id_locked_0 -pg 1 -lvl 2 -x 260 -y 150 -defaultsOSRD
+preplace port port-id_reset_0 -pg 1 -lvl 0 -x -10 -y 80 -defaultsOSRD
+preplace port port-id_clk_out4_ce_0 -pg 1 -lvl 0 -x -10 -y 160 -defaultsOSRD
+preplace port port-id_clk_out2_ce_0 -pg 1 -lvl 0 -x -10 -y 120 -defaultsOSRD
+preplace port port-id_clk_out3_ce_0 -pg 1 -lvl 0 -x -10 -y 140 -defaultsOSRD
+preplace port port-id_clk_out_ce_0 -pg 1 -lvl 0 -x -10 -y 100 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 130 -y 110 -defaultsOSRD
+preplace netloc clk_wiz_0_clk_out 1 1 1 NJ 70
+preplace netloc clk_wiz_0_clk_out2 1 1 1 NJ 90
+preplace netloc clk_wiz_0_clk_out3 1 1 1 NJ 110
+preplace netloc clk_wiz_0_clk_out4 1 1 1 NJ 130
+preplace netloc clk_wiz_0_locked 1 1 1 NJ 150
+preplace netloc reset_0_1 1 0 1 10J 80n
+preplace netloc CLK_IN1_D_0_1 1 0 1 20J 60n
+levelinfo -pg 1 -10 130 260
+pagesize -pg 1 -db -bbox -sgen -160 0 380 220
 "
 }
 0
