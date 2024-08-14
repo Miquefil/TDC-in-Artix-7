@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri Aug  9 16:12:28 2024
+| Date         : Wed Aug 14 14:54:27 2024
 | Host         : MikeHP running 64-bit major release  (build 9200)
 | Command      : report_drc -file top_drc_routed.rpt -pb top_drc_routed.pb -rpx top_drc_routed.rpx
 | Design       : top
@@ -24,12 +24,23 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 0
-+------+----------+-------------+------------+
-| Rule | Severity | Description | Violations |
-+------+----------+-------------+------------+
-+------+----------+-------------+------------+
+             Violations found: 2
++--------+----------+-----------------------+------------+
+| Rule   | Severity | Description           | Violations |
++--------+----------+-----------------------+------------+
+| IOSR-1 | Warning  | IOB set reset sharing | 2          |
++--------+----------+-----------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+IOSR-1#1 Warning
+IOB set reset sharing  
+IO hit_n connects to flops which have these u_tdc/rst_reg_n_0, u_tdc/rst_reg_n_0_repN_5 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+Related violations: <none>
+
+IOSR-1#2 Warning
+IOB set reset sharing  
+IO hit_p connects to flops which have these u_tdc/rst_reg_n_0, u_tdc/rst_reg_n_0_repN_5 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+Related violations: <none>
+
 

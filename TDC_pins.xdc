@@ -1,3 +1,7 @@
+set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout3_buf]
+set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout4_buf]
+set_property LOC BUFGCTRL_X0Y2 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout3_buf]
+set_property LOC BUFGCTRL_X0Y3 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout4_buf]
 # set_property PACKAGE_PIN AB22 [get_ports No]
 # set_property IOSTANDARD LVCMOS25 [get_ports No]
 # set_property PACKAGE_PIN AE25 [get_ports FMC1_HPC_HA02_P]
@@ -850,17 +854,21 @@ set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkf_buf]
 set_property LOC BUFGCTRL_X0Y5 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkf_buf]
 set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout1_buf]
 set_property LOC BUFGCTRL_X0Y4 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout1_buf]
-set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout4_buf]
-set_property LOC BUFGCTRL_X0Y3 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout4_buf]
-set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout3_buf]
-set_property LOC BUFGCTRL_X0Y2 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout3_buf]
 set_property BEL BUFG [get_cells uart_clk_BUFG_inst]
 set_property LOC BUFGCTRL_X0Y1 [get_cells uart_clk_BUFG_inst]
 set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout2_buf]
 set_property LOC BUFGCTRL_X0Y0 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout2_buf]
 
 
-set_property PACKAGE_PIN T8 [get_ports hit_p]
 set_property IOSTANDARD LVDS_25 [get_ports hit_p]
+set_property PACKAGE_PIN T8 [get_ports hit_p]
 set_property PACKAGE_PIN T7 [get_ports hit_n]
 set_property IOSTANDARD LVDS_25 [get_ports hit_n]
+
+create_generated_clock -name uart_clk -source [get_pins u_clk/block_clock_i/clk_wiz_0/inst/plle2_adv_inst/CLKOUT0] -divide_by 64 [get_pins uart_clk_reg/Q]
+
+
+# create_pblock Pblock_fine
+# resize_pblock [get_pblocks Pblock_fine] -add {SLICE_X84Y100:SLICE_X87Y199}
+# set_property EXCLUDE TRUE [get_cells u_tdc/u_DecodeStop]
+# add_cells_to_pblock [get_pblocks Pblock_fine] [get_cells u_tdc/u_FineDelay]
