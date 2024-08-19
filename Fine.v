@@ -38,7 +38,7 @@ module Fine #(parameter NUM = 12)                    ///parameter should be mult
     ////////             COMMENT IN DEBUG MODE!!!       ////////////////////////////
     //firstCarry4
     (* DONT_TOUCH = "yes" *)
-    (* LOC = "SLICE_X84Y100"*)
+    (* LOC = "SLICE_X84Y111"*)
     CARRY4 carry_40
             (   .CO(wCarryOutputs[3: 0]),           // 4-bit carry out
                 .O(wOutput[3: 0]),                  // 4-bit carry chain XOR data out

@@ -2,21 +2,23 @@
 | Launch Setup Clock               | Launch Hold Clock                | Pin                             |
 +==================================+==================================+=================================+
 | clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[2]/D |
-| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStop/r_bin_reg[4]/D  |
-| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[1]/D |
 | clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[0]/D |
-| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStop/r_bin_reg[3]/D  |
-| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStop/r_bin_reg[1]/D  |
 | clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStop/r_bin_reg[2]/D  |
+| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStop/r_bin_reg[1]/D  |
 | clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStop/r_bin_reg[0]/D  |
-| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[4]/D |
-| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[6]/D |
+| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStop/r_bin_reg[3]/D  |
+| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[3]/D |
 | clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[5]/D |
+| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[1]/D |
+| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[4]/D |
 | clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[7]/D |
 | clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStop/r_bin_reg[5]/D  |
+| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[6]/D |
+| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStop/r_bin_reg[4]/D  |
 | clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStop/r_bin_reg[6]/D  |
-| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[8]/D |
-| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[3]/D |
 | clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStop/r_bin_reg[7]/D  |
+| uart_clk                         | clk_out2_block_clock_clk_wiz_0_0 | flag_empty_reg/D                |
 | clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStop/r_bin_reg[8]/D  |
+| uart_clk                         | clk_out2_block_clock_clk_wiz_0_0 | start_mem_reset_reg/D           |
+| clk_out2_block_clock_clk_wiz_0_0 | clk_out2_block_clock_clk_wiz_0_0 | u_tdc/u_DecStart/r_bin_reg[8]/D |
 +----------------------------------+----------------------------------+---------------------------------+

@@ -1,7 +1,7 @@
 def generate_verilog(num_ff):
     
     verilog_code    = ""
-    initial_y       = 100     ##position of the Carry4 chain
+    initial_y       = 111     ##position of the Carry4 chain
     slice_x         = 84        ##position of the Carry4 chain
 
     # Header
@@ -58,6 +58,6 @@ def save_verilog_file(filename, num_ff):
     print(f"Verilog code generated and saved to {filename}")
 
 # Usage example
-NUM = 400
+NUM = 280
 filename = "Start_Stop_FlipFlops.v"
 save_verilog_file(filename, NUM)

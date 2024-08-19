@@ -1,0 +1,15 @@
+- Se subió la frecuencia a 300Mhz
+- Existen muchos problemas con el reloj de UART. Al haber subido la freq, se corrió la frecuencia de uart_clk, ya 
+que el ClockingWizard no pudo mantener la misma frecuencia de uart. Corregirla.
+
+- Prestar atención a lo siguiente:
+Cuando se procesan los datos, la cuenta de datos finos SIEMPRE da concentrado en dos posiciones, una positiva
+y una negativa. Tomemos un ejemplo para explicar esto:
+En el caso de querer medir 3.3Mhz, que nos da un tiempo de pulso encendido de ton = 1/(2*3.3Mhz) = 15.1515uSeg
+luego esto nos da que en un reloj de 300Mhz, entran 45.45 clocks en ese pulso positivo.
+Naturalmente, el TDC puede contar de dos maneras:
+grueso + fino = 45*T + 0.45 *T
+o también
+grueso - fino = 46*T - 0.65*T
+por eso el histograma siempre ocurre en dos campanas concentradas! No obstante, existe un problema de sincronización
+serio entre la cuenta gruesa y la fina, por lo que se debe ignorar la parte gruesa. Esto se tiene que arreglar con un arbitro

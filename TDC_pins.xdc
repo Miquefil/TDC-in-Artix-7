@@ -1,7 +1,3 @@
-set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout3_buf]
-set_property BEL BUFG [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout4_buf]
-set_property LOC BUFGCTRL_X0Y2 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout3_buf]
-set_property LOC BUFGCTRL_X0Y3 [get_cells u_clk/block_clock_i/clk_wiz_0/inst/clkout4_buf]
 # set_property PACKAGE_PIN AB22 [get_ports No]
 # set_property IOSTANDARD LVCMOS25 [get_ports No]
 # set_property PACKAGE_PIN AE25 [get_ports FMC1_HPC_HA02_P]
@@ -872,3 +868,14 @@ create_generated_clock -name uart_clk -source [get_pins u_clk/block_clock_i/clk_
 # resize_pblock [get_pblocks Pblock_fine] -add {SLICE_X84Y100:SLICE_X87Y199}
 # set_property EXCLUDE TRUE [get_cells u_tdc/u_DecodeStop]
 # add_cells_to_pblock [get_pblocks Pblock_fine] [get_cells u_tdc/u_FineDelay]
+
+create_pblock Pblock_fino
+resize_pblock [get_pblocks Pblock_fino] -add {SLICE_X84Y101:SLICE_X87Y198}
+set_property EXCLUDE_PLACEMENT 1 [get_pblocks Pblock_fino]
+
+create_pblock Pblock_decode
+add_cells_to_pblock [get_pblocks Pblock_decode] [get_cells -quiet [list u_tdc/u_DecStart u_tdc/u_DecStop]]
+resize_pblock [get_pblocks Pblock_decode] -add {SLICE_X88Y109:SLICE_X97Y199}
+
+
+
