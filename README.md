@@ -4,12 +4,7 @@ Final degree project for Electronic Engineering
 - Author: Miqueas Filsinger
 - Universidad Nacional del Sur
 
-# Dudas, Consultas y Anotaciones
-1. En los datos estamos recibiendo muchas stamps con valor 0: se puede deber a que existen muchas bubbles, por lo que nunca encuentra un flanco de entrada o de salida.
-
-
-
-## Technical Information & Modules:
+## Information & Modules:
 ### Transmission & USART
 - Constant speed of 115200 baud
 - 8N1, (8 bits of data, 1 stop bit, not parity)
@@ -65,15 +60,7 @@ Final degree project for Electronic Engineering
 We've used a phase difference of 40°, approximately $\frac{1}{8} \; T_{clk}$ of delay.
 ![PLL](/images/PLL.png)
 
-
-
-
-
-
-## Results & Processing
-> [!WARNING]  
-> When processing always remember that StopValue result is the falling edge where the hit signal has been captured.
-
+#### Input
 
 ![LVDS](/images/lvds.png)
 

@@ -8,9 +8,6 @@
 // Revision History:
 //
 // Notes:
-// - Store has precedence over Rst. If Store is held high, it doesnt
-//   respond to a rst signal.
-//
 //////////////////////////////////////////////////////////////////////
 (* keep_hierarchy = "TRUE" *) 
 module Coarse #(parameter C_DIG = 10) (
